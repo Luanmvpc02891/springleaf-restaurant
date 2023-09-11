@@ -11,6 +11,14 @@ const routes: Routes = [
     component: UserHomeComponent,
     children: [
       {
+        path: 'user/products',
+        loadChildren: () =>
+          import('./user-products/user-products.module').then(
+            (m) => m.UserProductsModule
+          ),
+        //component: UserCartComponent
+      },
+      {
         path: 'user/cart',
         loadChildren: () =>
           import('./user-cart/user-cart.module').then(
