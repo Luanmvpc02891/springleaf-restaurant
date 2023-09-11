@@ -8,7 +8,7 @@ import { UserHomeComponent } from './user/component/user-home/user-home.componen
 import { UserHomeRoutingModule } from './user/component/user-home/user-home-routing.module';
 import { AdminHomeRoutingModule } from './admin/component/admin-home/admin-home-routing.module';
 import { UserCartComponent } from './user/component/user-home/user-cart/user-cart.component';
-import { HeaderComponent } from './user/component/userr-home/header/header.component';
+import { HeaderComponent } from './user/component/user-home/header/header.component';
 
 @NgModule({
   declarations: [
