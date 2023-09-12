@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserHomeComponent } from './user-home.component';
-import { UserCartComponent } from './user-cart/user-cart.component';
 import { AdminHomeComponent } from 'src/app/admin/component/admin-home/admin-home.component';
 
 const routes: Routes = [
@@ -29,8 +28,9 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin',
-    component: AdminHomeComponent
+    path: 'user/product/detail/:id',
+    loadChildren: () => import('./user-product-detail/user-product-detail.module')
+      .then(m => m.UserProductDetailModule)
   }
 
 ];

@@ -5,8 +5,8 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './user-header.component.html',
   styleUrls: ['./user-header.component.css']
 })
-export class HeaderComponent {
-  navbarfixed: boolean = false;
+export class UserHeaderComponent {
+  navbarfixed: boolean = false; // Hiện header
   scrollCounter: number = 0;
   previousScrollY = 0;
 
