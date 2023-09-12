@@ -7,7 +7,22 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminHomeComponent,
+    children: [
+      {
+        path: 'products',
+        loadChildren: () =>
+          import('./admin-products/admin-products.module').then(
+            (m) => m.AdminProductsModule
+          ),
+        //component: UserCartComponent
+      }
+    ]
   },
+  {
+    path: 'admin/product/detail/:id',
+    loadChildren: () => import('./admin-product-detail/admin-product-detail.module')
+      .then(m => m.AdminProductDetailModule)
+  }
 
 ];
 

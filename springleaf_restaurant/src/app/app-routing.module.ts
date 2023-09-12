@@ -12,8 +12,9 @@ const routes: Routes = [
       ),
     //component: UserHomeComponent
   },
+  { path: 'admin', redirectTo: '/admin/products', pathMatch: 'full' },
   {
-    path: 'admin',
+    path: '',
     loadChildren: () =>
       import('./admin/component/admin-home/admin-home.module').then(
         (m) => m.AdminHomeModule

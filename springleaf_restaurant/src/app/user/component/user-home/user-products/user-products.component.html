@@ -1,37 +1,11 @@
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
-<p>user-products works!</p>
+<ul class="products container">
+    <li *ngFor="let product of products">
+        <a routerLink="/user/product/detail/{{product.categoryId}}">
+            {{product.categoryId}}
+            {{product.name}}
+        </a>
+        <!-- <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button> -->
+    </li>
+</ul>
+
+<!-- <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button> -->
