@@ -18,7 +18,7 @@ export class AdminProductDetailComponent {
     public activeModal: NgbActiveModal,
     private route: ActivatedRoute,
     private productService: ProductService,
-    private location: Location
+    private location: Location,
   ) { }
 
   ngOnInit(): void {

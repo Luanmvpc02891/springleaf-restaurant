@@ -27,7 +27,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserProductDetailComponent,
     AdminHeaderComponent,
     AdminProductsComponent,
-    AdminProductDetailComponent
+    AdminProductDetailComponent,
   ],
   imports: [
     BrowserModule,
