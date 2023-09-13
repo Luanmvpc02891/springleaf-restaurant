@@ -1,5 +1,5 @@
 import { AdminProductDetailComponent } from './../admin-product-detail/admin-product-detail.component';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/user/interface/products';
 import { ProductService } from 'src/app/user/service/products.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,7 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.css']
 })
-export class AdminProductsComponent {
+export class AdminProductsComponent implements OnInit {
   products: Product[] = [];
 
   constructor(private productsService: ProductService, private modalService: NgbModal) {
@@ -24,9 +24,9 @@ export class AdminProductsComponent {
       .subscribe(categories => this.products = categories);
   }
 
-  openProductModal(product: Product) {
-    const modalRef = this.modalService.open(AdminProductDetailComponent, { size: 'lg' });
-    modalRef.componentInstance.product = product;
-  }
+  // openProductModal(product: Product) {
+  //   const modalRef = this.modalService.open(AdminProductDetailComponent, { size: 'lg' });
+  //   modalRef.componentInstance.product = product;
+  // }
 
 }

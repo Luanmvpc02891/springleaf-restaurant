@@ -24,6 +24,4 @@ export class UserProductsComponent {
       .subscribe(categories => this.products = categories);
   }
 
-  
-
 }

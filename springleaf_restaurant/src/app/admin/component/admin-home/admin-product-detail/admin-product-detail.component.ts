@@ -12,10 +12,9 @@ import { Location } from '@angular/common';
 })
 export class AdminProductDetailComponent {
 
-  product!: Product;
+  product: Product | undefined;
 
   constructor(
-    public activeModal: NgbActiveModal,
     private route: ActivatedRoute,
     private productService: ProductService,
     private location: Location,
@@ -27,7 +26,7 @@ export class AdminProductDetailComponent {
 
   getProduct(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.productService.getProductNo404(id)
+    this.productService.getProduct(id)
       .subscribe(product => this.product = product);
   }
 
