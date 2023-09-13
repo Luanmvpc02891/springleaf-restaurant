@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-SpringleafRestaurantBackendApplication<springleaf_restaurant_backend>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.springleaf_restaurant_backend.SpringleafRestaurantBackendApplication",
+      "projectName": "springleaf_restaurant_backend",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
