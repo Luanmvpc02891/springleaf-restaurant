@@ -18,6 +18,7 @@ import { AdminProductDetailComponent } from './admin/component/admin-home/admin-
 import { ChatComponent } from './component/chat/chat.component';
 import { WebSocketService } from './service/web-socket.service';
 import { ChatService } from './service/chat.service';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ChatService } from './service/chat.service';
     AdminProductsComponent,
     AdminProductDetailComponent,
     ChatComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

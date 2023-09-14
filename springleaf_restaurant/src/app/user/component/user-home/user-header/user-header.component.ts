@@ -1,4 +1,7 @@
 import { Component, HostListener } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from 'src/app/component/login/login.component';
+import { LoginModule } from 'src/app/component/login/login.module';
 
 @Component({
   selector: 'app-user-header',
@@ -10,6 +13,8 @@ export class UserHeaderComponent {
   scrollCounter: number = 0;
   previousScrollY = 0;
 
+  constructor(private modalService: NgbModal) { }
+
   @HostListener('window:scroll', ['$event']) onscroll() {
     if (window.scrollY >= this.previousScrollY || window.scrollY === 0) {
       this.previousScrollY = window.scrollY;
@@ -19,4 +24,10 @@ export class UserHeaderComponent {
       this.navbarfixed = true;
     }
   }
+
+  openLoginModal() {
+    const modalRef = this.modalService.open(LoginComponent, { size: 'lg' });
+    //modalRef.componentInstance.product = product;
+  }
+
 }

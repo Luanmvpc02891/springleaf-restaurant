@@ -19,8 +19,9 @@
     <h2>{{product.name | uppercase}} Details</h2>
     <div><span>id: </span>{{product.categoryId}}</div>
     <div>
-        <label for="hero-name">Hero name: </label>
-        <input id="hero-name" [(ngModel)]="product.name" placeholder="Hero name" />
+        <label for="product-name">Product name: </label>
+        <input id="product-name" [(ngModel)]="product.name"
+            placeholder="Product name" />
     </div>
     <button type="button" (click)="goBack()">go back</button>
     <button type="button" (click)="save()">save</button>

@@ -1,7 +1,8 @@
 import { Product } from './../../../interface/products';
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ProductService } from 'src/app/user/service/products.service';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from 'src/app/service/products.service';
 
 @Component({
   selector: 'app-user-products',
@@ -12,7 +13,7 @@ export class UserProductsComponent {
 
   products: Product[] = [];
 
-  constructor(private productsService: ProductService) {
+  constructor(private productsService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {

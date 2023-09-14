@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springleaf_restaurant_backend.user.dao.DAOCategory;
 import com.springleaf_restaurant_backend.user.model.Category;
 
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class RestCategory {
