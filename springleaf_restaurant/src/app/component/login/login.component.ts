@@ -1,26 +1,35 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { EventEmitter, Component, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-form',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
+  styleUrls: ['./login.component.css'],
+  })
 export class LoginComponent {
 
   @Output() onSubmitLoginEvent = new EventEmitter();
+  @Output() onSubmitRegisterEvent = new EventEmitter();
 
+	active: string = "login";
+  firstName: string = "";
+  lastName: string = "";
   login: string = "";
   password: string = "";
 
-  constructor(public activeModal: NgbActiveModal) { }
+	onLoginTab(): void {
+		this.active = "login";
+	}
+
+	onRegisterTab(): void {
+		this.active = "register";
+	}
 
   onSubmitLogin(): void {
-    this.onSubmitLoginEvent.emit({ "login": this.login, "password": this.password });
+    this.onSubmitLoginEvent.emit({"login": this.login, "password": this.password});
   }
 
-  onLogin(input: any): void {
-
+  onSubmitRegister(): void {
+    this.onSubmitRegisterEvent.emit({"firstName": this.firstName, "lastName": this.lastName, "login": this.login, "password": this.password});
   }
 
 }

@@ -9,6 +9,4 @@ import com.springleaf_restaurant_backend.user.model.Category;
 @Service
 public class CategoryService {
 
-	
-
 }

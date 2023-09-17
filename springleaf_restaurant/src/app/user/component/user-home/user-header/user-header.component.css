@@ -1,16 +1,22 @@
-.fixed {
-    position: fixed;
-    width: 100%;
-    transition: 0.2s linear;
-    top: 0px
+.navbar-expand-lg .nav-link:hover {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--menu-font-size);
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
-.notfixed {
-    position: static;
-    transition: 0.2s linear;
-    top: -50px;
+.navbar-expand-lg .active {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--menu-font-size);
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
+/*---------------------------------------
+  NAVIGATION              
+-----------------------------------------*/
 .navbar {
     background: var(--white-color);
     padding-top: 20px;
@@ -37,20 +43,14 @@
     padding-bottom: 15px;
 }
 
-.navbar-expand-lg .nav-link:hover {
+.navbar-nav .nav-link.active,
+.nav-link:focus,
+.nav-link:hover {
     color: var(--primary-color);
-    font-weight: var(--font-weight-normal);
-    font-size: var(--menu-font-size);
-    padding-top: 15px;
-    padding-bottom: 15px;
 }
 
-.navbar-expand-lg .active {
-    color: var(--primary-color);
-    font-weight: var(--font-weight-normal);
-    font-size: var(--menu-font-size);
-    padding-top: 15px;
-    padding-bottom: 15px;
+.nav-link:focus {
+    color: var(--p-color);
 }
 
 .navbar-toggler {
@@ -117,4 +117,264 @@
 
 .navbar-toggler .navbar-toggler-icon:after {
     top: 8px;
+}
+
+/*---------------------------------------
+  CUSTOM BUTTON              
+-----------------------------------------*/
+.custom-btn {
+    border: 0;
+    color: var(--white-color);
+    font-size: var(--menu-font-size);
+    padding: 10px 35px;
+}
+
+/*---------------------------------------
+  TYPOGRAPHY               
+-----------------------------------------*/
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--dark-color);
+    line-height: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--font-weight-semibold);
+}
+
+h1,
+h2 {
+    font-weight: var(--font-weight-bold);
+}
+
+h1 {
+    font-size: var(--h1-font-size);
+    line-height: normal;
+}
+
+h2 {
+    font-size: var(--h2-font-size);
+}
+
+h3 {
+    font-size: var(--h3-font-size);
+}
+
+h4 {
+    font-size: var(--h4-font-size);
+}
+
+h5 {
+    font-size: var(--h5-font-size);
+}
+
+h6 {
+    font-size: var(--h6-font-size);
+}
+
+p,
+.list .list-item {
+    color: var(--p-color);
+    font-size: var(--p-font-size);
+    font-weight: var(--font-weight-light);
+}
+
+a,
+button {
+    touch-action: manipulation;
+    transition: all 0.3s;
+}
+
+.form-label {
+    color: var(--p-color);
+    font-weight: var(--font-weight-semibold);
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+::selection {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+::-moz-selection {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+.section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+b,
+strong {
+    font-weight: var(--font-weight-bold);
+}
+
+nav {
+    background: var(--white-color);
+    font-family: var(--body-font-family);
+}
+
+.fixed {
+    position: fixed;
+    width: 100%;
+    transition: 0.2s linear;
+    top: 0px
+}
+
+.notfixed {
+    position: static;
+    transition: 0.2s linear;
+    top: -50px;
+}
+
+.navbar {
+    background: var(--white-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*---------------------------------------
+  RESPONSIVE STYLES               
+-----------------------------------------*/
+/* Thay đổi font size cho tiêu đề h1 khi màn hình có độ rộng tối đa 1180px */
+@media screen and (max-width: 1180px) {
+    h1 {
+        font-size: 62px;
+    }
+}
+
+/* Thay đổi font size cho tiêu đề h1 khi màn hình có độ rộng tối đa 1170px */
+@media screen and (max-width: 1170px) {
+    h1 {
+        font-size: 56px;
+    }
+}
+
+/* Thay đổi font size cho các tiêu đề khác và điều chỉnh khoảng cách và padding cho menu và modal khi màn hình có độ rộng tối đa 991px */
+@media screen and (max-width: 991px) {
+    h1 {
+        font-size: 38px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    h3 {
+        font-size: 26px;
+    }
+
+    h4 {
+        font-size: 24px;
+    }
+
+    h5 {
+        font-size: 20px;
+    }
+
+    h6 {
+        font-size: 18px;
+    }
+
+    .site-header,
+    .section-padding {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .navbar {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+
+    #BookingModal .modal-content {
+        padding-bottom: 200px;
+    }
+
+    #BookingModal .modal-content::before {
+        background-image: url('/assets/images/sincerely-media-HoEYgBL_Gcs-unsplash-mobile.jpg');
+        background-position: bottom;
+        top: auto;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 200px;
+        transform: rotate(180deg);
+    }
+
+    #BookingModal .modal-body {
+        padding-top: 18px;
+        padding-right: 32px;
+    }
+}
+
+/* Thay đổi kích thước hình ảnh .newsletter-image và nút điều hướng trong carousel khi màn hình có độ rộng tối đa 480px */
+@media screen and (max-width: 480px) {
+    .newsletter-image {
+        max-width: 310px;
+        max-height: 310px;
+    }
+
+    .hero-carousel .carousel-control-prev,
+    .hero-carousel .carousel-control-next {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/*---------------------------------------
+  SOCIAL ICON               
+-----------------------------------------*/
+.social-icon {
+    margin: 0;
+    padding: 0;
+}
+
+.social-icon li {
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    transition: all 0.3s;
+}
+
+.social-icon:hover li:not(:hover) {
+    opacity: 0.65;
+}
+
+.social-icon-link {
+    color: var(--p-color);
+    font-size: var(--p-font-size);
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 15px;
+}
+
+.social-icon-link:hover {
+    color: var(--primary-color);
 }

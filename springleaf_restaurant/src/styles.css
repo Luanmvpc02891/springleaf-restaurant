@@ -1,7 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
     --white-color: #FFFFFF;
-    --primary-color: #f73d40;
+    --primary-color: #f44749;
     --secondary-color: #f3af24;
     --section-bg-color: #F9F9F9;
     --dark-color: #000000;
@@ -28,4 +27,10 @@
     --font-weight-normal: 400;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+}
+
+body {
+    background: var(--white-color);
+    font-family: var(--body-font-family);
+    position: relative;
 }

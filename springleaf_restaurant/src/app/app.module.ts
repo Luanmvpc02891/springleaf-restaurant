@@ -19,6 +19,12 @@ import { ChatComponent } from './component/chat/chat.component';
 import { WebSocketService } from './service/web-socket.service';
 import { ChatService } from './service/chat.service';
 import { LoginComponent } from './component/login/login.component';
+import { UserFooterComponent } from './user/component/user-home/user-footer/user-footer.component';
+import { AxiosService } from './service/axios.service';
+import { WelcomeContentComponent } from './component/welcome-content/welcome-content.component';
+import { AuthContentComponent } from './component/auth-content/auth-content.component';
+import { ButtonsComponent } from './component/buttons/buttons.component';
+import { ContentComponent } from './component/content/content.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +40,11 @@ import { LoginComponent } from './component/login/login.component';
     AdminProductDetailComponent,
     ChatComponent,
     LoginComponent,
+    ButtonsComponent,
+    UserFooterComponent,
+    WelcomeContentComponent,
+    AuthContentComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +56,7 @@ import { LoginComponent } from './component/login/login.component';
   ],
   providers: [
     WebSocketService,
-    ChatService
+    ChatService,AxiosService
   ],
   bootstrap: [AppComponent]
 })
