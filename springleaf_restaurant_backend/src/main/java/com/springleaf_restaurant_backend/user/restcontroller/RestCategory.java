@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springleaf_restaurant_backend.user.dao.DAOCategory;
-import com.springleaf_restaurant_backend.user.model.Category;
+import com.springleaf_restaurant_backend.user.entities.Category;
+import com.springleaf_restaurant_backend.user.repositories.CategoryRepository;
 
 //@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class RestCategory {
     @Autowired
-    private DAOCategory dao;
+    private CategoryRepository dao;
 
     @GetMapping("/categories")
     public List<Category> getCategories() {
@@ -26,7 +26,7 @@ public class RestCategory {
     }
 
     @GetMapping("/categories/{id}")
-    public Optional<Category> getCategoryById(@PathVariable("id") int categoryId) {
+    public Optional<Category> getCategoryById(@PathVariable("id") Long categoryId) {
         return dao.findById(categoryId);
     }
 
