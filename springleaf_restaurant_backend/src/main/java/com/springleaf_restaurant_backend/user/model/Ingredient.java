@@ -5,22 +5,22 @@ import lombok.Data;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Categories")
+@Table(name = "Ingredients")
 @Data
-public class Category {
+public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private Long categoryId;
+    @Column(name = "ingredient_id")
+    private Long ingredientId;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description", columnDefinition = "nvarchar(max)")
+    @Column(name = "description", length = 255)
     private String description;
 
-    @Column(name = "active")
-    private Boolean active;
+    @Column(name = "order_threshold")
+    private Integer orderThreshold;
 
 }
 
