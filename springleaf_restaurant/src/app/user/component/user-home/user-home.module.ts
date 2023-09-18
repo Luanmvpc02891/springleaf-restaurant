@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UserHomeRoutingModule } from './user-home-routing.module';
 import { UserFooterComponent } from './user-footer/user-footer.component';
+import { UserIndexComponent } from './user-index/user-index.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,8 @@ import { UserFooterComponent } from './user-footer/user-footer.component';
   ],
   declarations: [
     // UserFooterComponent
+  
+    UserIndexComponent
   ]
 })
 export class UserHomeModule { }

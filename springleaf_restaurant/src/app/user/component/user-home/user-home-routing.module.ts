@@ -1,3 +1,5 @@
+import { UserIndexModule } from './user-index/user-index.module';
+import { UserIndexComponent } from './user-index/user-index.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserHomeComponent } from './user-home.component';
@@ -13,10 +15,10 @@ const routes: Routes = [
     component: UserHomeComponent,
     children: [
       {
-        path: 'user/products',
+        path: 'user/index',
         loadChildren: () =>
-          import('./user-products/user-products.module').then(
-            (m) => m.UserProductsModule
+          import('./user-index/user-index.module').then(
+            (m) => m.UserIndexModule
           ),
         //component: UserCartComponent
       },
@@ -32,6 +34,12 @@ const routes: Routes = [
         path: 'chat',
         loadChildren: () => import('../../../component/chat/chat.module')
           .then(m => m.ChatModule)
+        //component: ChatComponent
+      }
+      , {
+        path: 'user/products',
+        loadChildren: () => import('./user-products/user-products.module')
+          .then(m => m.UserProductsModule)
         //component: ChatComponent
       }
     ]

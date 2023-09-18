@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/user/products', pathMatch: 'full' },
+  { path: '', redirectTo: '/user/index', pathMatch: 'full' },
   {
     path: '',
     loadChildren: () =>

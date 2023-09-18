@@ -1,5 +1,6 @@
 package com.springleaf_restaurant_backend.user.model;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import jakarta.persistence.*;
@@ -11,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "Users")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

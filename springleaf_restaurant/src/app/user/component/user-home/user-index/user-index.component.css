@@ -1,0 +1,216 @@
+.custom-select {
+    position: relative;
+    width: 400px;
+    max-width: 100%;
+    font-size: 1.15rem;
+    color: #000;
+    margin-top: 3rem;
+}
+
+.select-button {
+    width: 100%;
+    font-size: 1.15rem;
+    background-color: #fff;
+    padding: 0.675em 1em;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-value {
+    text-align: left;
+}
+
+.arrow {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #000;
+    transition: transform ease-in-out 0.3s;
+}
+
+.select-dropdown {
+    position: absolute;
+    list-style: none;
+    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    transition: 0.5s ease;
+
+    transform: scaleY(0);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.select-dropdown:focus-within {
+    box-shadow: 0 10px 25px rgba(94, 108, 233, 0.6);
+}
+
+.select-dropdown li {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.select-dropdown li label {
+    width: 100%;
+    padding: 8px 10px;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.select-dropdown::-webkit-scrollbar {
+    width: 7px;
+}
+
+.select-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+}
+
+.select-dropdown::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 25px;
+}
+
+.select-dropdown li:hover,
+.select-dropdown input:checked~label {
+    background-color: #f2f2f2;
+}
+
+.select-dropdown input:focus~label {
+    background-color: #dfdfdf;
+}
+
+.select-dropdown input[type="radio"] {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+
+/* interactivity */
+
+.custom-select.active .arrow {
+    transform: rotate(180deg);
+}
+
+.custom-select.active .select-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1);
+}
+
+/*=============
+  Aesthetics 
+  =========================*/
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    ;
+}
+
+/* CSS để thêm viền và bo cong cho thẻ a trong accordion */
+.accordion-body a {
+    border: 1px solid #ccc;
+    /* Thêm viền 1px với màu xám */
+    border-radius: 5px;
+    /* Bo cong viền */
+    padding: 5px 10px;
+    /* Tạo khoảng cách giữa nội dung và viền */
+    display: block;
+    /* Biến thẻ <a> thành một khối để có thể đặt chiều rộng */
+    text-decoration: none;
+    /* Loại bỏ gạch chân mặc định */
+    color: #333;
+    /* Màu văn bản */
+    transition: background-color 0.3s, border-color 0.3s;
+    /* Tạo hiệu ứng chuyển đổi màu nền và viền */
+}
+
+/* CSS để thay đổi màu nền và viền khi di chuột vào thẻ a */
+.accordion-body a:hover {
+    background-color: red;
+    /* Màu nền khi di chuột vào */
+    border-color: #999;
+    /* Màu viền khi di chuột vào */
+}
+
+/* CSS để đổi màu của nút từ xanh thành đỏ */
+button.accordion-button {
+    background-color: red;
+    /* Đặt màu nền là đỏ */
+    color: white;
+    /* Đặt màu văn bản là trắng */
+    border-color: red;
+    /* Đặt màu viền là đỏ */
+    transition: background-color 0.3s, border-color 0.3s;
+    /* Tạo hiệu ứng chuyển đổi màu nền và viền */
+}
+
+/* CSS để thay đổi màu nền và viền khi di chuột vào nút */
+button.accordion-button:hover {
+    background-color: rgb(248, 244, 36);
+    /* Màu nền khi di chuột vào */
+    border-color: darkred;
+    /* Màu viền khi di chuột vào */
+}
+
+/* CSS để không cho thẻ h4 xuống dòng */
+/* CSS để cố định thẻ cha và cho phép thẻ h4 xuống dòng */
+.menu-info {
+    white-space: nowrap;
+    /* Ngăn thẻ cha xuống dòng */
+    overflow: hidden;
+    /* Ẩn nội dung vượt quá kích thước của thẻ */
+    text-overflow: ellipsis;
+    /* Hiển thị dấu chấm (...) khi nội dung bị ẩn */
+    max-width: 80%;
+    /* Đặt chiều rộng tối đa cho thẻ cha */
+}
+
+.menu-info h4 {
+    white-space: normal;
+    /* Cho phép thẻ h4 xuống dòng */
+    margin-bottom: 0;
+    /* Loại bỏ khoảng cách dưới của thẻ h4 để tránh dấu mới */
+}
+
+/* CSS để ẩn nút "Mua hàng" ban đầu */
+.buy-button {
+    display: none;
+    text-decoration: none;
+}
+
+/* CSS để hiển thị nút "Mua hàng" khi hover vào menu-image-wrap */
+.menu-image-wrap:hover .buy-button {
+    display: block;
+}
+#countdown {
+    font-size: 20px;
+    color: #060000;
+    padding: 10px 20px;
+    border-radius: 50px  ;
+    margin: 2px;
+    width: 200px;
+}
