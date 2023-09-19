@@ -21,6 +21,9 @@ import { ChatService } from './service/chat.service';
 import { LoginComponent } from './component/login/login.component';
 import { UserIndexComponent } from './user/component/user-home/user-index/user-index.component';
 import { UserFooterComponent } from './user/component/user-home/user-footer/user-footer.component';
+import { AdminUserComponent } from './admin/component/admin-home/admin-user/admin-user.component';
+import { AdminIndexComponent } from './admin/component/admin-home/admin-index/admin-index.component';
+import { AdminFooterComponent } from './admin/component/admin-home/admin-footer/admin-footer.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { UserFooterComponent } from './user/component/user-home/user-footer/user
     AdminHeaderComponent,
     AdminProductsComponent,
     AdminProductDetailComponent,
+    AdminUserComponent,
+    AdminIndexComponent,
+    AdminFooterComponent,
     ChatComponent,
     LoginComponent,
     UserIndexComponent,

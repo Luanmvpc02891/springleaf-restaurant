@@ -41,15 +41,16 @@ const routes: Routes = [
         loadChildren: () => import('../../../component/chat/chat.module')
           .then(m => m.ChatModule)
         //component: ChatComponent
-      }
+      },
+      {
+        path: 'user/product/detail',
+        loadChildren: () =>
+          import('./user-product-detail/user-product-detail.module')
+            .then(m => m.UserProductDetailModule),
+      },
     ]
   },
-  {
-    path: 'user/product/detail',
-    loadChildren: () =>
-      import('./user-product-detail/user-product-detail.module')
-        .then(m => m.UserProductDetailModule),
-  },
+
 
 
 ];

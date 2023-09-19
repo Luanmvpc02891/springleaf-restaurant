@@ -12,7 +12,7 @@ const routes: Routes = [
       ),
     //component: UserHomeComponent
   },
-  { path: 'admin', redirectTo: '/admin/products', pathMatch: 'full' },
+  { path: 'admin', redirectTo: '/admin/index', pathMatch: 'full' },
   {
     path: '',
     loadChildren: () =>
@@ -21,6 +21,7 @@ const routes: Routes = [
       ),
     //component: AdminHomeComponent
   },
+  
 ];
 
 @NgModule({
