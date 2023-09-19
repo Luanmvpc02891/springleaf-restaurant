@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springleaf_restaurant_backend.user.entities.Event;
 
-public interface EventDAO extends JpaRepository<Event, Long> {
+public interface EventRepository extends JpaRepository<Event, Long> {
     
 }
