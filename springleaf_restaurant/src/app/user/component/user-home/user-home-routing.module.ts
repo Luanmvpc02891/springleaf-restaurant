@@ -13,6 +13,14 @@ const routes: Routes = [
     component: UserHomeComponent,
     children: [
       {
+        path: 'user/index',
+        loadChildren: () =>
+          import('./user-index/user-index.module').then(
+            (m) => m.UserIndexModule
+          ),
+        //component: UserCartComponent
+      },
+      {
         path: 'user/products',
         loadChildren: () =>
           import('./user-products/user-products.module').then(
@@ -37,9 +45,10 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'user/product/detail/:id',
-    loadChildren: () => import('./user-product-detail/user-product-detail.module')
-      .then(m => m.UserProductDetailModule),
+    path: 'user/product/detail',
+    loadChildren: () =>
+      import('./user-product-detail/user-product-detail.module')
+        .then(m => m.UserProductDetailModule),
   },
 
 
