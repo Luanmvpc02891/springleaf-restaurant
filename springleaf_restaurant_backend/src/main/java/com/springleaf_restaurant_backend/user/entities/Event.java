@@ -1,13 +1,14 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
+import lombok.*;
 import jakarta.persistence.*;
-import java.util.Date;
 
+import java.util.Date;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Events")
-@Data
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

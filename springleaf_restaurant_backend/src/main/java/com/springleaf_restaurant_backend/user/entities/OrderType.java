@@ -1,13 +1,14 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
+import lombok.*;
 import jakarta.persistence.*;
-import java.util.List;
 
+import java.util.List;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Order_Types")
-@Data
 public class OrderType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

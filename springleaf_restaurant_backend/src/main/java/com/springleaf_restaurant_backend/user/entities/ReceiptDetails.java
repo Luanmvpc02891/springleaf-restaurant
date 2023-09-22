@@ -1,12 +1,13 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
+import lombok.*;
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "ReceiptDetails")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Receipt_Details")
 public class ReceiptDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,14 +1,16 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 
 import jakarta.persistence.*;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Reservations")
-@Data
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +19,7 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "table_id")
-    private Table table;
+    private RestaurantTable table;
 
     @ManyToOne
     @JoinColumn(name = "order_id")

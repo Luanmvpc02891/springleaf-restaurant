@@ -1,13 +1,16 @@
 package com.springleaf_restaurant_backend.user.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "Tables")
 @Data
-public class Tables {
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Restaurant_Tables")
+public class RestaurantTable {
     @Id
     @Column(name = "table_id")
     private Long tableId;
