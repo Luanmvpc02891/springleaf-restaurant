@@ -1,13 +1,15 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
+import lombok.*;
 import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Merge_Tables")
-@Data
 public class MergeTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +18,7 @@ public class MergeTable {
 
     @ManyToOne
     @JoinColumn(name = "table_id")
-    private Table table;
+    private RestaurantTable table;
 
     @Column(name = "merge_table_id")
     private String mergeTableId;

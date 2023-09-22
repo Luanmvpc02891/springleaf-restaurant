@@ -1,12 +1,13 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
+import lombok.*;
 import jakarta.persistence.*;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Roles")
-@Data
 public class Role {
     @Id
     @Column(name = "role_id")
@@ -20,5 +21,7 @@ public class Role {
 
     @Column(name = "description")
     private String description;
+
+    
 
 }

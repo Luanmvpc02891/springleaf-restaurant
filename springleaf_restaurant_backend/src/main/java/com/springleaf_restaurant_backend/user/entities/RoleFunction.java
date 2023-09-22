@@ -1,17 +1,12 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "Role_Function")
+import lombok.*;
+import jakarta.persistence.*;
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Role_Functions")
 public class RoleFunction {
     @Id
     @Column(name = "role_function_id")

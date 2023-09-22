@@ -1,12 +1,12 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
+import lombok.*;
 import jakarta.persistence.*;
-
-@Entity
-@Table(name = "OrderThreshold")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "Order_Threshold")
 public class OrderThreshold {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

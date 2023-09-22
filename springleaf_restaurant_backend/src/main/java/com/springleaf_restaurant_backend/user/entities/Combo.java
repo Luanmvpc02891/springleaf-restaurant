@@ -1,12 +1,12 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
+import lombok.*;
 import jakarta.persistence.*;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Combos")
-@Data
 public class Combo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

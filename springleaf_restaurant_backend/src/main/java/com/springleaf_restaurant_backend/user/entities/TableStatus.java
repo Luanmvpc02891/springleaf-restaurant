@@ -1,12 +1,13 @@
 package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.Data;
-
+import lombok.*;
 import jakarta.persistence.*;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Table_Status")
-@Data
 public class TableStatus {
     @Id
     @Column(name = "table_status_id")
