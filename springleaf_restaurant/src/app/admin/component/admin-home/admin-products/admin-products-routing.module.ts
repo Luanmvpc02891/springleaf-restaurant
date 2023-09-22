@@ -5,7 +5,7 @@ import { AdminProductsComponent } from './admin-products.component';
 const routes: Routes = [
   {
     path: '',
-    component: AdminProductsComponent
+    component: AdminProductsComponent,
   }
 ];
 

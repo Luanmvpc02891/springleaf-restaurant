@@ -9,6 +9,6 @@ import { AdminProductDetailRoutingModule } from './admin-product-detail-routing.
   imports: [
     CommonModule,
     AdminProductDetailRoutingModule
-  ]
+  ],
 })
 export class AdminProductDetailModule { }

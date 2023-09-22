@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/user/products', pathMatch: 'full' },
+  { path: '', redirectTo: '/user/index', pathMatch: 'full' },
   {
     path: '',
     loadChildren: () =>
@@ -12,7 +12,7 @@ const routes: Routes = [
       ),
     //component: UserHomeComponent
   },
-  { path: 'admin', redirectTo: '/admin/products', pathMatch: 'full' },
+  { path: 'admin', redirectTo: '/admin/index', pathMatch: 'full' },
   {
     path: '',
     loadChildren: () =>
@@ -21,6 +21,7 @@ const routes: Routes = [
       ),
     //component: AdminHomeComponent
   },
+  
 ];
 
 @NgModule({

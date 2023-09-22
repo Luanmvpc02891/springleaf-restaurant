@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from 'src/app/user/interface/products';
-import { ProductService } from 'src/app/user/service/products.service';
+import { ProductService } from 'src/app/service/products.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -12,13 +12,12 @@ import { Location } from '@angular/common';
 })
 export class AdminProductDetailComponent {
 
-  product!: Product;
+  product: Product | undefined;
 
   constructor(
-    public activeModal: NgbActiveModal,
     private route: ActivatedRoute,
     private productService: ProductService,
-    private location: Location
+    private location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +26,7 @@ export class AdminProductDetailComponent {
 
   getProduct(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.productService.getProductNo404(id)
+    this.productService.getProduct(id)
       .subscribe(product => this.product = product);
   }
 

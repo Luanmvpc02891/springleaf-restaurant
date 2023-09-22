@@ -5,7 +5,7 @@ import { UserProductDetailComponent } from './user-product-detail.component';
 const routes: Routes = [
   {
     path: '',
-    component: UserProductDetailComponent
+    component: UserProductDetailComponent,
   }
 ];
 

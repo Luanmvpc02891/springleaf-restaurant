@@ -15,7 +15,24 @@ const routes: Routes = [
             (m) => m.AdminProductsModule
           ),
         //component: UserCartComponent
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./admin-user/admin-user.module').then(
+            (m) => m.AdminUserModule
+          ),
+        //component: UserCartComponent
+      },
+      {
+        path: 'index',
+        loadChildren: () =>
+          import('./admin-index/admin-index.module').then(
+            (m) => m.AdminIndexModule
+          ),
+        //component: UserCartComponent
       }
+    
     ]
   },
   {
