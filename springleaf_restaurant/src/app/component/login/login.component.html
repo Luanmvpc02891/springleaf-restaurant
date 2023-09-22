@@ -9,43 +9,119 @@
     </button>
 </div>
 <div class="modal-body">
-    <form (ngSubmit)="onSubmitLogin()" #loginForm="ngForm"
-        (onSubmitLoginEvent)="onLogin($event)">
-        <div class="mb-3 mt-3">
-            <label for="loginName" class="form-label">Username</label>
-            <input
-                type="login"
-                class="form-control"
-                id="loginName"
-                placeholder="Enter email"
-                name="login"
-                [(ngModel)]="login" />
+    <ul class="nav pav-pills nav justified mb-3" id="ex1" role="tablis">
+        <li class="nav-item" role="presentation">
+            <button [ngClass]="active == 'login'?'nav-link-active':'nav-link'"
+                id="tab-login"
+                (click)="onLoginTab()">Login</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button
+                [ngClass]="active == 'register'?'nav-link-active':'nav-link'"
+                id="tab-register"
+                (click)="onRegisterTab()">Register</button>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div
+            [ngClass]="active == 'login'?'tab-pane fade show active':'tab-pane fade'">
+            <form (submit)="onLogin($event)"
+                #loginForm="ngForm">
+                <div class="mb-3 mt-3">
+                    <label for="loginName" class="form-label">Username</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="loginName"
+                        placeholder="Enter email"
+                        name="login"
+                        [(ngModel)]="login" />
+                </div>
+                <div class="mb-3">
+                    <label for="loginPassword" class="form-label">Password:</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="loginPassword"
+                        placeholder="Enter password"
+                        name="password"
+                        [(ngModel)]="password" />
+                </div>
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox"
+                            name="remember" />
+                        Remember me
+                    </label>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="loginPassword" class="form-label">Password:</label>
-            <input
-                type="password"
-                class="form-control"
-                id="loginPassword"
-                placeholder="Enter password"
-                name="password" />
+    </div>
+    <div class="tab-content">
+        <div
+            [ngClass]="active == 'register'?'tab-pane fade show active':'tab-pane fade'">
+            <form (submit)="onRegister($event)"
+                #loginForm="ngForm">
+
+                <div class="mb-3 mt-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        placeholder="Enter First Name"
+                        name="firstName"
+                        [(ngModel)]="firstName" />
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="lastName"
+                        placeholder="Enter Last Name"
+                        name="lastName"
+                        [(ngModel)]="lastName" />
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="login" class="form-label">Username</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="login"
+                        placeholder="Enter Username"
+                        name="login"
+                        [(ngModel)]="login" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="loginPassword" class="form-label">Password:</label>
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Enter password"
+                        name="password"
+                        [(ngModel)]="password" />
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
         </div>
-        <div class="form-check mb-3">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember" />
-                Remember me
-            </label>
-        </div>
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Login</button>
-        </div>
-    </form>
+    </div>
 </div>
 
 <!-- Hiển thị thông tin chi tiết của sản phẩm -->
 <!-- <p>Category ID: {{ product.categoryId }}</p> -->
 <!-- Thêm các thông tin khác tương tự ở đây -->
 <div class="modal-footer">
+
     <button
         type="button"
         class="btn btn-secondary"

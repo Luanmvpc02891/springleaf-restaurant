@@ -7,8 +7,8 @@ import { Product } from '../user/interface/products';
   providedIn: 'root'
 })
 export class ProductService {
-  private productsUrl = 'categories'; // URL to web api, không cần thêm base URL
-  private productsCache: Product[] | null = null; // Cache for products
+  productsUrl = 'categories'; // URL to web api, không cần thêm base URL
+  public productsCache: Product[] | null = null; // Cache for products
 
   constructor(private apiService: ApiService) { } // Inject ApiService
 

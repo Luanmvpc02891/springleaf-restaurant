@@ -17,3 +17,23 @@
         </tr>
     </tbody>
 </table>
+
+<form [formGroup]="productForm" (ngSubmit)="addProduct()">
+    <label for="new-product">Product id: </label>
+    <input id="new-product" formControlName="id" />
+
+    <div
+        *ngIf="productForm.get('id')?.invalid && (productForm.get('id')?.dirty || productForm.get('id')?.touched)"
+        class="alert alert-danger">
+        <div *ngIf="productForm.get('id')?.hasError('required')">
+            Id is required
+        </div>
+        <div *ngIf="productForm.get('id')?.hasError('minlength')">
+            Name must be at least 3 characters long
+        </div>
+    </div>
+
+    <button type="submit" class="add-button" [disabled]="productForm.invalid">
+        Add product
+    </button>
+</form>
