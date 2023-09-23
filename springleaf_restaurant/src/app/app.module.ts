@@ -1,3 +1,4 @@
+import { UserTableComponent } from './user/component/user-home/user-table/user-table.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -34,6 +35,7 @@ import { AdminFooterComponent } from './admin/component/admin-home/admin-footer/
     UserHeaderComponent,
     UserProductsComponent,
     UserProductDetailComponent,
+    UserTableComponent,
     AdminHeaderComponent,
     AdminProductsComponent,
     AdminProductDetailComponent,
