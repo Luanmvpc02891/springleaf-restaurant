@@ -1,6 +1,6 @@
 import { AdminProductDetailComponent } from './../admin-product-detail/admin-product-detail.component';
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/user/interface/products';
+import { Product } from 'src/app/interface/products';
 import { ProductService } from 'src/app/service/products.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

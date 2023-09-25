@@ -24,6 +24,7 @@ import { UserFooterComponent } from './user/component/user-home/user-footer/user
 import { AdminUserComponent } from './admin/component/admin-home/admin-user/admin-user.component';
 import { AdminIndexComponent } from './admin/component/admin-home/admin-index/admin-index.component';
 import { AdminFooterComponent } from './admin/component/admin-home/admin-footer/admin-footer.component';
+import { UserCategoriesComponent } from './user/component/user-home/user-categories/user-categories.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AdminFooterComponent } from './admin/component/admin-home/admin-footer/
     ChatComponent,
     LoginComponent,
     UserIndexComponent,
-    UserFooterComponent
+    UserFooterComponent,
+    UserCategoriesComponent
   ],
   imports: [
     BrowserModule,

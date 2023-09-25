@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Product } from 'src/app/user/interface/products';
+import { Product } from 'src/app/interface/products';
 import { ProductService } from 'src/app/service/products.service';
 import { Location } from '@angular/common';
 

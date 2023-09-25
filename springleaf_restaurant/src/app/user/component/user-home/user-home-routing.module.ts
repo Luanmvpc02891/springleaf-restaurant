@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserHomeComponent } from './user-home.component';
-import { AdminHomeComponent } from 'src/app/admin/component/admin-home/admin-home.component';
-import { ChatComponent } from 'src/app/component/chat/chat.component';
-import { ResolvedData } from 'src/app/interface/resolved-data';
-import { Product } from '../../interface/products';
 
 const routes: Routes = [
 
