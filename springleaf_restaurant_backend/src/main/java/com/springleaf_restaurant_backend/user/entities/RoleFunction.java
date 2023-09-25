@@ -15,7 +15,6 @@ public class RoleFunction {
     @Column(name = "role_function_name")
     private String roleFunctionName;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @Column(name = "role_id")
+    private Long role;
 }

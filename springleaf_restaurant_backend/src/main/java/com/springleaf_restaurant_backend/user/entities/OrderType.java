@@ -18,8 +18,8 @@ public class OrderType {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "orderType")
-    private List<Order> orders;
+    @Column(name = "orderType")
+    private List<Long> orders;
 
 }
 

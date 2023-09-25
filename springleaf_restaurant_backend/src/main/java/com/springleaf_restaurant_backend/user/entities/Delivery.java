@@ -15,20 +15,17 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long deliveryId;
 
-    @ManyToOne
-    @JoinColumn(name = "inventories_brand_id")
-    private InventoryBrand inventoryBrand;
+    @Column(name = "inventories_brand_id")
+    private Long inventoryBrand;
 
     @Column(name = "date")
     private Date date;
 
-    @ManyToOne
-    @JoinColumn(name = "warehouse_manager_id")
-    private User warehouseManager;
+    @Column(name = "warehouse_manager_id")
+    private Long warehouseManager;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "user_id")
+    private Long user;
 
 }
 

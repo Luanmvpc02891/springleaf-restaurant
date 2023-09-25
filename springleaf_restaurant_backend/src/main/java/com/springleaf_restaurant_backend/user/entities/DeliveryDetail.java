@@ -13,13 +13,11 @@ public class DeliveryDetail {
     @Column(name = "delivery_detail_id")
     private Long deliveryDetailId;
 
-    @ManyToOne
-    @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
+    @Column(name = "delivery_id")
+    private Long delivery;
 
-    @ManyToOne
-    @JoinColumn(name = "ingredient_id")
-    private Ingredient ingredient;
+    @Column(name = "ingredient_id")
+    private Long ingredient;
 
     @Column(name = "quantity")
     private Integer quantity;

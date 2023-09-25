@@ -50,12 +50,9 @@ public class User implements UserDetails{
     @Column(name = "manager_id")
     private String managerId;
 
-    //@ManyToOne
     @Column(name = "restaurant_brand_id")
     private Long restaurant;
 
-    // @ManyToOne
-    // @JoinColumn(name = "role_id")
     @Column(name = "role_id")
     @Enumerated(EnumType.STRING)
     // private Role role;

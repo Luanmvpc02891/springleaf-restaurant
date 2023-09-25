@@ -15,14 +15,12 @@ public class Combo {
 
     @Column(name = "combo_name")
     private String comboName;
+    
+    @Column(name = "combo_user")
+    private Long comboUser;
 
-    @ManyToOne
-    @JoinColumn(name = "combo_user")
-    private User comboUser;
-
-    @ManyToOne
-    @JoinColumn(name = "combo_item")
-    private MenuItem comboItem;
+    @Column(name = "combo_item")
+    private Long comboItem;
 
     @Column(name = "total_amount")
     private Double totalAmount;

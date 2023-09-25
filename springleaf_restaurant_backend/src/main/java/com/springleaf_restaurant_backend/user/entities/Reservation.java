@@ -17,17 +17,14 @@ public class Reservation {
     @Column(name = "reservation_id")
     private Long reservationId;
 
-    @ManyToOne
-    @JoinColumn(name = "table_id")
-    private RestaurantTable table;
+    @Column(name = "table_id")
+    private Long table;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @Column(name = "order_id")
+    private Long order;
 
-    @ManyToOne
-    @JoinColumn(name = "user_name")
-    private User user;
+    @Column(name = "user_name")
+    private Long user;
 
     @Column(name = "reservation_date")
     private Date reservationDate;
