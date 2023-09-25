@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springleaf_restaurant_backend.user.entities.Receipt;
 
-public interface ReceiptRepository extends JpaRepository<Receipt, Long>{
-    
+public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
+
 }

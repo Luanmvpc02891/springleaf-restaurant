@@ -27,4 +27,3 @@ public class Restaurant {
     private String email;
 
 }
-

@@ -9,15 +9,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 import jakarta.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Builder
 @Table(name = "Users")
-public class User implements UserDetails{
+public class User implements UserDetails {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,7 +60,7 @@ public class User implements UserDetails{
 
     // @Override
     // public Collection<? extends GrantedAuthority> getAuthorities() {
-    //     return List.of(new SimpleGrantedAuthority(role.getRoleName()));
+    // return List.of(new SimpleGrantedAuthority(role.getRoleName()));
     // }
 
     @Override
@@ -77,6 +77,7 @@ public class User implements UserDetails{
     public String getUsername() {
         return userName;
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -97,4 +98,3 @@ public class User implements UserDetails{
         return true;
     }
 }
-

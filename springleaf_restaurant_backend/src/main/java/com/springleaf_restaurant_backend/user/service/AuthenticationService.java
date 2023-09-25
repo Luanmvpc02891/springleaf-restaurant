@@ -18,17 +18,17 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-    private final UserRepository  userRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
         // Role role = roleRepository.findById("ADMIN")
-        //         .orElseThrow(() -> new RuntimeException("Role not found"));
+        // .orElseThrow(() -> new RuntimeException("Role not found"));
 
         var user = User.builder()
-                
+
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .userName(request.getUsername())
@@ -48,7 +48,8 @@ public class AuthenticationService {
 
     public AuthenticationResponse authentication(AuthenticationRequest request) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+                new UsernamePasswordAuthenticationToken(request.getEmail(),
+                        request.getPassword()));
         var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().token(jwtToken).build();

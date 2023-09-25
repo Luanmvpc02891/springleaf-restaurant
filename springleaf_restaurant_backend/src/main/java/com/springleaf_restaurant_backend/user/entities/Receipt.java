@@ -6,7 +6,6 @@ import java.util.Date;
 
 import jakarta.persistence.*;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,4 +33,3 @@ public class Receipt {
     private Long inventory;
 
 }
-

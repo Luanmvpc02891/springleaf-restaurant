@@ -4,6 +4,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,4 +29,3 @@ public class OrderDetail {
     private BigDecimal subtotal;
 
 }
-

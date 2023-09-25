@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springleaf_restaurant_backend.user.entities.MergeTable;
 
-public interface MergeTableRepository extends JpaRepository<MergeTable, Long>{
-    
+public interface MergeTableRepository extends JpaRepository<MergeTable, Long> {
+
 }

@@ -4,6 +4,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,4 +29,3 @@ public class DeliveryOrderDetail {
     private Date orderTime;
 
 }
-

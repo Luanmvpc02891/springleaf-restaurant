@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springleaf_restaurant_backend.user.entities.MenuItem;
 
-public interface MenuItemRepository extends JpaRepository<MenuItem, Long>{
-    
+public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
+
 }

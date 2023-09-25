@@ -2,6 +2,7 @@ package com.springleaf_restaurant_backend.user.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +16,7 @@ public class Combo {
 
     @Column(name = "combo_name")
     private String comboName;
-    
+
     @Column(name = "combo_user")
     private Long comboUser;
 
@@ -26,4 +27,3 @@ public class Combo {
     private Double totalAmount;
 
 }
-

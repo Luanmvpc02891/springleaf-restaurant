@@ -26,4 +26,3 @@ public class MergeTable {
     private Date mergeTime;
 
 }
-

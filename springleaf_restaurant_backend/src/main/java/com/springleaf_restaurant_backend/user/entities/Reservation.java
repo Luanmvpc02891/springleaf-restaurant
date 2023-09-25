@@ -33,4 +33,3 @@ public class Reservation {
     private Long numberOfGuests;
 
 }
-

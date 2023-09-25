@@ -2,6 +2,7 @@ package com.springleaf_restaurant_backend.user.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,6 +21,6 @@ public class BillDetail {
     private Long quantity;
 
     @Column(name = "bill_id")
-    private Bill bill;
+    private Long bill;
 
 }

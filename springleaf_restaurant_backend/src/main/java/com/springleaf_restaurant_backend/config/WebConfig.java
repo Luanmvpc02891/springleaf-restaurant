@@ -1,6 +1,5 @@
 package com.springleaf_restaurant_backend.config;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

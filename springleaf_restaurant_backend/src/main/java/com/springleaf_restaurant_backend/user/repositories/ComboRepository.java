@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springleaf_restaurant_backend.user.entities.Combo;
 
-public interface ComboRepository extends JpaRepository<Combo, Long>{
-    
+public interface ComboRepository extends JpaRepository<Combo, Long> {
+
 }
