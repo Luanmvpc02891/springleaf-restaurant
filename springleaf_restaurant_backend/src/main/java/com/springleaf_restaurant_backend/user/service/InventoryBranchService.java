@@ -3,10 +3,10 @@ package com.springleaf_restaurant_backend.user.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springleaf_restaurant_backend.user.repositories.InventoryBrandRepository;
+import com.springleaf_restaurant_backend.user.repositories.InventoryBranchRepository;
 
 @Service
-public class InventoryBrandService {
+public class InventoryBranchService {
     @Autowired
-    InventoryBrandRepository inventoryBrandRepository;
+    InventoryBranchRepository inventoryBrandRepository;
 }

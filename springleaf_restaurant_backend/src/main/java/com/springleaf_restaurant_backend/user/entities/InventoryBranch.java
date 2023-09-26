@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 public class InventoryBranch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "inventory_brand_id")
+    @Column(name = "inventory_branch_id")
     private Long inventoryBrandId;
 
     @Column(name = "ingredient_id")
