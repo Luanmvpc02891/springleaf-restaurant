@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Product } from '../interface/product';
 import { ApiService } from './api.service';
 import { Observable, of } from 'rxjs';
-import { CategoryService } from './category.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +10,9 @@ export class ProductService {
 
   private productsUrl = 'products'; // URL to web api, không cần thêm base URL
   private categoryUrl = 'category';
-  private productsCache: Product[] | null = null; // Cache for products
+  productsCache: Product[] | null = null; // Cache for products
 
-  constructor(private apiService: ApiService, private categoryService: CategoryService) { } // Inject ApiService
+  constructor(private apiService: ApiService) { } // Inject ApiService
 
   // Sử dụng ApiService để gửi yêu cầu GET
   getProducts(): Observable<Product[]> {

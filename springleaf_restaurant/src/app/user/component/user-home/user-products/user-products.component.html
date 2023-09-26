@@ -1,8 +1,9 @@
 <ul class="products container">
     <li *ngFor="let product of products">
         <a routerLink="/user/product/detail/{{product.categoryId}}">
-            {{product.menuItemId}}
-            {{product.name}}
+            Id: {{product.menuItemId}}
+            Tên: {{product.name}}
+            Giá: {{product.price}}
         </a>
     </li>
 </ul>

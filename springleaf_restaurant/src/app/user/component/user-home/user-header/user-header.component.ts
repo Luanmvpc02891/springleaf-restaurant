@@ -30,15 +30,6 @@ export class UserHeaderComponent {
     //modalRef.componentInstance.product = product;
   }
   ngOnInit(): void {
-    // Sử dụng jQuery để thực thi mã từ tệp custom.js
-    $.getScript('./assets/css/util.css', function () {
-      // Mã JavaScript từ tệp custom.js sẽ được thực thi ở đây.
-
-    });
-    $.getScript('./assets/css/main.css', function () {
-      // Mã JavaScript từ tệp custom.js sẽ được thực thi ở đây.
-
-    });
 
   }
 }

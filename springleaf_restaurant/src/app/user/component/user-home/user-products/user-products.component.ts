@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class UserProductsComponent implements OnInit {
 
-  products: Product[] = [];
+  products: Product[] | null = null;
   categoryId: number | undefined; // Khởi tạo categoryId là undefined
 
   constructor(private productsService: ProductService, private route: ActivatedRoute) {
