@@ -5,7 +5,25 @@ import { UserCategoriesComponent } from './user-categories.component';
 const routes: Routes = [
   {
     path: '',
-    component: UserCategoriesComponent
+    component: UserCategoriesComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../user-products/user-products.module').then(
+            (m) => m.UserProductsModule
+          ),
+        //component: UserCartComponent
+      },
+      {
+        path: 'category/:id/products',
+        loadChildren: () =>
+          import('../user-products/user-products.module').then(
+            (m) => m.UserProductsModule
+          ),
+        //component: UserCartComponent
+      },
+    ]
   }
 ];
 

@@ -1,28 +1,44 @@
-import { Product } from '../../../../interface/products';
-import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { ProductService } from 'src/app/service/products.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, OnSameUrlNavigation } from '@angular/router';
+import { Product } from 'src/app/interface/product';
+import { ProductService } from 'src/app/service/product.service';
 declare var $: any;
 @Component({
   selector: 'app-user-products',
   templateUrl: './user-products.component.html',
   styleUrls: ['./user-products.component.css']
 })
-export class UserProductsComponent {
+export class UserProductsComponent implements OnInit {
 
   products: Product[] = [];
+  categoryId: number | undefined; // Khởi tạo categoryId là undefined
 
   constructor(private productsService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.getProducts();
+    this.route.paramMap.subscribe(paramMap => {
+      const categoryIdString = paramMap.get('id');
+      if (categoryIdString !== null) {
+        this.categoryId = parseInt(categoryIdString, 10);
+        this.getProductsByCategoryId();
+      }
+    });
   }
 
   getProducts(): void {
     this.productsService.getProducts()
-      .subscribe(categories => this.products = categories);
+      .subscribe(products => this.products = products);
+  }
+
+  getProductsByCategoryId(): void {
+    if (this.categoryId !== undefined) {
+      this.productsService.getProductsByCategoryId(this.categoryId)
+        .subscribe(products => {
+          this.products = products;
+        });
+    }
   }
 
 }

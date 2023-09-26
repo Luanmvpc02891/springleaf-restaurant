@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Category } from 'src/app/interface/category';
+import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-user-categories',
@@ -6,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-categories.component.css']
 })
 export class UserCategoriesComponent {
+
+  categories: Category[] = [];
+
+  constructor(private categoriesService: CategoryService, private route: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
+    this.getCategories();
+  }
+
+  getCategories(): void {
+    this.categoriesService.getCategories()
+      .subscribe(categories => this.categories = categories);
+  }
 
 }

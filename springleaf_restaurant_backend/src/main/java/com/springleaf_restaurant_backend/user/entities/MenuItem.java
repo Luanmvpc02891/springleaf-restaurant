@@ -27,7 +27,7 @@ public class MenuItem {
     private String imageUrl;
 
     @Column(name = "category_id")
-    private Long category;
+    private Long categoryId;
 
     @Column(name = "status")
     private Boolean status;

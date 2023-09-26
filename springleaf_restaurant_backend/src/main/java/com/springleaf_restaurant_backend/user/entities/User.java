@@ -50,7 +50,7 @@ public class User implements UserDetails {
     @Column(name = "manager_id")
     private String managerId;
 
-    @Column(name = "restaurant_brand_id")
+    @Column(name = "restaurant_brach_id")
     private Long restaurant;
 
     @Column(name = "role_id")

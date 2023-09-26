@@ -51,6 +51,7 @@ public class AuthenticationService {
                 new UsernamePasswordAuthenticationToken(request.getEmail(),
                         request.getPassword()));
         var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+        System.out.println(user.getRole());
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
