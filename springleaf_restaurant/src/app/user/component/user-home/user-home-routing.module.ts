@@ -1,3 +1,4 @@
+import { UserCartComponent } from './user-cart/user-cart.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserHomeComponent } from './user-home.component';
@@ -37,6 +38,30 @@ const routes: Routes = [
         loadChildren: () => import('../../../component/chat/chat.module')
           .then(m => m.ChatModule)
         //component: ChatComponent
+      },
+      {
+        path: 'user/combo',
+        loadChildren: () =>
+          import('./user-combo/user-combo.module')
+            .then(m => m.UserComboModule),
+      },
+      {
+        path: 'user/event',
+        loadChildren: () =>
+          import('./user-event/user-event.module')
+            .then(m => m.UserEventModule),
+      },
+      {
+        path: 'user/table',
+        loadChildren: () =>
+          import('./user-table/user-table.module')
+            .then(m => m.UserTableModule),
+      },
+      {
+        path: 'user/restaurant',
+        loadChildren: () =>
+          import('./user-restaurant/user-restaurant.module')
+            .then(m => m.UserRestaurantModule),
       },
       {
         path: 'user/product/detail',

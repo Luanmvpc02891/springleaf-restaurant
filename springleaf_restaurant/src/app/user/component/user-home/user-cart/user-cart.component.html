@@ -1,0 +1,13 @@
+<a [routerLink]="['/user/index']">Tất cả sản phẩm</a>
+<ul class="products container">
+    <li *ngFor="let cart of cartDetails">
+        <a>
+            {{ cart.menuItem }}
+            {{ cart.quantity }}
+        </a>
+    </li>
+</ul>
+
+<!-- <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button> -->
+
+<router-outlet></router-outlet>

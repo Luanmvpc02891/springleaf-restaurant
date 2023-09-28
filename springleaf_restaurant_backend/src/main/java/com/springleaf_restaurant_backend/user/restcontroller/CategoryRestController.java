@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springleaf_restaurant_backend.user.entities.Category;
 import com.springleaf_restaurant_backend.user.repositories.CategoryRepository;
 
-//@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
-public class RestCategory {
+public class CategoryRestController {
     @Autowired
     private CategoryRepository categoryRepository;
 

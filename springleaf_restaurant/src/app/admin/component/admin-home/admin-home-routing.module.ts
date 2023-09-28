@@ -31,6 +31,22 @@ const routes: Routes = [
             (m) => m.AdminIndexModule
           ),
         //component: UserCartComponent
+      },
+      {
+        path: 'supplier',
+        loadChildren: () =>
+          import('./admin-supplier/admin-supplier.module').then(
+            (m) => m.AdminSupplierModule
+          ),
+        //component: UserCartComponent
+      },
+      {
+        path: 'ingredient',
+        loadChildren: () =>
+          import('./admin-ingredient/admin-ingredient.module').then(
+            (m) => m.AdminIngredientModule
+          ),
+        //component: UserCartComponent
       }
 
     ]

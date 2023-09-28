@@ -1,0 +1,23 @@
+<h1>Nguyên liệu</h1>
+<ul class="products container">
+    <table class="table table-light">
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Description</td>
+                <td>OrderThreshold</td>
+            </tr>
+            <tr *ngFor="let ing of ingredient">
+                <th>
+                    {{ ing.ingredientId }}
+                </th>
+                <th>{{ ing.name }}</th>
+                <th>{{ ing.description }}</th>
+                <th>{{ ing.orderThreshold }}</th>
+
+            </tr>
+        </tbody>
+    </table>
+</ul>
+<router-outlet></router-outlet>

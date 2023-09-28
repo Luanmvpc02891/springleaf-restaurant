@@ -25,6 +25,13 @@ import { AdminUserComponent } from './admin/component/admin-home/admin-user/admi
 import { AdminIndexComponent } from './admin/component/admin-home/admin-index/admin-index.component';
 import { AdminFooterComponent } from './admin/component/admin-home/admin-footer/admin-footer.component';
 import { UserCategoriesComponent } from './user/component/user-home/user-categories/user-categories.component';
+import { UserComboComponent } from './user/component/user-home/user-combo/user-combo.component';
+import { UserEventComponent } from './user/component/user-home/user-event/user-event.component';
+import { UserTableComponent } from './user/component/user-home/user-table/user-table.component';
+import { UserRestaurantComponent } from './user/component/user-home/user-restaurant/user-restaurant.component';
+import { AdminSupplierComponent } from './admin/component/admin-home/admin-supplier/admin-supplier.component';
+import { AdminIngredientComponent } from './admin/component/admin-home/admin-ingredient/admin-ingredient.component';
+
 
 @NgModule({
   declarations: [
@@ -41,11 +48,18 @@ import { UserCategoriesComponent } from './user/component/user-home/user-categor
     AdminUserComponent,
     AdminIndexComponent,
     AdminFooterComponent,
+    AdminSupplierComponent,
+    AdminIngredientComponent,
     ChatComponent,
     LoginComponent,
     UserIndexComponent,
     UserFooterComponent,
-    UserCategoriesComponent
+    UserCategoriesComponent,
+    UserComboComponent,
+    UserEventComponent,
+    UserTableComponent,
+    UserRestaurantComponent
+
   ],
   imports: [
     BrowserModule,
