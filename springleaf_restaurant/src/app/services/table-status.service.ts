@@ -1,8 +1,8 @@
-import { TableStatus } from './../interface/tableStatus';
+import { TableStatus } from '../interface/table-status';
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ApiService } from 'src/app/service/api.service';
+import { ApiService } from 'src/app/services/api.service';
 
 
 
@@ -12,22 +12,22 @@ import { ApiService } from 'src/app/service/api.service';
 export class TableStatusService {
 
     private tableStatusUrl = 'tableStatuss'; // URL to web api, không cần thêm base URL
-    tableStatusCache: TableStatus[] | null = null; // Cache for categories
+    tableStatusesCache: TableStatus[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
-    getTableStuss(): Observable<TableStatus[]> {
+    getTableStuses(): Observable<TableStatus[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
-        if (this.tableStatusCache) {
-            return of(this.tableStatusCache);
+        if (this.tableStatusesCache) {
+            return of(this.tableStatusesCache);
         }
 
         const combosObservable = this.apiService.request<TableStatus[]>('get', this.tableStatusUrl);
 
         // Cache the categories observable
         combosObservable.subscribe(data => {
-            this.tableStatusCache = data; // Store the fetched data in the cache
+            this.tableStatusesCache = data; // Store the fetched data in the cache
         });
 
         return combosObservable;

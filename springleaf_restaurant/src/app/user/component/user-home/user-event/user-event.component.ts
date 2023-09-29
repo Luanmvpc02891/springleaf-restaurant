@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventService } from 'src/app/service/event.service';
+import { EventService } from 'src/app/services/event.service';
 import { Event } from 'src/app/interface/event';
 
 @Component({

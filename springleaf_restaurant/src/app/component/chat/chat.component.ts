@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ChatService, Message } from 'src/app/service/chat.service';
-import { WebSocketService } from 'src/app/service/web-socket.service';
+import { ChatService, Message } from 'src/app/services/chat.service';
+import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
   selector: 'app-chat',

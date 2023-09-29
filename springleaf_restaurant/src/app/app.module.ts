@@ -16,8 +16,8 @@ import { AdminHeaderComponent } from './admin/component/admin-home/admin-header/
 import { AdminProductsComponent } from './admin/component/admin-home/admin-products/admin-products.component';
 import { AdminProductDetailComponent } from './admin/component/admin-home/admin-product-detail/admin-product-detail.component';
 import { ChatComponent } from './component/chat/chat.component';
-import { WebSocketService } from './service/web-socket.service';
-import { ChatService } from './service/chat.service';
+import { WebSocketService } from './services/web-socket.service';
+import { ChatService } from './services/chat.service';
 import { LoginComponent } from './component/login/login.component';
 import { UserIndexComponent } from './user/component/user-home/user-index/user-index.component';
 import { UserFooterComponent } from './user/component/user-home/user-footer/user-footer.component';

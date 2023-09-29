@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ApiService } from 'src/app/service/api.service';
+import { ApiService } from 'src/app/services/api.service';
 import { Category } from '../interface/category';
 
 @Injectable({
@@ -17,9 +17,11 @@ export class CategoryService {
   getCategories(): Observable<Category[]> {
     // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
     if (this.categoriesCache) {
+      console.log("Có categories cache");
       return of(this.categoriesCache);
     }
 
+    console.log("Không có categories cache")
     const categoriesObservable = this.apiService.request<Category[]>('get', this.categoriesUrl);
 
     // Cache the categories observable

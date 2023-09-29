@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, OnSameUrlNavigation } from '@angular/router';
 import { Product } from 'src/app/interface/product';
-import { ProductService } from 'src/app/service/product.service';
+import { ProductService } from 'src/app/services/product.service';
 declare var $: any;
 @Component({
   selector: 'app-user-products',

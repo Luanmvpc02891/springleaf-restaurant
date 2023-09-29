@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/interface/category';
-import { CategoryService } from 'src/app/service/category.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-user-categories',
@@ -16,6 +16,7 @@ export class UserCategoriesComponent {
   }
 
   ngOnInit(): void {
+    console.log("Init category component");
     this.getCategories();
   }
 

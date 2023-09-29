@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CartDetail } from 'src/app/interface/cartDetail';
-import { CartService } from 'src/app/service/cartDetail.service';
+import { CartDetail } from 'src/app/interface/cart-detail';
+import { CartService } from 'src/app/services/cart-detail.service';
 declare var $: any;
 @Component({
   selector: 'app-user-cart',

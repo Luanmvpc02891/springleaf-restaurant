@@ -16,7 +16,7 @@ public class IngredientRestController {
     @Autowired
     private IngredientRepository ingredientRepository;
 
-    @GetMapping("/ingredient")
+    @GetMapping("/ingredients")
     public List<Ingredient> getIngredients() {
         return ingredientRepository.findAll();
     }

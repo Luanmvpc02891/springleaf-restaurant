@@ -16,7 +16,7 @@ public class RestaurantTableRestController {
     @Autowired
     private RestauranTableRepository restauranTableRepository;
 
-    @GetMapping("/restaurantTable")
+    @GetMapping("/restaurantTables")
     public List<RestaurantTable> getRestaurantTable() {
         return restauranTableRepository.findAll();
     }

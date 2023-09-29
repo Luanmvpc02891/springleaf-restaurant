@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ApiService } from 'src/app/service/api.service';
+import { ApiService } from 'src/app/services/api.service';
 import { Event } from '../interface/event';
 
 
@@ -10,26 +10,26 @@ import { Event } from '../interface/event';
 })
 export class EventService {
 
-    private evensUrl = 'events'; // URL to web api, không cần thêm base URL
-    evensCache: Event[] | null = null; // Cache for categories
+    private eventsUrl = 'events'; // URL to web api, không cần thêm base URL
+    eventsCache: Event[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
     getEvens(): Observable<Event[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
-        if (this.evensCache) {
-            return of(this.evensCache);
+        if (this.eventsCache) {
+            return of(this.eventsCache);
         }
 
-        const evensObservable = this.apiService.request<Event[]>('get', this.evensUrl);
+        const eventsObservable = this.apiService.request<Event[]>('get', this.eventsUrl);
 
         // Cache the categories observable
-        evensObservable.subscribe(data => {
-            this.evensCache = data; // Store the fetched data in the cache
+        eventsObservable.subscribe(data => {
+            this.eventsCache = data; // Store the fetched data in the cache
         });
 
-        return evensObservable;
+        return eventsObservable;
     }
 
 

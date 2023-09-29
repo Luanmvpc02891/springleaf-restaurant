@@ -1,7 +1,7 @@
 import { Supplier } from '../interface/supplier';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ApiService } from 'src/app/service/api.service';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @Injectable({

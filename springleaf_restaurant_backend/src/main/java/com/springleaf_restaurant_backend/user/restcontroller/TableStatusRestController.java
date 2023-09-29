@@ -12,11 +12,11 @@ import com.springleaf_restaurant_backend.user.repositories.TableStatusRepository
 
 @RestController
 @RequestMapping("/api")
-public class Table_StatusRestController {
+public class TableStatusRestController {
     @Autowired
     private TableStatusRepository TableStatusRepository;
 
-    @GetMapping("/tableStatuss")
+    @GetMapping("/tableStatuses")
     public List<TableStatus> getTableStatuss() {
         return TableStatusRepository.findAll();
     }

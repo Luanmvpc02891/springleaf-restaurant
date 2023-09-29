@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Table } from 'src/app/interface/Table';
-import { TableService } from 'src/app/service/table.service';
+import { Table } from 'src/app/interface/table';
+import { TableService } from 'src/app/services/table.service';
 
 @Component({
   selector: 'app-user-table',

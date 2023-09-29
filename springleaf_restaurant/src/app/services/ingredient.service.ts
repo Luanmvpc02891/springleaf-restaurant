@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ApiService } from 'src/app/service/api.service';
+import { ApiService } from 'src/app/services/api.service';
 import { Ingredient } from '../interface/ingredient';
 
 
@@ -9,9 +9,8 @@ import { Ingredient } from '../interface/ingredient';
     providedIn: 'root'
 })
 export class IngredientService {
-    [x: string]: any;
 
-    private IngredientsUrl = 'ingredient'; // URL to web api, không cần thêm base URL
+    private IngredientsUrl = 'ingredients'; // URL to web api, không cần thêm base URL
     ingredientsCache: Ingredient[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
@@ -20,6 +19,7 @@ export class IngredientService {
     getIngredients(): Observable<Ingredient[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
         if (this.ingredientsCache) {
+            console.log("Có ingredients cache");
             return of(this.ingredientsCache);
         }
 

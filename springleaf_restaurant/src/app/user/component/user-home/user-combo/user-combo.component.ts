@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Combo } from 'src/app/interface/combo';
-import { ComboService } from 'src/app/service/combo.service';
+import { ComboService } from 'src/app/services/combo.service';
 
 @Component({
   selector: 'app-user-combo',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Ingredient } from 'src/app/interface/ingredient';
-import { IngredientService } from 'src/app/service/ingredient.service';
+import { IngredientService } from 'src/app/services/ingredient.service';
 
 @Component({
   selector: 'app-admin-ingredient',
