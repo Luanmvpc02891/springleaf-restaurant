@@ -132,8 +132,8 @@ export class AppComponent {
         this.deliveryService.deliverysCache = data.data;
         console.log('Received deliverys:', data.data);
         // Các xử lý khác nếu cần
-        this.dataLoaded = true;
       }
+      this.dataLoaded = true;
     };
   }
 
