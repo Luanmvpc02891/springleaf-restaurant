@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartDetail } from 'src/app/interface/cart-detail';
-import { CartService } from 'src/app/services/cart-detail.service';
+import { CartDetailService } from 'src/app/services/cart-detail.service';
 declare var $: any;
 @Component({
   selector: 'app-user-cart',
@@ -12,7 +12,7 @@ export class UserCartComponent {
 
   cartDetails: CartDetail[] = [];
 
-  constructor(private cartsService: CartService, private route: ActivatedRoute) {
+  constructor(private cartDetailsService: CartDetailService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class UserCartComponent {
   }
 
   getCarts(): void {
-    this.cartsService.getCarts()
+    this.cartDetailsService.getCartDetails()
       .subscribe(cartDetails => this.cartDetails = cartDetails);
   }
 }

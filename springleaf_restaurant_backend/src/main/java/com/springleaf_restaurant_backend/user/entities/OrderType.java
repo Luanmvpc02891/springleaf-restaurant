@@ -19,7 +19,7 @@ public class OrderType {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "orderType")
-    private List<Long> orders;
+    // @Column(name = "orderType")
+    // private List<Long> orders;
 
 }

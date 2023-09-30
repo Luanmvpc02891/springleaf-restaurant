@@ -1,3 +1,4 @@
+
 import { RoleFunctionService } from './services/role-function.service';
 import { TableService } from './services/table.service';
 import { ComboService } from './services/combo.service';
@@ -14,6 +15,12 @@ import { IngredientService } from './services/ingredient.service';
 import { RoleService } from './services/role.service';
 import { UserService } from './services/user.service';
 import { UserCategoriesComponent } from './user/component/user-home/user-categories/user-categories.component';
+import { BillService } from './services/bill.service';
+import { CartDetailService } from './services/cart-detail.service';
+import { BillDetailService } from './services/bill-detail.service';
+import { CartService } from './services/cart.service';
+import { ComboDetailService } from './services/combo-detail.service';
+import { DeliveryService } from './services/delivery.service';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +45,12 @@ export class AppComponent {
     private roleService: RoleService,
     private roleFunctionService: RoleFunctionService,
     private userService: UserService,
+    private billService: BillService,
+    private cartDetailService: CartDetailService,
+    private billDetailService: BillDetailService,
+    private cartService: CartService,
+    private comboDetailService: ComboDetailService,
+    private deliveryService: DeliveryService,
   ) {
     this.callAPIsWorker = new Worker(new URL('./call-apis.worker', import.meta.url));
     this.callAllApis();
@@ -93,6 +106,30 @@ export class AppComponent {
       } else if (data.type === 'users') {
         this.userService.usersCache = data.data;
         console.log('Received users:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'bills') {
+        this.billService.billsCache = data.data;
+        console.log('Received bills:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'cartDetails') {
+        this.cartDetailService.cartDetailsCache = data.data;
+        console.log('Received cartDetails:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'billDetails') {
+        this.billDetailService.billDetailsCache = data.data;
+        console.log('Received billDetails:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'carts') {
+        this.cartService.cartsCache = data.data;
+        console.log('Received carts:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'comboDetails') {
+        this.comboDetailService.comboDetailsCache = data.data;
+        console.log('Received comboDetails:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'deliverys') {
+        this.deliveryService.deliverysCache = data.data;
+        console.log('Received deliverys:', data.data);
         // Các xử lý khác nếu cần
       }
     };
