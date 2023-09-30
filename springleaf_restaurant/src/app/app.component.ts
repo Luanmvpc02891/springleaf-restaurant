@@ -24,6 +24,7 @@ export class AppComponent {
   title = 'springleaf_restaurant';
 
   callAPIsWorker !: Worker;
+  dataLoaded = false;
 
   constructor(
     private productService: ProductService,
@@ -93,7 +94,7 @@ export class AppComponent {
       } else if (data.type === 'users') {
         this.userService.usersCache = data.data;
         console.log('Received users:', data.data);
-        // Các xử lý khác nếu cần
+        this.dataLoaded = true;
       }
     };
   }
