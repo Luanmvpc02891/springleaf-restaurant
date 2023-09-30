@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class TableService {
 
-    private tablesUrl = 'restaurantTable'; // URL to web api, không cần thêm base URL
+    private tablesUrl = 'restaurantTables'; // URL to web api, không cần thêm base URL
     tablesCache: Table[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
