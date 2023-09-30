@@ -16,7 +16,7 @@ public class BillDetailRestController {
     @Autowired
     private BillDetailRepository billDetailRepository;
 
-    @GetMapping("/billdetails")
+    @GetMapping("/billDetails")
     public List<BillDetail> getBilletails() {
         return billDetailRepository.findAll();
     }

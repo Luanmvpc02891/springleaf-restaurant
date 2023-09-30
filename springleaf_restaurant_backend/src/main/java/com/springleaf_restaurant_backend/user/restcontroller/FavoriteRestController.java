@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springleaf_restaurant_backend.user.entities.ComboDetail;
-import com.springleaf_restaurant_backend.user.repositories.ComboDetailRepository;
+import com.springleaf_restaurant_backend.user.entities.Favorite;
+import com.springleaf_restaurant_backend.user.repositories.FavoriteRepository;
 
 @RestController
 @RequestMapping("/api")
-public class ComboDetailController {
+public class FavoriteRestController {
     @Autowired
-    private ComboDetailRepository comboDetailRepository;
+    private FavoriteRepository favoriteRepository;
 
-    @GetMapping("/comboDetails")
-    public List<ComboDetail> getComnComboDetails() {
-        return comboDetailRepository.findAll();
+    @GetMapping("/favorites")
+    public List<Favorite> favorites() {
+        return favoriteRepository.findAll();
     }
 }

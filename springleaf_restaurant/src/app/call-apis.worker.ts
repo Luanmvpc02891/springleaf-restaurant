@@ -8,7 +8,8 @@ addEventListener('message', async ({ data }) => {
     try {
       const [categoriesResponse, productsResponse, cartDetailsResponse, combosResponse,
         eventsResponse, tablesResponse, restaurantsResponse, supplierResponse, tableStatusesResponse,
-        ingredientsResponse, rolesResponse, roleFunctionsResponse, usersResponse] = await Promise.all([
+        ingredientsResponse, rolesResponse, roleFunctionsResponse, usersResponse, billsResponse,
+        billDetailsResponse, cartsResponse ,comboDetailsResponse , deliverysResponse] = await Promise.all([
           fetch('http://localhost:8080/api/categories'),
           fetch('http://localhost:8080/api/products'),
           fetch('http://localhost:8080/api/cartDetails'),
@@ -22,6 +23,12 @@ addEventListener('message', async ({ data }) => {
           fetch('http://localhost:8080/api/roles'),
           fetch('http://localhost:8080/api/roleFunctions'),
           fetch('http://localhost:8080/api/users'),
+          fetch('http://localhost:8080/api/bills'),
+          fetch('http://localhost:8080/api/billDetails'),
+          fetch('http://localhost:8080/api/carts'),
+          fetch('http://localhost:8080/api/comboDetails'),
+          fetch('http://localhost:8080/api/deliverys'),
+
 
 
         ]);
@@ -29,7 +36,9 @@ addEventListener('message', async ({ data }) => {
       if (categoriesResponse.ok && productsResponse.ok && cartDetailsResponse && combosResponse
         && eventsResponse.ok && tablesResponse.ok && restaurantsResponse.ok && supplierResponse.ok
         && tableStatusesResponse.ok && ingredientsResponse.ok && rolesResponse.ok && roleFunctionsResponse.ok
-        && usersResponse.ok) {
+        && usersResponse.ok && billsResponse.ok && billDetailsResponse.ok, cartsResponse.ok && comboDetailsResponse.ok
+        &&deliverysResponse.ok) {
+
         const categoriesData = await categoriesResponse.json();
         const productsData = await productsResponse.json();
         const cartDetailsData = await cartDetailsResponse.json();
@@ -43,6 +52,11 @@ addEventListener('message', async ({ data }) => {
         const rolesData = await rolesResponse.json();
         const roleFunctionsData = await roleFunctionsResponse.json();
         const usersData = await usersResponse.json();
+        const billsData = await billsResponse.json();
+        const billDetailsData = await billDetailsResponse.json();
+        const cartsData = await cartsResponse.json();
+        const comboDetailsData = await comboDetailsResponse.json();
+        const deliverysData = await deliverysResponse.json();
 
         postMessage({ type: 'categories', data: categoriesData });
         postMessage({ type: 'products', data: productsData });
@@ -57,6 +71,11 @@ addEventListener('message', async ({ data }) => {
         postMessage({ type: 'roles', data: rolesData });
         postMessage({ type: 'roleFunctions', data: roleFunctionsData });
         postMessage({ type: 'users', data: usersData });
+        postMessage({ type: 'bills', data: billsData });
+        postMessage({ type: 'billDetails', data: billDetailsData });
+        postMessage({ type: 'carts', data: cartsData });
+        postMessage({ type: 'comboDetails', data: comboDetailsData });
+        postMessage({ type: 'deliverys', data: deliverysData });
       } else {
         // Xử lý trường hợp lỗi nếu cần
       }
