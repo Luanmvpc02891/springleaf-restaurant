@@ -31,6 +31,7 @@ export class AppComponent {
   title = 'springleaf_restaurant';
 
   callAPIsWorker !: Worker;
+  dataLoaded = false;
 
   constructor(
     private productService: ProductService,
@@ -132,6 +133,7 @@ export class AppComponent {
         console.log('Received deliverys:', data.data);
         // Các xử lý khác nếu cần
       }
+      this.dataLoaded = true;
     };
   }
 
