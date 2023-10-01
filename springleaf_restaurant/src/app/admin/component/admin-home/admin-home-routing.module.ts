@@ -9,10 +9,10 @@ const routes: Routes = [
     component: AdminHomeComponent,
     children: [
       {
-        path: 'products',
+        path: 'index',
         loadChildren: () =>
-          import('./admin-products/admin-products.module').then(
-            (m) => m.AdminProductsModule
+          import('./admin-index/admin-index.module').then(
+            (m) => m.AdminIndexModule
           ),
         //component: UserCartComponent
       },
@@ -25,17 +25,9 @@ const routes: Routes = [
         //component: UserCartComponent
       },
       {
-        path: 'index',
-        loadChildren: () =>
-          import('./admin-index/admin-index.module').then(
-            (m) => m.AdminIndexModule
-          ),
-        //component: UserCartComponent
-      },
-      {
         path: 'supplier',
         loadChildren: () =>
-          import('./admin-supplier/admin-supplier.module').then(
+          import('./admin-suppliers/admin-suppliers.module').then(
             (m) => m.AdminSupplierModule
           ),
         //component: UserCartComponent

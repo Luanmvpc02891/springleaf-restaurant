@@ -1,4 +1,4 @@
-import { Restaurant } from '../interface/restaurant';
+import { Restaurant } from '../interfaces/restaurant';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';

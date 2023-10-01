@@ -1,4 +1,4 @@
-import { Cart } from '../interface/cart';
+import { Cart } from '../interfaces/cart';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';

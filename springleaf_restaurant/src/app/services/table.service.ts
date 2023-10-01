@@ -1,4 +1,4 @@
-import { Table } from '../interface/table';
+import { Table } from '../interfaces/table';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';

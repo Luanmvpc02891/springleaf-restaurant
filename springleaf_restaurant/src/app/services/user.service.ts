@@ -1,4 +1,4 @@
-import { User } from '../interface/user';
+import { User } from '../interfaces/user';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';

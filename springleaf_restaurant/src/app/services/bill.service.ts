@@ -1,4 +1,4 @@
-import { Bill } from './../interface/bill';
+import { Bill } from '../interfaces/bill';
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';

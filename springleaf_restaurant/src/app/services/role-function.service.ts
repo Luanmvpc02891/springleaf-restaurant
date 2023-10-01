@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
-import { RoleFunction } from '../interface/role-function';
+import { RoleFunction } from '../interfaces/role-function';
 
 
 @Injectable({

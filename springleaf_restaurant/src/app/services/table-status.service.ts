@@ -1,4 +1,4 @@
-import { TableStatus } from '../interface/table-status';
+import { TableStatus } from '../interfaces/table-status';
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';

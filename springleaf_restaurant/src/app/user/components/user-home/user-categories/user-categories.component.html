@@ -1,0 +1,13 @@
+<a [routerLink]="['/user/index']">Tất cả sản phẩm</a>
+<ul class="products container">
+    <li *ngFor="let category of categories">
+        <a [routerLink]="['/user/index/category', category.categoryId, 'products']">
+            {{ category.categoryId }}
+            {{ category.name }}
+        </a>
+    </li>
+</ul>
+
+<!-- <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button> -->
+
+<router-outlet></router-outlet>
