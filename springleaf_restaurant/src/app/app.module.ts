@@ -28,7 +28,7 @@ import { AdminUserComponent } from './admin/component/admin-home/admin-user/admi
 import { AdminIndexComponent } from './admin/component/admin-home/admin-index/admin-index.component';
 import { AdminFooterComponent } from './admin/component/admin-home/admin-footer/admin-footer.component';
 import { AdminSuppliersComponent } from './admin/component/admin-home/admin-suppliers/admin-suppliers.component';
-import { AdminIngredientComponent } from './admin/component/admin-home/admin-ingredient/admin-ingredient.component';
+import { AdminIngredientsComponent } from './admin/component/admin-home/admin-ingredients/admin-ingredients.component';
 
 import { ChatComponent } from './components/chat/chat.component';
 import { WebSocketService } from './services/web-socket.service';
@@ -59,7 +59,7 @@ import { LoginComponent } from './components/login/login.component';
     AdminIndexComponent,
     AdminFooterComponent,
     AdminSuppliersComponent,
-    AdminIngredientComponent,
+    AdminIngredientsComponent,
     AdminHomeComponent,
 
     ChatComponent,

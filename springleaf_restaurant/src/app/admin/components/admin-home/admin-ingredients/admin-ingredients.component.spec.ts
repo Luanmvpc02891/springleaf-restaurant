@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminIngredientComponent } from './admin-ingredient.component';
+import { AdminIngredientsComponent } from './admin-ingredients.component';
 
 describe('AdminIngredientComponent', () => {
-  let component: AdminIngredientComponent;
-  let fixture: ComponentFixture<AdminIngredientComponent>;
+  let component: AdminIngredientsComponent;
+  let fixture: ComponentFixture<AdminIngredientsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminIngredientComponent]
+      declarations: [AdminIngredientsComponent]
     });
-    fixture = TestBed.createComponent(AdminIngredientComponent);
+    fixture = TestBed.createComponent(AdminIngredientsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

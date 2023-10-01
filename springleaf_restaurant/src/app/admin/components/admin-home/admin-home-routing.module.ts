@@ -14,7 +14,13 @@ const routes: Routes = [
           import('./admin-index/admin-index.module').then(
             (m) => m.AdminIndexModule
           ),
-        //component: UserCartComponent
+      },
+      {
+        path: 'categories',
+        loadChildren: () =>
+          import('./admin-categories/admin-categories.module').then(
+            (m) => m.AdminCategoriesModule
+          ),
       },
       {
         path: 'users',
@@ -22,23 +28,20 @@ const routes: Routes = [
           import('./admin-user/admin-user.module').then(
             (m) => m.AdminUserModule
           ),
-        //component: UserCartComponent
       },
       {
-        path: 'supplier',
+        path: 'suppliers',
         loadChildren: () =>
           import('./admin-suppliers/admin-suppliers.module').then(
-            (m) => m.AdminSupplierModule
+            (m) => m.AdminSuppliersModule
           ),
-        //component: UserCartComponent
       },
       {
-        path: 'ingredient',
+        path: 'ingredients',
         loadChildren: () =>
-          import('./admin-ingredient/admin-ingredient.module').then(
-            (m) => m.AdminIngredientModule
+          import('./admin-ingredients/admin-ingredients.module').then(
+            (m) => m.AdminIngredientsModule
           ),
-        //component: UserCartComponent
       }
 
     ]

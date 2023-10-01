@@ -9,7 +9,7 @@ addEventListener('message', async ({ data }) => {
       const [categoriesResponse, productsResponse, cartDetailsResponse, combosResponse,
         eventsResponse, tablesResponse, restaurantsResponse, supplierResponse, tableStatusesResponse,
         ingredientsResponse, rolesResponse, roleFunctionsResponse, usersResponse, billsResponse,
-        billDetailsResponse, cartsResponse ,comboDetailsResponse , deliverysResponse] = await Promise.all([
+        billDetailsResponse, cartsResponse ,comboDetailsResponse , deliveriesResponse] = await Promise.all([
           fetch('http://localhost:8080/api/categories'),
           fetch('http://localhost:8080/api/products'),
           fetch('http://localhost:8080/api/cartDetails'),
@@ -27,7 +27,7 @@ addEventListener('message', async ({ data }) => {
           fetch('http://localhost:8080/api/billDetails'),
           fetch('http://localhost:8080/api/carts'),
           fetch('http://localhost:8080/api/comboDetails'),
-          fetch('http://localhost:8080/api/deliverys'),
+          fetch('http://localhost:8080/api/deliveries'),
 
 
 
@@ -37,7 +37,7 @@ addEventListener('message', async ({ data }) => {
         && eventsResponse.ok && tablesResponse.ok && restaurantsResponse.ok && supplierResponse.ok
         && tableStatusesResponse.ok && ingredientsResponse.ok && rolesResponse.ok && roleFunctionsResponse.ok
         && usersResponse.ok && billsResponse.ok && billDetailsResponse.ok, cartsResponse.ok && comboDetailsResponse.ok
-        &&deliverysResponse.ok) {
+        &&deliveriesResponse.ok) {
 
         const categoriesData = await categoriesResponse.json();
         const productsData = await productsResponse.json();
@@ -56,7 +56,7 @@ addEventListener('message', async ({ data }) => {
         const billDetailsData = await billDetailsResponse.json();
         const cartsData = await cartsResponse.json();
         const comboDetailsData = await comboDetailsResponse.json();
-        const deliverysData = await deliverysResponse.json();
+        const deliveriesData = await deliveriesResponse.json();
 
         postMessage({ type: 'categories', data: categoriesData });
         postMessage({ type: 'products', data: productsData });
@@ -75,7 +75,7 @@ addEventListener('message', async ({ data }) => {
         postMessage({ type: 'billDetails', data: billDetailsData });
         postMessage({ type: 'carts', data: cartsData });
         postMessage({ type: 'comboDetails', data: comboDetailsData });
-        postMessage({ type: 'deliverys', data: deliverysData });
+        postMessage({ type: 'deliveries', data: deliveriesData });
       } else {
         // Xử lý trường hợp lỗi nếu cần
       }

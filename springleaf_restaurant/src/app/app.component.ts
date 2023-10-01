@@ -125,9 +125,9 @@ export class AppComponent {
         this.comboDetailService.comboDetailsCache = data.data;
         console.log('Received comboDetails:', data.data);
         // Các xử lý khác nếu cần
-      } else if (data.type === 'deliverys') {
+      } else if (data.type === 'deliveries') {
         this.deliveryService.deliverysCache = data.data;
-        console.log('Received deliverys:', data.data);
+        console.log('Received deliveries:', data.data);
         // Các xử lý khác nếu cần
       }
       this.dataLoaded = true;

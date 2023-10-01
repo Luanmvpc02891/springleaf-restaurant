@@ -5,10 +5,10 @@ import { IngredientService } from 'src/app/services/ingredient.service';
 
 @Component({
   selector: 'app-admin-ingredient',
-  templateUrl: './admin-ingredient.component.html',
-  styleUrls: ['./admin-ingredient.component.css']
+  templateUrl: './admin-ingredients.component.html',
+  styleUrls: ['./admin-ingredients.component.css']
 })
-export class AdminIngredientComponent {
+export class AdminIngredientsComponent {
   ingredient: Ingredient[] = [];
 
   constructor(private ingredientService: IngredientService, private route: ActivatedRoute) {

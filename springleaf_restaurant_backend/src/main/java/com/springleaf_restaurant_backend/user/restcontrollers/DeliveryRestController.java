@@ -16,7 +16,7 @@ public class DeliveryRestController {
     @Autowired
     private DeliveryRepository deliveryRepository;
 
-    @GetMapping("/deliverys")
+    @GetMapping("/deliveries")
     public List<Delivery> getDeliveries() {
         return deliveryRepository.findAll();
     }
