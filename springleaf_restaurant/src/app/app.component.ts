@@ -21,6 +21,7 @@ import { BillDetailService } from './services/bill-detail.service';
 import { CartService } from './services/cart.service';
 import { ComboDetailService } from './services/combo-detail.service';
 import { DeliveryService } from './services/delivery.service';
+import { DeliveryDetailService } from './services/delivery-detail.service';
 
 @Component({
   selector: 'app-root',
@@ -52,6 +53,7 @@ export class AppComponent {
     private cartService: CartService,
     private comboDetailService: ComboDetailService,
     private deliveryService: DeliveryService,
+    private deliveryDetailService: DeliveryDetailService
   ) {
     this.callAPIsWorker = new Worker(new URL('./call-apis.worker', import.meta.url));
     this.callAllApis();
@@ -131,6 +133,10 @@ export class AppComponent {
       } else if (data.type === 'deliverys') {
         this.deliveryService.deliverysCache = data.data;
         console.log('Received deliverys:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'deliveryDetails') {
+        this.deliveryDetailService.deliveryDetailsCache = data.data;
+        console.log('Received deliveryDetails:', data.data);
         // Các xử lý khác nếu cần
       }
       this.dataLoaded = true;
