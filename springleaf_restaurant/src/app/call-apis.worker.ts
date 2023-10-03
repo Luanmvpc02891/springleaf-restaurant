@@ -9,7 +9,11 @@ addEventListener('message', async ({ data }) => {
       const [categoriesResponse, productsResponse, cartDetailsResponse, combosResponse,
         eventsResponse, tablesResponse, restaurantsResponse, supplierResponse, tableStatusesResponse,
         ingredientsResponse, rolesResponse, roleFunctionsResponse, usersResponse, billsResponse,
-        billDetailsResponse, cartsResponse, comboDetailsResponse, deliverysResponse, deliveryDetailsResponse] = await Promise.all([
+        billDetailsResponse, cartsResponse, comboDetailsResponse, deliverysResponse, deliveryDetailsResponse,
+        deliveryOrdersResponse, deliveryOrderStatussResponse, deliveryOrderDetailsResponse, favoritesResponse,
+        inventorisResponse, inventoryBranchsResponse, menuItemIngredientsResponse, orderThresholdsResponse,
+        mergeTablesResponse, orderTypesResponse, paymentsResponse, ratingResponse, receiptsResponse,
+        receiptDetailsResponse, reservationsResponse, restaurantTablesResponse] = await Promise.all([
           fetch('http://localhost:8080/api/categories'),
           fetch('http://localhost:8080/api/products'),
           fetch('http://localhost:8080/api/cartDetails'),
@@ -29,6 +33,22 @@ addEventListener('message', async ({ data }) => {
           fetch('http://localhost:8080/api/comboDetails'),
           fetch('http://localhost:8080/api/deliverys'),
           fetch('http://localhost:8080/api/deliveryDetails'),
+          fetch('http://localhost:8080/api/deliveryOrders'),
+          fetch('http://localhost:8080/api/deliveryOrderStatuss'),
+          fetch('http://localhost:8080/api/deliveryOrderDetails'),
+          fetch('http://localhost:8080/api/favorites'),
+          fetch('http://localhost:8080/api/inventoris'),
+          fetch('http://localhost:8080/api/inventoryBranches'),
+          fetch('http://localhost:8080/api/menuItemIngredients'),
+          fetch('http://localhost:8080/api/orderThresholds'),
+          fetch('http://localhost:8080/api/mergeTables'),
+          fetch('http://localhost:8080/api/orderTypes'),
+          fetch('http://localhost:8080/api/payments'),
+          fetch('http://localhost:8080/api/ratings'),
+          fetch('http://localhost:8080/api/receipts'),
+          fetch('http://localhost:8080/api/receiptDetails'),
+          fetch('http://localhost:8080/api/reservations'),
+          fetch('http://localhost:8080/api/restaurantTables'),
 
 
 
@@ -38,7 +58,11 @@ addEventListener('message', async ({ data }) => {
         && eventsResponse.ok && tablesResponse.ok && restaurantsResponse.ok && supplierResponse.ok
         && tableStatusesResponse.ok && ingredientsResponse.ok && rolesResponse.ok && roleFunctionsResponse.ok
         && usersResponse.ok && billsResponse.ok && billDetailsResponse.ok, cartsResponse.ok && comboDetailsResponse.ok
-        && deliverysResponse.ok && deliveryDetailsResponse.ok) {
+        && deliverysResponse.ok && deliveryDetailsResponse.ok && deliveryOrdersResponse.ok && deliveryOrderStatussResponse.ok
+        && deliveryOrderDetailsResponse.ok && favoritesResponse && inventorisResponse.ok && inventoryBranchsResponse.ok
+        && menuItemIngredientsResponse.ok && orderThresholdsResponse.ok && mergeTablesResponse.ok && orderTypesResponse.ok
+        && paymentsResponse.ok && ratingResponse.ok && receiptsResponse.ok && receiptDetailsResponse.ok && reservationsResponse.ok
+        && restaurantTablesResponse.ok) {
 
         const categoriesData = await categoriesResponse.json();
         const productsData = await productsResponse.json();
@@ -59,6 +83,23 @@ addEventListener('message', async ({ data }) => {
         const comboDetailsData = await comboDetailsResponse.json();
         const deliverysData = await deliverysResponse.json();
         const deliveryDetailsData = await deliveryDetailsResponse.json();
+        const deliveryOrdersData = await deliveryOrdersResponse.json();
+        const deliveryOrderStatussData = await deliveryOrderStatussResponse.json();
+        const deliveryOrderDetailsData = await deliveryOrderDetailsResponse.json();
+        const favoritesData = await favoritesResponse.json();
+        const inventorisData = await inventorisResponse.json();
+        const inventoryBranchsData = await inventoryBranchsResponse.json();
+        const menuItemIngredientsData = await menuItemIngredientsResponse.json();
+        const orderThresholdsData = await orderThresholdsResponse.json();
+        const mergeTablesData = await mergeTablesResponse.json();
+        const orderTypesData = await orderTypesResponse.json();
+        const paymentsData = await paymentsResponse.json();
+        const ratingsData = await ratingResponse.json();
+        const receiptsData = await receiptsResponse.json();
+        const receiptDetailsData = await receiptDetailsResponse.json();
+        const reservationsData = await reservationsResponse.json();
+        const restauranTablesData = await restaurantTablesResponse.json();
+
 
         postMessage({ type: 'categories', data: categoriesData });
         postMessage({ type: 'products', data: productsData });
@@ -79,6 +120,22 @@ addEventListener('message', async ({ data }) => {
         postMessage({ type: 'comboDetails', data: comboDetailsData });
         postMessage({ type: 'deliverys', data: deliverysData });
         postMessage({ type: 'deliveryDetails', data: deliveryDetailsData });
+        postMessage({ type: 'deliveryOrders', data: deliveryOrdersData });
+        postMessage({ type: 'deliveryOrderStatuss', data: deliveryOrderStatussData });
+        postMessage({ type: 'deliveryOrderDetails', data: deliveryOrderDetailsData });
+        postMessage({ type: 'favorites', data: favoritesData });
+        postMessage({ type: 'inventoris', data: inventorisData });
+        postMessage({ type: 'inventoryBranches', data: inventoryBranchsData });
+        postMessage({ type: 'menuItemIngredients', data: menuItemIngredientsData });
+        postMessage({ type: 'orderThresholds', data: orderThresholdsData });
+        postMessage({ type: 'mergeTables', data: mergeTablesData });
+        postMessage({ type: 'orderTypes', data: orderTypesData });
+        postMessage({ type: 'payments', data: paymentsData });
+        postMessage({ type: 'ratings', data: ratingsData });
+        postMessage({ type: 'receipts', data: receiptsData });
+        postMessage({ type: 'receiptDetails', data: receiptDetailsData });
+        postMessage({ type: 'reservations', data: reservationsData });
+        postMessage({ type: 'restaurantTables', data: restauranTablesData });
       } else {
         // Xử lý trường hợp lỗi nếu cần
       }
