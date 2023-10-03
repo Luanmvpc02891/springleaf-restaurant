@@ -3,41 +3,38 @@
 // Trong worker script (call-apis.worker.ts)
 addEventListener('message', async ({ data }) => {
   console.log("Received from Main Thread ", data);
-
+  const domain = 'http://localhost:8080/api';
   if (data === 'start') {
     try {
       const [categoriesResponse, productsResponse, cartDetailsResponse, combosResponse,
         eventsResponse, tablesResponse, restaurantsResponse, supplierResponse, tableStatusesResponse,
         ingredientsResponse, rolesResponse, roleFunctionsResponse, usersResponse, billsResponse,
-        billDetailsResponse, cartsResponse ,comboDetailsResponse , deliveriesResponse] = await Promise.all([
-          fetch('http://localhost:8080/api/categories'),
-          fetch('http://localhost:8080/api/products'),
-          fetch('http://localhost:8080/api/cartDetails'),
-          fetch('http://localhost:8080/api/combos'),
-          fetch('http://localhost:8080/api/events'),
-          fetch('http://localhost:8080/api/restaurantTables'),
-          fetch('http://localhost:8080/api/restaurants'),
-          fetch('http://localhost:8080/api/suppliers'),
-          fetch('http://localhost:8080/api/tableStatuses'),
-          fetch('http://localhost:8080/api/ingredients'),
-          fetch('http://localhost:8080/api/roles'),
-          fetch('http://localhost:8080/api/roleFunctions'),
-          fetch('http://localhost:8080/api/users'),
-          fetch('http://localhost:8080/api/bills'),
-          fetch('http://localhost:8080/api/billDetails'),
-          fetch('http://localhost:8080/api/carts'),
-          fetch('http://localhost:8080/api/comboDetails'),
-          fetch('http://localhost:8080/api/deliveries'),
-
-
-
+        billDetailsResponse, cartsResponse, comboDetailsResponse, deliveriesResponse] = await Promise.all([
+          fetch(`${domain}/categories`),
+          fetch(`${domain}/products`),
+          fetch(`${domain}/cartDetails`),
+          fetch(`${domain}/combos`),
+          fetch(`${domain}/events`),
+          fetch(`${domain}/restaurantTables`),
+          fetch(`${domain}/restaurants`),
+          fetch(`${domain}/suppliers`),
+          fetch(`${domain}/tableStatuses`),
+          fetch(`${domain}/ingredients`),
+          fetch(`${domain}/roles`),
+          fetch(`${domain}/roleFunctions`),
+          fetch(`${domain}/users`),
+          fetch(`${domain}/bills`),
+          fetch(`${domain}/billDetails`),
+          fetch(`${domain}/carts`),
+          fetch(`${domain}/comboDetails`),
+          fetch(`${domain}/deliveries`),
         ]);
 
       if (categoriesResponse.ok && productsResponse.ok && cartDetailsResponse && combosResponse
         && eventsResponse.ok && tablesResponse.ok && restaurantsResponse.ok && supplierResponse.ok
         && tableStatusesResponse.ok && ingredientsResponse.ok && rolesResponse.ok && roleFunctionsResponse.ok
         && usersResponse.ok && billsResponse.ok && billDetailsResponse.ok, cartsResponse.ok && comboDetailsResponse.ok
-        &&deliveriesResponse.ok) {
+        && deliveriesResponse.ok) {
 
         const categoriesData = await categoriesResponse.json();
         const productsData = await productsResponse.json();

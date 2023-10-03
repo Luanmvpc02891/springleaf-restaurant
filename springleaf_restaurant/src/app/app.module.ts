@@ -34,6 +34,9 @@ import { ChatComponent } from './components/chat/chat.component';
 import { WebSocketService } from './services/web-socket.service';
 import { ChatService } from './services/chat.service';
 import { LoginComponent } from './components/login/login.component';
+import { AdminCategoriesComponent } from './admin/components/admin-home/admin-categories/admin-categories.component';
+import { AdminCategoryDetailComponent } from './admin/components/admin-home/admin-category-detail/admin-category-detail.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,8 @@ import { LoginComponent } from './components/login/login.component';
     AdminSuppliersComponent,
     AdminIngredientsComponent,
     AdminHomeComponent,
+    AdminCategoriesComponent,
+    AdminCategoryDetailComponent,
 
     ChatComponent,
     LoginComponent,
@@ -70,10 +75,11 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    CommonModule, // Import CommonModule here
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    NgbModule
   ],
   providers: [
     WebSocketService,

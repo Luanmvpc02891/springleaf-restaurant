@@ -50,7 +50,12 @@ const routes: Routes = [
     path: 'admin/product/detail/:id',
     loadChildren: () => import('./admin-product-detail/admin-product-detail.module')
       .then(m => m.AdminProductDetailModule)
-  }
+  },
+  // {
+  //   path: 'admin/category/:id',
+  //   loadChildren: () => import('./admin-category-detail/admin-category-detail.module')
+  //     .then(m => m.AdminCategoryDetailModule)
+  // }
 
 ];
 
