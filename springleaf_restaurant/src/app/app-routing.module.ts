@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./admin/component/admin-home/admin-home.module').then(
+      import('./admin/components/admin-home/admin-home.module').then(
         (m) => m.AdminHomeModule
       ),
     //component: AdminHomeComponent

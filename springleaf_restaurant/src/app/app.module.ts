@@ -20,15 +20,15 @@ import { UserRestaurantsComponent } from './user/components/user-home/user-resta
 import { UserIndexComponent } from './user/components/user-home/user-index/user-index.component';
 import { UserFooterComponent } from './user/components/user-home/user-footer/user-footer.component';
 
-import { AdminHomeComponent } from './admin/component/admin-home/admin-home.component';
-import { AdminHeaderComponent } from './admin/component/admin-home/admin-header/admin-header.component';
-import { AdminProductsComponent } from './admin/component/admin-home/admin-products/admin-products.component';
-import { AdminProductDetailComponent } from './admin/component/admin-home/admin-product-detail/admin-product-detail.component';
-import { AdminUserComponent } from './admin/component/admin-home/admin-user/admin-user.component';
-import { AdminIndexComponent } from './admin/component/admin-home/admin-index/admin-index.component';
-import { AdminFooterComponent } from './admin/component/admin-home/admin-footer/admin-footer.component';
-import { AdminSuppliersComponent } from './admin/component/admin-home/admin-suppliers/admin-suppliers.component';
-import { AdminIngredientsComponent } from './admin/component/admin-home/admin-ingredients/admin-ingredients.component';
+import { AdminHomeComponent } from './admin/components/admin-home/admin-home.component';
+import { AdminHeaderComponent } from './admin/components/admin-home/admin-header/admin-header.component';
+import { AdminProductsComponent } from './admin/components/admin-home/admin-products/admin-products.component';
+import { AdminProductDetailComponent } from './admin/components/admin-home/admin-product-detail/admin-product-detail.component';
+import { AdminUserComponent } from './admin/components/admin-home/admin-user/admin-user.component';
+import { AdminIndexComponent } from './admin/components/admin-home/admin-index/admin-index.component';
+import { AdminFooterComponent } from './admin/components/admin-home/admin-footer/admin-footer.component';
+import { AdminSuppliersComponent } from './admin/components/admin-home/admin-suppliers/admin-suppliers.component';
+import { AdminIngredientsComponent } from './admin/components/admin-home/admin-ingredients/admin-ingredients.component';
 
 import { ChatComponent } from './components/chat/chat.component';
 import { WebSocketService } from './services/web-socket.service';
