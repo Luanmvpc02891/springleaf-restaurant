@@ -17,5 +17,5 @@ public class RoleFunction {
     // private String roleFunctionName;
 
     @Column(name = "role_id")
-    private Long role;
+    private String role;
 }

@@ -18,6 +18,23 @@ import { BillDetailService } from './services/bill-detail.service';
 import { CartService } from './services/cart.service';
 import { ComboDetailService } from './services/combo-detail.service';
 import { DeliveryService } from './services/delivery.service';
+import { DeliveryDetailService } from './services/delivery-detail.service';
+import { DeliveryOrderService } from './services/delivery-order.service';
+import { DeliveryOrderStatusService } from './services/delivery-order-status.service';
+import { DeliveryOrderDetailService } from './services/delivery-order-detail.service';
+import { FavoriteService } from './services/favorite.service';
+import { InventoryService } from './services/inventory.service';
+import { InventoryBranchService } from './services/inventory-branch.service';
+import { MenuItemIngredientService } from './services/menu-tem-ingredient.service';
+import { OrderThresholdService } from './services/order-threshold.service';
+import { MergeTableService } from './services/merge-table.service';
+import { OrderTypeService } from './services/order-type.service';
+import { PaymentService } from './services/payment.service';
+import { RatingService } from './services/rating.service';
+import { ReceiptService } from './services/receipt.service';
+import { ReceiptDetailService } from './services/receipt-detail.service';
+import { ReservationService } from './services/reservation.service';
+import { RestaurantTableService } from './services/restaurant-table.service';
 
 @Component({
   selector: 'app-root',
@@ -49,6 +66,23 @@ export class AppComponent {
     private cartService: CartService,
     private comboDetailService: ComboDetailService,
     private deliveryService: DeliveryService,
+    private deliveryDetailService: DeliveryDetailService,
+    private deliveryOrderService: DeliveryOrderService,
+    private deliveryOrderStatusService: DeliveryOrderStatusService,
+    private deliveryOrderDetailService: DeliveryOrderDetailService,
+    private favoriteService: FavoriteService,
+    private inventoryService: InventoryService,
+    private inventoryBranchService: InventoryBranchService,
+    private menuItemIngredientService: MenuItemIngredientService,
+    private orderThresholdService: OrderThresholdService,
+    private mergeTableService: MergeTableService,
+    private orderTypeService: OrderTypeService,
+    private paymentService: PaymentService,
+    private ratingService: RatingService,
+    private receiptService: ReceiptService,
+    private receiptDetailService: ReceiptDetailService,
+    private reservationService: ReservationService,
+    private restaurantTableService: RestaurantTableService
   ) {
     this.callAPIsWorker = new Worker(new URL('./call-apis.worker', import.meta.url));
     this.callAllApis();
@@ -129,7 +163,76 @@ export class AppComponent {
         this.deliveryService.deliverysCache = data.data;
         console.log('Received deliveries:', data.data);
         // Các xử lý khác nếu cần
+      } else if (data.type === 'deliveryDetails') {
+        this.deliveryDetailService.deliveryDetailsCache = data.data;
+        console.log('Received deliveryDetails:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'deliveryOrders') {
+        this.deliveryOrderService.deliveryOrdersCache = data.data;
+        console.log('Received deliveryOrders:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'deliveryOrderStatuss') {
+        this.deliveryOrderStatusService.deliveryOrderStatussCache = data.data;
+        console.log('Received deliveryOrderStatuss:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'deliveryOrderDetails') {
+        this.deliveryOrderDetailService.deliveryOrderDetailsCache = data.data;
+        console.log('Received deliveryOrderDetails:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'favorites') {
+        this.favoriteService.favoritesCache = data.data;
+        console.log('Received favorites:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'inventoris') {
+        this.inventoryService.inventorisCache = data.data;
+        console.log('Received inventoris:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'inventoryBranches') {
+        this.inventoryBranchService.inventoryBranchsCache = data.data;
+        console.log('Received inventoryBranches:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'menuItemIngredients') {
+        this.menuItemIngredientService.menuItemIngredientsCache = data.data;
+        console.log('Received menuItemIngredients:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'orderThresholds') {
+        this.orderThresholdService.orderThresholdsCache = data.data;
+        console.log('Received orderThresholds:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'mergeTables') {
+        this.mergeTableService.mergeTablesCache = data.data;
+        console.log('Received mergeTables:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'orderTypes') {
+        this.orderTypeService.orderTypesCache = data.data;
+        console.log('Received orderTypes:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'payments') {
+        this.paymentService.paymentsCache = data.data;
+        console.log('Received payments:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'ratings') {
+        this.ratingService.ratingsCache = data.data;
+        console.log('Received ratings:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'receipts') {
+        this.receiptService.receiptsCache = data.data;
+        console.log('Received receipts:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'receiptDetails') {
+        this.receiptDetailService.receiptDetailsCache = data.data;
+        console.log('Received receiptDetails:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'reservations') {
+        this.reservationService.reservationsCache = data.data;
+        console.log('Received reservations:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'restaurantTables') {
+        this.restaurantService.restaurantsCache = data.data;
+        console.log('Received restaurantTables:', data.data);
+        // Các xử lý khác nếu cần
       }
+
       this.dataLoaded = true;
     };
   }
