@@ -1,8 +1,8 @@
-import { Favorite } from './../interface/favorite';
+import { Favorite } from './../interfaces/favorite';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
-import { Ingredient } from '../interface/ingredient';
+
 
 
 

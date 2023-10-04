@@ -1,4 +1,4 @@
-import { InventoryBranch } from './../interface/inventory-branch';
+import { InventoryBranch } from './../interfaces/inventory-branch';
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';

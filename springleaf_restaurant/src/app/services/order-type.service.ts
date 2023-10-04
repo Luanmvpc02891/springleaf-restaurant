@@ -1,4 +1,4 @@
-import { OrderType } from './../interface/order-type';
+import { OrderType } from './../interfaces/order-type';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';

@@ -1,4 +1,4 @@
-package com.springleaf_restaurant_backend.user.restcontroller;
+package com.springleaf_restaurant_backend.user.restcontrollers;
 
 import java.util.List;
 

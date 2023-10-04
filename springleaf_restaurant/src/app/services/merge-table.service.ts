@@ -1,4 +1,4 @@
-import { MergeTable } from './../interface/merge-table';
+import { MergeTable } from './../interfaces/merge-table';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
