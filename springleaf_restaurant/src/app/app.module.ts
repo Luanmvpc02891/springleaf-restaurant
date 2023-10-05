@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 
@@ -80,6 +81,7 @@ import { CommonModule } from '@angular/common';
     CommonModule, // Import CommonModule here
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [
     WebSocketService,
