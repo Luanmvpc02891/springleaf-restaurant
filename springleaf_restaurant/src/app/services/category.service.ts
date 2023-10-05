@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { Category } from '../interfaces/category';
 
@@ -10,6 +10,7 @@ export class CategoryService {
 
   private categoriesUrl = 'categories'; // URL to web api, không cần thêm base URL
   categoriesCache: Category[] | null = null; // Cache for categories
+  private categoryUrl = 'category';
 
   constructor(private apiService: ApiService) { } // Inject ApiService
 
@@ -37,7 +38,7 @@ export class CategoryService {
     // Check if categoriesCache is null or empty
     if (!this.categoriesCache) {
       // Fetch the data from the API if cache is empty
-      const url = `${this.categoriesUrl}/${id}`;
+      const url = `${this.categoryUrl}/${id}`;
       return this.apiService.request<Category>('get', url);
     }
 
@@ -49,25 +50,33 @@ export class CategoryService {
       return of(CategoryFromCache);
     } else {
       // If not found in cache, fetch it from the API
-      const url = `${this.categoriesUrl}/${id}`;
+      const url = `${this.categoryUrl}/${id}`;
       return this.apiService.request<Category>('get', url);
     }
   }
 
   // Thêm sản phẩm mới
   addCategory(newCategory: Category): Observable<Category> {
-    return this.apiService.request<Category>('post', this.categoriesUrl, newCategory);
+    return this.apiService.request<Category>('post', this.categoryUrl, newCategory);
   }
 
   // Cập nhật sản phẩm
   updateCategory(updatedCategory: Category): Observable<any> {
-    const url = `${this.categoriesUrl}/${updatedCategory.categoryId}`;
-    return this.apiService.request('put', url, updatedCategory);
+    const url = `${this.categoryUrl}/${updatedCategory.categoryId}`;
+    return this.apiService.request('put', url, updatedCategory).pipe(
+      tap(() => {
+        // Cập nhật danh sách cache sau khi cập nhật danh mục
+        const index = this.categoriesCache!.findIndex(cat => cat.categoryId === updatedCategory.categoryId);
+        if (index !== -1) {
+          this.categoriesCache![index] = updatedCategory;
+        }
+      })
+    );
   }
 
   // Xoá sản phẩm
   deleteCategory(id: number): Observable<any> {
-    const url = `${this.categoriesUrl}/${id}`;
+    const url = `${this.categoryUrl}/${id}`;
     return this.apiService.request('delete', url);
   }
 
@@ -77,6 +86,14 @@ export class CategoryService {
     return this.apiService.request<Category[]>('get', url);
   }
 
-
+  updateCategoryCache(updatedCategory: Category): void {
+    // Check if categoriesCache is null
+    if (this.categoriesCache) {
+      const index = this.categoriesCache.findIndex(cat => cat.categoryId === updatedCategory.categoryId);
+      if (index !== -1) {
+        this.categoriesCache[index] = updatedCategory;
+      }
+    }
+  }
 
 }

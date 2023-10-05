@@ -16,7 +16,6 @@ export class UserCategoriesComponent {
   }
 
   ngOnInit(): void {
-    console.log("Init category component");
     this.getCategories();
   }
 

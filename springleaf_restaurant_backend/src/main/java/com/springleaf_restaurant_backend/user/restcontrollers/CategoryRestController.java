@@ -4,10 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.springleaf_restaurant_backend.user.entities.Category;
 import com.springleaf_restaurant_backend.user.repositories.CategoryRepository;
@@ -23,9 +20,34 @@ public class CategoryRestController {
         return categoryRepository.findAll();
     }
 
-    @GetMapping("/category/{id}")
-    public Optional<Category> getCategoryById(@PathVariable("id") Long categoryId) {
+    @GetMapping("/category/{categoryId}")
+    public Optional<Category> getCategoryById(@PathVariable("categoryId") Long categoryId) {
         return categoryRepository.findById(categoryId);
+    }
+
+    @PostMapping("/category")
+    public Category getCategoryById(@RequestBody Category category) {
+        return categoryRepository.save(category);
+    }
+
+    @DeleteMapping("/category/{categoryId}")
+    public void deleteCategory(@PathVariable("categoryId") Long categoryId) {
+        categoryRepository.deleteById(categoryId);
+    }
+
+    @PutMapping("/category/{categoryId}")
+    public Category updateCategory(@PathVariable("categoryId") Long categoryId, @RequestBody Category updatedCategory) {
+        Optional<Category> databaseCategory = categoryRepository.findById(categoryId);
+        if (databaseCategory.isPresent()) {
+            Category existingCategory = databaseCategory.get();
+            existingCategory.setCategoryId(updatedCategory.getCategoryId());
+            existingCategory.setName(updatedCategory.getName());
+            existingCategory.setActive(updatedCategory.getActive());
+            existingCategory.setDescription(updatedCategory.getDescription());
+            return categoryRepository.save(existingCategory);
+        } else {
+            return null;
+        }
     }
 
 }

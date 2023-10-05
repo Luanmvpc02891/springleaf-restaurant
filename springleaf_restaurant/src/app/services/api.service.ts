@@ -48,7 +48,7 @@ export class ApiService {
       case 'delete':
         return this.http.delete<T>(url, { headers }).pipe(
           tap(response => {
-            console.log(response);
+            console.log("Delete category successful");
 
           }),
           catchError(this.handleError<T>(`DELETE ${url}`))
