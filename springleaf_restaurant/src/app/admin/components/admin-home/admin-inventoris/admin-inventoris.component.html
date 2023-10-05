@@ -1,0 +1,49 @@
+<h1>Kho</h1>
+
+<form [formGroup]="inventoryForm" (ngSubmit)="addInventory()">
+    <label for="supplier">Supplier:</label>
+    <select formControlName="supplier" id="supplier">
+        <option value="">Chọn nhà cung cấp</option>
+        <option *ngFor="let supplier of suppliers" [value]="supplier.supplierId">
+            {{ supplier.name }}
+        </option>
+    </select>
+
+    <label for="ingredient">Ingredient:</label>
+    <select formControlName="ingredient" id="ingredient">
+        <option value="">Chọn nguyên liệu</option>
+        <option *ngFor="let ingredient of ingredients" [value]="ingredient.ingredientId">
+            {{ ingredient.name }}
+        </option>
+    </select>
+
+    <button type="submit" class="add-button">Add Inventory</button>
+</form>
+
+
+<ul class="products container">
+    <table class="table table-light">
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>Nguyên liệu</td>
+                <td>Nhà cung cấp</td>
+            </tr>
+            <tr *ngFor="let ing of inventoris">
+                <th>
+                    {{ ing.inventoryId }}
+                </th>
+                <th>{{ ing.ingredient.name}}</th>
+                <th>{{ ing.supplier.name }}</th>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <button (click)="openInventoryDetailModal(ing)">Edit</button>
+                    </li>
+                    <li class="nav-item">
+                        <th><button (click)="deleteInventory(ing)">Delete</button></th>
+                    </li>
+                </ul>
+            </tr>
+        </tbody>
+    </table>
+</ul>

@@ -22,9 +22,7 @@ export class IngredientService {
             console.log("Có ingredients cache");
             return of(this.ingredientsCache);
         }
-
         const ingredientsObservable = this.apiService.request<Ingredient[]>('get', this.IngredientsUrl);
-
         // Cache the categories observable
         ingredientsObservable.subscribe(data => {
             this.ingredientsCache = data; // Store the fetched data in the cache

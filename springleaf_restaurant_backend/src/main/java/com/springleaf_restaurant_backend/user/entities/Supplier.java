@@ -1,6 +1,11 @@
 package com.springleaf_restaurant_backend.user.entities;
 
 import lombok.*;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Data
@@ -24,5 +29,8 @@ public class Supplier {
 
     @Column(name = "email")
     private String email;
+    @JsonIgnore
+    @OneToMany(mappedBy = "supplier")
+    private List<Inventory> inventories;
 
 }

@@ -50,6 +50,7 @@ export class AdminCategoriesComponent {
 
     this.categoriesService.addCategory({ name, active, description } as Category)
       .subscribe(category => {
+        console.log(category);
         this.categories.push(category);
         this.categoryForm.reset();
         this.categoryForm.get('active')?.setValue(true);

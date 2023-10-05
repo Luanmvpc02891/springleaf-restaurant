@@ -1,6 +1,11 @@
 package com.springleaf_restaurant_backend.user.entities;
 
 import lombok.*;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Data
@@ -22,5 +27,8 @@ public class Ingredient {
 
     @Column(name = "order_threshold")
     private Integer orderThreshold;
-
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "ingredient")
+    private List<Inventory> inventories;
 }

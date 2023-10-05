@@ -228,7 +228,7 @@ export class AppComponent {
         console.log('Received reservations:', data.data);
         // Các xử lý khác nếu cần
       } else if (data.type === 'restaurantTables') {
-        this.restaurantService.restaurantsCache = data.data;
+        this.restaurantTableService.restaurantTablesCache = data.data;
         console.log('Received restaurantTables:', data.data);
         // Các xử lý khác nếu cần
       }

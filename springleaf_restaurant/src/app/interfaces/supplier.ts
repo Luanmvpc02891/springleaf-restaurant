@@ -3,5 +3,5 @@ export interface Supplier {
     name: string;
     address: string;
     phone: number;
-    email: number;
+    email: string;
 }

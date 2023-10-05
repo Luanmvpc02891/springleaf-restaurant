@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title">Login</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button> -->
+</div>
+<div class="modal-body">
+    <form [formGroup]="inventoryForm" (ngSubmit)="saveInventory()">
+        <label for="inventoryId">Inventory ID: </label>
+        <input id="inventoryId" formControlName="inventoryId" />
+
+        <br>
+        <label for="supplier">Supplier: </label>
+        <select name="supplier" id="supplier" formControlName="supplier">
+            <option [value]="">Chọn thương hiệu</option>
+            <option *ngFor="let supplier of suppliers" [value]="supplier.supplierId">
+                {{ supplier.name }}
+            </option>
+        </select>
+        <br>
+        <label for="ingredient">Ingredient: </label>
+        <select name="ingredient" id="ingredient" formControlName="ingredient">
+            <option value="">Chọn thành phần</option>
+            <option *ngFor="let ingredient of ingredients" [value]="ingredient.ingredientId">
+                {{ ingredient.name }}
+            </option>
+        </select>
+        <button type="submit" class="btn btn-secondary">
+            Update
+        </button>
+    </form>
+
+
+</div>
+
+<div class="modal-footer">
+    <!-- <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">
+        Đóng
+    </button> -->
+</div>
