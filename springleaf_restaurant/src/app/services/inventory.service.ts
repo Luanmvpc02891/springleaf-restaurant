@@ -2,6 +2,11 @@ import { Inventory } from './../interfaces/inventory';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, of, tap } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+<<<<<<< HEAD
+=======
+import { Inventory } from '../interface/inventory';
+
+>>>>>>> parent of 1ceda15 (fix name import interfaces)
 
 
 

@@ -27,7 +27,4 @@ public class RestaurantTable {
     @Column(name = "restaurant_id")
     private Long restaurantId;
 
-    @Column(name = "merge_table_id")
-    private String mergeTableId;
-
 }

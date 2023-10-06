@@ -1,4 +1,4 @@
-import { OrderThreshold } from './../interfaces/order-threshold';
+import { OrderThreshold } from './../interface/order-threshold';
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';

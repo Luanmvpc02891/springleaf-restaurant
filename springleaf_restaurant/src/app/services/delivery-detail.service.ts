@@ -1,4 +1,4 @@
-import { DeliveryDetail } from '../interfaces/delivery-detail';
+import { DeliveryDetail } from '../interface/delivery-detail';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';

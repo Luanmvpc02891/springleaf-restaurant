@@ -28,7 +28,5 @@ public class Ingredient {
     @Column(name = "order_threshold")
     private Integer orderThreshold;
     
-    @JsonIgnore
-    @OneToMany(mappedBy = "ingredient")
-    private List<Inventory> inventories;
+  
 }

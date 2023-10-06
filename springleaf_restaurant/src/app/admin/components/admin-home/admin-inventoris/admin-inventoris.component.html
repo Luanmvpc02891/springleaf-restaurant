@@ -33,8 +33,8 @@
                 <th>
                     {{ ing.inventoryId }}
                 </th>
-                <th>{{ ing.ingredient.name}}</th>
-                <th>{{ ing.supplier.name }}</th>
+                <th>{{ ing.ingredient.ingredientId}}</th>
+                <th>{{ ing.supplier.supplierId }}</th>
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <button (click)="openInventoryDetailModal(ing)">Edit</button>
