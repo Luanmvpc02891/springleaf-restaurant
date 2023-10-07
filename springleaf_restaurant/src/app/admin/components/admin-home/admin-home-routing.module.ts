@@ -1,3 +1,4 @@
+import { AdminIndexComponent } from './admin-index/admin-index.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminHomeComponent } from './admin-home.component';
@@ -42,7 +43,15 @@ const routes: Routes = [
           import('./admin-ingredients/admin-ingredients.module').then(
             (m) => m.AdminIngredientsModule
           ),
+      },
+      {
+        path: 'inventoris',
+        loadChildren: () =>
+          import('./admin-inventoris/admin-inventoris.module').then(
+            (m) => m.AdminInventorisModule
+          ),
       }
+
 
     ]
   },

@@ -4,7 +4,7 @@ export interface Table {
     tableType: string;
     tableStatus: number;
     restaurantId: number;
-    mergeTableId: string;
+
 
 
 }
