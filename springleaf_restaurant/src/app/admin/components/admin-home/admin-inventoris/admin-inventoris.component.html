@@ -1,50 +1,49 @@
 <div class="container">
     <h1>Kho</h1>
-    <form>
-        <div class="mb-3">
+    <form [formGroup]="inventoryForm" (ngSubmit)="addInventory()">
+        <!-- <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">ID</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div> -->
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Ingredient</label>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Chọn nguyên liệu</option>
+                    <option *ngFor="let ing of ingredient" [value]="ing.ingredientId">{{ ing.name }}</option>
+                </select>
+            </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Supplier</label>
             <div class="mb-3">
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected>Chọn nhà sản xuất</option>
+                    <option *ngFor="let supplier of supplier" [value]="supplier.supplierId"> {{ supplier.name }}
+                    </option>
                 </select>
             </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Ingredient</label>
-            <div class="mb-3">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </form>
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">ID</th>
                 <th scope="col">Ingredient</th>
                 <th scope="col">Supplier</th>
+                <th scope="col">Chức năng</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of inventori">
-                <th scope="row">1</th>
+            <tr *ngFor="let item of inventoris">
                 <td>{{item.inventoryId}}</td>
                 <td>{{item.ingredientId}}</td>
                 <td>{{item.supplierId}}</td>
+                <td><button type="button" class="btn btn-outline-primary">Edit</button>
+                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                </td>
             </tr>
         </tbody>
     </table>

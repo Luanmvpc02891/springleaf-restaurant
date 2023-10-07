@@ -1,5 +1,5 @@
 export interface Inventory {
     inventoryId: number;
-    ingredientId: number;
-    supplierId: number;
+    ingredientId: string;
+    supplierId: string;
 }
