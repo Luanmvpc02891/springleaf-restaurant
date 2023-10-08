@@ -183,9 +183,9 @@ export class AppComponent {
         this.favoriteService.favoritesCache = data.data;
         console.log('Received favorites:', data.data);
         // Các xử lý khác nếu cần
-      } else if (data.type === 'inventoris') {
-        this.inventoryService.inventorisCache = data.data;
-        console.log('Received inventoris:', data.data);
+      } else if (data.type === 'inventories') {
+        this.inventoryService.inventoriesCache = data.data;
+        console.log('Received inventories:', data.data);
         // Các xử lý khác nếu cần
       } else if (data.type === 'inventoryBranches') {
         this.inventoryBranchService.inventoryBranchsCache = data.data;

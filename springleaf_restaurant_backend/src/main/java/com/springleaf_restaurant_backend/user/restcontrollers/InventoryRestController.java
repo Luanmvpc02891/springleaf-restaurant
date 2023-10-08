@@ -3,7 +3,11 @@ package com.springleaf_restaurant_backend.user.restcontrollers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +20,18 @@ public class InventoryRestController {
     @Autowired
     private InventoryRepository inventoryRepository;
 
-    @GetMapping("/inventoris")
+    @GetMapping("/inventories")
     public List<Object[]> getInventoryInfo() {
         return inventoryRepository.getInventoryInfo();
+    }
+
+    @PostMapping("/inventory")
+    public Inventory createInventory(@RequestBody Inventory inventory) {
+        return inventoryRepository.save(inventory);
+    }
+
+    @DeleteMapping("/inventory/{invetoryId}")
+    public void deleteInventory(@PathVariable("invetoryId") Long invetoryId) {
+        inventoryRepository.deleteById(invetoryId);
     }
 }

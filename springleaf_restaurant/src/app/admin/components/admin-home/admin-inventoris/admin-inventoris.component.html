@@ -9,18 +9,18 @@
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Ingredient</label>
             <div class="mb-3">
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" formControlName="ingredientId">
                     <option selected>Chọn nguyên liệu</option>
-                    <option *ngFor="let ing of ingredient" [value]="ing.ingredientId">{{ ing.name }}</option>
+                    <option *ngFor="let ing of ingredients " [value]="ing.ingredientId">{{ ing.name }}</option>
                 </select>
             </div>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Supplier</label>
             <div class="mb-3">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Chọn nhà sản xuất</option>
-                    <option *ngFor="let supplier of supplier" [value]="supplier.supplierId"> {{ supplier.name }}
+                <select class="form-select" aria-label="Default select example" formControlName="supplierId">
+                    <option [value]="">Chọn nhà sản xuất</option>
+                    <option *ngFor="let supplier of suppliers" [value]="supplier.supplierId"> {{ supplier.name }}
                     </option>
                 </select>
             </div>
@@ -37,12 +37,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of inventoris">
+            <tr *ngFor="let item of inventories">
                 <td>{{item.inventoryId}}</td>
                 <td>{{item.ingredientId}}</td>
                 <td>{{item.supplierId}}</td>
-                <td><button type="button" class="btn btn-outline-primary">Edit</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                <td><button type="button" class="btn btn-outline-primary"
+                        (click)="openInventoryDetailModal(item)">Edit</button>
+                    <button type="button" class="btn btn-outline-danger" (click)="deleteInventory(item)">Delete</button>
                 </td>
             </tr>
         </tbody>

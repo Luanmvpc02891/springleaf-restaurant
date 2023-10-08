@@ -11,7 +11,7 @@ addEventListener('message', async ({ data }) => {
                                 ingredientsResponse, rolesResponse, roleFunctionsResponse, usersResponse, billsResponse,
                                 billDetailsResponse, cartsResponse, comboDetailsResponse, deliveriesResponse,
                                 deliveryDetailsResponse, deliveryOrdersResponse, deliveryOrderStatussResponse, deliveryOrderDetailsResponse, favoritesResponse,
-                                inventorisResponse, inventoryBranchsResponse, menuItemIngredientsResponse, orderThresholdsResponse,
+                                inventoriesResponse, inventoryBranchsResponse, menuItemIngredientsResponse, orderThresholdsResponse,
                                 mergeTablesResponse, orderTypesResponse, paymentsResponse, ratingResponse, receiptsResponse,
                                 receiptDetailsResponse, reservationsResponse, restaurantTablesResponse] = await Promise.all([
                                         fetch(`${domain}/categories`),
@@ -37,7 +37,7 @@ addEventListener('message', async ({ data }) => {
                                         fetch(`${domain}/deliveryOrderStatuss`),
                                         fetch(`${domain}/deliveryOrderDetails`),
                                         fetch(`${domain}/favorites`),
-                                        fetch(`${domain}/inventoris`),
+                                        fetch(`${domain}/inventories`),
                                         fetch(`${domain}/inventoryBranches`),
                                         fetch(`${domain}/menuItemIngredients`),
                                         fetch(`${domain}/orderThresholds`),
@@ -57,7 +57,7 @@ addEventListener('message', async ({ data }) => {
                                 && tableStatusesResponse.ok && ingredientsResponse.ok && rolesResponse.ok && roleFunctionsResponse.ok
                                 && usersResponse.ok && billsResponse.ok && billDetailsResponse.ok, cartsResponse.ok && comboDetailsResponse.ok
                                 && deliveriesResponse.ok && deliveryDetailsResponse.ok && deliveryOrdersResponse.ok && deliveryOrderStatussResponse.ok
-                                && deliveryOrderDetailsResponse.ok && favoritesResponse && inventorisResponse.ok && inventoryBranchsResponse.ok
+                                && deliveryOrderDetailsResponse.ok && favoritesResponse && inventoriesResponse.ok && inventoryBranchsResponse.ok
                                 && menuItemIngredientsResponse.ok && orderThresholdsResponse.ok && mergeTablesResponse.ok && orderTypesResponse.ok
                                 && paymentsResponse.ok && ratingResponse.ok && receiptsResponse.ok && receiptDetailsResponse.ok && reservationsResponse.ok
                                 && restaurantTablesResponse.ok) {
@@ -85,7 +85,7 @@ addEventListener('message', async ({ data }) => {
                                 const deliveryOrderStatussData = await deliveryOrderStatussResponse.json();
                                 const deliveryOrderDetailsData = await deliveryOrderDetailsResponse.json();
                                 const favoritesData = await favoritesResponse.json();
-                                const inventorisData = await inventorisResponse.json();
+                                const inventoriesData = await inventoriesResponse.json();
                                 const inventoryBranchsData = await inventoryBranchsResponse.json();
                                 const menuItemIngredientsData = await menuItemIngredientsResponse.json();
                                 const orderThresholdsData = await orderThresholdsResponse.json();
@@ -122,7 +122,7 @@ addEventListener('message', async ({ data }) => {
                                 postMessage({ type: 'deliveryOrderStatuss', data: deliveryOrderStatussData });
                                 postMessage({ type: 'deliveryOrderDetails', data: deliveryOrderDetailsData });
                                 postMessage({ type: 'favorites', data: favoritesData });
-                                postMessage({ type: 'inventoris', data: inventorisData });
+                                postMessage({ type: 'inventories', data: inventoriesData });
                                 postMessage({ type: 'inventoryBranches', data: inventoryBranchsData });
                                 postMessage({ type: 'menuItemIngredients', data: menuItemIngredientsData });
                                 postMessage({ type: 'orderThresholds', data: orderThresholdsData });
