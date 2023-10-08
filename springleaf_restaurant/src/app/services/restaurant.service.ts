@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class RestaurantService {
 
-    private restaurantUrl = 'restaurants'; // URL to web api, không cần thêm base URL
+    private restaurantsUrl = 'restaurants'; // URL to web api, không cần thêm base URL
     restaurantsCache: Restaurant[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
@@ -21,7 +21,7 @@ export class RestaurantService {
             return of(this.restaurantsCache);
         }
 
-        const restaurantsObservable = this.apiService.request<Restaurant[]>('get', this.restaurantUrl);
+        const restaurantsObservable = this.apiService.request<Restaurant[]>('get', this.restaurantsUrl);
 
         // Cache the categories observable
         restaurantsObservable.subscribe(data => {

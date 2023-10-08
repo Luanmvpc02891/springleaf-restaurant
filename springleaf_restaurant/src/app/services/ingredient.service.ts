@@ -10,7 +10,8 @@ import { Ingredient } from '../interfaces/ingredient';
 })
 export class IngredientService {
 
-    private IngredientsUrl = 'ingredients'; // URL to web api, không cần thêm base URL
+    private ingredientsUrl = 'ingredients'; // URL to web api, không cần thêm base URL
+    private ingredientUrl = 'ingredients';
     ingredientsCache: Ingredient[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
@@ -23,7 +24,7 @@ export class IngredientService {
             return of(this.ingredientsCache);
         }
 
-        const ingredientsObservable = this.apiService.request<Ingredient[]>('get', this.IngredientsUrl);
+        const ingredientsObservable = this.apiService.request<Ingredient[]>('get', this.ingredientsUrl);
 
         // Cache the categories observable
         ingredientsObservable.subscribe(data => {
@@ -33,6 +34,26 @@ export class IngredientService {
         return ingredientsObservable;
     }
 
+    // Lấy sản phẩm theo ID
+    getIngredient(id: number): Observable<Ingredient> {
+        // Check if categoriesCache is null or empty
+        if (!this.ingredientsCache) {
+            // Fetch the data from the API if cache is empty
+            const url = `${this.ingredientsUrl}/${id}`;
+            return this.apiService.request<Ingredient>('get', url);
+        }
 
+        // Try to find the Category in the cache by its id
+        const CategoryFromCache = this.ingredientsCache.find(Ingredient => Ingredient.ingredientId === id);
+
+        if (CategoryFromCache) {
+            // If found in cache, return it as an observable
+            return of(CategoryFromCache);
+        } else {
+            // If not found in cache, fetch it from the API
+            const url = `${this.ingredientUrl}/${id}`;
+            return this.apiService.request<Ingredient>('get', url);
+        }
+    }
 
 }

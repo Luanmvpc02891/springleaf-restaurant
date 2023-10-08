@@ -23,7 +23,7 @@ export class ApiService {
       case 'get':
         return this.http.get<T>(url, { headers }).pipe(
           tap(response => {
-            console.log(response);
+            // console.log(response);
 
 
           }),
@@ -32,7 +32,7 @@ export class ApiService {
       case 'post':
         return this.http.post<T>(url, data, { headers }).pipe(
           tap(response => {
-            console.log(response);
+            // console.log(response);
 
           }),
           catchError(this.handleError<T>(`POST ${url}`))
@@ -40,7 +40,7 @@ export class ApiService {
       case 'put':
         return this.http.put<T>(url, data, { headers }).pipe(
           tap(response => {
-            console.log(response);
+            // console.log(response);
 
           }),
           catchError(this.handleError<T>(`PUT ${url}`))
