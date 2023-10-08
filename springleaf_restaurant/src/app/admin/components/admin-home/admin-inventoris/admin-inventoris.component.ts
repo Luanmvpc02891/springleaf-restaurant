@@ -9,6 +9,7 @@ import { InventoryService } from 'src/app/services/inventory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
 import { AdminInventoryDetailComponent } from '../admin-inventory-detail/admin-inventory-detail.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-inventoris',
@@ -43,14 +44,21 @@ export class AdminInventorisComponent {
     this.getSuppliers();
 
   }
+
   getIngredients(): void {
     this.ingredientService.getIngredients()
       .subscribe(ingredient => this.ingredients = ingredient);
   }
+
+  getIngredientById(ingredientId: number): Observable<Ingredient> {
+    return this.ingredientService.getIngredient(ingredientId);
+  }
+
   getInventories(): void {
     this.inventoryService.getInventories()
       .subscribe(inventories => this.inventories = inventories);
   }
+
   getSuppliers(): void {
     this.supplierService.getSupplier()
       .subscribe(supplier => this.suppliers = supplier);

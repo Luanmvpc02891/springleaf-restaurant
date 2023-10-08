@@ -21,8 +21,9 @@ public class InventoryRestController {
     private InventoryRepository inventoryRepository;
 
     @GetMapping("/inventories")
-    public List<Object[]> getInventoryInfo() {
-        return inventoryRepository.getInventoryInfo();
+    public List<Inventory> getInventoryInfo() {
+        //return inventoryRepository.getInventoryInfo();
+        return inventoryRepository.findAll();
     }
 
     @PostMapping("/inventory")
