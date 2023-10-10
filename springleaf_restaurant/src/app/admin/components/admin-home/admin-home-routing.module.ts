@@ -45,10 +45,17 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'inventoris',
+        path: 'inventories',
         loadChildren: () =>
-          import('./admin-inventoris/admin-inventoris.module').then(
-            (m) => m.AdminInventorisModule
+          import('./admin-inventories/admin-inventories.module').then(
+            (m) => m.AdminInventoriesModule
+          ),
+      },
+      {
+        path: 'tables',
+        loadChildren: () =>
+          import('./admin-tables/admin-tables.module').then(
+            (m) => m.AdminTablesModule
           ),
       }
 

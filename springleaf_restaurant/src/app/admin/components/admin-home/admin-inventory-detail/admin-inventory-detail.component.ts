@@ -58,7 +58,7 @@ export class AdminInventoryDetailComponent implements OnInit {
   }
 
   getSuppliers(): void {
-    this.supplierService.getSupplier()
+    this.supplierService.getSuppliers()
       .subscribe(supplier => this.suppliers = supplier);
   }
 
@@ -66,25 +66,22 @@ export class AdminInventoryDetailComponent implements OnInit {
     this.ingredientService.getIngredients()
       .subscribe(ingredient => this.ingredients = ingredient);
   }
-  // saveInventory(): void {
-  //   this.activeModal.close('Close after saving');
-  //   if (this.inventoryForm.valid) {
 
-  //     const inventoryId = this.inventoryForm.get('inventoryId')?.value;
-  //     const ingredientId = this.inventoryForm.get('ingredient')?.value;
-  //     const supplierId = this.inventoryForm.get('supplier')?.value;
+  saveInventory(): void {
+    this.activeModal.close('Close after saving');
+    if (this.inventoryForm.valid) {
+      const updatedInventory: Inventory = {
+        inventoryId: this.inventoryForm.get('inventoryId')?.value,
+        ingredientId: this.inventoryForm.get('ingredientId')?.value,
+        supplierId: this.inventoryForm.get('supplierId')?.value,
+      };
+      console.log("Giá trị update là: " + updatedInventory)
 
-  //     // Tạo một đối tượng Inventory và gán giá trị
-  //     const updatedInventory: Inventory = {
-  //       inventoryId,
-  //       ingredientId: { ingredientId, name: '', description: '', orderThreshold: 0 },
-  //       supplierId: { supplierId, name: '', address: '', phone: 0, email: '' },
-  //     };
-  //     this.inventoryService.updateInventory(updatedInventory).subscribe(() => {
-  //       // Cập nhật cache
-  //       this.inventoryService.updateInventoryCache(updatedInventory);
+      this.inventoryService.updateInventory(updatedInventory).subscribe(() => {
+        // Cập nhật cache
+        this.inventoryService.updatedInventoryCache(updatedInventory);
+      });
+    }
+  }
 
-  //     });
-  //   }
-  // }
 }

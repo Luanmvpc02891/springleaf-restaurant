@@ -35,6 +35,7 @@ import { ReceiptService } from './services/receipt.service';
 import { ReceiptDetailService } from './services/receipt-detail.service';
 import { ReservationService } from './services/reservation.service';
 import { RestaurantTableService } from './services/restaurant-table.service';
+import { TableTypeService } from './services/table-type.service';
 
 @Component({
   selector: 'app-root',
@@ -82,7 +83,9 @@ export class AppComponent {
     private receiptService: ReceiptService,
     private receiptDetailService: ReceiptDetailService,
     private reservationService: ReservationService,
-    private restaurantTableService: RestaurantTableService
+    private restaurantTableService: RestaurantTableService,
+    private tableTypeService: TableTypeService
+
   ) {
     this.callAPIsWorker = new Worker(new URL('./call-apis.worker', import.meta.url));
     this.callAllApis();
@@ -228,8 +231,12 @@ export class AppComponent {
         console.log('Received reservations:', data.data);
         // Các xử lý khác nếu cần
       } else if (data.type === 'restaurantTables') {
-        this.restaurantService.restaurantsCache = data.data;
+        this.restaurantTableService.restaurantTablesCache = data.data;
         console.log('Received restaurantTables:', data.data);
+        // Các xử lý khác nếu cần
+      } else if (data.type === 'tableTypes') {
+        this.tableTypeService.tableTypesCache = data.data;
+        console.log('Received tableTypes:', data.data);
         // Các xử lý khác nếu cần
       }
 

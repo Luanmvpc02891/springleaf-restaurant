@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Ingredient } from 'src/app/interfaces/ingredient';
@@ -13,10 +13,11 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-inventoris',
-  templateUrl: './admin-inventoris.component.html',
-  styleUrls: ['./admin-inventoris.component.css']
+  templateUrl: './admin-inventories.component.html',
+  styleUrls: ['./admin-inventories.component.css'],
+
 })
-export class AdminInventorisComponent {
+export class AdminInventoriesComponent {
   inventories: Inventory[] = [];
   ingredients: Ingredient[] = [];
   suppliers: Supplier[] = [];
@@ -30,7 +31,8 @@ export class AdminInventorisComponent {
     private ingredientService: IngredientService,
     private supplierService: SupplierService,
     private formBuilder: FormBuilder,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private zone: NgZone) {
     this.inventoryForm = this.formBuilder.group({
       inventoryId: ['', [Validators.required]],
       ingredientId: ['', [Validators.required]],
@@ -54,13 +56,17 @@ export class AdminInventorisComponent {
     return this.ingredientService.getIngredient(ingredientId);
   }
 
+  getSupplierById(supplierId: number): Observable<Supplier> {
+    return this.supplierService.getSupplier(supplierId);
+  }
+
   getInventories(): void {
     this.inventoryService.getInventories()
       .subscribe(inventories => this.inventories = inventories);
   }
 
   getSuppliers(): void {
-    this.supplierService.getSupplier()
+    this.supplierService.getSuppliers()
       .subscribe(supplier => this.suppliers = supplier);
   }
 
@@ -88,7 +94,7 @@ export class AdminInventorisComponent {
         // Lấy tên của thành phần và nhà cung cấp dựa vào ID 
         this.inventories.push(inventory);
         // Cập nhật inventoriesCache trong service
-        this.inventoryService.updateInventoryCache(this.inventories);
+        // this.inventoryService.updateInventoryCache(this.inventories);
 
         this.inventoryForm.reset();
       });

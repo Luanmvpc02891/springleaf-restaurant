@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springleaf_restaurant_backend.user.entities.TableStatus;
 
-public interface TableStatusRepository extends JpaRepository<TableStatus, Integer> {
+public interface TableStatusRepository extends JpaRepository<TableStatus, Long> {
 
 }

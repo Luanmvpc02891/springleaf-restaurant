@@ -1,11 +1,6 @@
 <div class="container">
     <h1>Kho</h1>
     <form [formGroup]="inventoryForm" (ngSubmit)="addInventory()">
-        <!-- <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">ID</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div> -->
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Ingredient</label>
             <div class="mb-3">
@@ -41,7 +36,7 @@
                 <td>{{item.inventoryId}}</td>
                 <td>{{ (getIngredientById(item.ingredientId) | async)?.name }}</td>
                 <!-- Lưu ý rằng khi bạn sử dụng async pipe, bạn không cần phải subscribe vào Observable trong component, async pipe sẽ tự động quản lý việc subscribe và unsubscribe cho bạn. -->
-                <td>{{item.supplierId}}</td>
+                <td>{{ (getSupplierById(item.supplierId) | async)?.name }}</td>
                 <td><button type="button" class="btn btn-outline-primary"
                         (click)="openInventoryDetailModal(item)">Edit</button>
                     <button type="button" class="btn btn-outline-danger" (click)="deleteInventory(item)">Delete</button>

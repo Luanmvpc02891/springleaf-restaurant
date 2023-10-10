@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inventory } from 'src/app/interfaces/inventory';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ApiService } from 'src/app/services/api.service';
 
 @Injectable({
@@ -14,25 +14,25 @@ export class InventoryService {
     private inventoryUrl = 'inventory';
     inventoriesCache: Inventory[] | null = null;
 
-    constructor(private apiService: ApiService, private httpClient: HttpClient) { }
+    constructor(private apiService: ApiService) { }
 
     // Sử dụng ApiService để gửi yêu cầu GET
     getInventories(): Observable<Inventory[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
         if (this.inventoriesCache) {
-            console.log("Có categories cache");
+            console.log("Có inventories cache");
             return of(this.inventoriesCache);
         }
 
         console.log("Không có categories cache")
-        const categoriesObservable = this.apiService.request<Inventory[]>('get', this.inventoriesUrl);
+        const inventoriesObservable = this.apiService.request<Inventory[]>('get', this.inventoriesUrl);
 
         // Cache the categories observable
-        categoriesObservable.subscribe(data => {
+        inventoriesObservable.subscribe(data => {
             this.inventoriesCache = data; // Store the fetched data in the cache
         });
 
-        return categoriesObservable;
+        return inventoriesObservable;
     }
 
     addInventory(newInventory: Inventory): Observable<Inventory> {
@@ -46,8 +46,36 @@ export class InventoryService {
             })
         );
     }
-    updateInventoryCache(inventories: Inventory[]): void {
-        this.inventoriesCache = inventories;
+    //update cache
+    // updateInventoryCache(inventories: Inventory[]): void {
+    //     this.inventoriesCache = inventories;
+    // }
+
+    // Cập nhật sản phẩm
+
+    updateInventory(updatedInventory: Inventory): Observable<any> {
+        const url = `${this.inventoryUrl}/${updatedInventory.inventoryId}`;
+        return this.apiService.request('put', url, updatedInventory).pipe(
+            tap(() => {
+                // Cập nhật danh sách cache sau khi cập nhật danh mục
+                const index = this.inventoriesCache!.findIndex(cat => cat.inventoryId === updatedInventory.inventoryId);
+                if (index !== -1) {
+                    this.inventoriesCache![index] = updatedInventory;
+                }
+            })
+        );
+    }
+
+
+    //cập nhật cache
+    updatedInventoryCache(updatedInventory: Inventory): void {
+        // Check if categoriesCache is null
+        if (this.inventoriesCache) {
+            const index = this.inventoriesCache.findIndex(cat => cat.inventoryId === updatedInventory.inventoryId);
+            if (index !== -1) {
+                this.inventoriesCache[index] = updatedInventory;
+            }
+        }
     }
 
     deleteInventory(id: number): Observable<any> {

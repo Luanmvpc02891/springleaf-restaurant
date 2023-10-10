@@ -1,6 +1,6 @@
 import { Table } from '../interfaces/table';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -11,7 +11,7 @@ export class TableService {
 
     private tablesUrl = 'restaurantTables'; // URL to web api, không cần thêm base URL
     tablesCache: Table[] | null = null; // Cache for categories
-
+    private tableUrl = 'restaurantTable'
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
@@ -30,7 +30,17 @@ export class TableService {
 
         return tablesObservable;
     }
-
+    addTable(newTable: Table): Observable<Table> {
+        return this.apiService.request<Table>('post', this.tableUrl, newTable).pipe(
+            map(addTable => {
+                // Sau khi thêm thành công, cập nhật cache bằng cách thêm sản phẩm mới vào mảng inventoriesCache
+                if (this.tablesCache) {
+                    this.tablesCache.push(addTable);
+                }
+                return addTable;
+            })
+        );
+    }
 
 
 }

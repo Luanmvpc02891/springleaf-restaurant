@@ -30,6 +30,27 @@ export class RestaurantService {
 
         return restaurantsObservable;
     }
+    // Lấy tên theo ID
+    getRestaurant(id: number): Observable<Restaurant> {
+        // Check if categoriesCache is null or empty
+        if (!this.restaurantsCache) {
+            // Fetch the data from the API if cache is empty
+            const url = `${this.restaurantsUrl}/${id}`;
+            return this.apiService.request<Restaurant>('get', url);
+        }
+
+        // Try to find the Category in the cache by its id
+        const RestaurantFromCache = this.restaurantsCache.find(Restaurant => Restaurant.restaurantId === id);
+
+        if (RestaurantFromCache) {
+            // If found in cache, return it as an observable
+            return of(RestaurantFromCache);
+        } else {
+            // If not found in cache, fetch it from the API
+            const url = `${this.restaurantsUrl}/${id}`;
+            return this.apiService.request<Restaurant>('get', url);
+        }
+    }
 
 
 

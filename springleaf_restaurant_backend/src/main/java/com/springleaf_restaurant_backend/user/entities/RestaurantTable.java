@@ -19,7 +19,7 @@ public class RestaurantTable {
     private String tableName;
 
     @Column(name = "table_type")
-    private String tableType;
+    private Long tableType;
 
     @Column(name = "table_status")
     private Long tableStatus;

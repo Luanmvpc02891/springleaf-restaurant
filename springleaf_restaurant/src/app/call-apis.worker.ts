@@ -13,7 +13,7 @@ addEventListener('message', async ({ data }) => {
                                 deliveryDetailsResponse, deliveryOrdersResponse, deliveryOrderStatussResponse, deliveryOrderDetailsResponse, favoritesResponse,
                                 inventoriesResponse, inventoryBranchsResponse, menuItemIngredientsResponse, orderThresholdsResponse,
                                 mergeTablesResponse, orderTypesResponse, paymentsResponse, ratingResponse, receiptsResponse,
-                                receiptDetailsResponse, reservationsResponse, restaurantTablesResponse] = await Promise.all([
+                                receiptDetailsResponse, reservationsResponse, restaurantTablesResponse, tableTypesResponse] = await Promise.all([
                                         fetch(`${domain}/categories`),
                                         fetch(`${domain}/products`),
                                         fetch(`${domain}/cartDetails`),
@@ -49,6 +49,7 @@ addEventListener('message', async ({ data }) => {
                                         fetch(`${domain}/receiptDetails`),
                                         fetch(`${domain}/reservations`),
                                         fetch(`${domain}/restaurantTables`),
+                                        fetch(`${domain}/tableTypes`),
 
                                 ]);
 
@@ -60,7 +61,7 @@ addEventListener('message', async ({ data }) => {
                                 && deliveryOrderDetailsResponse.ok && favoritesResponse && inventoriesResponse.ok && inventoryBranchsResponse.ok
                                 && menuItemIngredientsResponse.ok && orderThresholdsResponse.ok && mergeTablesResponse.ok && orderTypesResponse.ok
                                 && paymentsResponse.ok && ratingResponse.ok && receiptsResponse.ok && receiptDetailsResponse.ok && reservationsResponse.ok
-                                && restaurantTablesResponse.ok) {
+                                && restaurantTablesResponse.ok && tableTypesResponse.ok) {
 
                                 const categoriesData = await categoriesResponse.json();
                                 const productsData = await productsResponse.json();
@@ -97,6 +98,7 @@ addEventListener('message', async ({ data }) => {
                                 const receiptDetailsData = await receiptDetailsResponse.json();
                                 const reservationsData = await reservationsResponse.json();
                                 const restauranTablesData = await restaurantTablesResponse.json();
+                                const tableTypesData = await tableTypesResponse.json();
 
 
                                 postMessage({ type: 'categories', data: categoriesData });
@@ -134,6 +136,7 @@ addEventListener('message', async ({ data }) => {
                                 postMessage({ type: 'receiptDetails', data: receiptDetailsData });
                                 postMessage({ type: 'reservations', data: reservationsData });
                                 postMessage({ type: 'restaurantTables', data: restauranTablesData });
+                                postMessage({ type: 'tableTypes', data: tableTypesData });
                         } else {
                                 // Xử lý trường hợp lỗi nếu cần
                         }

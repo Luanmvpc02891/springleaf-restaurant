@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminInventorisComponent } from './admin-inventoris.component';
+import { AdminInventoriesComponent } from './admin-inventories.component';
 
 describe('AdminInventorisComponent', () => {
-  let component: AdminInventorisComponent;
-  let fixture: ComponentFixture<AdminInventorisComponent>;
+  let component: AdminInventoriesComponent;
+  let fixture: ComponentFixture<AdminInventoriesComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminInventorisComponent]
+      declarations: [AdminInventoriesComponent]
     });
-    fixture = TestBed.createComponent(AdminInventorisComponent);
+    fixture = TestBed.createComponent(AdminInventoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
