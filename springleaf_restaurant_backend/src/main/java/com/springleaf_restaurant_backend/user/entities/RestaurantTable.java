@@ -12,6 +12,7 @@ import jakarta.persistence.*;
 @Table(name = "Restaurant_Tables")
 public class RestaurantTable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "table_id")
     private Long tableId;
 

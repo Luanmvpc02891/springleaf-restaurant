@@ -32,14 +32,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of inventories">
-                <td>{{item.inventoryId}}</td>
-                <td>{{ (getIngredientById(item.ingredientId) | async)?.name }}</td>
+            <tr *ngFor="let inventory of inventories">
+                <td>{{inventory.inventoryId}}</td>
+                <td>{{ (getIngredientById(inventory.ingredientId) | async)?.name }}</td>
                 <!-- Lưu ý rằng khi bạn sử dụng async pipe, bạn không cần phải subscribe vào Observable trong component, async pipe sẽ tự động quản lý việc subscribe và unsubscribe cho bạn. -->
-                <td>{{ (getSupplierById(item.supplierId) | async)?.name }}</td>
+                <td>{{ (getSupplierById(inventory.supplierId) | async)?.name }}</td>
                 <td><button type="button" class="btn btn-outline-primary"
-                        (click)="openInventoryDetailModal(item)">Edit</button>
-                    <button type="button" class="btn btn-outline-danger" (click)="deleteInventory(item)">Delete</button>
+                        (click)="openInventoryDetailModal(inventory)">Edit</button>
+                    <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteInventory(inventory)">Delete</button>
                 </td>
             </tr>
         </tbody>

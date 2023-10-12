@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Inventory } from 'src/app/interfaces/inventory';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable, of, tap } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ApiService } from 'src/app/services/api.service';
 
 @Injectable({
@@ -46,11 +46,6 @@ export class InventoryService {
             })
         );
     }
-    //update cache
-    // updateInventoryCache(inventories: Inventory[]): void {
-    //     this.inventoriesCache = inventories;
-    // }
-
     // Cập nhật sản phẩm
 
     updateInventory(updatedInventory: Inventory): Observable<any> {

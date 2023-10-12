@@ -34,7 +34,6 @@ import { RatingService } from './services/rating.service';
 import { ReceiptService } from './services/receipt.service';
 import { ReceiptDetailService } from './services/receipt-detail.service';
 import { ReservationService } from './services/reservation.service';
-import { RestaurantTableService } from './services/restaurant-table.service';
 import { TableTypeService } from './services/table-type.service';
 
 @Component({
@@ -83,7 +82,6 @@ export class AppComponent {
     private receiptService: ReceiptService,
     private receiptDetailService: ReceiptDetailService,
     private reservationService: ReservationService,
-    private restaurantTableService: RestaurantTableService,
     private tableTypeService: TableTypeService
 
   ) {
@@ -229,10 +227,6 @@ export class AppComponent {
       } else if (data.type === 'reservations') {
         this.reservationService.reservationsCache = data.data;
         console.log('Received reservations:', data.data);
-        // Các xử lý khác nếu cần
-      } else if (data.type === 'restaurantTables') {
-        this.restaurantTableService.restaurantTablesCache = data.data;
-        console.log('Received restaurantTables:', data.data);
         // Các xử lý khác nếu cần
       } else if (data.type === 'tableTypes') {
         this.tableTypeService.tableTypesCache = data.data;

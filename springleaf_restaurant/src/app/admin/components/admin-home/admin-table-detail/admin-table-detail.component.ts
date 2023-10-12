@@ -1,7 +1,7 @@
 import { Component, Input, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Restaurant } from 'src/app/interfaces/restaurant';
 import { Table } from 'src/app/interfaces/table';
 import { TableStatus } from 'src/app/interfaces/table-status';
@@ -26,6 +26,7 @@ export class AdminTableDetailComponent {
   table: Table | undefined;
   tableForm: FormGroup;
 
+
   constructor(
     private tableService: TableService,
     private route: ActivatedRoute,
@@ -34,6 +35,7 @@ export class AdminTableDetailComponent {
     private restaurantService: RestaurantService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
+    public activeModal: NgbActiveModal,
     private zone: NgZone) {
     this.tableForm = this.formBuilder.group({
       tableId: ['', [Validators.required]],
@@ -83,4 +85,21 @@ export class AdminTableDetailComponent {
       .subscribe(restaurants => this.restaurants = restaurants);
   }
 
+  updateTable(): void {
+    this.activeModal.close('Close after saving');
+    if (this.tableForm.valid) {
+      const updatedTable: Table = {
+        tableId: this.tableForm.get('tableId')?.value,
+        tableName: this.tableForm.get('tableName')?.value,
+        tableStatus: this.tableForm.get('tableStatus')?.value,
+        tableType: this.tableForm.get('tableType')?.value,
+        restaurantId: this.tableForm.get('restaurantId')?.value
+
+      };
+      this.tableService.updateTable(updatedTable).subscribe(() => {
+        // Cập nhật cache
+        this.tableService.updateTableCache(updatedTable);
+      });
+    }
+  }
 }

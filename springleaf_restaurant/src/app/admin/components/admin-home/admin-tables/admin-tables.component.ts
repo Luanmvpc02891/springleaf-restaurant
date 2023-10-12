@@ -55,7 +55,7 @@ export class AdminTablesComponent {
 
   getTable(): void {
     this.tableService.getTables()
-      .subscribe(tables => this.tables = tables);
+      .subscribe(table => this.tables = table);
   }
 
   getTableTypeById(tableType: number): Observable<TableType> {
@@ -94,12 +94,12 @@ export class AdminTablesComponent {
     const tableType = this.tableForm.get('tableType')?.value;
     const tableStatus = this.tableForm.get('tableStatus')?.value;
     const restaurantId = this.tableForm.get('restaurantId')?.value;
-
+    console.log("Giá trị đâu :" + tableName);
     // Kiểm tra xem người dùng đã chọn giá trị hợp lệ cho cả hai trường chưa
-    if (!tableName || !tableType || !tableStatus || !restaurantId) {
-      alert('Vui lòng chọn');
-      return;
-    }
+    // if (!tableName || !tableType || !tableStatus || !restaurantId) {
+    //   alert('Vui lòng chọn');
+    //   return;
+    // }
 
     // Tạo một đối tượng Inventory và gán giá trị
     const newTable: Table = {
@@ -120,5 +120,9 @@ export class AdminTablesComponent {
         this.tableForm.reset();
       });
 
+  }
+  deleteTable(table: Table): void {
+    this.tables = this.tables.filter(i => i !== table);
+    this.tableService.deleteTable(table.tableId).subscribe();
   }
 }

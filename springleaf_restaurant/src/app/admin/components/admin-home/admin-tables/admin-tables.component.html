@@ -63,7 +63,7 @@
         <td>{{ (getTableStatusById(table.tableStatus) | async)?.name }}</td>
         <td>{{ (getTableTypeById(table.tableType) | async)?.name }}</td>
         <td><button type="button" class="btn btn-outline-primary" (click)="openTableDetailModal(table)">Edit</button>
-          <button type="button" class="btn btn-outline-danger">Delete</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteTable(table)">Delete</button>
         </td>
       </tr>
     </tbody>

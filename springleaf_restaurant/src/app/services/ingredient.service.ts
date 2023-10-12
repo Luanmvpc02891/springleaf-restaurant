@@ -39,7 +39,7 @@ export class IngredientService {
         // Check if categoriesCache is null or empty
         if (!this.ingredientsCache) {
             // Fetch the data from the API if cache is empty
-            const url = `${this.ingredientsUrl}/${id}`;
+            const url = `${this.ingredientUrl}/${id}`;
             return this.apiService.request<Ingredient>('get', url);
         }
 

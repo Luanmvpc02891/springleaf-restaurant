@@ -11,9 +11,9 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class TableStatusService {
 
-    private tableStatusUrl = 'tableStatuses'; // URL to web api, không cần thêm base URL
+    private tableStatusesUrl = 'tableStatuses'; // URL to web api, không cần thêm base URL
     tableStatusesCache: TableStatus[] | null = null; // Cache for categories
-
+    private tableStatusUrl = 'tableStatuses';
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
@@ -23,7 +23,7 @@ export class TableStatusService {
             return of(this.tableStatusesCache);
         }
 
-        const combosObservable = this.apiService.request<TableStatus[]>('get', this.tableStatusUrl);
+        const combosObservable = this.apiService.request<TableStatus[]>('get', this.tableStatusesUrl);
 
         // Cache the categories observable
         combosObservable.subscribe(data => {

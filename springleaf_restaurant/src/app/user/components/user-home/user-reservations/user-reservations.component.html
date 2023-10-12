@@ -1,0 +1,84 @@
+<div class="container">
+  <h1>Đặt bàn</h1>
+  <form [formGroup]="reservationForm">
+    <div class="row">
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">ID</label>
+        <div class="mb-3">
+          <input type="text" class="form-control" formControlName="reservationId">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">Tên khách hàng</label>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example" formControlName="userName">
+            <option selected>Chọn</option>
+            <option *ngFor="let user of users " [value]="user.userId">{{
+              user.lastName
+              }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">Thời gian đặt</label>
+        <div class="mb-3">
+          <input type="text" class="form-control" formControlName="reservationDate">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">Số lượng khách</label>
+        <div class="mb-3">
+          <input type="number" class="form-control" formControlName="numberOfGuest">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">Bàn</label>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example" formControlName="tableStatus">
+            <option [value]="">Chọn bàn</option>
+            <option *ngFor="let table of tables" [value]="table.tableId"> {{ table.tableName
+              }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">OrderId</label>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example" formControlName="tableStatus">
+            <option [value]="">Chọn OrderId</option>
+            <option *ngFor="let cart of carts" [value]="cart.orderId"> {{ cart.orderId
+              }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tên bàn</th>
+        <th scope="col">Restaurant</th>
+        <th scope="col">Status</th>
+        <th scope="col">Type</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr *ngFor="let table of tables">
+        <td>{{table.tableId}}</td>
+        <td>{{table.tableName}}</td>
+        <td>{{ (getRestaurantById(table.restaurantId) | async)?.restaurantName }}</td>
+      
+        <td>{{ (getTableStatusById(table.tableStatus) | async)?.name }}</td>
+        <td>{{ (getTableTypeById(table.tableType) | async)?.name }}</td>
+        <td><button type="button" class="btn btn-outline-primary" (click)="openTableDetailModal(table)">Edit</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteTable(table)">Delete</button>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>

@@ -1,4 +1,3 @@
-import { Table } from '../interfaces/table';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
@@ -12,7 +11,7 @@ export class TableTypeService {
 
   private tableTypesUrl = 'tableTypes'; // URL to web api, không cần thêm base URL
   tableTypesCache: TableType[] | null = null; // Cache for categories
-
+  private tableTypeUrl = 'tableType';
   constructor(private apiService: ApiService) { } // Inject ApiService
 
   // Sử dụng ApiService để gửi yêu cầu GET
@@ -36,7 +35,7 @@ export class TableTypeService {
     // Check if categoriesCache is null or empty
     if (!this.tableTypesCache) {
       // Fetch the data from the API if cache is empty
-      const url = `${this.tableTypesUrl}/${id}`;
+      const url = `${this.tableTypeUrl}/${id}`;
       return this.apiService.request<TableType>('get', url);
     }
 
@@ -48,7 +47,7 @@ export class TableTypeService {
       return of(TableTypeFromCache);
     } else {
       // If not found in cache, fetch it from the API
-      const url = `${this.tableTypesUrl}/${id}`;
+      const url = `${this.tableTypeUrl}/${id}`;
       return this.apiService.request<TableType>('get', url);
     }
   }

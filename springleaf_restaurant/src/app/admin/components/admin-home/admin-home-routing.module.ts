@@ -36,6 +36,12 @@ const routes: Routes = [
           import('./admin-suppliers/admin-suppliers.module').then(
             (m) => m.AdminSuppliersModule
           ),
+      }, {
+        path: 'products',
+        loadChildren: () =>
+          import('./admin-products/admin-products.module').then(
+            (m) => m.AdminProductsModule
+          ),
       },
       {
         path: 'ingredients',

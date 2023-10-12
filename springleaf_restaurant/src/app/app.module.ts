@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import localeVi from '@angular/common/locales/vi';
 import { AppComponent } from './app.component';
 
 import { UserHomeComponent } from './user/components/user-home/user-home.component';
@@ -36,11 +36,12 @@ import { ChatService } from './services/chat.service';
 import { LoginComponent } from './components/login/login.component';
 import { AdminCategoriesComponent } from './admin/components/admin-home/admin-categories/admin-categories.component';
 import { AdminCategoryDetailComponent } from './admin/components/admin-home/admin-category-detail/admin-category-detail.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { AdminInventoriesComponent } from './admin/components/admin-home/admin-inventories/admin-inventories.component';
 import { AdminInventoryDetailComponent } from './admin/components/admin-home/admin-inventory-detail/admin-inventory-detail.component';
 import { AdminTablesComponent } from './admin/components/admin-home/admin-tables/admin-tables.component';
 import { AdminTableDetailComponent } from './admin/components/admin-home/admin-table-detail/admin-table-detail.component';
+import { UserReservationsComponent } from './user/components/user-home/user-reservations/user-reservations.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { AdminTableDetailComponent } from './admin/components/admin-home/admin-t
     UserEventsComponent,
     UserTablesComponent,
     UserRestaurantsComponent,
+    UserReservationsComponent,
 
     AdminHeaderComponent,
     AdminProductsComponent,
@@ -76,6 +78,7 @@ import { AdminTableDetailComponent } from './admin/components/admin-home/admin-t
     AdminTablesComponent,
     AdminTableDetailComponent,
 
+
     ChatComponent,
     LoginComponent,
 
@@ -89,11 +92,15 @@ import { AdminTableDetailComponent } from './admin/components/admin-home/admin-t
     CommonModule, // Import CommonModule here
     FormsModule,
     ReactiveFormsModule,
+
   ],
   providers: [
     WebSocketService,
-    ChatService
+    ChatService,
+    { provide: LOCALE_ID, useValue: 'vi' }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// Thêm dòng sau vào để đăng ký ngôn ngữ tiếng Việt
+registerLocaleData(localeVi);

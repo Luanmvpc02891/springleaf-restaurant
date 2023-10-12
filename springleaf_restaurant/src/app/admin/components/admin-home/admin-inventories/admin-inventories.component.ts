@@ -34,7 +34,7 @@ export class AdminInventoriesComponent {
     private modalService: NgbModal,
     private zone: NgZone) {
     this.inventoryForm = this.formBuilder.group({
-      inventoryId: ['', [Validators.required]],
+      // inventoryId: ['', [Validators.required]],
       ingredientId: ['', [Validators.required]],
       supplierId: ['', [Validators.required]]
     });

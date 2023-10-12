@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 @Table(name = "Role_Functions")
 public class RoleFunction {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_function_id")
     private String roleFunctionId;
 

@@ -11,6 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class UserService {
 
     private usersUrl = 'users'; // URL to web api, không cần thêm base URL
+    private userUrl = 'user';
     usersCache: User[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
@@ -32,6 +33,26 @@ export class UserService {
         return usersObservable;
     }
 
+    // Lấy tên theo ID
+    getUser(id: number): Observable<User> {
+        // Check if categoriesCache is null or empty
+        if (!this.usersCache) {
+            // Fetch the data from the API if cache is empty
+            const url = `${this.usersUrl}/${id}`;
+            return this.apiService.request<User>('get', url);
+        }
 
+        // Try to find the Category in the cache by its id
+        const UserFromCache = this.usersCache.find(User => User.userId === id);
+
+        if (UserFromCache) {
+            // If found in cache, return it as an observable
+            return of(UserFromCache);
+        } else {
+            // If not found in cache, fetch it from the API
+            const url = `${this.usersUrl}/${id}`;
+            return this.apiService.request<User>('get', url);
+        }
+    }
 
 }
