@@ -1,7 +1,7 @@
-import { Restaurant } from '../interfaces/restaurant';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import { Restaurant } from '../interfaces/restaurant';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ export class RestaurantService {
 
     private restaurantsUrl = 'restaurants'; // URL to web api, không cần thêm base URL
     restaurantsCache: Restaurant[] | null = null; // Cache for categories
-
+    private restaurantUrl = 'restaurant';
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
@@ -35,7 +35,7 @@ export class RestaurantService {
         // Check if categoriesCache is null or empty
         if (!this.restaurantsCache) {
             // Fetch the data from the API if cache is empty
-            const url = `${this.restaurantsUrl}/${id}`;
+            const url = `${this.restaurantUrl}/${id}`;
             return this.apiService.request<Restaurant>('get', url);
         }
 
@@ -47,7 +47,7 @@ export class RestaurantService {
             return of(RestaurantFromCache);
         } else {
             // If not found in cache, fetch it from the API
-            const url = `${this.restaurantsUrl}/${id}`;
+            const url = `${this.restaurantUrl}/${id}`;
             return this.apiService.request<Restaurant>('get', url);
         }
     }

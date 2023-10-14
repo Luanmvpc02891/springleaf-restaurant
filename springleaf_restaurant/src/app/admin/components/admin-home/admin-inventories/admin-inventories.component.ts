@@ -1,6 +1,8 @@
 import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Inventory } from 'src/app/interfaces/inventory';
 import { Supplier } from 'src/app/interfaces/supplier';
@@ -8,8 +10,6 @@ import { IngredientService } from 'src/app/services/ingredient.service';
 import { InventoryService } from 'src/app/services/inventory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
 import { AdminInventoryDetailComponent } from '../admin-inventory-detail/admin-inventory-detail.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-inventoris',
@@ -105,9 +105,15 @@ export class AdminInventoriesComponent {
     this.inventoryService.deleteInventory(inventory.inventoryId).subscribe();
   }
   openInventoryDetailModal(inventory: Inventory) {
-    //this.getCategory();
     const modalRef = this.modalService.open(AdminInventoryDetailComponent, { size: 'lg' });
     modalRef.componentInstance.inventory = inventory;
 
+    modalRef.result.then((result) => {
+      if (result === 'Close after saving') {
+        // Sau khi đóng modal và cập nhật dữ liệu, cập nhật lại danh sách inventories
+        this.getInventories();
+      }
+    });
   }
+
 }

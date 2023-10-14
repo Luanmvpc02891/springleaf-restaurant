@@ -18,12 +18,20 @@
         <div class="mb-3">
           <input type="text" formControlName="name" class="form-control">
         </div>
+        <div
+          *ngIf="productForm.get('name')?.invalid && (productForm.get('name')?.dirty || productForm.get('name')?.touched)"
+          class="alert alert-danger">Không bỏ trống!
+        </div> <br>
       </div>
       <div class="col-sm-3">
         <label for="exampleInputPassword1" class="form-label">Giá</label>
         <div class="mb-3">
-          <input type="number" formControlName="price" class="form-control" formControlName="price">
+          <input type="number" formControlName="price" class="form-control">
         </div>
+        <div
+          *ngIf="productForm.get('price')?.invalid && (productForm.get('price')?.dirty || productForm.get('price')?.touched)"
+          class="alert alert-danger">Không bỏ trống!
+        </div> <br>
       </div>
       <div class="col-sm-3">
         <label for="exampleInputPassword1" class="form-label">ImageUrl</label>
@@ -47,6 +55,10 @@
             </option>
           </select>
         </div>
+        <div
+          *ngIf="productForm.get('categoryId')?.invalid && (productForm.get('categoryId')?.dirty || productForm.get('categoryId')?.touched)"
+          class="alert alert-danger">Không bỏ trống!
+        </div> <br>
       </div>
       <div class="col-sm-12">
         <label for="exampleInputPassword1" class="form-label">Mô tả</label>

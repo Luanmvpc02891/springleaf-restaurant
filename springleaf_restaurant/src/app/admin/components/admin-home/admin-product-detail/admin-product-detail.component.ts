@@ -13,16 +13,14 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./admin-product-detail.component.css']
 })
 export class AdminProductDetailComponent {
-  @Input()
+  @Input() product: Product | undefined;
   products: Product[] = [];
   categories: Category[] = [];
   productForm: FormGroup;
-  product: Product | undefined;
   fieldNames: string[] = [];
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute,
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,

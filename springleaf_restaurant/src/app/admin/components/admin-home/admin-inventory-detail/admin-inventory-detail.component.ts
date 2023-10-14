@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Inventory } from 'src/app/interfaces/inventory';
@@ -37,10 +37,9 @@ export class AdminInventoryDetailComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.setValue();
     this.getSuppliers();
     this.getIngredients();
-    this.setValue();
-
   }
 
   setValue() {
@@ -52,11 +51,6 @@ export class AdminInventoryDetailComponent implements OnInit {
       });
     }
   }
-  getInventoris(): void {
-    this.inventoryService.getInventories()
-      .subscribe(inventory => this.inventoris = inventory);
-  }
-
   getSuppliers(): void {
     this.supplierService.getSuppliers()
       .subscribe(supplier => this.suppliers = supplier);
@@ -75,10 +69,9 @@ export class AdminInventoryDetailComponent implements OnInit {
         ingredientId: this.inventoryForm.get('ingredientId')?.value,
         supplierId: this.inventoryForm.get('supplierId')?.value,
       };
-      console.log("Giá trị update là: " + updatedInventory)
 
       this.inventoryService.updateInventory(updatedInventory).subscribe(() => {
-        // Cập nhật cache
+        // Cập nhật cache và danh sách inventory sau khi cập nhật
         this.inventoryService.updatedInventoryCache(updatedInventory);
       });
     }

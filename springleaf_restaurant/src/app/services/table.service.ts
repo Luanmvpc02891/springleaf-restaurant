@@ -1,7 +1,7 @@
-import { Table } from '../interfaces/table';
 import { Injectable } from '@angular/core';
 import { Observable, map, of, tap } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import { Table } from '../interfaces/table';
 
 
 @Injectable({
@@ -11,7 +11,7 @@ export class TableService {
 
     private tablesUrl = 'restaurantTables'; // URL to web api, không cần thêm base URL
     tablesCache: Table[] | null = null; // Cache for categories
-    private tableUrl = 'restaurantTable'
+    private tableUrl = 'restaurantTable';
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET

@@ -13,7 +13,7 @@ export class TableStatusService {
 
     private tableStatusesUrl = 'tableStatuses'; // URL to web api, không cần thêm base URL
     tableStatusesCache: TableStatus[] | null = null; // Cache for categories
-    private tableStatusUrl = 'tableStatuses';
+    private tableStatusUrl = 'tableStatus';
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET

@@ -87,6 +87,11 @@ export class AdminTablesComponent {
     //this.getCategory();
     const modalRef = this.modalService.open(AdminTableDetailComponent, { size: 'lg' });
     modalRef.componentInstance.table = table;
+    modalRef.result.then((result) => {
+      if (result === 'Close after saving') {
+        this.getTable();
+      }
+    });
   }
   addTable(): void {
     // Lấy giá trị từ các trường select
@@ -95,13 +100,7 @@ export class AdminTablesComponent {
     const tableStatus = this.tableForm.get('tableStatus')?.value;
     const restaurantId = this.tableForm.get('restaurantId')?.value;
     console.log("Giá trị đâu :" + tableName);
-    // Kiểm tra xem người dùng đã chọn giá trị hợp lệ cho cả hai trường chưa
-    // if (!tableName || !tableType || !tableStatus || !restaurantId) {
-    //   alert('Vui lòng chọn');
-    //   return;
-    // }
 
-    // Tạo một đối tượng Inventory và gán giá trị
     const newTable: Table = {
       tableId: 0, // Không cần gán giá trị cho trường này vì nó có thể được tạo tự động
       tableName: tableName,
@@ -113,10 +112,7 @@ export class AdminTablesComponent {
     this.tableService.addTable(newTable)
       .subscribe(table => {
         console.log('table added:', table);
-        // Lấy tên của thành phần và nhà cung cấp dựa vào ID 
         this.tables.push(table);
-        // Cập nhật inventoriesCache trong service
-        // this.inventoryService.updateInventoryCache(this.inventories);
         this.tableForm.reset();
       });
 

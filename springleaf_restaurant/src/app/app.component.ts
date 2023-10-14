@@ -1,40 +1,40 @@
 
-import { RoleFunctionService } from './services/role-function.service';
-import { TableService } from './services/table.service';
-import { ComboService } from './services/combo.service';
 import { Component } from '@angular/core';
-import { ProductService } from './services/product.service';
-import { CategoryService } from './services/category.service';
-import { EventService } from './services/event.service';
-import { RestaurantService } from './services/restaurant.service';
-import { SupplierService } from './services/supplier.service';
-import { TableStatusService } from './services/table-status.service';
-import { IngredientService } from './services/ingredient.service';
-import { RoleService } from './services/role.service';
-import { UserService } from './services/user.service';
+import { BillDetailService } from './services/bill-detail.service';
 import { BillService } from './services/bill.service';
 import { CartDetailService } from './services/cart-detail.service';
-import { BillDetailService } from './services/bill-detail.service';
 import { CartService } from './services/cart.service';
+import { CategoryService } from './services/category.service';
 import { ComboDetailService } from './services/combo-detail.service';
-import { DeliveryService } from './services/delivery.service';
+import { ComboService } from './services/combo.service';
 import { DeliveryDetailService } from './services/delivery-detail.service';
-import { DeliveryOrderService } from './services/delivery-order.service';
-import { DeliveryOrderStatusService } from './services/delivery-order-status.service';
 import { DeliveryOrderDetailService } from './services/delivery-order-detail.service';
+import { DeliveryOrderStatusService } from './services/delivery-order-status.service';
+import { DeliveryOrderService } from './services/delivery-order.service';
+import { DeliveryService } from './services/delivery.service';
+import { EventService } from './services/event.service';
 import { FavoriteService } from './services/favorite.service';
-import { InventoryService } from './services/inventory.service';
+import { IngredientService } from './services/ingredient.service';
 import { InventoryBranchService } from './services/inventory-branch.service';
+import { InventoryService } from './services/inventory.service';
 import { MenuItemIngredientService } from './services/menu-tem-ingredient.service';
-import { OrderThresholdService } from './services/order-threshold.service';
 import { MergeTableService } from './services/merge-table.service';
+import { OrderThresholdService } from './services/order-threshold.service';
 import { OrderTypeService } from './services/order-type.service';
 import { PaymentService } from './services/payment.service';
+import { ProductService } from './services/product.service';
 import { RatingService } from './services/rating.service';
-import { ReceiptService } from './services/receipt.service';
 import { ReceiptDetailService } from './services/receipt-detail.service';
+import { ReceiptService } from './services/receipt.service';
 import { ReservationService } from './services/reservation.service';
+import { RestaurantService } from './services/restaurant.service';
+import { RoleFunctionService } from './services/role-function.service';
+import { RoleService } from './services/role.service';
+import { SupplierService } from './services/supplier.service';
+import { TableStatusService } from './services/table-status.service';
 import { TableTypeService } from './services/table-type.service';
+import { TableService } from './services/table.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -108,7 +108,7 @@ export class AppComponent {
         this.eventService.eventsCache = data.data;
         console.log('Received events:', data.data);
         // Các xử lý khác nếu cần
-      } else if (data.type === 'tables') {
+      } else if (data.type === 'restaurantTables') {
         this.tableService.tablesCache = data.data;
         console.log('Received tables:', data.data);
         // Các xử lý khác nếu cần

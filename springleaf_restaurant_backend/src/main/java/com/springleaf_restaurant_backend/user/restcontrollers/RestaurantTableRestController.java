@@ -3,7 +3,6 @@ package com.springleaf_restaurant_backend.user.restcontrollers;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.mapping.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springleaf_restaurant_backend.user.entities.Category;
 import com.springleaf_restaurant_backend.user.entities.RestaurantTable;
-import com.springleaf_restaurant_backend.user.entities.User;
 import com.springleaf_restaurant_backend.user.repositories.RestauranTableRepository;
 
 @RestController
@@ -57,7 +54,7 @@ public class RestaurantTableRestController {
         restauranTableRepository.deleteById(tableId);
     }
 
-    @GetMapping("/table/{tableId}")
+    @GetMapping("/restaurantTable/{tableId}")
     public Optional<RestaurantTable> getTableById(@PathVariable("tableId") Long tableId) {
         return restauranTableRepository.findById(tableId);
     }

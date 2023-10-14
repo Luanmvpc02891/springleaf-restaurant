@@ -1,14 +1,13 @@
-import { ActivatedRoute } from '@angular/router';
-import { AdminProductDetailComponent } from './../admin-product-detail/admin-product-detail.component';
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Product } from 'src/app/interfaces/product';
-import { ProductService } from 'src/app/services/product.service';
-import { Category } from 'src/app/interfaces/category';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CategoryService } from 'src/app/services/category.service';
+import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
-import { CurrencyPipe } from '@angular/common';
+import { Category } from 'src/app/interfaces/category';
+import { Product } from 'src/app/interfaces/product';
+import { CategoryService } from 'src/app/services/category.service';
+import { ProductService } from 'src/app/services/product.service';
+import { AdminProductDetailComponent } from './../admin-product-detail/admin-product-detail.component';
 
 @Component({
   selector: 'app-admin-products',
@@ -16,10 +15,10 @@ import { CurrencyPipe } from '@angular/common';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent {
+  product: Product | undefined;
   products: Product[] = [];
   categories: Category[] = [];
   productForm: FormGroup;
-  product: Product | undefined;
 
   constructor(
     private productService: ProductService,
@@ -65,7 +64,7 @@ export class AdminProductsComponent {
 
     // Tạo một đối tượng Inventory và gán giá trị
     const newProduct: Product = {
-      menuItemId: 0, // Không cần gán giá trị cho trường này vì nó có thể được tạo tự động
+      menuItemId: 0,
       name: name,
       price: price,
       description: description,
@@ -80,7 +79,6 @@ export class AdminProductsComponent {
         // Lấy tên của thành phần và nhà cung cấp dựa vào ID 
         this.products.push(product);
         // Cập nhật inventoriesCache trong service
-        // this.inventoryService.updateInventoryCache(this.inventories);
         this.productForm.get('status')?.setValue(true);
         this.productForm.reset();
       });

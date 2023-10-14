@@ -6,62 +6,117 @@ addEventListener('message', async ({ data }) => {
         const domain = 'http://localhost:8080/api';
         if (data === 'start') {
                 try {
-                        const [categoriesResponse, productsResponse, cartDetailsResponse, combosResponse,
-                                eventsResponse, tablesResponse, restaurantsResponse, supplierResponse, tableStatusesResponse,
-                                ingredientsResponse, rolesResponse, roleFunctionsResponse, usersResponse, billsResponse,
-                                billDetailsResponse, cartsResponse, comboDetailsResponse, deliveriesResponse,
-                                deliveryDetailsResponse, deliveryOrdersResponse, deliveryOrderStatussResponse, deliveryOrderDetailsResponse, favoritesResponse,
-                                inventoriesResponse, inventoryBranchsResponse, menuItemIngredientsResponse, orderThresholdsResponse,
-                                mergeTablesResponse, orderTypesResponse, paymentsResponse, ratingResponse, receiptsResponse,
-                                receiptDetailsResponse, reservationsResponse, restaurantTablesResponse, tableTypesResponse] = await Promise.all([
-                                        fetch(`${domain}/categories`),
-                                        fetch(`${domain}/products`),
-                                        fetch(`${domain}/cartDetails`),
-                                        fetch(`${domain}/combos`),
-                                        fetch(`${domain}/events`),
-                                        fetch(`${domain}/restaurantTables`),
-                                        fetch(`${domain}/restaurants`),
-                                        fetch(`${domain}/suppliers`),
-                                        fetch(`${domain}/tableStatuses`),
-                                        fetch(`${domain}/ingredients`),
-                                        fetch(`${domain}/roles`),
-                                        fetch(`${domain}/roleFunctions`),
-                                        fetch(`${domain}/users`),
-                                        fetch(`${domain}/bills`),
-                                        fetch(`${domain}/billDetails`),
-                                        fetch(`${domain}/carts`),
-                                        fetch(`${domain}/comboDetails`),
-                                        fetch(`${domain}/deliveries`),
-                                        fetch(`${domain}/deliveryDetails`),
-                                        fetch(`${domain}/deliveryOrders`),
-                                        fetch(`${domain}/deliveryOrderStatuss`),
-                                        fetch(`${domain}/deliveryOrderDetails`),
-                                        fetch(`${domain}/favorites`),
-                                        fetch(`${domain}/inventories`),
-                                        fetch(`${domain}/inventoryBranches`),
-                                        fetch(`${domain}/menuItemIngredients`),
-                                        fetch(`${domain}/orderThresholds`),
-                                        fetch(`${domain}/mergeTables`),
-                                        fetch(`${domain}/orderTypes`),
-                                        fetch(`${domain}/payments`),
-                                        fetch(`${domain}/ratings`),
-                                        fetch(`${domain}/receipts`),
-                                        fetch(`${domain}/receiptDetails`),
-                                        fetch(`${domain}/reservations`),
-                                        fetch(`${domain}/restaurantTables`),
-                                        fetch(`${domain}/tableTypes`),
+                        const [
+                                categoriesResponse,
+                                productsResponse,
+                                cartDetailsResponse,
+                                combosResponse,
+                                eventsResponse,
+                                tablesResponse,
+                                restaurantsResponse,
+                                supplierResponse,
+                                tableStatusesResponse,
+                                ingredientsResponse,
+                                rolesResponse,
+                                roleFunctionsResponse,
+                                usersResponse,
+                                billsResponse,
+                                billDetailsResponse,
+                                cartsResponse,
+                                comboDetailsResponse,
+                                deliveriesResponse,
+                                deliveryDetailsResponse,
+                                deliveryOrdersResponse,
+                                deliveryOrderStatussResponse,
+                                deliveryOrderDetailsResponse,
+                                favoritesResponse,
+                                inventoriesResponse,
+                                inventoryBranchsResponse,
+                                menuItemIngredientsResponse,
+                                orderThresholdsResponse,
+                                mergeTablesResponse,
+                                orderTypesResponse,
+                                paymentsResponse,
+                                ratingResponse,
+                                receiptsResponse,
+                                receiptDetailsResponse,
+                                reservationsResponse,
+                                tableTypesResponse
+                        ] = await Promise.all([
+                                fetch(`${domain}/categories`),
+                                fetch(`${domain}/products`),
+                                fetch(`${domain}/cartDetails`),
+                                fetch(`${domain}/combos`),
+                                fetch(`${domain}/events`),
+                                fetch(`${domain}/restaurantTables`),
+                                fetch(`${domain}/restaurants`),
+                                fetch(`${domain}/suppliers`),
+                                fetch(`${domain}/tableStatuses`),
+                                fetch(`${domain}/ingredients`),
+                                fetch(`${domain}/roles`),
+                                fetch(`${domain}/roleFunctions`),
+                                fetch(`${domain}/users`),
+                                fetch(`${domain}/bills`),
+                                fetch(`${domain}/billDetails`),
+                                fetch(`${domain}/carts`),
+                                fetch(`${domain}/comboDetails`),
+                                fetch(`${domain}/deliveries`),
+                                fetch(`${domain}/deliveryDetails`),
+                                fetch(`${domain}/deliveryOrders`),
+                                fetch(`${domain}/deliveryOrderStatuss`),
+                                fetch(`${domain}/deliveryOrderDetails`),
+                                fetch(`${domain}/favorites`),
+                                fetch(`${domain}/inventories`),
+                                fetch(`${domain}/inventoryBranches`),
+                                fetch(`${domain}/menuItemIngredients`),
+                                fetch(`${domain}/orderThresholds`),
+                                fetch(`${domain}/mergeTables`),
+                                fetch(`${domain}/orderTypes`),
+                                fetch(`${domain}/payments`),
+                                fetch(`${domain}/ratings`),
+                                fetch(`${domain}/receipts`),
+                                fetch(`${domain}/receiptDetails`),
+                                fetch(`${domain}/reservations`),
+                                fetch(`${domain}/tableTypes`),
 
-                                ]);
+                        ]);
 
-                        if (categoriesResponse.ok && productsResponse.ok && cartDetailsResponse && combosResponse
-                                && eventsResponse.ok && tablesResponse.ok && restaurantsResponse.ok && supplierResponse.ok
-                                && tableStatusesResponse.ok && ingredientsResponse.ok && rolesResponse.ok && roleFunctionsResponse.ok
-                                && usersResponse.ok && billsResponse.ok && billDetailsResponse.ok, cartsResponse.ok && comboDetailsResponse.ok
-                                && deliveriesResponse.ok && deliveryDetailsResponse.ok && deliveryOrdersResponse.ok && deliveryOrderStatussResponse.ok
-                                && deliveryOrderDetailsResponse.ok && favoritesResponse && inventoriesResponse.ok && inventoryBranchsResponse.ok
-                                && menuItemIngredientsResponse.ok && orderThresholdsResponse.ok && mergeTablesResponse.ok && orderTypesResponse.ok
-                                && paymentsResponse.ok && ratingResponse.ok && receiptsResponse.ok && receiptDetailsResponse.ok && reservationsResponse.ok
-                                && restaurantTablesResponse.ok && tableTypesResponse.ok) {
+                        if (
+                                categoriesResponse.ok
+                                && productsResponse.ok
+                                && cartDetailsResponse.ok
+                                && combosResponse.ok
+                                && eventsResponse.ok
+                                && tablesResponse.ok
+                                && restaurantsResponse.ok
+                                && supplierResponse.ok
+                                && tableStatusesResponse.ok
+                                && ingredientsResponse.ok
+                                && rolesResponse.ok
+                                && roleFunctionsResponse.ok
+                                && usersResponse.ok
+                                && billsResponse.ok
+                                && billDetailsResponse.ok
+                                && cartsResponse.ok
+                                && comboDetailsResponse.ok
+                                && deliveriesResponse.ok
+                                && deliveryDetailsResponse.ok
+                                && deliveryOrdersResponse.ok
+                                && deliveryOrderStatussResponse.ok
+                                && deliveryOrderDetailsResponse.ok
+                                && favoritesResponse.ok
+                                && inventoriesResponse.ok
+                                && inventoryBranchsResponse.ok
+                                && menuItemIngredientsResponse.ok
+                                && orderThresholdsResponse.ok
+                                && mergeTablesResponse.ok
+                                && orderTypesResponse.ok
+                                && paymentsResponse.ok
+                                && ratingResponse.ok
+                                && receiptsResponse.ok
+                                && receiptDetailsResponse.ok
+                                && reservationsResponse.ok
+                                && tableTypesResponse.ok) {
 
                                 const categoriesData = await categoriesResponse.json();
                                 const productsData = await productsResponse.json();
@@ -97,7 +152,6 @@ addEventListener('message', async ({ data }) => {
                                 const receiptsData = await receiptsResponse.json();
                                 const receiptDetailsData = await receiptDetailsResponse.json();
                                 const reservationsData = await reservationsResponse.json();
-                                const restauranTablesData = await restaurantTablesResponse.json();
                                 const tableTypesData = await tableTypesResponse.json();
 
 
@@ -106,7 +160,7 @@ addEventListener('message', async ({ data }) => {
                                 postMessage({ type: 'cartDetails', data: cartDetailsData });
                                 postMessage({ type: 'combos', data: combosData });
                                 postMessage({ type: 'events', data: eventsData });
-                                postMessage({ type: 'tables', data: tablesData });
+                                postMessage({ type: 'restaurantTables', data: tablesData });
                                 postMessage({ type: 'restaurants', data: restaurantsData });
                                 postMessage({ type: 'suppliers', data: suppliersData });
                                 postMessage({ type: 'tableStatuses', data: tableStatusesData });
@@ -135,7 +189,6 @@ addEventListener('message', async ({ data }) => {
                                 postMessage({ type: 'receipts', data: receiptsData });
                                 postMessage({ type: 'receiptDetails', data: receiptDetailsData });
                                 postMessage({ type: 'reservations', data: reservationsData });
-                                postMessage({ type: 'restaurantTables', data: restauranTablesData });
                                 postMessage({ type: 'tableTypes', data: tableTypesData });
                         } else {
                                 // Xử lý trường hợp lỗi nếu cần

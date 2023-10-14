@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springleaf_restaurant_backend.user.entities.Restaurant;
 import com.springleaf_restaurant_backend.user.entities.TableStatus;
 import com.springleaf_restaurant_backend.user.repositories.TableStatusRepository;
 
@@ -17,15 +16,15 @@ import com.springleaf_restaurant_backend.user.repositories.TableStatusRepository
 @RequestMapping("/api")
 public class TableStatusRestController {
     @Autowired
-    private TableStatusRepository TableStatusRepository;
+    private TableStatusRepository tableStatusRepository;
 
     @GetMapping("/tableStatuses")
     public List<TableStatus> getTableStatuss() {
-        return TableStatusRepository.findAll();
+        return tableStatusRepository.findAll();
     }
 
     @GetMapping("/tableStatus/{tableStatusId}")
     public Optional<TableStatus> getTableStatusById(@PathVariable("tableStatusId") Long tableStatusId) {
-        return TableStatusRepository.findById(tableStatusId);
+        return tableStatusRepository.findById(tableStatusId);
     }
 }

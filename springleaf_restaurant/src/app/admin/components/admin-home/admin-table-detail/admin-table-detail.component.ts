@@ -1,5 +1,5 @@
 import { Component, Input, NgZone } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Restaurant } from 'src/app/interfaces/restaurant';
@@ -17,13 +17,13 @@ import { TableService } from 'src/app/services/table.service';
   styleUrls: ['./admin-table-detail.component.css']
 })
 export class AdminTableDetailComponent {
-  @Input()
+  @Input() table: Table | undefined;
   fieldNames: string[] = [];
   tables: Table[] = [];
   tableTypes: TableType[] = [];
   tableStatuses: TableStatus[] = [];
   restaurants: Restaurant[] = [];
-  table: Table | undefined;
+
   tableForm: FormGroup;
 
 

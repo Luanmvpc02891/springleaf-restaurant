@@ -77,7 +77,7 @@ export class ProductService {
     );
   }
 
-  // Cập nhật bàn
+  // Cập nhật 
   updateProduct(updatedProduct: Product): Observable<any> {
     const url = `${this.productUrl}/${updatedProduct.menuItemId}`;
     return this.apiService.request('put', url, updatedProduct).pipe(

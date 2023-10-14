@@ -4,7 +4,8 @@
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Ingredient</label>
             <div class="mb-3">
-                <select class="form-select" aria-label="Default select example" formControlName="ingredientId">
+                <select class="form-select" aria-label="Default select example" formControlName="ingredientId"
+                    id="ingredientId">
                     <option selected>Chọn nguyên liệu</option>
                     <option *ngFor="let ing of ingredients " [value]="ing.ingredientId">{{ ing.name }}</option>
                 </select>
@@ -13,7 +14,8 @@
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Supplier</label>
             <div class="mb-3">
-                <select class="form-select" aria-label="Default select example" formControlName="supplierId">
+                <select class="form-select" aria-label="Default select example" formControlName="supplierId"
+                    id="supplierId">
                     <option [value]="">Chọn nhà sản xuất</option>
                     <option *ngFor="let supplier of suppliers" [value]="supplier.supplierId"> {{ supplier.name }}
                     </option>

@@ -26,14 +26,7 @@
           <input type="text" formControlName="imageUrl" class="form-control">
         </div>
       </div>
-      <div class="col-sm-6">
-        <label>Đang bán: </label>
-        <input id="categoryActiveYes" formControlName="status" type="radio" [value]="true"
-          [checked]="productForm.get('status')?.value === true"> Có
-        <input id="categoryActiveNo" formControlName="status" type="radio" [value]="false"
-          [checked]="productForm.get('status')?.value === false"> Không <br>
-      </div>
-      <div class="col-sm-6">
+      <div class="col-sm-3">
         <label for="exampleInputPassword1" class="form-label">Category</label>
         <div class="mb-3">
           <select class="form-select" aria-label="Default select example" formControlName="categoryId">
@@ -43,6 +36,13 @@
           </select>
         </div>
       </div>
+      <div class="col-sm-6">
+        <label>Đang bán: </label>
+        <input id="categoryActiveYes" formControlName="status" type="radio" [value]="true"
+          [checked]="productForm.get('status')?.value === true"> Có
+        <input id="categoryActiveNo" formControlName="status" type="radio" [value]="false"
+          [checked]="productForm.get('status')?.value === false"> Không <br>
+      </div>
       <div class="col-sm-12">
         <label for="exampleInputPassword1" class="form-label">Mô tả</label>
         <div class="mb-3">
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Save</button>
 
   </form>
   <table class="table">
