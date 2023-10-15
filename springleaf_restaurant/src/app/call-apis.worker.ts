@@ -64,6 +64,7 @@ addEventListener('message', async ({ data }) => {
                                 && restaurantTablesResponse.ok) {
 
                                 const categoriesData = await categoriesResponse.json();
+                                //localStorage.setItem('categoriCache', await categoriesResponse.json());
                                 const productsData = await productsResponse.json();
                                 const cartDetailsData = await cartDetailsResponse.json();
                                 const combosData = await combosResponse.json();

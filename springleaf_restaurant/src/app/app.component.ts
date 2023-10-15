@@ -93,6 +93,10 @@ export class AppComponent {
     this.callAPIsWorker.onmessage = ({ data }) => {
       if (data.type === 'categories') {
         this.categoryService.categoriesCache = data.data;
+        // đọc dữ liệu lên Storage bằng kiểu string
+        localStorage.setItem('categories', JSON.stringify(data.data));
+        // lấy dữ liệu từ storage về và -> object
+        //const cachedData = JSON.parse(localStorage.getItem('categories'));
         console.log('Received categories:', data.data);
         // Các xử lý khác nếu cần
       } else if (data.type === 'products') {
