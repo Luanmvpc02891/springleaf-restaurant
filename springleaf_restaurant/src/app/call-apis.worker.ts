@@ -1,5 +1,6 @@
 /// <reference lib="webworker" />
 
+
 // Trong worker script (call-apis.worker.ts)
 addEventListener('message', async ({ data }) => {
         console.log("Received from Main Thread ", data);
@@ -8,7 +9,8 @@ addEventListener('message', async ({ data }) => {
                 try {
                         const [categoriesResponse, productsResponse, cartDetailsResponse, combosResponse,
                                 eventsResponse, tablesResponse, restaurantsResponse, supplierResponse, tableStatusesResponse,
-                                ingredientsResponse, rolesResponse, roleFunctionsResponse, usersResponse, billsResponse,
+                                ingredientsResponse, rolesResponse, roleFunctionsResponse,
+                                billsResponse,
                                 billDetailsResponse, cartsResponse, comboDetailsResponse, deliveriesResponse,
                                 deliveryDetailsResponse, deliveryOrdersResponse, deliveryOrderStatussResponse, deliveryOrderDetailsResponse, favoritesResponse,
                                 inventoriesResponse, inventoryBranchsResponse, menuItemIngredientsResponse, orderThresholdsResponse,
@@ -26,7 +28,6 @@ addEventListener('message', async ({ data }) => {
                                         fetch(`${domain}/ingredients`),
                                         fetch(`${domain}/roles`),
                                         fetch(`${domain}/roleFunctions`),
-                                        fetch(`${domain}/users`),
                                         fetch(`${domain}/bills`),
                                         fetch(`${domain}/billDetails`),
                                         fetch(`${domain}/carts`),
@@ -55,7 +56,7 @@ addEventListener('message', async ({ data }) => {
                         if (categoriesResponse.ok && productsResponse.ok && cartDetailsResponse && combosResponse
                                 && eventsResponse.ok && tablesResponse.ok && restaurantsResponse.ok && supplierResponse.ok
                                 && tableStatusesResponse.ok && ingredientsResponse.ok && rolesResponse.ok && roleFunctionsResponse.ok
-                                && usersResponse.ok && billsResponse.ok && billDetailsResponse.ok, cartsResponse.ok && comboDetailsResponse.ok
+                                && billsResponse.ok && billDetailsResponse.ok, cartsResponse.ok && comboDetailsResponse.ok
                                 && deliveriesResponse.ok && deliveryDetailsResponse.ok && deliveryOrdersResponse.ok && deliveryOrderStatussResponse.ok
                                 && deliveryOrderDetailsResponse.ok && favoritesResponse && inventoriesResponse.ok && inventoryBranchsResponse.ok
                                 && menuItemIngredientsResponse.ok && orderThresholdsResponse.ok && mergeTablesResponse.ok && orderTypesResponse.ok
@@ -74,7 +75,6 @@ addEventListener('message', async ({ data }) => {
                                 const ingredientsData = await ingredientsResponse.json();
                                 const rolesData = await rolesResponse.json();
                                 const roleFunctionsData = await roleFunctionsResponse.json();
-                                const usersData = await usersResponse.json();
                                 const billsData = await billsResponse.json();
                                 const billDetailsData = await billDetailsResponse.json();
                                 const cartsData = await cartsResponse.json();
@@ -111,7 +111,6 @@ addEventListener('message', async ({ data }) => {
                                 postMessage({ type: 'ingredients', data: ingredientsData });
                                 postMessage({ type: 'roles', data: rolesData });
                                 postMessage({ type: 'roleFunctions', data: roleFunctionsData });
-                                postMessage({ type: 'users', data: usersData });
                                 postMessage({ type: 'bills', data: billsData });
                                 postMessage({ type: 'billDetails', data: billDetailsData });
                                 postMessage({ type: 'carts', data: cartsData });
@@ -138,7 +137,7 @@ addEventListener('message', async ({ data }) => {
                                 // Xử lý trường hợp lỗi nếu cần
                         }
                 } catch (error) {
-                        // Xử lý lỗi nếu có
+                        console.log(error)
                 }
         }
 });
