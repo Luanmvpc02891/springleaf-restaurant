@@ -11,11 +11,11 @@ import jakarta.persistence.*;
 public class RoleFunction {
     @Id
     @Column(name = "role_function_id")
-    private String roleFunctionId;
-
-    // @Column(name = "role_function_name")
-    // private String roleFunctionName;
+    private Integer roleFunctionId;
 
     @Column(name = "role_id")
-    private String role;
+    private Integer role;
+
+    @Column(name = "major_id")
+    private Integer majorId;
 }
