@@ -1,7 +1,7 @@
 export interface Table {
     tableId: number;
     tableName: string;
-    tableType: string;
+    tableType: number;
     tableStatus: number;
     restaurantId: number;
 }

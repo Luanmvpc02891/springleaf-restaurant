@@ -36,6 +36,12 @@ const routes: Routes = [
           import('./admin-suppliers/admin-suppliers.module').then(
             (m) => m.AdminSuppliersModule
           ),
+      }, {
+        path: 'products',
+        loadChildren: () =>
+          import('./admin-products/admin-products.module').then(
+            (m) => m.AdminProductsModule
+          ),
       },
       {
         path: 'ingredients',
@@ -45,10 +51,17 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'inventoris',
+        path: 'inventories',
         loadChildren: () =>
-          import('./admin-inventoris/admin-inventoris.module').then(
-            (m) => m.AdminInventorisModule
+          import('./admin-inventories/admin-inventories.module').then(
+            (m) => m.AdminInventoriesModule
+          ),
+      },
+      {
+        path: 'tables',
+        loadChildren: () =>
+          import('./admin-tables/admin-tables.module').then(
+            (m) => m.AdminTablesModule
           ),
       }
 

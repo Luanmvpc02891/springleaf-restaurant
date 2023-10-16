@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 @Table(name = "Suppliers")
 public class Supplier {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "supplier_id")
     private Long supplierId;
 

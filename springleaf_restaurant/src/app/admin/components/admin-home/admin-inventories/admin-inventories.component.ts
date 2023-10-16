@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Inventory } from 'src/app/interfaces/inventory';
 import { Supplier } from 'src/app/interfaces/supplier';
@@ -8,15 +10,14 @@ import { IngredientService } from 'src/app/services/ingredient.service';
 import { InventoryService } from 'src/app/services/inventory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
 import { AdminInventoryDetailComponent } from '../admin-inventory-detail/admin-inventory-detail.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-inventoris',
-  templateUrl: './admin-inventoris.component.html',
-  styleUrls: ['./admin-inventoris.component.css']
+  templateUrl: './admin-inventories.component.html',
+  styleUrls: ['./admin-inventories.component.css'],
+
 })
-export class AdminInventorisComponent {
+export class AdminInventoriesComponent {
   inventories: Inventory[] = [];
   ingredients: Ingredient[] = [];
   suppliers: Supplier[] = [];
@@ -30,9 +31,10 @@ export class AdminInventorisComponent {
     private ingredientService: IngredientService,
     private supplierService: SupplierService,
     private formBuilder: FormBuilder,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private zone: NgZone) {
     this.inventoryForm = this.formBuilder.group({
-      inventoryId: ['', [Validators.required]],
+      // inventoryId: ['', [Validators.required]],
       ingredientId: ['', [Validators.required]],
       supplierId: ['', [Validators.required]]
     });
@@ -54,13 +56,17 @@ export class AdminInventorisComponent {
     return this.ingredientService.getIngredient(ingredientId);
   }
 
+  getSupplierById(supplierId: number): Observable<Supplier> {
+    return this.supplierService.getSupplier(supplierId);
+  }
+
   getInventories(): void {
     this.inventoryService.getInventories()
       .subscribe(inventories => this.inventories = inventories);
   }
 
   getSuppliers(): void {
-    this.supplierService.getSupplier()
+    this.supplierService.getSuppliers()
       .subscribe(supplier => this.suppliers = supplier);
   }
 
@@ -88,7 +94,7 @@ export class AdminInventorisComponent {
         // Lấy tên của thành phần và nhà cung cấp dựa vào ID 
         this.inventories.push(inventory);
         // Cập nhật inventoriesCache trong service
-        this.inventoryService.updateInventoryCache(this.inventories);
+        // this.inventoryService.updateInventoryCache(this.inventories);
 
         this.inventoryForm.reset();
       });
@@ -99,9 +105,15 @@ export class AdminInventorisComponent {
     this.inventoryService.deleteInventory(inventory.inventoryId).subscribe();
   }
   openInventoryDetailModal(inventory: Inventory) {
-    //this.getCategory();
     const modalRef = this.modalService.open(AdminInventoryDetailComponent, { size: 'lg' });
     modalRef.componentInstance.inventory = inventory;
 
+    modalRef.result.then((result) => {
+      if (result === 'Close after saving') {
+        // Sau khi đóng modal và cập nhật dữ liệu, cập nhật lại danh sách inventories
+        this.getInventories();
+      }
+    });
   }
+
 }

@@ -12,6 +12,7 @@ import jakarta.persistence.*;
 @Table(name = "Restaurant_Tables")
 public class RestaurantTable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "table_id")
     private Long tableId;
 
@@ -19,7 +20,7 @@ public class RestaurantTable {
     private String tableName;
 
     @Column(name = "table_type")
-    private String tableType;
+    private Long tableType;
 
     @Column(name = "table_status")
     private Long tableStatus;

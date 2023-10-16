@@ -1,23 +1,49 @@
-<h1>Nguyên liệu</h1>
-<ul class="products container">
-    <table class="table table-light">
-        <tbody>
+<div class="container">
+    <h1>Nguyên liệu</h1>
+    <form [formGroup]="ingredientForm" (ngSubmit)="addIngredient()">
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="exampleInputPassword1" class="form-label">Name</label>
+                <div class="mb-3">
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label for="exampleInputPassword1" class="form-label">OrderThreshold</label>
+                <div class="mb-3">
+                    <input type="text" class="form-control" formControlName="orderThreshold">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Description</label>
+                <div class="mb-3">
+                    <textarea class="form-control" cols="30" rows="10" formControlName="description"></textarea>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info">Save</button>
+    </form>
+    <table class="table">
+        <thead>
             <tr>
-                <td>ID</td>
-                <td>Name</td>
-                <td>Description</td>
-                <td>OrderThreshold</td>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">OrderThreshold</th>
             </tr>
-            <tr *ngFor="let ing of ingredient">
-                <th>
-                    {{ ing.ingredientId }}
-                </th>
-                <th>{{ ing.name }}</th>
-                <th>{{ ing.description }}</th>
-                <th>{{ ing.orderThreshold }}</th>
-
+        </thead>
+        <tbody>
+            <tr *ngFor="let ingredient of ingredients">
+                <td>{{ingredient.ingredientId}}</td>
+                <td>{{ingredient.name}}</td>
+                <td>{{ingredient.description}}</td>
+                <td>{{ingredient.orderThreshold}}</td>
+                <td><button type="button" class="btn btn-outline-primary"
+                        (click)="openIngredientDetailModal(ingredient)">Edit</button>
+                    <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteIngredient(ingredient)">Delete</button>
+                </td>
             </tr>
         </tbody>
     </table>
-</ul>
-<router-outlet></router-outlet>
+</div>

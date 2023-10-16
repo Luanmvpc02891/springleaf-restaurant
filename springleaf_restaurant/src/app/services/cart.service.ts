@@ -15,7 +15,7 @@ export class CartService {
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
-    getCartDetails(): Observable<Cart[]> {
+    getCarts(): Observable<Cart[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
         if (this.cartsCache) {
             return of(this.cartsCache);
@@ -30,7 +30,27 @@ export class CartService {
 
         return cartsObservable;
     }
+    // Lấy tên theo ID
+    getCart(id: number): Observable<Cart> {
+        // Check if categoriesCache is null or empty
+        if (!this.cartsCache) {
+            // Fetch the data from the API if cache is empty
+            const url = `${this.cartsUrl}/${id}`;
+            return this.apiService.request<Cart>('get', url);
+        }
 
+        // Try to find the Category in the cache by its id
+        const CartFromCache = this.cartsCache.find(Cart => Cart.orderId === id);
+
+        if (CartFromCache) {
+            // If found in cache, return it as an observable
+            return of(CartFromCache);
+        } else {
+            // If not found in cache, fetch it from the API
+            const url = `${this.cartsUrl}/${id}`;
+            return this.apiService.request<Cart>('get', url);
+        }
+    }
 
 
 }

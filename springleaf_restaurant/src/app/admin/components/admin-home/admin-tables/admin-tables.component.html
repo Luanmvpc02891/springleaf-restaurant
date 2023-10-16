@@ -1,0 +1,71 @@
+<div class="container">
+  <h1>Bàn</h1>
+  <form [formGroup]="tableForm" (ngSubmit)="addTable()">
+    <div class="row">
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">Tên bàn</label>
+        <div class="mb-3">
+          <input type="text" class="form-control" formControlName="tableName">
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">Nhà hàng</label>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example" formControlName="restaurantId">
+            <option selected>Chọn nhà hàng</option>
+            <option *ngFor="let restaurant of restaurants " [value]="restaurant.restaurantId">{{
+              restaurant.restaurantName
+              }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">Kiểu bàn</label>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example" formControlName="tableType">
+            <option [value]="">Chọn kiểu bàn</option>
+            <option *ngFor="let tableType of tableTypes" [value]="tableType.tableTypeId"> {{ tableType.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <label for="exampleInputPassword1" class="form-label">Trạng thái bàn</label>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example" formControlName="tableStatus">
+            <option [value]="">Chọn trạng thái</option>
+            <option *ngFor="let tableStatus of tableStatuses" [value]="tableStatus.tableStatusId"> {{ tableStatus.name
+              }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tên bàn</th>
+        <th scope="col">Restaurant</th>
+        <th scope="col">Status</th>
+        <th scope="col">Type</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let table of tables">
+        <td>{{table.tableId}}</td>
+        <td>{{table.tableName}}</td>
+        <td>{{ (getRestaurantById(table.restaurantId) | async)?.restaurantName }}</td>
+        <!-- Lưu ý rằng khi bạn sử dụng async pipe, bạn không cần phải subscribe vào Observable trong component, async pipe sẽ tự động quản lý việc subscribe và unsubscribe cho bạn. -->
+        <td>{{ (getTableStatusById(table.tableStatus) | async)?.name }}</td>
+        <td>{{ (getTableTypeById(table.tableType) | async)?.name }}</td>
+        <td><button type="button" class="btn btn-outline-primary" (click)="openTableDetailModal(table)">Edit</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteTable(table)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

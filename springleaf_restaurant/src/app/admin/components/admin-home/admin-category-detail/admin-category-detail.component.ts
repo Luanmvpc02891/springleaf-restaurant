@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Category } from 'src/app/interfaces/category';
 import { CategoryService } from 'src/app/services/category.service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminCategoriesComponent } from '../admin-categories/admin-categories.component';
 
 @Component({
   selector: 'app-admin-category-detail',
@@ -53,7 +52,6 @@ export class AdminCategoryDetailComponent implements OnInit {
         active: this.categoryForm.get('active')?.value,
         description: this.categoryForm.get('description')?.value
       };
-
       this.categoriesService.updateCategory(updatedCategory).subscribe(() => {
         // Cập nhật cache
         this.categoriesService.updateCategoryCache(updatedCategory);
