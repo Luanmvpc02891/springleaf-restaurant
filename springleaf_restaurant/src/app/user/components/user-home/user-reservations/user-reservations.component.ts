@@ -46,10 +46,10 @@ export class UserReservationsComponent {
   }
 
   ngOnInit(): void {
-    this.getTable();
-    this.getUser();
-    this.getCart();
-    this.getReservation();
+    // this.getTable();
+    // this.getUser();
+    // this.getCart();
+    // this.getReservation();
 
   }
   getReservation(): void {
@@ -74,9 +74,9 @@ export class UserReservationsComponent {
   getTableById(table: number): Observable<Table> {
     return this.tableService.getTable(table);
   }
-  getUserById(user: number): Observable<User> {
-    return this.userService.getUser(user);
-  }
+  // getUserById(user: number): Observable<User> {
+  //   return this.userService.getUsers(user);
+  // }
   getCartById(cart: number): Observable<Cart> {
     return this.cartService.getCart(cart);
   }
