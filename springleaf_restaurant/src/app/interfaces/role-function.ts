@@ -1,5 +1,5 @@
 export interface RoleFunction {
-    roleFunctionId: string;
-    role: string;
-
+    roleFunctionId: number;
+    roleId: number;
+    majorId: number;
 }

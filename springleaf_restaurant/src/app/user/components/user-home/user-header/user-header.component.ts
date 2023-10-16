@@ -1,6 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from 'src/app/components/login/login.component';
+import { User } from 'src/app/interfaces/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-user-header',
@@ -11,8 +13,14 @@ export class UserHeaderComponent {
   navbarfixed: boolean = false; // Hiện header
   scrollCounter: number = 0;
   previousScrollY = 0;
+  user: User | null = null;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private authService: AuthenticationService) {
+    this.authService.cachedData$.subscribe((data) => {
+      this.user = data;
+      // Cập nhật thông tin người dùng từ userCache khi có sự thay đổi
+    });
+  }
 
   @HostListener('window:scroll', ['$event']) onscroll() {
     if (window.scrollY >= this.previousScrollY || window.scrollY === 0) {
@@ -25,10 +33,10 @@ export class UserHeaderComponent {
   }
 
   openLoginModal() {
-    const modalRef = this.modalService.open(LoginComponent, { size: 'lg' });
-    //modalRef.componentInstance.product = product;
+    const modalRef = this.modalService.open(LoginComponent);
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.user = this.authService.getUserCache(); // Lấy thông tin người dùng từ userCache
   }
 }

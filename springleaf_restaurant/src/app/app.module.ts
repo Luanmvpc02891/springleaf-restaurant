@@ -58,6 +58,7 @@ import { AdminInventoryDetailComponent } from './admin/components/admin-home/adm
     UserEventsComponent,
     UserTablesComponent,
     UserRestaurantsComponent,
+    // UserLoginComponent,
 
     AdminHeaderComponent,
     AdminProductsComponent,

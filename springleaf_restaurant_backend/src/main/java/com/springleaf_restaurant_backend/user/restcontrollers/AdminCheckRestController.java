@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springleaf_restaurant_backend.security.repositories.RoleRepository;
-import com.springleaf_restaurant_backend.user.entities.Role;
+import com.springleaf_restaurant_backend.user.entities.MenuItem;
+import com.springleaf_restaurant_backend.user.repositories.MenuItemRepository;
 
 @RestController
-@RequestMapping("/api")
-public class RoleRestController {
+@RequestMapping("/admin")
+public class AdminCheckRestController {
     @Autowired
-    private RoleRepository roleRepository;
+    MenuItemRepository menuItemRepository;
 
-    @GetMapping("/roles")
-    public List<Role> getRoles() {
-        return roleRepository.findAll();
+    @GetMapping("/products")
+    public List<MenuItem> getCategories() {
+        return menuItemRepository.findAll();
     }
-
 }
