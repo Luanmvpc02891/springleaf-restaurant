@@ -12,27 +12,27 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class InventoryBranchService {
 
-    private inventoryBranchsUrl = 'inventoryBranches'; // URL to web api, không cần thêm base URL
-    inventoryBranchsCache: InventoryBranch[] | null = null; // Cache for categories
+    private inventoryBranchesUrl = 'inventoryBranches'; // URL to web api, không cần thêm base URL
+    inventoryBranchesCache: InventoryBranch[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
-    getInventoryBranchs(): Observable<InventoryBranch[]> {
+    getInventoryBranches(): Observable<InventoryBranch[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
-        if (this.inventoryBranchsCache) {
-            console.log("Có Inventorys cache");
-            return of(this.inventoryBranchsCache);
+        if (this.inventoryBranchesCache) {
+            console.log("Có Inventories cache");
+            return of(this.inventoryBranchesCache);
         }
 
-        const inventoryBranchsObservable = this.apiService.request<InventoryBranch[]>('get', this.inventoryBranchsUrl);
+        const inventoryBranchesObservable = this.apiService.request<InventoryBranch[]>('get', this.inventoryBranchesUrl);
 
         // Cache the categories observable
-        inventoryBranchsObservable.subscribe(data => {
-            this.inventoryBranchsCache = data; // Store the fetched data in the cache
+        inventoryBranchesObservable.subscribe(data => {
+            this.inventoryBranchesCache = data; // Store the fetched data in the cache
         });
 
-        return inventoryBranchsObservable;
+        return inventoryBranchesObservable;
     }
 
 

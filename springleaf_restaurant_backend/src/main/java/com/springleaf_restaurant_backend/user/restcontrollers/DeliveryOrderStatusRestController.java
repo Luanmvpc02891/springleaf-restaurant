@@ -16,7 +16,7 @@ public class DeliveryOrderStatusRestController {
     @Autowired
     DeliveryOrderStatusRepository deliveryOrderStatusRepository;
 
-    @GetMapping("/deliveryOrderStatuss")
+    @GetMapping("/deliveryOrderStatuses")
     public List<DeliveryOrderStatus> getdeliveryOrderStatus() {
         return deliveryOrderStatusRepository.findAll();
     }

@@ -11,23 +11,23 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DeliveryOrderStatusService {
 
-    private deliveryOrderStatussUrl = 'deliveryOrderStatuss'; // URL to web api, không cần thêm base URL
-    deliveryOrderStatussCache: DeliveryOrderStatus[] | null = null; // Cache for categories
+    private deliveryOrderStatusesUrl = 'deliveryOrderStatuses'; // URL to web api, không cần thêm base URL
+    deliveryOrderStatusesCache: DeliveryOrderStatus[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
     getDeliveryOrderStatuss(): Observable<DeliveryOrderStatus[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
-        if (this.deliveryOrderStatussCache) {
-            return of(this.deliveryOrderStatussCache);
+        if (this.deliveryOrderStatusesCache) {
+            return of(this.deliveryOrderStatusesCache);
         }
 
-        const deliveryOrderStatussObservable = this.apiService.request<DeliveryOrderStatus[]>('get', this.deliveryOrderStatussUrl);
+        const deliveryOrderStatussObservable = this.apiService.request<DeliveryOrderStatus[]>('get', this.deliveryOrderStatusesUrl);
 
         // Cache the categories observable
         deliveryOrderStatussObservable.subscribe(data => {
-            this.deliveryOrderStatussCache = data; // Store the fetched data in the cache
+            this.deliveryOrderStatusesCache = data; // Store the fetched data in the cache
         });
 
         return deliveryOrderStatussObservable;

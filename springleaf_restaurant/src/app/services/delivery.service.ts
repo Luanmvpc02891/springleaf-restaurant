@@ -11,23 +11,23 @@ import { Delivery } from '../interfaces/delivery';
 })
 export class DeliveryService {
 
-    private deliverysUrl = 'deliverys'; // URL to web api, không cần thêm base URL
-    deliverysCache: Delivery[] | null = null; // Cache for categories
+    private deliveriesUrl = 'deliveries'; // URL to web api, không cần thêm base URL
+    deliveriesCache: Delivery[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
     getDeliverys(): Observable<Delivery[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
-        if (this.deliverysCache) {
-            return of(this.deliverysCache);
+        if (this.deliveriesCache) {
+            return of(this.deliveriesCache);
         }
 
-        const deliverysObservable = this.apiService.request<Delivery[]>('get', this.deliverysUrl);
+        const deliverysObservable = this.apiService.request<Delivery[]>('get', this.deliveriesUrl);
 
         // Cache the categories observable
         deliverysObservable.subscribe(data => {
-            this.deliverysCache = data; // Store the fetched data in the cache
+            this.deliveriesCache = data; // Store the fetched data in the cache
         });
 
         return deliverysObservable;

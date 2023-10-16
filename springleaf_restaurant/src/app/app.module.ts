@@ -91,7 +91,7 @@ import { AdminInventoryDetailComponent } from './admin/components/admin-home/adm
   ],
   providers: [
     WebSocketService,
-    ChatService
+    ChatService,
   ],
   bootstrap: [AppComponent]
 })

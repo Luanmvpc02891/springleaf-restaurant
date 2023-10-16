@@ -16,7 +16,7 @@ export class EventService {
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
-    getEvens(): Observable<Event[]> {
+    getEvents(): Observable<Event[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
         if (this.eventsCache) {
             return of(this.eventsCache);

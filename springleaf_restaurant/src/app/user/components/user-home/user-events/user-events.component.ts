@@ -19,7 +19,7 @@ export class UserEventsComponent {
   }
 
   getEvents(): void {
-    this.eventService.getEvens()
+    this.eventService.getEvents()
       .subscribe(events => this.events = events);
   }
 }

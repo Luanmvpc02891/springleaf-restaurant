@@ -19,6 +19,7 @@ export class CategoryService {
     // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
     if (this.categoriesCache) {
       console.log("Có categories cache");
+      console.log(this.categoriesCache);
       return of(this.categoriesCache);
     }
 
