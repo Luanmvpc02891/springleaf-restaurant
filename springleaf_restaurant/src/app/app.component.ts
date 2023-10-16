@@ -35,6 +35,40 @@ import { ReceiptService } from './services/receipt.service';
 import { ReceiptDetailService } from './services/receipt-detail.service';
 import { ReservationService } from './services/reservation.service';
 import { RestaurantTableService } from './services/restaurant-table.service';
+import { Category } from './interfaces/category';
+import { Product } from './interfaces/product';
+import { Combo } from './interfaces/combo';
+import { Event } from './interfaces/event';
+import { Table } from './interfaces/table';
+import { Restaurant } from './interfaces/restaurant';
+import { Supplier } from './interfaces/supplier';
+import { TableStatus } from './interfaces/table-status';
+import { Ingredient } from './interfaces/ingredient';
+import { Role } from './interfaces/role';
+import { RoleFunction } from './interfaces/role-function';
+import { User } from './interfaces/user';
+import { Bill } from './interfaces/bill';
+import { CartDetail } from './interfaces/cart-detail';
+import { BillDetail } from './interfaces/bill-detail';
+import { Cart } from './interfaces/cart';
+import { ComboDetail } from './interfaces/combo-detail';
+import { Delivery } from './interfaces/delivery';
+import { DeliveryDetail } from './interfaces/delivery-detail';
+import { DeliveryOrder } from './interfaces/delivery-order';
+import { DeliveryOrderStatus } from './interfaces/delivery-order-status';
+import { DeliveryOrderDetail } from './interfaces/delivery-order-detail';
+import { Favorite } from './interfaces/favorite';
+import { Inventory } from './interfaces/inventory';
+import { InventoryBranch } from './interfaces/inventory-branch';
+import { MenuItemIngredient } from './interfaces/menu-item-ingredient';
+import { OrderThreshold } from './interfaces/order-threshold';
+import { MergeTable } from './interfaces/merge-table';
+import { OrderType } from './interfaces/order-type';
+import { Payment } from './interfaces/payment';
+import { Rating } from './interfaces/rating';
+import { Receipt } from './interfaces/receipt';
+import { ReceiptDetail } from './interfaces/receipt-detail';
+import { Reservation } from './interfaces/reservation';
 
 @Component({
   selector: 'app-root',
@@ -82,7 +116,6 @@ export class AppComponent {
     private receiptService: ReceiptService,
     private receiptDetailService: ReceiptDetailService,
     private reservationService: ReservationService,
-    private restaurantTableService: RestaurantTableService
   ) {
     this.callAPIsWorker = new Worker(new URL('./call-apis.worker', import.meta.url));
     this.callAllApis();
@@ -91,150 +124,415 @@ export class AppComponent {
   callAllApis(): void {
     this.callAPIsWorker.postMessage('start');
     this.callAPIsWorker.onmessage = ({ data }) => {
+
       if (data.type === 'categories') {
-        this.categoryService.categoriesCache = data.data;
-        // đọc dữ liệu lên Storage bằng kiểu string
-        localStorage.setItem('categories', JSON.stringify(data.data));
-        // lấy dữ liệu từ storage về và -> object
-        //const cachedData = JSON.parse(localStorage.getItem('categories'));
-        console.log('Received categories:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('categories')) {
+          this.categoryService.categoriesCache = JSON.parse(localStorage.getItem('categories') || 'null') as Category[] | null || [];
+          console.log("Lấy dữ liệu categories từ Local Storage");
+        } else {
+          this.categoryService.categoriesCache = data.data;
+          localStorage.setItem('categories', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu categories từ api");
+        }
+        console.log('Received categories:', this.categoryService.categoriesCache);
+
       } else if (data.type === 'products') {
-        this.productService.productsCache = data.data;
-        console.log('Received products:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('products')) {
+          this.productService.productsCache = JSON.parse(localStorage.getItem('products') || 'null') as Product[] | null || [];
+          console.log("Lấy dữ liệu products từ Local Storage");
+        } else {
+          this.productService.productsCache = data.data;
+          localStorage.setItem('products', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu products từ api");
+        }
+        console.log('Received products:', this.productService.productsCache);
+
       } else if (data.type === 'combos') {
-        this.comboService.combosCache = data.data;
-        console.log('Received combos:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('combos')) {
+          this.comboService.combosCache = JSON.parse(localStorage.getItem('combos') || 'null') as Combo[] | null || [];
+          console.log("Lấy dữ liệu combos từ Local Storage");
+        } else {
+          this.comboService.combosCache = data.data;
+          localStorage.setItem('combos', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu combos từ api");
+        }
+        console.log('Received combos:', this.comboService.combosCache);
+
       } else if (data.type === 'events') {
-        this.eventService.eventsCache = data.data;
-        console.log('Received events:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('events')) {
+          this.eventService.eventsCache = JSON.parse(localStorage.getItem('events') || 'null') as Event[] | null || [];
+          console.log("Lấy dữ liệu events từ Local Storage");
+        } else {
+          this.eventService.eventsCache = data.data;
+          localStorage.setItem('events', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu events từ api");
+        }
+        console.log('Received events:', this.eventService.eventsCache);
+
       } else if (data.type === 'tables') {
-        this.tableService.tablesCache = data.data;
-        console.log('Received tables:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('tables')) {
+          this.tableService.tablesCache = JSON.parse(localStorage.getItem('tables') || 'null') as Table[] | null || [];
+          console.log("Lấy dữ liệu tables từ Local Storage");
+        } else {
+          this.tableService.tablesCache = data.data;
+          localStorage.setItem('tables', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu tables từ api");
+        }
+        console.log('Received tables:', this.eventService.eventsCache);
+
       } else if (data.type === 'restaurants') {
-        this.restaurantService.restaurantsCache = data.data;
-        console.log('Received restaurants:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('restaurants')) {
+          this.restaurantService.restaurantsCache = JSON.parse(localStorage.getItem('restaurants') || 'null') as Restaurant[] | null || [];
+          console.log("Lấy dữ liệu restaurants từ Local Storage");
+        } else {
+          this.restaurantService.restaurantsCache = data.data;
+          localStorage.setItem('restaurants', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu restaurants từ api");
+        }
+        console.log('Received restaurants:', this.restaurantService.restaurantsCache);
+
       } else if (data.type === 'suppliers') {
-        this.supplierService.suppliersCache = data.data;
-        console.log('Received suppliers:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('suppliers')) {
+          this.supplierService.suppliersCache = JSON.parse(localStorage.getItem('suppliers') || 'null') as Supplier[] | null || [];
+          console.log("Lấy dữ liệu suppliers từ Local Storage");
+        } else {
+          this.supplierService.suppliersCache = data.data;
+          localStorage.setItem('suppliers', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu suppliers từ api");
+        }
+        console.log('Received suppliers:', this.supplierService.suppliersCache);
+
       } else if (data.type === 'tableStatuses') {
-        this.tableStatusService.tableStatusesCache = data.data;
-        console.log('Received tableStatuses:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('tableStatuses')) {
+          this.tableStatusService.tableStatusesCache = JSON.parse(localStorage.getItem('tableStatuses') || 'null') as TableStatus[] | null || [];
+          console.log("Lấy dữ liệu suppliers từ Local Storage");
+        } else {
+          this.tableStatusService.tableStatusesCache = data.data;
+          localStorage.setItem('tableStatuses', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu tableStatuses từ api");
+        }
+        console.log('Received tableStatuses:', this.tableStatusService.tableStatusesCache);
+
       } else if (data.type === 'ingredients') {
-        this.ingredientService.ingredientsCache = data.data;
-        console.log('Received ingredients:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('ingredients')) {
+          this.ingredientService.ingredientsCache = JSON.parse(localStorage.getItem('ingredients') || 'null') as Ingredient[] | null || [];
+          console.log("Lấy dữ liệu ingredients từ Local Storage");
+        } else {
+          this.ingredientService.ingredientsCache = data.data;
+          localStorage.setItem('ingredients', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu ingredients từ api");
+        }
+        console.log('Received ingredients:', this.ingredientService.ingredientsCache);
+
       } else if (data.type === 'roles') {
-        this.roleService.rolesCache = data.data;
-        console.log('Received roles:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('roles')) {
+          this.roleService.rolesCache = JSON.parse(localStorage.getItem('roles') || 'null') as Role[] | null || [];
+          console.log("Lấy dữ liệu roles từ Local Storage");
+        } else {
+          this.roleService.rolesCache = data.data;
+          localStorage.setItem('roles', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu roles từ api");
+        }
+        console.log('Received roles:', this.roleService.rolesCache);
+
       } else if (data.type === 'roleFunctions') {
-        this.roleFunctionService.roleFunctionsCache = data.data;
-        console.log('Received role functions:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('roleFunctions')) {
+          this.roleFunctionService.roleFunctionsCache = JSON.parse(localStorage.getItem('roleFunctions') || 'null') as RoleFunction[] | null || [];
+          console.log("Lấy dữ liệu roleFunctions từ Local Storage");
+        } else {
+          this.roleFunctionService.roleFunctionsCache = data.data;
+          localStorage.setItem('roleFunctions', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu roleFunctions từ api");
+        }
+        console.log('Received roleFunctions:', this.roleFunctionService.roleFunctionsCache);
+
       } else if (data.type === 'users') {
-        this.userService.usersCache = data.data;
-        console.log('Received users:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('users')) {
+          this.userService.usersCache = JSON.parse(localStorage.getItem('users') || 'null') as User[] | null || [];
+          console.log("Lấy dữ liệu users từ Local Storage");
+        } else {
+          this.userService.usersCache = data.data;
+          localStorage.setItem('users', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu users từ api");
+        }
+        console.log('Received users:', this.userService.usersCache);
+
       } else if (data.type === 'bills') {
-        this.billService.billsCache = data.data;
-        console.log('Received bills:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('bills')) {
+          this.billService.billsCache = JSON.parse(localStorage.getItem('bills') || 'null') as Bill[] | null || [];
+          console.log("Lấy dữ liệu bills từ Local Storage");
+        } else {
+          this.billService.billsCache = data.data;
+          localStorage.setItem('bills', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu bills từ api");
+        }
+        console.log('Received bills:', this.billService.billsCache);
+
       } else if (data.type === 'cartDetails') {
-        this.cartDetailService.cartDetailsCache = data.data;
-        console.log('Received cartDetails:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('cartDetails')) {
+          this.cartDetailService.cartDetailsCache = JSON.parse(localStorage.getItem('cartDetails') || 'null') as CartDetail[] | null || [];
+          console.log("Lấy dữ liệu cartDetails từ Local Storage");
+        } else {
+          this.cartDetailService.cartDetailsCache = data.data;
+          localStorage.setItem('cartDetails', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu cartDetails từ api");
+        }
+        console.log('Received cartDetails:', this.cartDetailService.cartDetailsCache);
+
       } else if (data.type === 'billDetails') {
-        this.billDetailService.billDetailsCache = data.data;
-        console.log('Received billDetails:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('billDetails')) {
+          this.billDetailService.billDetailsCache = JSON.parse(localStorage.getItem('billDetails') || 'null') as BillDetail[] | null || [];
+          console.log("Lấy dữ liệu billDetails từ Local Storage");
+        } else {
+          this.billDetailService.billDetailsCache = data.data;
+          localStorage.setItem('billDetails', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu billDetails từ api");
+        }
+        console.log('Received billDetails:', this.billDetailService.billDetailsCache);
+
       } else if (data.type === 'carts') {
-        this.cartService.cartsCache = data.data;
-        console.log('Received carts:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('carts')) {
+          this.cartService.cartsCache = JSON.parse(localStorage.getItem('carts') || 'null') as Cart[] | null || [];
+          console.log("Lấy dữ liệu carts từ Local Storage");
+        } else {
+          this.cartService.cartsCache = data.data;
+          localStorage.setItem('carts', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu carts từ api");
+        }
+        console.log('Received carts:', this.cartService.cartsCache);
+
       } else if (data.type === 'comboDetails') {
-        this.comboDetailService.comboDetailsCache = data.data;
-        console.log('Received comboDetails:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('comboDetails')) {
+          this.comboDetailService.comboDetailsCache = JSON.parse(localStorage.getItem('comboDetails') || 'null') as ComboDetail[] | null || [];
+          console.log("Lấy dữ liệu comboDetails từ Local Storage");
+        } else {
+          this.comboDetailService.comboDetailsCache = data.data;
+          localStorage.setItem('comboDetails', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu comboDetails từ api");
+        }
+        console.log('Received comboDetails:', this.comboDetailService.comboDetailsCache);
+
       } else if (data.type === 'deliveries') {
-        this.deliveryService.deliverysCache = data.data;
-        console.log('Received deliveries:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('deliveries')) {
+          this.deliveryService.deliverysCache = JSON.parse(localStorage.getItem('deliveries') || 'null') as Delivery[] | null || [];
+          console.log("Lấy dữ liệu deliveries từ Local Storage");
+        } else {
+          this.deliveryService.deliverysCache = data.data;
+          localStorage.setItem('deliveries', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu deliveries từ api");
+        }
+        console.log('Received deliveries:', this.deliveryService.deliverysCache);
+
       } else if (data.type === 'deliveryDetails') {
-        this.deliveryDetailService.deliveryDetailsCache = data.data;
-        console.log('Received deliveryDetails:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('deliveryDetails')) {
+          this.deliveryDetailService.deliveryDetailsCache = JSON.parse(localStorage.getItem('deliveryDetails') || 'null') as DeliveryDetail[] | null || [];
+          console.log("Lấy dữ liệu deliveryDetails từ Local Storage");
+        } else {
+          this.deliveryDetailService.deliveryDetailsCache = data.data;
+          localStorage.setItem('deliveryDetails', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu deliveryDetails từ api");
+        }
+        console.log('Received deliveryDetails:', this.deliveryDetailService.deliveryDetailsCache);
+
       } else if (data.type === 'deliveryOrders') {
-        this.deliveryOrderService.deliveryOrdersCache = data.data;
-        console.log('Received deliveryOrders:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('deliveryOrders')) {
+          this.deliveryOrderService.deliveryOrdersCache = JSON.parse(localStorage.getItem('deliveryOrders') || 'null') as DeliveryOrder[] | null || [];
+          console.log("Lấy dữ liệu deliveryOrders từ Local Storage");
+        } else {
+          this.deliveryOrderService.deliveryOrdersCache = data.data;
+          localStorage.setItem('deliveryOrders', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu deliveryOrders từ api");
+        }
+        console.log('Received deliveryOrders:', this.deliveryOrderService.deliveryOrdersCache);
+
       } else if (data.type === 'deliveryOrderStatuss') {
-        this.deliveryOrderStatusService.deliveryOrderStatussCache = data.data;
-        console.log('Received deliveryOrderStatuss:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('deliveryOrderStatuss')) {
+          this.deliveryOrderStatusService.deliveryOrderStatussCache = JSON.parse(localStorage.getItem('deliveryOrderStatuss') || 'null') as DeliveryOrderStatus[] | null || [];
+          console.log("Lấy dữ liệu deliveryOrderStatuss từ Local Storage");
+        } else {
+          this.deliveryOrderStatusService.deliveryOrderStatussCache = data.data;
+          localStorage.setItem('deliveryOrderStatuss', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu deliveryOrderStatuss từ api");
+        }
+        console.log('Received deliveryOrderStatuss:', this.deliveryOrderStatusService.deliveryOrderStatussCache);
+
       } else if (data.type === 'deliveryOrderDetails') {
-        this.deliveryOrderDetailService.deliveryOrderDetailsCache = data.data;
-        console.log('Received deliveryOrderDetails:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('deliveryOrderDetails')) {
+          this.deliveryOrderDetailService.deliveryOrderDetailsCache = JSON.parse(localStorage.getItem('deliveryOrderDetails') || 'null') as DeliveryOrderDetail[] | null || [];
+          console.log("Lấy dữ liệu deliveryOrderDetails từ Local Storage");
+        } else {
+          this.deliveryOrderDetailService.deliveryOrderDetailsCache = data.data;
+          localStorage.setItem('deliveryOrderDetails', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu deliveryOrderDetails từ api");
+        }
+        console.log('Received deliveryOrderDetails:', this.deliveryOrderDetailService.deliveryOrderDetailsCache);
+
       } else if (data.type === 'favorites') {
-        this.favoriteService.favoritesCache = data.data;
-        console.log('Received favorites:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('favorites')) {
+          this.favoriteService.favoritesCache = JSON.parse(localStorage.getItem('favorites') || 'null') as Favorite[] | null || [];
+          console.log("Lấy dữ liệu favorites từ Local Storage");
+        } else {
+          this.favoriteService.favoritesCache = data.data;
+          localStorage.setItem('favorites', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu favorites từ api");
+        }
+        console.log('Received favorites:', this.favoriteService.favoritesCache);
+
       } else if (data.type === 'inventories') {
-        this.inventoryService.inventoriesCache = data.data;
-        console.log('Received inventories:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('inventories')) {
+          this.inventoryService.inventoriesCache = JSON.parse(localStorage.getItem('inventories') || 'null') as Inventory[] | null || [];
+          console.log("Lấy dữ liệu inventories từ Local Storage");
+        } else {
+          this.inventoryService.inventoriesCache = data.data;
+          localStorage.setItem('inventories', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu inventories từ api");
+        }
+        console.log('Received inventories:', this.inventoryService.inventoriesCache);
+
       } else if (data.type === 'inventoryBranches') {
-        this.inventoryBranchService.inventoryBranchsCache = data.data;
-        console.log('Received inventoryBranches:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('inventoryBranches')) {
+          this.inventoryBranchService.inventoryBranchsCache = JSON.parse(localStorage.getItem('inventoryBranches') || 'null') as InventoryBranch[] | null || [];
+          console.log("Lấy dữ liệu inventoryBranches từ Local Storage");
+        } else {
+          this.inventoryBranchService.inventoryBranchsCache = data.data;
+          localStorage.setItem('inventoryBranches', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu inventoryBranches từ api");
+        }
+        console.log('Received inventoryBranches:', this.inventoryBranchService.inventoryBranchsCache);
+
       } else if (data.type === 'menuItemIngredients') {
-        this.menuItemIngredientService.menuItemIngredientsCache = data.data;
-        console.log('Received menuItemIngredients:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('menuItemIngredients')) {
+          this.menuItemIngredientService.menuItemIngredientsCache = JSON.parse(localStorage.getItem('menuItemIngredients') || 'null') as MenuItemIngredient[] | null || [];
+          console.log("Lấy dữ liệu menuItemIngredients từ Local Storage");
+        } else {
+          this.menuItemIngredientService.menuItemIngredientsCache = data.data;
+          localStorage.setItem('menuItemIngredients', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu menuItemIngredients từ api");
+        }
+        console.log('Received menuItemIngredients:', this.menuItemIngredientService.menuItemIngredientsCache);
+
       } else if (data.type === 'orderThresholds') {
-        this.orderThresholdService.orderThresholdsCache = data.data;
-        console.log('Received orderThresholds:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('orderThresholds')) {
+          this.orderThresholdService.orderThresholdsCache = JSON.parse(localStorage.getItem('orderThresholds') || 'null') as OrderThreshold[] | null || [];
+          console.log("Lấy dữ liệu orderThresholds từ Local Storage");
+        } else {
+          this.orderThresholdService.orderThresholdsCache = data.data;
+          localStorage.setItem('orderThresholds', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu orderThresholds từ api");
+        }
+        console.log('Received orderThresholds:', this.orderThresholdService.orderThresholdsCache);
+
       } else if (data.type === 'mergeTables') {
-        this.mergeTableService.mergeTablesCache = data.data;
-        console.log('Received mergeTables:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('mergeTables')) {
+          this.mergeTableService.mergeTablesCache = JSON.parse(localStorage.getItem('mergeTables') || 'null') as MergeTable[] | null || [];
+          console.log("Lấy dữ liệu mergeTables từ Local Storage");
+        } else {
+          this.mergeTableService.mergeTablesCache = data.data;
+          localStorage.setItem('mergeTables', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu mergeTables từ api");
+        }
+        console.log('Received mergeTables:', this.mergeTableService.mergeTablesCache);
+
       } else if (data.type === 'orderTypes') {
-        this.orderTypeService.orderTypesCache = data.data;
-        console.log('Received orderTypes:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('orderTypes')) {
+          this.orderTypeService.orderTypesCache = JSON.parse(localStorage.getItem('orderTypes') || 'null') as OrderType[] | null || [];
+          console.log("Lấy dữ liệu orderTypes từ Local Storage");
+        } else {
+          this.orderTypeService.orderTypesCache = data.data;
+          localStorage.setItem('orderTypes', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu orderTypes từ api");
+        }
+        console.log('Received orderTypes:', this.orderTypeService.orderTypesCache);
+
       } else if (data.type === 'payments') {
-        this.paymentService.paymentsCache = data.data;
-        console.log('Received payments:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('payments')) {
+          this.paymentService.paymentsCache = JSON.parse(localStorage.getItem('payments') || 'null') as Payment[] | null || [];
+          console.log("Lấy dữ liệu payments từ Local Storage");
+        } else {
+          this.paymentService.paymentsCache = data.data;
+          localStorage.setItem('payments', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu payments từ api");
+        }
+        console.log('Received payments:', this.paymentService.paymentsCache);
+
       } else if (data.type === 'ratings') {
-        this.ratingService.ratingsCache = data.data;
-        console.log('Received ratings:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('ratings')) {
+          this.ratingService.ratingsCache = JSON.parse(localStorage.getItem('ratings') || 'null') as Rating[] | null || [];
+          console.log("Lấy dữ liệu ratings từ Local Storage");
+        } else {
+          this.ratingService.ratingsCache = data.data;
+          localStorage.setItem('ratings', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu ratings từ api");
+        }
+        console.log('Received ratings:', this.ratingService.ratingsCache);
+
       } else if (data.type === 'receipts') {
-        this.receiptService.receiptsCache = data.data;
-        console.log('Received receipts:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('receipts')) {
+          this.receiptService.receiptsCache = JSON.parse(localStorage.getItem('receipts') || 'null') as Receipt[] | null || [];
+          console.log("Lấy dữ liệu receipts từ Local Storage");
+        } else {
+          this.receiptService.receiptsCache = data.data;
+          localStorage.setItem('receipts', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu receipts từ api");
+        }
+        console.log('Received receipts:', this.receiptService.receiptsCache);
+
       } else if (data.type === 'receiptDetails') {
-        this.receiptDetailService.receiptDetailsCache = data.data;
-        console.log('Received receiptDetails:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('receiptDetails')) {
+          this.receiptDetailService.receiptDetailsCache = JSON.parse(localStorage.getItem('receiptDetails') || 'null') as ReceiptDetail[] | null || [];
+          console.log("Lấy dữ liệu receiptDetails từ Local Storage");
+        } else {
+          this.receiptDetailService.receiptDetailsCache = data.data;
+          localStorage.setItem('receiptDetails', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu receiptDetails từ api");
+        }
+        console.log('Received receiptDetails:', this.receiptDetailService.receiptDetailsCache);
+
       } else if (data.type === 'reservations') {
-        this.reservationService.reservationsCache = data.data;
-        console.log('Received reservations:', data.data);
-        // Các xử lý khác nếu cần
-      } else if (data.type === 'restaurantTables') {
-        this.restaurantService.restaurantsCache = data.data;
-        console.log('Received restaurantTables:', data.data);
-        // Các xử lý khác nếu cần
+
+        if (localStorage.getItem('reservations')) {
+          this.reservationService.reservationsCache = JSON.parse(localStorage.getItem('reservations') || 'null') as Reservation[] | null || [];
+          console.log("Lấy dữ liệu reservations từ Local Storage");
+        } else {
+          this.reservationService.reservationsCache = data.data;
+          localStorage.setItem('reservations', JSON.stringify(data.data));
+          console.log("Lấy dữ liệu reservations từ api");
+        }
+        console.log('Received reservations:', this.reservationService.reservationsCache);
+
       }
 
       this.dataLoaded = true;
