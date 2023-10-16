@@ -2,6 +2,7 @@ package com.springleaf_restaurant_backend.user.entities;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -9,15 +10,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.springleaf_restaurant_backend.security.token.Token;
 
 import jakarta.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Builder
 @Table(name = "Users")
-public class User implements UserDetails{
+public class User implements UserDetails {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +33,8 @@ public class User implements UserDetails{
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -48,27 +52,30 @@ public class User implements UserDetails{
     private String image;
 
     @Column(name = "manager_id")
-    private String managerId;
+    private Long managerId;
 
-    //@ManyToOne
-    @Column(name = "restaurant_brand_id")
-    private Long restaurant;
+    @Column(name = "restaurant_brach_id")
+    private Long restaurantBrachId;
 
-    // @ManyToOne
-    // @JoinColumn(name = "role_id")
     @Column(name = "role_id")
-    @Enumerated(EnumType.STRING)
-    // private Role role;
-    private RoleEnum role;
+    private Integer roleId;
 
-    // @Override
-    // public Collection<? extends GrantedAuthority> getAuthorities() {
-    //     return List.of(new SimpleGrantedAuthority(role.getRoleName()));
-    // }
+    @Transient
+    private String roleName;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        // Sử dụng thông tin roleName để lấy danh sách quyền
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        
+        // Thêm quyền ROLE_<role_name> vào danh sách authorities
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + roleName)); 
+    
+        return authorities;
     }
 
     @Override
@@ -78,8 +85,9 @@ public class User implements UserDetails{
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -100,4 +108,3 @@ public class User implements UserDetails{
         return true;
     }
 }
-

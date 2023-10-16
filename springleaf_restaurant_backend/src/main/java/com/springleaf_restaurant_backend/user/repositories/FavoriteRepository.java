@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springleaf_restaurant_backend.user.entities.Favorite;
 
-public interface FavoriteRepository extends JpaRepository<Favorite, Long>{
-    
+public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
+
 }

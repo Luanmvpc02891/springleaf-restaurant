@@ -2,6 +2,7 @@ package com.springleaf_restaurant_backend.user.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,12 +11,11 @@ import jakarta.persistence.*;
 public class RoleFunction {
     @Id
     @Column(name = "role_function_id")
-    private String roleFunctionId;
+    private Integer roleFunctionId;
 
-    @Column(name = "role_function_name")
-    private String roleFunctionName;
+    @Column(name = "role_id")
+    private Integer role;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @Column(name = "major_id")
+    private Integer majorId;
 }

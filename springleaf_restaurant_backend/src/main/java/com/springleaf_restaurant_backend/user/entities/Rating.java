@@ -14,13 +14,11 @@ public class Rating {
     @Column(name = "rating_id")
     private Long ratingId;
 
-    @ManyToOne
-    @JoinColumn(name = "menu_item_id")
-    private MenuItem menuItem;
+    @Column(name = "menu_item_id")
+    private Long menuItem;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name = "user_id")
+    private Long user;
 
     @Column(name = "rating")
     private Integer rating;

@@ -1,0 +1,18 @@
+<h1>Combo</h1>
+<ul class="products container">
+    <table class="table table-light">
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>Tổng</td>
+            </tr>
+            <tr *ngFor="let combo of combos">
+                <th>
+                    {{ combo.comboName }}
+                </th>
+                <th>{{ combo.totalAmount }}</th>
+            </tr>
+        </tbody>
+    </table>
+</ul>
+<router-outlet></router-outlet>

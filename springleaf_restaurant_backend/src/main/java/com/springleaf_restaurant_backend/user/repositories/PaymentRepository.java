@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springleaf_restaurant_backend.user.entities.Payment;
 
-public interface PaymentRepository extends JpaRepository<Payment, Long>{
-    
+public interface PaymentRepository extends JpaRepository<Payment, Long> {
+
 }

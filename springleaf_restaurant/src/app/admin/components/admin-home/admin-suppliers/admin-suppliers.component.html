@@ -1,0 +1,24 @@
+<h1>Supplier</h1>
+<ul class="products container">
+    <table class="table table-light">
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Address</td>
+                <td>Phone</td>
+                <td>Emai</td>
+            </tr>
+            <tr *ngFor="let sup of supplier">
+                <th>
+                    {{ sup.supplierId }}
+                </th>
+                <th>{{ sup.name }}</th>
+                <th>{{ sup.address }}</th>
+                <th>{{ sup.phone }}</th>
+                <th>{{ sup.email }}</th>
+            </tr>
+        </tbody>
+    </table>
+</ul>
+<router-outlet></router-outlet>

@@ -2,6 +2,7 @@ package com.springleaf_restaurant_backend.user.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,12 +14,10 @@ public class Inventory {
     @Column(name = "inventory_id")
     private Long inventoryId;
 
-    @ManyToOne
-    @JoinColumn(name = "ingredient_id")
-    private Ingredient ingredient;
+    @Column(name = "ingredient_id")
+    private Long ingredientId;
 
-    @ManyToOne
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
+    @Column(name = "supplier_id")
+    private Long supplierId;
 
 }

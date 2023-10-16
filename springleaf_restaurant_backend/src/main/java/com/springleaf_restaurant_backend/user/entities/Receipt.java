@@ -6,7 +6,6 @@ import java.util.Date;
 
 import jakarta.persistence.*;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,9 +20,8 @@ public class Receipt {
     @Column(name = "user_id")
     private String userId;
 
-    @ManyToOne
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
+    @Column(name = "supplier_id")
+    private Long supplier;
 
     @Column(name = "date")
     private Date date;
@@ -31,9 +29,7 @@ public class Receipt {
     @Column(name = "total_amount")
     private Double totalAmount;
 
-    @ManyToOne
-    @JoinColumn(name = "inventory_id")
-    private Inventory inventory;
+    @Column(name = "inventory_id")
+    private Long inventory;
 
 }
-

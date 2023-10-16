@@ -1,0 +1,11 @@
+<ul class="products container">
+    <li *ngFor="let product of products">
+        <a routerLink="/user/product/detail/{{product.categoryId}}">
+            Id: {{product.menuItemId}}
+            Tên: {{product.name}}
+            Giá: {{product.price}}
+        </a>
+    </li>
+</ul>
+
+<!-- <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button> -->

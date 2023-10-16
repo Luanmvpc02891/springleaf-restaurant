@@ -4,6 +4,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,8 +19,7 @@ public class OrderType {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "orderType")
-    private List<Order> orders;
+    // @Column(name = "orderType")
+    // private List<Long> orders;
 
 }
-

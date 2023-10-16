@@ -21,11 +21,10 @@ public class RestaurantTable {
     @Column(name = "table_type")
     private String tableType;
 
-    @ManyToOne
-    @JoinColumn(name = "table_status")
-    private TableStatus tableStatus;
+    @Column(name = "table_status")
+    private Long tableStatus;
 
-    @Column(name = "merge_table_id")
-    private String mergeTableId;
+    @Column(name = "restaurant_id")
+    private Long restaurantId;
 
 }

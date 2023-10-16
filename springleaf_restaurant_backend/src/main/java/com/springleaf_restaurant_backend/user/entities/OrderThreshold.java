@@ -2,11 +2,12 @@ package com.springleaf_restaurant_backend.user.entities;
 
 import lombok.*;
 import jakarta.persistence.*;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Order_Threshold")
+@Table(name = "Order_Thresholds")
 public class OrderThreshold {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,17 +17,13 @@ public class OrderThreshold {
     @Column(name = "reorder_point")
     private Integer reorderPoint;
 
-    @ManyToOne
-    @JoinColumn(name = "ingredient_id")
-    private Ingredient ingredient;
+    @Column(name = "ingredient_id")
+    private Long ingredient;
 
-    @ManyToOne
-    @JoinColumn(name = "inventory_brand_id")
-    private InventoryBrand inventoryBrand;
+    @Column(name = "inventory_branch_id")
+    private Long inventoryBranch;
 
-    @ManyToOne
-    @JoinColumn(name = "inventory_id")
-    private Inventory inventory;
+    @Column(name = "inventory_id")
+    private Long inventory;
 
 }
-

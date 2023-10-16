@@ -11,7 +11,10 @@ import jakarta.persistence.*;
 public class Role {
     @Id
     @Column(name = "role_id")
-    private String roleId;
+    private Integer roleId;
+
+    @Column(name = "role_sa")
+    private String roleSa;
 
     @Column(name = "role_name")
     private String roleName;
@@ -21,7 +24,5 @@ public class Role {
 
     @Column(name = "description")
     private String description;
-
-    
 
 }

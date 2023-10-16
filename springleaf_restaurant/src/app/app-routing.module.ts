@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./user/component/user-home/user-home.module').then(
+      import('./user/components/user-home/user-home.module').then(
         (m) => m.UserHomeModule
       ),
     //component: UserHomeComponent
@@ -16,12 +16,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./admin/component/admin-home/admin-home.module').then(
+      import('./admin/components/admin-home/admin-home.module').then(
         (m) => m.AdminHomeModule
       ),
     //component: AdminHomeComponent
   },
-  
+
 ];
 
 @NgModule({

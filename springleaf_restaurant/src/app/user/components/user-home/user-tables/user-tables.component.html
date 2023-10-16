@@ -1,0 +1,27 @@
+<h1>Table</h1>
+<ul class="products container">
+    <table class="table table-light">
+        <tbody>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>TableType</td>
+                <td>Status</td>
+                <td>RestaurantId</td>
+                <td>MergeTableId</td>
+
+            </tr>
+            <tr *ngFor="let table of tables">
+                <th>
+                    {{ table.tableId }}
+                </th>
+                <th>{{ table.tableName }}</th>
+                <th>{{ table.tableType }}</th>
+                <th>{{ table.tableStatus }}</th>
+                <th>{{ table.restaurantId }}</th>
+
+            </tr>
+        </tbody>
+    </table>
+</ul>
+<router-outlet></router-outlet>

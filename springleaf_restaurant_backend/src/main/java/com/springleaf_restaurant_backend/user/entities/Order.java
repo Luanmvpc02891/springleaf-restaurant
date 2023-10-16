@@ -4,6 +4,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,17 +25,13 @@ public class Order {
     @Column(name = "total_amount")
     private Double totalAmount;
 
-    @ManyToOne
-    @JoinColumn(name = "table_id")
-    private RestaurantTable table;
+    @Column(name = "table_id")
+    private Long table;
 
-    @ManyToOne
-    @JoinColumn(name = "order_type")
-    private OrderType orderType;
+    @Column(name = "order_type")
+    private Long orderType;
 
-    @ManyToOne
-    @JoinColumn(name = "combo_id")
-    private Combo combo;
+    @Column(name = "combo_id")
+    private Long combo;
 
 }
-
