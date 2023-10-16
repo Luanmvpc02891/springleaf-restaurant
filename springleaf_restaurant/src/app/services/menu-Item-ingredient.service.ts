@@ -1,7 +1,7 @@
-import { MenuItemIngredient } from './../interfaces/menu-item-ingredient';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import { MenuItemIngredient } from '../interfaces/menu-item-ingredient';
 
 
 

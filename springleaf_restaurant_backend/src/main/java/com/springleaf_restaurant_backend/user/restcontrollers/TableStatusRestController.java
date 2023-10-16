@@ -17,7 +17,7 @@ public class TableStatusRestController {
     private TableStatusRepository TableStatusRepository;
 
     @GetMapping("/tableStatuses")
-    public List<TableStatus> getTableStatuss() {
+    public List<TableStatus> getTableStatuses() {
         return TableStatusRepository.findAll();
     }
 }

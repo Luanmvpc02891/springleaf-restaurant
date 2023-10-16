@@ -17,7 +17,7 @@ public class InventoryBranchRestController {
     private InventoryBranchRepository inventoryBranchRepository;
 
     @GetMapping("/inventoryBranches")
-    public List<InventoryBranch> getInventoryBranchs() {
+    public List<InventoryBranch> getInventoryBranches() {
         return inventoryBranchRepository.findAll();
     }
 }
