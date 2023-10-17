@@ -11,7 +11,7 @@ import { Ingredient } from '../interfaces/ingredient';
 export class IngredientService {
 
     private ingredientsUrl = 'ingredients'; // URL to web api, không cần thêm base URL
-    private ingredientUrl = 'ingredients';
+    private ingredientUrl = 'ingredient';
     ingredientsCache: Ingredient[] | null = null; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
@@ -39,16 +39,15 @@ export class IngredientService {
         // Check if categoriesCache is null or empty
         if (!this.ingredientsCache) {
             // Fetch the data from the API if cache is empty
-            const url = `${this.ingredientsUrl}/${id}`;
-            return this.apiService.request<Ingredient>('get', url);
+            return this.apiService.request<Ingredient>('get', this.ingredientsUrl);
         }
 
         // Try to find the Category in the cache by its id
-        const CategoryFromCache = this.ingredientsCache.find(Ingredient => Ingredient.ingredientId === id);
+        const ingredientFromCache = this.ingredientsCache.find(ingredient => ingredient.ingredientId === id);
 
-        if (CategoryFromCache) {
+        if (ingredientFromCache) {
             // If found in cache, return it as an observable
-            return of(CategoryFromCache);
+            return of(ingredientFromCache);
         } else {
             // If not found in cache, fetch it from the API
             const url = `${this.ingredientUrl}/${id}`;

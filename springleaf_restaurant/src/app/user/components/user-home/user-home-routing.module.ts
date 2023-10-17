@@ -54,7 +54,7 @@ const routes: Routes = [
       {
         path: 'user/table',
         loadChildren: () =>
-          import('./user-tables/user-tables.module')
+          import('./user-restaurant-tables/user-restaurant-tables.module')
             .then(m => m.UserTablesModule),
       },
       {

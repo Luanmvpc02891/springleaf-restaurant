@@ -18,11 +18,11 @@ public class RestaurantTable {
     @Column(name = "table_name")
     private String tableName;
 
-    @Column(name = "table_type")
-    private String tableType;
+    @Column(name = "table_type_id")
+    private Integer tableTypeId;
 
-    @Column(name = "table_status")
-    private Long tableStatus;
+    @Column(name = "table_status_id")
+    private Integer tableStatusId;
 
     @Column(name = "restaurant_id")
     private Long restaurantId;

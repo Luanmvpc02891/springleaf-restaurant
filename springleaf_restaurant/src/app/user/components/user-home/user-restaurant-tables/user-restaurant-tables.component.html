@@ -8,17 +8,15 @@
                 <td>TableType</td>
                 <td>Status</td>
                 <td>RestaurantId</td>
-                <td>MergeTableId</td>
-
             </tr>
-            <tr *ngFor="let table of tables">
+            <tr *ngFor="let restaurantTable of restaurantTables">
                 <th>
-                    {{ table.tableId }}
+                    {{ restaurantTable.tableId }}
                 </th>
-                <th>{{ table.tableName }}</th>
-                <th>{{ table.tableType }}</th>
-                <th>{{ table.tableStatus }}</th>
-                <th>{{ table.restaurantId }}</th>
+                <th>{{ restaurantTable.tableName }}</th>
+                <th>{{ restaurantTable.tableTypeId }}</th>
+                <th>{{ (getTableStatusById(restaurantTable.tableStatusId) | async)?.name }}</th>
+                <th>{{ restaurantTable.restaurantId }}</th>
 
             </tr>
         </tbody>

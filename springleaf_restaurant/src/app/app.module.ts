@@ -16,7 +16,7 @@ import { UserProductDetailComponent } from './user/components/user-home/user-pro
 import { UserCategoriesComponent } from './user/components/user-home/user-categories/user-categories.component';
 import { UserCombosComponent } from './user/components/user-home/user-combos/user-combos.component';
 import { UserEventsComponent } from './user/components/user-home/user-events/user-events.component';
-import { UserTablesComponent } from './user/components/user-home/user-tables/user-tables.component';
+import { UserRestaurantTablesComponent } from './user/components/user-home/user-restaurant-tables/user-restaurant-tables.component';
 import { UserRestaurantsComponent } from './user/components/user-home/user-restaurants/user-restaurants.component';
 import { UserIndexComponent } from './user/components/user-home/user-index/user-index.component';
 import { UserFooterComponent } from './user/components/user-home/user-footer/user-footer.component';
@@ -56,7 +56,7 @@ import { AdminInventoryDetailComponent } from './admin/components/admin-home/adm
     UserCategoriesComponent,
     UserCombosComponent,
     UserEventsComponent,
-    UserTablesComponent,
+    UserRestaurantTablesComponent,
     UserRestaurantsComponent,
     // UserLoginComponent,
 

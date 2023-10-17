@@ -1,8 +1,7 @@
 export interface RestaurantTable {
     tableId: number;
-    tableName: number;
-    tableType: number;
-    tableStatus: number;
+    tableName: string;
+    tableTypeId: number;
+    tableStatusId: number;
     restaurantId: number;
-
 }

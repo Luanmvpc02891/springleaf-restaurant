@@ -39,16 +39,15 @@ export class CategoryService {
     // Check if categoriesCache is null or empty
     if (!this.categoriesCache) {
       // Fetch the data from the API if cache is empty
-      const url = `${this.categoryUrl}/${id}`;
-      return this.apiService.request<Category>('get', url);
+      return this.apiService.request<Category>('get', this.categoriesUrl);
     }
 
     // Try to find the Category in the cache by its id
-    const CategoryFromCache = this.categoriesCache.find(Category => Category.categoryId === id);
+    const categoryFromCache = this.categoriesCache.find(category => category.categoryId === id);
 
-    if (CategoryFromCache) {
+    if (categoryFromCache) {
       // If found in cache, return it as an observable
-      return of(CategoryFromCache);
+      return of(categoryFromCache);
     } else {
       // If not found in cache, fetch it from the API
       const url = `${this.categoryUrl}/${id}`;
@@ -70,6 +69,7 @@ export class CategoryService {
         const index = this.categoriesCache!.findIndex(cat => cat.categoryId === updatedCategory.categoryId);
         if (index !== -1) {
           this.categoriesCache![index] = updatedCategory;
+          localStorage.setItem('categories', JSON.stringify(this.categoriesCache));
         }
       })
     );
