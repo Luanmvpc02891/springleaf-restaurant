@@ -4,13 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { Restaurant } from 'src/app/interfaces/restaurant';
-import { Table } from 'src/app/interfaces/table';
+import { RestaurantTable } from 'src/app/interfaces/restaurantTable';
 import { TableStatus } from 'src/app/interfaces/table-status';
 import { TableType } from 'src/app/interfaces/table-type';
 import { RestaurantService } from 'src/app/services/restaurant.service';
+import { RestaurantTableService } from 'src/app/services/restaurantTable.service';
 import { TableStatusService } from 'src/app/services/table-status.service';
 import { TableTypeService } from 'src/app/services/table-type.service';
-import { TableService } from 'src/app/services/table.service';
 import { AdminTableDetailComponent } from '../admin-table-detail/admin-table-detail.component';
 
 @Component({
@@ -19,16 +19,16 @@ import { AdminTableDetailComponent } from '../admin-table-detail/admin-table-det
   styleUrls: ['./admin-tables.component.css']
 })
 export class AdminTablesComponent {
-  tables: Table[] = [];
+  restaurantTables: RestaurantTable[] = [];
   tableTypes: TableType[] = [];
   tableStatuses: TableStatus[] = [];
   restaurants: Restaurant[] = [];
-  table: Table | undefined;
+  restaurantTable: RestaurantTable | undefined;
   fieldNames: string[] = [];
   tableForm: FormGroup;
 
   constructor(
-    private tableService: TableService,
+    private tableService: RestaurantTableService,
     private route: ActivatedRoute,
     private tableTypeService: TableTypeService,
     private tableStatusService: TableStatusService,
@@ -55,7 +55,7 @@ export class AdminTablesComponent {
 
   getTable(): void {
     this.tableService.getTables()
-      .subscribe(table => this.tables = table);
+      .subscribe(table => this.restaurantTables = table);
   }
 
   getTableTypeById(tableType: number): Observable<TableType> {
@@ -83,10 +83,10 @@ export class AdminTablesComponent {
     this.restaurantService.getRestaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
   }
-  openTableDetailModal(table: Table) {
+  openTableDetailModal(table: RestaurantTable) {
     //this.getCategory();
     const modalRef = this.modalService.open(AdminTableDetailComponent, { size: 'lg' });
-    modalRef.componentInstance.table = table;
+    modalRef.componentInstance.restaurantTable = table;
     modalRef.result.then((result) => {
       if (result === 'Close after saving') {
         this.getTable();
@@ -101,7 +101,7 @@ export class AdminTablesComponent {
     const restaurantId = this.tableForm.get('restaurantId')?.value;
     console.log("Giá trị đâu :" + tableName);
 
-    const newTable: Table = {
+    const newTable: RestaurantTable = {
       tableId: 0, // Không cần gán giá trị cho trường này vì nó có thể được tạo tự động
       tableName: tableName,
       tableType: tableType,
@@ -112,13 +112,13 @@ export class AdminTablesComponent {
     this.tableService.addTable(newTable)
       .subscribe(table => {
         console.log('table added:', table);
-        this.tables.push(table);
+        this.restaurantTables.push(table);
         this.tableForm.reset();
       });
 
   }
-  deleteTable(table: Table): void {
-    this.tables = this.tables.filter(i => i !== table);
+  deleteTable(table: RestaurantTable): void {
+    this.restaurantTables = this.restaurantTables.filter(i => i !== table);
     this.tableService.deleteTable(table.tableId).subscribe();
   }
 }

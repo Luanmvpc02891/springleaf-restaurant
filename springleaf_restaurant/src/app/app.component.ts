@@ -26,13 +26,14 @@ import { RatingService } from "./services/rating.service";
 import { ReceiptDetailService } from "./services/receipt-detail.service";
 import { ReceiptService } from "./services/receipt.service";
 import { ReservationService } from "./services/reservation.service";
-
 import { RestaurantService } from "./services/restaurant.service";
+import { RestaurantTableService } from "./services/restaurantTable.service";
 import { RoleFunctionService } from "./services/role-function.service";
 import { RoleService } from "./services/role.service";
 import { SupplierService } from "./services/supplier.service";
 import { TableStatusService } from "./services/table-status.service";
-import { TableService } from "./services/table.service";
+import { TableTypeService } from "./services/table-type.service";
+
 
 interface DataService<T> {
   cache: T[] | null;
@@ -60,7 +61,7 @@ export class AppComponent implements OnDestroy {
     private cartDetailsService: CartDetailService,
     private combosService: ComboService,
     private eventsService: EventService,
-    private tablesService: TableService,
+    private restaurantTablesService: RestaurantTableService,
     private restaurantsService: RestaurantService,
     private suppliersService: SupplierService,
     private tableStatusesService: TableStatusService,
@@ -87,7 +88,8 @@ export class AppComponent implements OnDestroy {
     private ratingsService: RatingService,
     private receiptsService: ReceiptService,
     private receiptDetailsService: ReceiptDetailService,
-    private reservationsService: ReservationService
+    private reservationsService: ReservationService,
+    private tableTypesService: TableTypeService,
   ) {
     this.services = {
       categories: { cache: this.categoriesService.categoriesCache, localStorageKey: 'categories' },
@@ -95,7 +97,7 @@ export class AppComponent implements OnDestroy {
       cartDetails: { cache: this.cartDetailsService.cartDetailsCache, localStorageKey: 'cartDetails' },
       combos: { cache: this.combosService.combosCache, localStorageKey: 'combos' },
       events: { cache: this.eventsService.eventsCache, localStorageKey: 'events' },
-      restaurantTables: { cache: this.tablesService.tablesCache, localStorageKey: 'restaurantTables' },
+      restaurantTables: { cache: this.restaurantTablesService.restaurantTablesCache, localStorageKey: 'restaurantTables' },
       restaurants: { cache: this.restaurantsService.restaurantsCache, localStorageKey: 'restaurants' },
       suppliers: { cache: this.suppliersService.suppliersCache, localStorageKey: 'suppliers' },
       tableStatuses: { cache: this.tableStatusesService.tableStatusesCache, localStorageKey: 'tableStatuses' },
@@ -122,7 +124,8 @@ export class AppComponent implements OnDestroy {
       ratings: { cache: this.ratingsService.ratingsCache, localStorageKey: 'ratings' },
       receipts: { cache: this.receiptsService.receiptsCache, localStorageKey: 'receipts' },
       receiptDetails: { cache: this.receiptDetailsService.receiptDetailsCache, localStorageKey: 'receiptDetails' },
-      reservations: { cache: this.reservationsService.reservationsCache, localStorageKey: 'reservations' }
+      reservations: { cache: this.reservationsService.reservationsCache, localStorageKey: 'reservations' },
+      tableTypes: { cache: this.tableTypesService.tableTypesCache, localStorageKey: 'tableTypes' }
     };
 
     this.callAPIsWorker = new Worker(new URL('./call-apis.worker', import.meta.url));

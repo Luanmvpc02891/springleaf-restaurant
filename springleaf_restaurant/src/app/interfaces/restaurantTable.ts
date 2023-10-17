@@ -1,4 +1,4 @@
-export interface Table {
+export interface RestaurantTable {
     tableId: number;
     tableName: string;
     tableType: number;

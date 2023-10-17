@@ -5,11 +5,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { Cart } from 'src/app/interfaces/cart';
 import { Reservation } from 'src/app/interfaces/reservation';
-import { Table } from 'src/app/interfaces/table';
+import { RestaurantTable } from 'src/app/interfaces/restaurantTable';
 import { User } from 'src/app/interfaces/user';
 import { CartService } from 'src/app/services/cart.service';
 import { ReservationService } from 'src/app/services/reservation.service';
-import { TableService } from 'src/app/services/table.service';
+import { RestaurantTableService } from 'src/app/services/restaurantTable.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +18,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-reservations.component.css']
 })
 export class UserReservationsComponent {
-  tables: Table[] = [];
+  tables: RestaurantTable[] = [];
   users: User[] = [];
   carts: Cart[] = [];
   reservations: Reservation[] = [];
@@ -31,7 +31,7 @@ export class UserReservationsComponent {
     private route: ActivatedRoute,
     private userService: UserService,
     private cartService: CartService,
-    private tableService: TableService,
+    private tableService: RestaurantTableService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private zone: NgZone) {
@@ -71,7 +71,7 @@ export class UserReservationsComponent {
       .subscribe(cart => this.carts = cart);
   }
 
-  getTableById(table: number): Observable<Table> {
+  getTableById(table: number): Observable<RestaurantTable> {
     return this.tableService.getTable(table);
   }
   // getUserById(user: number): Observable<User> {

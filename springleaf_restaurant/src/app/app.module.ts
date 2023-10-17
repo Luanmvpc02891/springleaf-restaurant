@@ -82,6 +82,7 @@ import { UserReservationsComponent } from './user/components/user-home/user-rese
     AdminCategoriesComponent,
     AdminTableDetailComponent,
     AdminTablesComponent,
+    
 
     ChatComponent,
     LoginComponent,

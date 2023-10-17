@@ -3,13 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Restaurant } from 'src/app/interfaces/restaurant';
-import { Table } from 'src/app/interfaces/table';
+import { RestaurantTable } from 'src/app/interfaces/restaurantTable';
 import { TableStatus } from 'src/app/interfaces/table-status';
 import { TableType } from 'src/app/interfaces/table-type';
 import { RestaurantService } from 'src/app/services/restaurant.service';
+import { RestaurantTableService } from 'src/app/services/restaurantTable.service';
+
 import { TableStatusService } from 'src/app/services/table-status.service';
 import { TableTypeService } from 'src/app/services/table-type.service';
-import { TableService } from 'src/app/services/table.service';
 
 @Component({
   selector: 'app-admin-table-detail',
@@ -17,18 +18,15 @@ import { TableService } from 'src/app/services/table.service';
   styleUrls: ['./admin-table-detail.component.css']
 })
 export class AdminTableDetailComponent {
-  @Input() table: Table | undefined;
+  @Input() restaurantTable: RestaurantTable | undefined;
   fieldNames: string[] = [];
-  tables: Table[] = [];
+  tables: RestaurantTable[] = [];
   tableTypes: TableType[] = [];
   tableStatuses: TableStatus[] = [];
   restaurants: Restaurant[] = [];
-
   tableForm: FormGroup;
-
-
   constructor(
-    private tableService: TableService,
+    private tableService: RestaurantTableService,
     private route: ActivatedRoute,
     private tableTypeService: TableTypeService,
     private tableStatusService: TableStatusService,
@@ -55,13 +53,13 @@ export class AdminTableDetailComponent {
   }
 
   setValue() {
-    if (this.table) {
+    if (this.restaurantTable) {
       this.tableForm.patchValue({
-        tableId: this.table.tableId,
-        tableName: this.table.tableName,
-        restaurantId: this.table.restaurantId,
-        tableType: this.table.tableType,
-        tableStatus: this.table.tableStatus,
+        tableId: this.restaurantTable.tableId,
+        tableName: this.restaurantTable.tableName,
+        restaurantId: this.restaurantTable.restaurantId,
+        tableType: this.restaurantTable.tableType,
+        tableStatus: this.restaurantTable.tableStatus,
       });
     }
   }
@@ -88,7 +86,7 @@ export class AdminTableDetailComponent {
   updateTable(): void {
     this.activeModal.close('Close after saving');
     if (this.tableForm.valid) {
-      const updatedTable: Table = {
+      const updatedTable: RestaurantTable = {
         tableId: this.tableForm.get('tableId')?.value,
         tableName: this.tableForm.get('tableName')?.value,
         tableStatus: this.tableForm.get('tableStatus')?.value,

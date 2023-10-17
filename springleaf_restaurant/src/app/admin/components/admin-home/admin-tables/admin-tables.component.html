@@ -55,7 +55,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let table of tables">
+      <tr *ngFor="let table of restaurantTables">
         <td>{{table.tableId}}</td>
         <td>{{table.tableName}}</td>
         <td>{{ (getRestaurantById(table.restaurantId) | async)?.restaurantName }}</td>

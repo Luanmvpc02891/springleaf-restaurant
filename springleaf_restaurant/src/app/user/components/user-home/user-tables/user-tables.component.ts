@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Table } from 'src/app/interfaces/table';
-import { TableService } from 'src/app/services/table.service';
+import { RestaurantTable } from 'src/app/interfaces/restaurantTable';
+import { RestaurantTableService } from 'src/app/services/restaurantTable.service';
 
 @Component({
   selector: 'app-user-table',
@@ -9,9 +9,9 @@ import { TableService } from 'src/app/services/table.service';
   styleUrls: ['./user-tables.component.css']
 })
 export class UserTablesComponent {
-  tables: Table[] = [];
+  tables: RestaurantTable[] = [];
 
-  constructor(private tableservice: TableService, private route: ActivatedRoute) {
+  constructor(private tableservice: RestaurantTableService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
