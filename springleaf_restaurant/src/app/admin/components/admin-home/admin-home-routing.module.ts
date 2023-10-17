@@ -26,8 +26,8 @@ const routes: Routes = [
       {
         path: 'users',
         loadChildren: () =>
-          import('./admin-user/admin-user.module').then(
-            (m) => m.AdminUserModule
+          import('./admin-users/admin-users.module').then(
+            (m) => m.AdminUsersModule
           ),
       },
       {

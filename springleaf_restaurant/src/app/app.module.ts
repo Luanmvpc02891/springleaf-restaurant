@@ -25,7 +25,7 @@ import { AdminHomeComponent } from './admin/components/admin-home/admin-home.com
 import { AdminHeaderComponent } from './admin/components/admin-home/admin-header/admin-header.component';
 import { AdminProductsComponent } from './admin/components/admin-home/admin-products/admin-products.component';
 import { AdminProductDetailComponent } from './admin/components/admin-home/admin-product-detail/admin-product-detail.component';
-import { AdminUserComponent } from './admin/components/admin-home/admin-user/admin-user.component';
+import { AdminUsersComponent } from './admin/components/admin-home/admin-users/admin-users.component';
 import { AdminIndexComponent } from './admin/components/admin-home/admin-index/admin-index.component';
 import { AdminFooterComponent } from './admin/components/admin-home/admin-footer/admin-footer.component';
 import { AdminSuppliersComponent } from './admin/components/admin-home/admin-suppliers/admin-suppliers.component';
@@ -63,7 +63,7 @@ import { AdminInventoryDetailComponent } from './admin/components/admin-home/adm
     AdminHeaderComponent,
     AdminProductsComponent,
     AdminProductDetailComponent,
-    AdminUserComponent,
+    AdminUsersComponent,
     AdminIndexComponent,
     AdminFooterComponent,
     AdminSuppliersComponent,
