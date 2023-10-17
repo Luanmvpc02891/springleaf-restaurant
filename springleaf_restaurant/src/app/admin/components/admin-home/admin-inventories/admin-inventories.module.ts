@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AdminInventorisRoutingModule } from './admin-inventories-routing.module';
+import { AdminInventoriesRoutingModule } from './admin-inventories-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    AdminInventorisRoutingModule
+    AdminInventoriesRoutingModule
   ]
 })
-export class AdminInventorisModule { }
+export class AdminInventoriesModule { }
