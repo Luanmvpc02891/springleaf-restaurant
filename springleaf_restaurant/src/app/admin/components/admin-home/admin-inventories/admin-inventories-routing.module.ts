@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminInventorisComponent } from './admin-inventoris.component';
+import { AdminInventoriesComponent } from './admin-inventories.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminInventorisComponent,
+    component: AdminInventoriesComponent,
   }
 ];
 

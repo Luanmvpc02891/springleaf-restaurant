@@ -12,11 +12,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-admin-inventoris',
-  templateUrl: './admin-inventoris.component.html',
-  styleUrls: ['./admin-inventoris.component.css']
+  selector: 'app-admin-inventories',
+  templateUrl: './admin-inventories.component.html',
+  styleUrls: ['./admin-inventories.component.css']
 })
-export class AdminInventorisComponent {
+export class AdminInventoriesComponent {
   inventories: Inventory[] = [];
   ingredients: Ingredient[] = [];
   suppliers: Supplier[] = [];

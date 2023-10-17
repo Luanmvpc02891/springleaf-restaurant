@@ -38,7 +38,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminCategoriesComponent } from './admin/components/admin-home/admin-categories/admin-categories.component';
 import { AdminCategoryDetailComponent } from './admin/components/admin-home/admin-category-detail/admin-category-detail.component';
 import { CommonModule } from '@angular/common';
-import { AdminInventorisComponent } from './admin/components/admin-home/admin-inventoris/admin-inventoris.component';
+import { AdminInventoriesComponent } from './admin/components/admin-home/admin-inventories/admin-inventories.component';
 import { AdminInventoryDetailComponent } from './admin/components/admin-home/admin-inventory-detail/admin-inventory-detail.component';
 
 
@@ -71,7 +71,7 @@ import { AdminInventoryDetailComponent } from './admin/components/admin-home/adm
     AdminHomeComponent,
     AdminCategoriesComponent,
     AdminCategoryDetailComponent,
-    AdminInventorisComponent,
+    AdminInventoriesComponent,
     AdminInventoryDetailComponent,
 
     ChatComponent,

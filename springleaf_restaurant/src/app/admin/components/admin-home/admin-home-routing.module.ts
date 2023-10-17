@@ -45,9 +45,9 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'inventoris',
+        path: 'inventories',
         loadChildren: () =>
-          import('./admin-inventoris/admin-inventoris.module').then(
+          import('./admin-inventories/admin-inventories.module').then(
             (m) => m.AdminInventorisModule
           ),
       }
