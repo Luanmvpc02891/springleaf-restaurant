@@ -41,23 +41,27 @@ throw new Error('Method not implemented.');
     }
   }
 
-  register() {
-    if (this.username && this.password) {
-      this.authService.register(this.username, this.password).subscribe(
-        (response) => {
-          // Xử lý phản hồi từ service sau khi đăng ký thành công
-          console.log('Registration successful');
-          // Điều hướng hoặc thực hiện hành động tiếp theo tại đây
-        },
-        (error) => {
-          console.error('Registration failed:', error);
-          // Xử lý lỗi đăng ký ở đây nếu cần
-        }
-      );
-    } else {
-      console.error('Please enter both username and password.');
-    }
+  loginWithGoogle(){
+
   }
+
+  // register() {
+  //   if (this.username && this.password) {
+  //     this.authService.register(this.username, this.password).subscribe(
+  //       (response) => {
+  //         // Xử lý phản hồi từ service sau khi đăng ký thành công
+  //         console.log('Registration successful');
+  //         // Điều hướng hoặc thực hiện hành động tiếp theo tại đây
+  //       },
+  //       (error) => {
+  //         console.error('Registration failed:', error);
+  //         // Xử lý lỗi đăng ký ở đây nếu cần
+  //       }
+  //     );
+  //   } else {
+  //     console.error('Please enter both username and password.');
+  //   }
+  // }
   logout(){
     this.authService.logout;
   }

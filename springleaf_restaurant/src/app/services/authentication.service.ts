@@ -21,11 +21,20 @@ export class AuthenticationService {
     this.cachedDataSubject.next(user); // Thông báo cho bất kỳ thành phần nào đang theo dõi userCache
   }
 
-  register(username: string, password: string): Observable<any> {
+  register(firstName: string, lastName: string,  username: string, password: string, phone: string, email: string,
+    address: number, image: string, managerId:  number, restaurantBranchId: number, roleId: number ): Observable<any> {
     const registerData = {
+      firstName: firstName,
+      lastName: lastName,
       username: username,
       password: password,
-      roleId: 1
+      phone: phone,
+      email: email,
+      address: address,
+      image: image,
+      managerId: null,
+      restaurantBranchId: null,
+      roleId: null
     };
 
     return this.http.post(`${this.apiUrl}/register`, registerData);
@@ -47,26 +56,30 @@ export class AuthenticationService {
     );
   }
 
+  loginWithGoogle(){
+
+  }
+
   // AuthenticationService trong Angular
-refreshToken(refreshToken: string): Observable<any> {
-  const tokenData = {
-    refreshToken: refreshToken
-  };
+  refreshToken(refreshToken: string): Observable<any> {
+    const tokenData = {
+      refreshToken: refreshToken
+    };
 
-  return this.http.post(`${this.apiUrl}/refreshToken`, tokenData).pipe(
-    map((response: any) => {
-      // Lưu trữ JWT mới sau khi làm mới token vào Local Storage
-      localStorage.setItem('jwtToken', response.accessToken);
-      return response;
-    })
-  );
-}
+    return this.http.post(`${this.apiUrl}/refreshToken`, tokenData).pipe(
+      map((response: any) => {
+        // Lưu trữ JWT mới sau khi làm mới token vào Local Storage
+        localStorage.setItem('jwtToken', response.accessToken);
+        return response;
+      })
+    );
+  }
 
 
-logout() {
-  // Xóa token JWT khỏi Local Storage khi đăng xuất
-  localStorage.removeItem('jwtToken');
-}
+  logout() {
+    // Xóa token JWT khỏi Local Storage khi đăng xuất
+    localStorage.removeItem('jwtToken');
+  }
 
   getToken(): string | null {
     // Lấy token JWT từ lưu trữ

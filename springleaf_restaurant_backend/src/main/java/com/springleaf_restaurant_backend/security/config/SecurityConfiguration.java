@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
@@ -43,16 +44,21 @@ public class SecurityConfiguration {
     http
         .csrf()
         .disable()
+        
         .authorizeHttpRequests()
         .requestMatchers(
           "/api/**",
           "/api/users",
-          "localhost:8080/api/v1/auth/**"
+          "/api/v1/auth/**",
+          "/login/oauth2/code/google",
+          "https://accounts.google.com//**",
+          "/google-login",
+          "http://localhost:8080/api/v1/auth//login/google"
         )
         .permitAll()
 
 
-        .requestMatchers("/api/products").hasAnyRole("ADMIN", "MANAGER")
+        //.requestMatchers("/api/products").hasAnyRole("ADMIN", "MANAGER")
         
         .anyRequest()
           .authenticated()

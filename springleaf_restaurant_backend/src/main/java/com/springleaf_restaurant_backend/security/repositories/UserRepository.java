@@ -10,4 +10,6 @@ import com.springleaf_restaurant_backend.user.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username); 
     //List<User> findAll();
+
+    User findByEmail(String email);
 }

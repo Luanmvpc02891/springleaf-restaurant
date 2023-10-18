@@ -1,0 +1,45 @@
+<div class="login-container">
+    <h2>Register</h2>
+    <div class="input-container">
+        <label for="firstName">First Name: </label>
+        <input type="text" id="firstName" placeholder="Enter your first name" [(ngModel)]="firstName" name="firstName">
+    </div>
+    <div class="input-container">
+        <label for="lastName">Last Name: </label>
+        <input type="text" id="lastName" placeholder="Enter your last name" [(ngModel)]="lastName" name="lastName">
+    </div>
+    <div class="input-container">
+        <label for="username">Username: </label>
+        <input type="text" id="username" placeholder="Enter your username" [(ngModel)]="username" name="username">
+    </div>
+    <div class="input-container">
+        <label for="password">Password: </label>
+        <input type="password" id="password" placeholder="Enter Password" [(ngModel)]="password" name="password">
+    </div>
+    <div class="input-container">
+        <label for="phone">Phone: </label>
+        <input type="text" id="phone" placeholder="Enter your phone number" [(ngModel)]="phone" name="phone">
+    </div>
+    <div class="input-container">
+        <label for="email">Email: </label>
+        <input type="text" id="email" placeholder="Enter your email" [(ngModel)]="email" name="email">
+    </div>
+    <div class="input-container">
+        <label for="address">Address: </label>
+        <input type="number" id="address" placeholder="Enter your address" [(ngModel)]="address" name="address">
+    </div>
+    <div class="input-container">
+        <label for="image">Image URL: </label>
+        <input type="text" id="image" placeholder="Enter image URL" [(ngModel)]="image" name="image">
+    </div>
+    <div class="input-container">
+        <label for="managerId">Manager ID: </label>
+        <input type="number" id="managerId" placeholder="Enter manager ID" [(ngModel)]="managerId" name="managerId">
+    </div>
+    <div class="input-container">
+        <label for="restaurantBranchId">Restaurant Branch ID: </label>
+        <input type="number" id="restaurantBranchId" placeholder="Enter restaurant branch ID" [(ngModel)]="restaurantBranchId" name="restaurantBranchId">
+    </div>
+    
+    <button class="login-button" (click)="register()">Login</button>
+</div>

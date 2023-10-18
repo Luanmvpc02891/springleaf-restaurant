@@ -8,8 +8,8 @@
       <label for="password">Password</label>
       <input type="password" id="password" placeholder="Enter Password">
   </div>
-  <button class="login-button" onclick="login()">Login</button>
-  <button class="google-login-button" onclick="loginWithGoogle()">Sign in with Google</button>
+  <button class="login-button" (click)="login()">Login</button>
+  <button class="google-login-button" (click)="loginWithGoogle()">Sign in with Google</button>
   <!-- <a (click)="openRegisterModal()" class="register-link">Bạn chưa có tài khoản? Đăng ký ngay</a> -->
   <a href="/forgot-password" class="forgot-password-link">Quên mật khẩu</a>
 </div>
