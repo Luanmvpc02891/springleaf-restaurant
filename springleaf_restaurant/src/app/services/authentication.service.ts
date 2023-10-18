@@ -78,6 +78,7 @@ export class AuthenticationService {
 
   logout() {
     // Xóa token JWT khỏi Local Storage khi đăng xuất
+    console.log("logout")
     localStorage.removeItem('jwtToken');
   }
 

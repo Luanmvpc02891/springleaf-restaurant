@@ -41,7 +41,9 @@ export class UserHeaderComponent {
     const modalRef = this.modalService.open(RegisterComponent);
   }
 
-  logOut(){}
+  logOut(){
+    this.authService.logout();
+  }
 
   ngOnInit(): void {
     this.user = this.authService.getUserCache(); // Lấy thông tin người dùng từ userCache
