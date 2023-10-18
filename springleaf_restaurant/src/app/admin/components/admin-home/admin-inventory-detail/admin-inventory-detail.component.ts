@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { Inventory } from 'src/app/interfaces/inventory';
@@ -22,7 +22,7 @@ export class AdminInventoryDetailComponent implements OnInit {
   fieldNames: string[] = [];
 
   constructor(
-    private inventoryService: InventoryService,
+    private inventoriesService: InventoryService,
     private supplierService: SupplierService,
     private ingredientService: IngredientService,
     private formBuilder: FormBuilder,
@@ -53,12 +53,12 @@ export class AdminInventoryDetailComponent implements OnInit {
     }
   }
   getInventoris(): void {
-    this.inventoryService.getInventories()
+    this.inventoriesService.getInventories()
       .subscribe(inventory => this.inventoris = inventory);
   }
 
   getSuppliers(): void {
-    this.supplierService.getSupplier()
+    this.supplierService.getSuppliers()
       .subscribe(supplier => this.suppliers = supplier);
   }
 
@@ -66,25 +66,21 @@ export class AdminInventoryDetailComponent implements OnInit {
     this.ingredientService.getIngredients()
       .subscribe(ingredient => this.ingredients = ingredient);
   }
-  // saveInventory(): void {
-  //   this.activeModal.close('Close after saving');
-  //   if (this.inventoryForm.valid) {
 
-  //     const inventoryId = this.inventoryForm.get('inventoryId')?.value;
-  //     const ingredientId = this.inventoryForm.get('ingredient')?.value;
-  //     const supplierId = this.inventoryForm.get('supplier')?.value;
 
-  //     // Tạo một đối tượng Inventory và gán giá trị
-  //     const updatedInventory: Inventory = {
-  //       inventoryId,
-  //       ingredientId: { ingredientId, name: '', description: '', orderThreshold: 0 },
-  //       supplierId: { supplierId, name: '', address: '', phone: 0, email: '' },
-  //     };
-  //     this.inventoryService.updateInventory(updatedInventory).subscribe(() => {
-  //       // Cập nhật cache
-  //       this.inventoryService.updateInventoryCache(updatedInventory);
+  saveInventory(): void {
+    this.activeModal.close('Close after saving');
+    if (this.inventoryForm.valid) {
+      const updatedInventory: Inventory = {
+        inventoryId: this.inventoryForm.get('inventoryId')?.value,
+        ingredientId: this.inventoryForm.get('ingredientId')?.value,
+        supplierId: this.inventoryForm.get('supplierId')?.value
+      };
 
-  //     });
-  //   }
-  // }
+      this.inventoriesService.updateInventory(updatedInventory).subscribe(() => {
+        // Cập nhật cache
+        this.inventoriesService.updateInventoryCache(updatedInventory);
+      });
+    }
+  }
 }

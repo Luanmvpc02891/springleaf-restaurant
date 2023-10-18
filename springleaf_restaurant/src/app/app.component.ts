@@ -32,6 +32,7 @@ import { RoleFunctionService } from "./services/role-function.service";
 import { RoleService } from "./services/role.service";
 import { SupplierService } from "./services/supplier.service";
 import { TableStatusService } from "./services/table-status.service";
+import { TableTypeService } from "./services/table-type.service";
 
 interface DataService<T> {
   cache: T[] | null;
@@ -86,7 +87,8 @@ export class AppComponent implements OnDestroy {
     private ratingsService: RatingService,
     private receiptsService: ReceiptService,
     private receiptDetailsService: ReceiptDetailService,
-    private reservationsService: ReservationService
+    private reservationsService: ReservationService,
+    private tableTypesService: TableTypeService
   ) {
     this.services = {
       categories: { cache: this.categoriesService.categoriesCache, localStorageKey: 'categories' },
@@ -121,7 +123,8 @@ export class AppComponent implements OnDestroy {
       ratings: { cache: this.ratingsService.ratingsCache, localStorageKey: 'ratings' },
       receipts: { cache: this.receiptsService.receiptsCache, localStorageKey: 'receipts' },
       receiptDetails: { cache: this.receiptDetailsService.receiptDetailsCache, localStorageKey: 'receiptDetails' },
-      reservations: { cache: this.reservationsService.reservationsCache, localStorageKey: 'reservations' }
+      reservations: { cache: this.reservationsService.reservationsCache, localStorageKey: 'reservations' },
+      tableTypes: { cache: this.tableTypesService.tableTypesCache, localStorageKey: 'tableTypes' }
     };
 
     this.callAPIsWorker = new Worker(new URL('./call-apis.worker', import.meta.url));

@@ -41,6 +41,7 @@ addEventListener('message', async ({ data }) => {
                                 fetch(`${domain}/receipts`),
                                 fetch(`${domain}/receiptDetails`),
                                 fetch(`${domain}/reservations`),
+                                fetch(`${domain}/tableTypes`),
                         ]);
 
                         const responseData = await Promise.all(responses.map(async (response) => {
@@ -85,6 +86,7 @@ addEventListener('message', async ({ data }) => {
                                 receipts: responseData[30],
                                 receiptDetails: responseData[31],
                                 reservations: responseData[32],
+                                tableTypes: responseData[33],
                         };
 
                         postMessage(dataMap);

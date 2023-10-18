@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AdminHomeRoutingModule } from './admin-home-routing.module';
 import { AdminInventoryDetailComponent } from './admin-inventory-detail/admin-inventory-detail.component';
+import { AdminRestaurantTablesComponent } from './admin-restaurant-tables/admin-restaurant-tables.component';
+import { AdminRestaurantTableDetailComponent } from './admin-restaurant-table-detail/admin-restaurant-table-detail.component';
 
 
 @NgModule({
@@ -13,6 +15,7 @@ import { AdminInventoryDetailComponent } from './admin-inventory-detail/admin-in
   ],
 
   declarations: [
+
   ],
 
 })
