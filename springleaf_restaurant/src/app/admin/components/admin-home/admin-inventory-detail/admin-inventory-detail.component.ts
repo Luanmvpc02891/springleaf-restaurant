@@ -20,6 +20,7 @@ export class AdminInventoryDetailComponent implements OnInit {
   suppliers: Supplier[] = [];
   ingredients: Ingredient[] = [];
   fieldNames: string[] = [];
+  inventories: Inventory[] = [];
 
   constructor(
     private inventoriesService: InventoryService,
@@ -66,7 +67,10 @@ export class AdminInventoryDetailComponent implements OnInit {
     this.ingredientService.getIngredients()
       .subscribe(ingredient => this.ingredients = ingredient);
   }
-
+  getInventories(): void {
+    this.inventoriesService.getInventories()
+      .subscribe(inventories => this.inventories = inventories);
+  }
 
   saveInventory(): void {
     this.activeModal.close('Close after saving');
@@ -80,6 +84,9 @@ export class AdminInventoryDetailComponent implements OnInit {
       this.inventoriesService.updateInventory(updatedInventory).subscribe(() => {
         // Cập nhật cache
         this.inventoriesService.updateInventoryCache(updatedInventory);
+        this.getInventories();
+        this.getSuppliers();
+        this.getIngredients();
       });
     }
   }

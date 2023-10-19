@@ -24,6 +24,11 @@ export class AdminInventoriesComponent {
   inventory: Inventory | undefined;
   fieldNames: string[] = [];
 
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [5, 10, 15, 20];
+
   constructor(
     private inventoriesService: InventoryService,
     private route: ActivatedRoute,
@@ -42,7 +47,17 @@ export class AdminInventoriesComponent {
     this.getInventories();
     this.getIngredients();
     this.getSuppliers();
+  }
 
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getInventories();
+  }
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getInventories();
   }
 
   getIngredients(): void {
