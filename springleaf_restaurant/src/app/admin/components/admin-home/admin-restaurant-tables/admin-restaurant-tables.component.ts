@@ -26,6 +26,12 @@ export class AdminRestaurantTablesComponent {
   fieldNames: string[] = [];
   restaurantTableForm: FormGroup;
 
+
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [5, 10, 15, 20];
+
   constructor(
     private restaurantTableService: RestaurantTableService,
     private tableTypeService: TableTypeService,
@@ -43,13 +49,24 @@ export class AdminRestaurantTablesComponent {
     });
   }
   ngOnInit(): void {
-    this.getRestaurantTable();
+    this.getRestaurantTables();
     this.getTableStatus();
     this.getTableType();
     this.getRestaurant();
-
   }
-  getRestaurantTable(): void {
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getRestaurantTables();
+  }
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getRestaurantTables();
+  }
+
+  getRestaurantTables(): void {
     this.restaurantTableService.getRestaurantTables()
       .subscribe(restaurantTables => this.restaurantTables = restaurantTables);
   }
@@ -100,7 +117,7 @@ export class AdminRestaurantTablesComponent {
     modalRef.componentInstance.restaurantTable = restaurantTable;
     modalRef.result.then((result) => {
       if (result === 'Close after saving') {
-        this.getRestaurantTable();
+        this.getRestaurantTables();
       }
     });
   }
