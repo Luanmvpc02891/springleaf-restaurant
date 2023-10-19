@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { Category } from '../interfaces/category';
 
@@ -18,12 +18,9 @@ export class CategoryService {
   getCategories(): Observable<Category[]> {
     // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
     if (this.categoriesCache) {
-      console.log("Có categories cache");
-      console.log(this.categoriesCache);
       return of(this.categoriesCache);
     }
 
-    console.log("Không có categories cache")
     const categoriesObservable = this.apiService.request<Category[]>('get', this.categoriesUrl);
 
     // Cache the categories observable
@@ -81,10 +78,33 @@ export class CategoryService {
     return this.apiService.request('delete', url);
   }
 
-  // Tìm kiếm sản phẩm
-  searchCategories(term: string): Observable<Category[]> {
-    const url = `${this.categoriesUrl}/?name=${term}`;
-    return this.apiService.request<Category[]>('get', url);
+  searchCategoriesByName(term: string): Observable<Category[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+
+    // Kiểm tra xem có dữ liệu caching không
+    if (this.categoriesCache) {
+      const filteredHeroes = this.categoriesCache.filter(category => {
+        // Thực hiện tìm kiếm tương đối trong caching
+        return category.name.toLowerCase().includes(term.toLowerCase());
+      });
+
+      if (filteredHeroes.length > 0) {
+        // Trả về kết quả tìm kiếm từ caching nếu có
+        return of(filteredHeroes);
+      }
+    }
+
+    // Nếu không tìm thấy kết quả trong caching, thực hiện yêu cầu tìm kiếm mới từ máy chủ
+    return this.apiService.request("get", this.categoriesUrl).pipe(
+      map(response => response as Category[]),
+      catchError(error => {
+        console.error(error); // Log lỗi nếu cần thiết
+        return of([]); // Trả về mảng rỗng nếu có lỗi trong quá trình tìm kiếm
+      })
+    );
   }
 
   updateCategoryCache(updatedCategory: Category): void {
