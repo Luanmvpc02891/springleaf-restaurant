@@ -43,7 +43,6 @@ import { LoginComponent } from './components/login/login.component';
 import { ChatService } from './services/chat.service';
 import { WebSocketService } from './services/web-socket.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +59,6 @@ import { WebSocketService } from './services/web-socket.service';
     UserEventsComponent,
     UserRestaurantTablesComponent,
     UserRestaurantsComponent,
-    // UserLoginComponent,
 
     AdminHeaderComponent,
     AdminProductsComponent,
@@ -79,8 +77,7 @@ import { WebSocketService } from './services/web-socket.service';
     AdminRestaurantTableDetailComponent,
 
     ChatComponent,
-    LoginComponent,
-
+    LoginComponent
 
   ],
   imports: [

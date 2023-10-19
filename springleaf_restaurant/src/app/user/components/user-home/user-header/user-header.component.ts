@@ -36,6 +36,13 @@ export class UserHeaderComponent {
     const modalRef = this.modalService.open(LoginComponent);
   }
 
+  
+  logOut() {
+    // Cập nhật userCache trước khi đăng xuất
+    this.authService.setUserCache(null);
+    this.authService.logout();
+  }
+
   ngOnInit(): void {
     this.user = this.authService.getUserCache(); // Lấy thông tin người dùng từ userCache
   }
