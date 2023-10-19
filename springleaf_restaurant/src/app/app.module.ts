@@ -40,7 +40,6 @@ import { AdminCategoryDetailComponent } from './admin/components/admin-home/admi
 import { CommonModule } from '@angular/common';
 import { AdminInventoriesComponent } from './admin/components/admin-home/admin-inventories/admin-inventories.component';
 import { AdminInventoryDetailComponent } from './admin/components/admin-home/admin-inventory-detail/admin-inventory-detail.component';
-import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -74,9 +73,7 @@ import { RegisterComponent } from './components/register/register.component';
     AdminInventoryDetailComponent,
 
     ChatComponent,
-    LoginComponent,
-    RegisterComponent
-
+    LoginComponent
 
   ],
   imports: [

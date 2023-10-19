@@ -1,7 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from 'src/app/components/login/login.component';
-import { RegisterComponent } from 'src/app/components/register/register.component';
 import { User } from 'src/app/interfaces/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -37,11 +36,10 @@ export class UserHeaderComponent {
     const modalRef = this.modalService.open(LoginComponent);
   }
 
-  openRegisterModal() {
-    const modalRef = this.modalService.open(RegisterComponent);
-  }
-
-  logOut(){
+  
+  logOut() {
+    // Cập nhật userCache trước khi đăng xuất
+    this.authService.setUserCache(null);
     this.authService.logout();
   }
 
