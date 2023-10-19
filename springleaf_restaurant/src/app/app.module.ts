@@ -41,7 +41,6 @@ import { CommonModule } from '@angular/common';
 import { AdminInventoriesComponent } from './admin/components/admin-home/admin-inventories/admin-inventories.component';
 import { AdminInventoryDetailComponent } from './admin/components/admin-home/admin-inventory-detail/admin-inventory-detail.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +57,6 @@ import { AdminInventoryDetailComponent } from './admin/components/admin-home/adm
     UserEventsComponent,
     UserRestaurantTablesComponent,
     UserRestaurantsComponent,
-    // UserLoginComponent,
 
     AdminHeaderComponent,
     AdminProductsComponent,
@@ -75,8 +73,7 @@ import { AdminInventoryDetailComponent } from './admin/components/admin-home/adm
     AdminInventoryDetailComponent,
 
     ChatComponent,
-    LoginComponent,
-
+    LoginComponent
 
   ],
   imports: [

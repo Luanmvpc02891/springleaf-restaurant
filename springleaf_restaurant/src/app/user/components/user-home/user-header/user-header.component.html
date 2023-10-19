@@ -54,10 +54,13 @@
             <div class="nav-item" *ngIf="user">
                 <!-- Hiển thị thông tin người dùng khi user khác null -->
                 <p>{{ user.username }}!</p>
+                <li class="nav-item" >
+                    <button class="nav-link" (click)="logOut()">Đăng xuất</button>
+                </li>
                 <!-- Đặc điểm của người dùng khác có thể thêm vào đây -->
             </div>
             <li class="nav-item" *ngIf="!user">
-                <button class="nav-link" (click)="openLoginModal()">Đăng nhập</button>
+                <button class="nav-link" (click)="openLoginModal()">Đăng nhập / Đăng ký</button>
             </li>
         </ul>
     </div>
