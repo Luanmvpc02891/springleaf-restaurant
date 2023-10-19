@@ -19,7 +19,7 @@ export class AdminSuppliersComponent {
   }
 
   getSuppliers(): void {
-    this.supplierService.getSupplier()
+    this.supplierService.getSuppliers()
       .subscribe(supplier => this.supplier = supplier);
   }
 }

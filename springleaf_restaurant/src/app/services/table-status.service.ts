@@ -18,7 +18,7 @@ export class TableStatusService {
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
-    getTableStuses(): Observable<TableStatus[]> {
+    getTableStatuses(): Observable<TableStatus[]> {
         // Kiểm tra nếu có dữ liệu trong cache, trả về dữ liệu đó
         if (this.tableStatusesCache) {
             return of(this.tableStatusesCache);
@@ -39,7 +39,7 @@ export class TableStatusService {
         // Check if categoriesCache is null or empty
         if (!this.tableStatusesCache) {
             // Fetch the data from the API if cache is empty
-            return this.apiService.request<TableStatus>('get', this.tableStatusesUrl);
+            return this.apiService.request<TableStatus>('get', this.tableStatusUrl);
         }
 
         // Try to find the Category in the cache by its id
