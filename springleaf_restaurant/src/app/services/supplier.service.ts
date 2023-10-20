@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { Supplier } from '../interfaces/supplier';
 
@@ -50,6 +50,37 @@ export class SupplierService {
             return this.apiService.request<Supplier>('get', url);
         }
     }
+    // Thêm sản phẩm mới
+    addSupplier(newSupplier: Supplier): Observable<Supplier> {
+        return this.apiService.request<Supplier>('post', this.supplierUrl, newSupplier);
+    }
 
-
+    // Cập nhật sản phẩm
+    updateSupplier(updatedSupplier: Supplier): Observable<any> {
+        const url = `${this.supplierUrl}/${updatedSupplier.supplierId}`;
+        return this.apiService.request('put', url, updatedSupplier).pipe(
+            tap(() => {
+                // Cập nhật danh sách cache sau khi cập nhật danh mục
+                const index = this.suppliersCache!.findIndex(cat => cat.supplierId === updatedSupplier.supplierId);
+                if (index !== -1) {
+                    this.suppliersCache![index] = updatedSupplier;
+                    localStorage.setItem('suppliers', JSON.stringify(this.suppliersCache));
+                }
+            })
+        );
+    }
+    updateSupplierCache(updatedSupplier: Supplier): void {
+        // Check if categoriesCache is null
+        if (this.suppliersCache) {
+            const index = this.suppliersCache.findIndex(cat => cat.supplierId === updatedSupplier.supplierId);
+            if (index !== -1) {
+                this.suppliersCache[index] = updatedSupplier;
+            }
+        }
+    }
+    // Xoá sản phẩm
+    deleteSupplier(id: number): Observable<any> {
+        const url = `${this.supplierUrl}/${id}`;
+        return this.apiService.request('delete', url);
+    }
 }

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <ng-container *ngFor="let product of products; let i = index">
+        <ng-container *ngFor="let product of getVisibleProducts(); let i = index">
             <div class="col-md-3 mb-4">
                 <a routerLink="/user/product/detail/{{product.categoryId}}">
                     <div class="card equal-height">
@@ -13,5 +13,10 @@
                 </a>
             </div>
         </ng-container>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-info" (click)="showMore()" *ngIf="remainingProducts && remainingProducts > 0">Show
+            More</button>
+        <button class="btn btn-info" (click)="showLess()" *ngIf="visibleProductCount > 10">Show Less</button>
     </div>
 </div>

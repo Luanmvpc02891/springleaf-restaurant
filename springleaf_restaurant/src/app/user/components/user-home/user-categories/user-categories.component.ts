@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable, Subject, distinctUntilChanged, map, of, switchMap } from 'rxjs';
+import { Observable, Subject, distinctUntilChanged, map, switchMap } from 'rxjs';
 import { Category } from 'src/app/interfaces/category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -14,8 +14,12 @@ export class UserCategoriesComponent {
   categories: Category[] = [];
   categories$!: Observable<Category[]>;
   searchTerms = new Subject<string>();
+showMore: boolean = false;
 
-  constructor(private categoriesService: CategoryService, private route: ActivatedRoute) {
+  
+  constructor(
+    private categoriesService: CategoryService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {

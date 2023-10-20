@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, OnSameUrlNavigation } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 declare var $: any;
@@ -12,8 +12,12 @@ export class UserProductsComponent implements OnInit {
 
   products: Product[] | null = null;
   categoryId: number | undefined; // Khởi tạo categoryId là undefined
+  visibleProductCount: number = 10; // Số sản phẩm ban đầu hiển thị
+  remainingProducts: number | undefined;
 
-  constructor(private productsService: ProductService, private route: ActivatedRoute) {
+  constructor(
+    private productsService: ProductService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -26,10 +30,27 @@ export class UserProductsComponent implements OnInit {
       }
     });
   }
+  showMore(): void {
+    this.visibleProductCount += 10; // Tăng số sản phẩm hiển thị lên 10
+  }
+  showLess(): void {
+    this.visibleProductCount -= 10; // Giảm số sản phẩm hiển thị đi 10
+  }
+  getVisibleProducts(): Product[] {
+    return this.products ? this.products.slice(0, this.visibleProductCount) : [];
+  }
+
+  // getProducts(): void {
+  //   this.productsService.getProducts()
+  //     .subscribe(products => this.products = products);
+  // }
 
   getProducts(): void {
     this.productsService.getProducts()
-      .subscribe(products => this.products = products);
+      .subscribe(products => {
+        this.products = products;
+        this.remainingProducts = this.products.length - this.visibleProductCount;
+      });
   }
 
   getProductsByCategoryId(): void {

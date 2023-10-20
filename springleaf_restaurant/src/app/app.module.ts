@@ -34,15 +34,17 @@ import { AdminUsersComponent } from './admin/components/admin-home/admin-users/a
 import { CommonModule } from '@angular/common';
 import { AdminCategoriesComponent } from './admin/components/admin-home/admin-categories/admin-categories.component';
 import { AdminCategoryDetailComponent } from './admin/components/admin-home/admin-category-detail/admin-category-detail.component';
+import { AdminIngredientDetailComponent } from './admin/components/admin-home/admin-ingredient-detail/admin-ingredient-detail.component';
 import { AdminInventoriesComponent } from './admin/components/admin-home/admin-inventories/admin-inventories.component';
 import { AdminInventoryDetailComponent } from './admin/components/admin-home/admin-inventory-detail/admin-inventory-detail.component';
 import { AdminRestaurantTableDetailComponent } from './admin/components/admin-home/admin-restaurant-table-detail/admin-restaurant-table-detail.component';
 import { AdminRestaurantTablesComponent } from './admin/components/admin-home/admin-restaurant-tables/admin-restaurant-tables.component';
+import { AdminSupplierDetailComponent } from './admin/components/admin-home/admin-supplier-detail/admin-supplier-detail.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { ChatService } from './services/chat.service';
 import { WebSocketService } from './services/web-socket.service';
-import { AdminIngredientDetailComponent } from './admin/components/admin-home/admin-ingredient-detail/admin-ingredient-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -77,9 +79,10 @@ import { AdminIngredientDetailComponent } from './admin/components/admin-home/ad
     AdminRestaurantTablesComponent,
     AdminRestaurantTableDetailComponent,
     AdminIngredientDetailComponent,
+    AdminSupplierDetailComponent,
 
     ChatComponent,
-    LoginComponent
+    LoginComponent,
 
   ],
   imports: [
