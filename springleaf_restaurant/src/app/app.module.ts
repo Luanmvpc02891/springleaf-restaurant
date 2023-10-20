@@ -42,6 +42,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { ChatService } from './services/chat.service';
 import { WebSocketService } from './services/web-socket.service';
+import { AdminIngredientDetailComponent } from './admin/components/admin-home/admin-ingredient-detail/admin-ingredient-detail.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { WebSocketService } from './services/web-socket.service';
     AdminInventoryDetailComponent,
     AdminRestaurantTablesComponent,
     AdminRestaurantTableDetailComponent,
+    AdminIngredientDetailComponent,
 
     ChatComponent,
     LoginComponent

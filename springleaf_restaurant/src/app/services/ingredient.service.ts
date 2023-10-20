@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { Ingredient } from '../interfaces/ingredient';
 
@@ -55,4 +55,40 @@ export class IngredientService {
         }
     }
 
+    addIngredient(newIngredient: Ingredient): Observable<Ingredient> {
+        return this.apiService.request<Ingredient>('post', this.ingredientUrl, newIngredient);
+    }
+
+    // Cập nhật 
+    updateIngredient(updatedIngredient: Ingredient): Observable<any> {
+        const url = `${this.ingredientUrl}/${updatedIngredient.ingredientId}`;
+        return this.apiService.request('put', url, updatedIngredient).pipe(
+            tap(() => {
+                // Cập nhật danh sách cache sau khi cập nhật danh mục
+                const index = this.ingredientsCache!.findIndex(cat => cat.ingredientId === updatedIngredient.ingredientId);
+                if (index !== -1) {
+                    this.ingredientsCache![index] = updatedIngredient;
+                    localStorage.setItem('ingredients', JSON.stringify(this.ingredientsCache));
+                }
+            })
+        );
+    }
+    updateIngredientCache(updatedIngredient: Ingredient): void {
+        // Check if categoriesCache is null
+        if (this.ingredientsCache) {
+            const index = this.ingredientsCache.findIndex(cat => cat.ingredientId === updatedIngredient.ingredientId);
+            if (index !== -1) {
+                this.ingredientsCache[index] = updatedIngredient;
+            }
+        }
+    }
+
+
+
+
+    // Xoá sản phẩm
+    deleteIngredient(id: number): Observable<any> {
+        const url = `${this.ingredientUrl}/${id}`;
+        return this.apiService.request('delete', url);
+    }
 }

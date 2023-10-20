@@ -1,16 +1,23 @@
-<div id="search-component">
-    <label for="search-box">Categories Search</label>
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" autocomplete="off" />
+<div class="container">
+    <div class="row">
+        <div id="search-component">
+            <label for="search-box">Categories Search</label>
+            <input #searchBox id="search-box" (input)="search(searchBox.value)" autocomplete="off" />
+        </div>
+        <div class="col-md-3">
+            <ul class="list-group">
+                <li *ngFor="let category of categories$ | async" class="list-group-item">
+                    <a [routerLink]="['/user/index/category', category.categoryId, 'products']">
+                        {{ category.categoryId }} {{ category.name }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
 
-<a [routerLink]="['/user/index']">Tất cả sản phẩm</a>
-<ul class="products container">
-    <li *ngFor="let category of categories$ | async">
-        <a [routerLink]="['/user/index/category', category.categoryId, 'products']">
-            {{ category.categoryId }}
-            {{ category.name }}
-        </a>
-    </li>
-</ul>
 
-<router-outlet></router-outlet>
+<!-- <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button> -->
