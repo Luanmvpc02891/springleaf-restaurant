@@ -1,8 +1,12 @@
 <div class="container">
     <div class="row">
+        <div id="search-component">
+            <label for="search-box">Categories Search</label>
+            <input #searchBox id="search-box" (input)="search(searchBox.value)" autocomplete="off" />
+        </div>
         <div class="col-md-3">
             <ul class="list-group">
-                <li *ngFor="let category of categories" class="list-group-item">
+                <li *ngFor="let category of categories$ | async" class="list-group-item">
                     <a [routerLink]="['/user/index/category', category.categoryId, 'products']">
                         {{ category.categoryId }} {{ category.name }}
                     </a>
