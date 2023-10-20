@@ -1,11 +1,17 @@
-<ul class="products container">
-    <li *ngFor="let product of products">
-        <a routerLink="/user/product/detail/{{product.categoryId}}">
-            Id: {{product.menuItemId}}
-            Tên: {{product.name}}
-            Giá: {{product.price}}
-        </a>
-    </li>
-</ul>
-
-<!-- <button type="button" class="delete" title="delete hero" (click)="delete(hero)">x</button> -->
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let product of products; let i = index">
+            <div class="col-md-3 mb-4">
+                <a routerLink="/user/product/detail/{{product.categoryId}}">
+                    <div class="card equal-height">
+                        <div class="card-body">
+                            <h5 class="card-title">Id: {{product.menuItemId}}</h5>
+                            <p class="card-text">Tên: {{product.name}}</p>
+                            <p class="card-text">Giá: {{product.price}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </ng-container>
+    </div>
+</div>
