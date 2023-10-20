@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Category } from 'src/app/interfaces/category';
 import { CategoryService } from 'src/app/services/category.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminCategoryDetailComponent } from '../admin-category-detail/admin-category-detail.component';
 
 @Component({

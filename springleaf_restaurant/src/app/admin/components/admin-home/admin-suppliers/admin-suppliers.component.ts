@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Supplier } from 'src/app/interfaces/supplier';
 import { SupplierService } from 'src/app/services/supplier.service';
+import { AdminSupplierDetailComponent } from '../admin-supplier-detail/admin-supplier-detail.component';
 
 @Component({
   selector: 'app-admin-supplier',
@@ -9,9 +12,28 @@ import { SupplierService } from 'src/app/services/supplier.service';
   styleUrls: ['./admin-suppliers.component.css']
 })
 export class AdminSuppliersComponent {
-  supplier: Supplier[] = [];
+  suppliers: Supplier[] = [];
+  supplierForm: FormGroup;
+  supplier: Supplier | undefined;
+  fieldNames: string[] = [];
 
-  constructor(private supplierService: SupplierService, private route: ActivatedRoute) {
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [5, 10, 15, 20];
+
+  constructor(
+    private suppliersService: SupplierService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private modalService: NgbModal) {
+    this.supplierForm = this.formBuilder.group({
+      // supplierId: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      address: ['', [Validators.required]]
+    });
   }
 
   ngOnInit(): void {
@@ -19,7 +41,43 @@ export class AdminSuppliersComponent {
   }
 
   getSuppliers(): void {
-    this.supplierService.getSuppliers()
-      .subscribe(supplier => this.supplier = supplier);
+    this.suppliersService.getSuppliers()
+      .subscribe(suppliers => this.suppliers = suppliers);
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getSuppliers();
+  }
+
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getSuppliers();
+  }
+
+  addSupplier(): void {
+
+    const name = this.supplierForm.get('name')?.value;
+    const phone = this.supplierForm.get('phone')?.value;
+    const address = this.supplierForm.get('address')?.value;
+    const email = this.supplierForm.get('email')?.value;
+
+    this.suppliersService.addSupplier({ name, phone, address, email } as Supplier)
+      .subscribe(supplier => {
+        this.suppliers.push(supplier);
+        this.supplierForm.reset();
+      });
+  }
+
+  deleteSupplier(supplier: Supplier): void {
+    this.suppliers = this.suppliers.filter(i => i !== supplier);
+    this.suppliersService.deleteSupplier(supplier.supplierId).subscribe();
+  }
+
+  openSupplierDetailModal(supplier: Supplier) {
+    const modalRef = this.modalService.open(AdminSupplierDetailComponent, { size: 'lg' });
+    modalRef.componentInstance.supplier = supplier;
+
   }
 }

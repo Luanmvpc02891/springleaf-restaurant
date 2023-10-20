@@ -24,7 +24,7 @@ export class AdminRestaurantTableDetailComponent {
   restaurantTableForm: FormGroup;
 
   constructor(
-    private restaurantTableService: RestaurantTableService,
+    private restaurantTablesService: RestaurantTableService,
     private tableTypeService: TableTypeService,
     private tableStatusService: TableStatusService,
     private restaurantService: RestaurantService,
@@ -84,9 +84,9 @@ export class AdminRestaurantTableDetailComponent {
         restaurantId: this.restaurantTableForm.get('restaurantId')?.value
       };
 
-      this.restaurantTableService.updateRestaurantTable(updatedRestaurantTable).subscribe(() => {
+      this.restaurantTablesService.updateRestaurantTable(updatedRestaurantTable).subscribe(() => {
         // Cập nhật cache
-        this.restaurantTableService.updateRestaurantTableCache(updatedRestaurantTable);
+        this.restaurantTablesService.updateRestaurantTableCache(updatedRestaurantTable);
       });
     }
   }

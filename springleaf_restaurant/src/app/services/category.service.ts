@@ -107,6 +107,8 @@ export class CategoryService {
     );
   }
 
+
+
   updateCategoryCache(updatedCategory: Category): void {
     // Check if categoriesCache is null
     if (this.categoriesCache) {
