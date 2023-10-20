@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from 'src/app/components/login/login.component';
 import { User } from 'src/app/interfaces/user';
@@ -15,28 +15,23 @@ export class UserHeaderComponent {
   previousScrollY = 0;
   user: User | null = null;
 
-  constructor(private modalService: NgbModal, private authService: AuthenticationService) {
+  constructor(
+    private modalService: NgbModal,
+    private authService: AuthenticationService,
+    private renderer: Renderer2,
+    private el: ElementRef
+  ) {
     this.authService.cachedData$.subscribe((data) => {
       this.user = data;
       // Cập nhật thông tin người dùng từ userCache khi có sự thay đổi
     });
   }
 
-  @HostListener('window:scroll', ['$event']) onscroll() {
-    if (window.scrollY >= this.previousScrollY || window.scrollY === 0) {
-      this.previousScrollY = window.scrollY;
-      this.navbarfixed = false;
-    } else {
-      this.previousScrollY = window.scrollY;
-      this.navbarfixed = true;
-    }
-  }
-
   openLoginModal() {
     const modalRef = this.modalService.open(LoginComponent);
   }
 
-  
+
   logOut() {
     // Cập nhật userCache trước khi đăng xuất
     this.authService.setUserCache(null);
@@ -45,5 +40,17 @@ export class UserHeaderComponent {
 
   ngOnInit(): void {
     this.user = this.authService.getUserCache(); // Lấy thông tin người dùng từ userCache
+    this.renderer.setStyle(this.el.nativeElement.querySelector('#navbar'), 'transition', 'top 0.3s ease-in-out');
+    let prevScrollPos = window.scrollY;
+
+    window.onscroll = () => {
+      const currentScrollPos = window.scrollY;
+      if (prevScrollPos > currentScrollPos) {
+        this.renderer.setStyle(this.el.nativeElement.querySelector('#navbar'), 'top', '0');
+      } else {
+        this.renderer.setStyle(this.el.nativeElement.querySelector('#navbar'), 'top', '-100px');
+      }
+      prevScrollPos = currentScrollPos;
+    };
   }
 }
