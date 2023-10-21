@@ -11,19 +11,19 @@ import { UserHeaderComponent } from 'src/app/user/components/user-home/user-head
 })
 export class LoginComponent {
 
-active: string = "login";
-firstName: string = '';
-lastName: string = '';
-username: string = '';
-password: string = '';
-phone: string = '';
-email: string = '';
-address: number | null = null;
-image: string = '';
-managerId:  number | null = null; 
-restaurantBranchId: number | null = null;
-roleId: number | null = null;
-user: User | null = null;
+  active: string = "login";
+  firstName: string = '';
+  lastName: string = '';
+  username: string = '';
+  password: string = '';
+  phone: string = '';
+  email: string = '';
+  address: number | null = null;
+  image: string = '';
+  managerId: number | null = null;
+  restaurantBranchId: number | null = null;
+  roleId: number | null = null;
+  user: User | null = null;
 
   constructor(private authService: AuthenticationService,
     public activeModal: NgbActiveModal, private apiService: ApiService) {
@@ -61,7 +61,7 @@ user: User | null = null;
     }
   }
 
-  loginWithGoogle(){
+  loginWithGoogle() {
 
   }
 
@@ -72,38 +72,38 @@ user: User | null = null;
       }
       if (this.managerId === null) {
         this.managerId = 0; // Hoặc giá trị mặc định bạn muốn
-    }
-    if (this.restaurantBranchId === null) {
-      this.restaurantBranchId = 0; // Hoặc giá trị mặc định bạn muốn
-  }if (this.roleId === null) {
-    this.roleId = 0; // Hoặc giá trị mặc định bạn muốn
-}
-        this.authService.register(
-            this.firstName,
-            this.lastName,
-            this.username,
-            this.password,
-            this.phone,
-            this.email,
-            this.address,
-            this.image,
-            this.managerId,
-            this.restaurantBranchId,
-            this.roleId
-        ).subscribe(
-            (response) => {
-                // Handle the response from the service after successful registration
-                console.log('Registration successful');
-                // Navigate or perform the next action here
-            },
-            (error) => {
-                console.error('Registration failed:', error);
-                // Handle registration error here if needed
-            }
-        );
+      }
+      if (this.restaurantBranchId === null) {
+        this.restaurantBranchId = 0; // Hoặc giá trị mặc định bạn muốn
+      } if (this.roleId === null) {
+        this.roleId = 0; // Hoặc giá trị mặc định bạn muốn
+      }
+      this.authService.register(
+        this.firstName,
+        this.lastName,
+        this.username,
+        this.password,
+        this.phone,
+        this.email,
+        this.address,
+        this.image,
+        this.managerId,
+        this.restaurantBranchId,
+        this.roleId
+      ).subscribe(
+        (response) => {
+          // Handle the response from the service after successful registration
+          console.log('Registration successful');
+          // Navigate or perform the next action here
+        },
+        (error) => {
+          console.error('Registration failed:', error);
+          // Handle registration error here if needed
+        }
+      );
     } else {
-        console.error('Please enter username, password, and first name.');
+      console.error('Please enter username, password, and first name.');
     }
-}
+  }
 
 }

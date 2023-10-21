@@ -35,7 +35,13 @@ export class AdminInventoriesComponent {
     private ingredientsService: IngredientService,
     private suppliersService: SupplierService,
     private formBuilder: FormBuilder,
-    private modalService: NgbModal) {
+    private modalService: NgbModal
+  ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.inventoryForm = this.formBuilder.group({
       inventoryId: ['', [Validators.required]],
       ingredientId: ['', [Validators.required]],

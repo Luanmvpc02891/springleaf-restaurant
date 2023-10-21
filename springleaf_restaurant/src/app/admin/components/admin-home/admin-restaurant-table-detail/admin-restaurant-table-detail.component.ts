@@ -31,7 +31,13 @@ export class AdminRestaurantTableDetailComponent {
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
-    private zone: NgZone) {
+    private zone: NgZone
+  ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.restaurantTableForm = this.formBuilder.group({
       tableId: ['', [Validators.required]],
       tableName: ['', [Validators.required]],

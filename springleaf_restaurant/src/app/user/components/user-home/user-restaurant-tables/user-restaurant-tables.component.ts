@@ -19,6 +19,11 @@ export class UserRestaurantTablesComponent {
     private tableStatusesService: TableStatusService,
     private route: ActivatedRoute
   ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
   }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from "@angular/core";
+import { Component, HostListener, OnDestroy } from "@angular/core";
 import { BillDetailService } from "./services/bill-detail.service";
 import { BillService } from "./services/bill.service";
 import { CartDetailService } from "./services/cart-detail.service";
@@ -51,6 +51,7 @@ interface ServiceMap {
 export class AppComponent implements OnDestroy {
   title = 'springleaf_restaurant';
   dataLoaded = false;
+  getDatasFromLocalStorageWorker: Worker;
   callAPIsWorker: Worker;
   services: ServiceMap;
 
@@ -127,8 +128,35 @@ export class AppComponent implements OnDestroy {
       tableTypes: { cache: this.tableTypesService.tableTypesCache, localStorageKey: 'tableTypes' }
     };
 
-    this.callAPIsWorker = new Worker(new URL('./call-apis.worker', import.meta.url));
+    this.getDatasFromLocalStorageWorker = new Worker(new URL('./workers/get-datas-from-local-storage.worker', import.meta.url));
+
+    this.callAPIsWorker = new Worker(new URL('./workers/call-apis.worker', import.meta.url));
+  }
+
+  ngOnInit(): void {
+    this.getAllDatasFromLocalStorage();
     this.callAllApis();
+  }
+
+  getAllDatasFromLocalStorage() {
+    this.getDatasFromLocalStorageWorker.postMessage('start');
+    this.getDatasFromLocalStorageWorker.onmessage = ({ data }) => {
+      //console.log("bruh")
+      Object.keys(this.services).forEach((type: string) => {
+
+        const { cache, localStorageKey } = this.services[type];
+
+        if (localStorage.getItem(localStorageKey)) {
+          this.services[type].cache = JSON.parse(localStorage.getItem(localStorageKey) || 'null');
+          //console.log(`Lấy dữ liệu ${type} từ Local Storage`);
+          (this as any)[`${type}Service`][`${type}Cache`] = this.services[type].cache;
+          //console.log(`[get-datas-from-local-storage.worker.ts] Received ${type}:`, this.services[type].cache);
+        }
+
+      });
+      this.dataLoaded = true;
+      console.log("Lấy tất cả dữ liệu từ get-datas-from-local-storage.worker.ts thành công");
+    };
   }
 
   callAllApis(): void {
@@ -137,21 +165,24 @@ export class AppComponent implements OnDestroy {
       Object.keys(this.services).forEach((type: string) => {
         const { cache, localStorageKey } = this.services[type];
 
-        if (localStorage.getItem(localStorageKey)) {
-          // Nếu có dữ liệu trong Local Storage, cập nhật cache từ Local Storage
+        //const localStorageData = 
+        //if (typeof localStorageData === 'object' && typeof data[type] === 'object') {
+        if (JSON.stringify(JSON.parse(localStorage.getItem(localStorageKey) || 'null')) === JSON.stringify(data[type])) {
+          // Cập nhật từ Local Storage
           this.services[type].cache = JSON.parse(localStorage.getItem(localStorageKey) || 'null');
-          console.log(`Lấy dữ liệu ${type} từ Local Storage`);
+          //console.log(`Lấy dữ liệu ${type} từ Local Storage`);
         } else {
-          // Nếu không có dữ liệu trong Local Storage, cập nhật cache từ dữ liệu API
+          // Cập nhật từ dữ liệu API và lưu vào Local Storage
           this.services[type].cache = data[type];
           localStorage.setItem(localStorageKey, JSON.stringify(data[type]));
-          console.log(`Lấy dữ liệu ${type} từ API`);
+          //console.log(`Lấy dữ liệu ${type} từ API`);
         }
+        //}
 
         // Cập nhật dữ liệu vào caches tương ứng sử dụng dynamic property
         (this as any)[`${type}Service`][`${type}Cache`] = this.services[type].cache;
 
-        console.log(`Received ${type}:`, this.services[type].cache);
+        //console.log(`Received ${type}:`, this.services[type].cache);
       });
 
       this.dataLoaded = true;

@@ -39,7 +39,13 @@ export class AdminRestaurantTablesComponent {
     private restaurantService: RestaurantService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
-    private zone: NgZone) {
+    private zone: NgZone
+  ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.restaurantTableForm = this.formBuilder.group({
       tableId: ['', [Validators.required]],
       tableName: ['', [Validators.required]],
@@ -50,9 +56,9 @@ export class AdminRestaurantTablesComponent {
   }
   ngOnInit(): void {
     this.getRestaurantTables();
-    this.getTableStatus();
-    this.getTableType();
-    this.getRestaurant();
+    this.getTableStatuses();
+    this.getTableTypes();
+    this.getRestaurants();
   }
 
   onTableDataChange(event: any) {
@@ -70,15 +76,15 @@ export class AdminRestaurantTablesComponent {
     this.restaurantTableService.getRestaurantTables()
       .subscribe(restaurantTables => this.restaurantTables = restaurantTables);
   }
-  getTableStatus(): void {
+  getTableStatuses(): void {
     this.tableStatusService.getTableStatuses()
       .subscribe(tableStatus => this.tableStatuses = tableStatus);
   }
-  getTableType(): void {
+  getTableTypes(): void {
     this.tableTypeService.getTableTypes()
       .subscribe(tableTypes => this.tableTypes = tableTypes);
   }
-  getRestaurant(): void {
+  getRestaurants(): void {
     this.restaurantService.getRestaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
   }

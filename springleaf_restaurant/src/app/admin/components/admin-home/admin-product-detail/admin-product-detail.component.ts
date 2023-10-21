@@ -23,7 +23,13 @@ export class AdminProductDetailComponent {
     private categoriesService: CategoryService,
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
-    private modalService: NgbModal,) {
+    private modalService: NgbModal,
+  ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.productForm = this.formBuilder.group({
       menuItemId: ['', [Validators.required]],
       name: ['', [Validators.required]],

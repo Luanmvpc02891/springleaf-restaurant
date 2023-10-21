@@ -3,7 +3,7 @@
 
 // Trong worker script (call-apis.worker.ts)
 addEventListener('message', async ({ data }) => {
-        console.log("Received from Main Thread ", data);
+        console.log("Call Apis Worker Works", data);
         const domain = 'http://localhost:8080/api';
         if (data === 'start') {
                 try {

@@ -30,6 +30,11 @@ export class AdminInventoryDetailComponent implements OnInit {
     public activeModal: NgbActiveModal,
 
   ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.inventoryForm = this.formBuilder.group({
       inventoryId: ['', [Validators.required]],
       ingredientId: ['', [Validators.required]],

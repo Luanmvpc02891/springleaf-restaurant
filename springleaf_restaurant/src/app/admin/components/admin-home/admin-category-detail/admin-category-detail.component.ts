@@ -21,6 +21,11 @@ export class AdminCategoryDetailComponent implements OnInit {
     private categoriesService: CategoryService,
     public activeModal: NgbActiveModal,
   ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.categoryForm = this.formBuilder.group({
       id: [, [Validators.nullValidator]],
       name: ['', [Validators.required]],

@@ -12,6 +12,11 @@ export class UserEventsComponent {
   events: Event[] = [];
 
   constructor(private eventService: EventService, private route: ActivatedRoute) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
   }
 
   ngOnInit(): void {

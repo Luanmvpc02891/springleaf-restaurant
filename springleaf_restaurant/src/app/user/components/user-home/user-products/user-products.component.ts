@@ -18,6 +18,11 @@ export class UserProductsComponent implements OnInit {
   constructor(
     private productsService: ProductService,
     private route: ActivatedRoute) {
+      window.addEventListener('storage', (event) => {
+        if (event.key && event.oldValue !== null) {
+          localStorage.setItem(event.key, event.oldValue);
+        }
+      });
   }
 
   ngOnInit(): void {

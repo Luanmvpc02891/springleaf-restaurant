@@ -13,13 +13,18 @@ export class UserCombosComponent {
   combos: Combo[] = [];
 
   constructor(private combosService: ComboService, private route: ActivatedRoute) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.getCategories();
+    this.getCombos();
   }
 
-  getCategories(): void {
+  getCombos(): void {
     this.combosService.getCombos()
       .subscribe(combos => this.combos = combos);
   }

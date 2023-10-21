@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subject, distinctUntilChanged, map, switchMap } from 'rxjs';
+import { Observable, Subject, Subscription, distinctUntilChanged, map, switchMap } from 'rxjs';
 import { Category } from 'src/app/interfaces/category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -14,12 +14,18 @@ export class UserCategoriesComponent {
   categories: Category[] = [];
   categories$!: Observable<Category[]>;
   searchTerms = new Subject<string>();
-showMore: boolean = false;
+  showMore: boolean = false;
 
-  
+
   constructor(
     private categoriesService: CategoryService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+  ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
   }
 
   ngOnInit(): void {

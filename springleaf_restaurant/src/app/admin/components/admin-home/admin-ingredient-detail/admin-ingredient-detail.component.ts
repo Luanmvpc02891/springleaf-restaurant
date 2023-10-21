@@ -20,6 +20,11 @@ export class AdminIngredientDetailComponent {
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private modalService: NgbModal,) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.ingredientForm = this.formBuilder.group({
       ingredientId: ['', [Validators.required]],
       name: ['', [Validators.required]],

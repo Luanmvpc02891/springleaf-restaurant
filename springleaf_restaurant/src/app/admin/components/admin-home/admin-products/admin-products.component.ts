@@ -30,7 +30,13 @@ export class AdminProductsComponent {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
-    private modalService: NgbModal,) {
+    private modalService: NgbModal,
+  ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.productForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],

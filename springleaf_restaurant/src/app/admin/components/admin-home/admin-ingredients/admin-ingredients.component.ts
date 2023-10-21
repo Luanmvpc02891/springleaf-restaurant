@@ -26,7 +26,13 @@ export class AdminIngredientsComponent {
     private ingredientsService: IngredientService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private modalService: NgbModal,) {
+    private modalService: NgbModal,
+  ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.ingredientForm = this.formBuilder.group({
       // ingredientId: ['', [Validators.required]],
       name: ['', [Validators.required]],

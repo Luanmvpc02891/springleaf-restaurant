@@ -28,6 +28,11 @@ export class AdminCategoriesComponent {
     private route: ActivatedRoute,
     private modalService: NgbModal
   ) {
+    window.addEventListener('storage', (event) => {
+      if (event.key && event.oldValue !== null) {
+        localStorage.setItem(event.key, event.oldValue);
+      }
+    });
     this.categoryForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       active: [, [Validators.required]],
