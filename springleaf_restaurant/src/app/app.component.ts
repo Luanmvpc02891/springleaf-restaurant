@@ -165,8 +165,7 @@ export class AppComponent implements OnDestroy {
       Object.keys(this.services).forEach((type: string) => {
         const { cache, localStorageKey } = this.services[type];
 
-        //const localStorageData = 
-        //if (typeof localStorageData === 'object' && typeof data[type] === 'object') {
+        
         if (JSON.stringify(JSON.parse(localStorage.getItem(localStorageKey) || 'null')) === JSON.stringify(data[type])) {
           // Cập nhật từ Local Storage
           this.services[type].cache = JSON.parse(localStorage.getItem(localStorageKey) || 'null');

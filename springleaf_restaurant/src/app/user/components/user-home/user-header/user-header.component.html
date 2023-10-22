@@ -1,5 +1,5 @@
 <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light shadow-lg">
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,11 +52,20 @@
         <ul class="navbar-nav mx-auto">
             <div class="nav-item" *ngIf="user">
                 <!-- Hiển thị thông tin người dùng khi user khác null -->
-                <p>{{ user.username }}!</p>
-                <li class="nav-item">
-                    <button class="nav-link" (click)="logOut()">Đăng xuất</button>
-                </li>
-                <!-- Đặc điểm của người dùng khác có thể thêm vào đây -->
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ user.lastName }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li class="dropdown-item">
+                            <a class="nav-link" (click)="openProfileModel()">Hồ sơ cá nhân</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="nav-link" (click)="logOut()">Đăng xuất</a>
+                        </li>
+                        <!-- Đặc điểm của người dùng khác có thể thêm vào đây -->
+                    </ul>
+                </div>
             </div>
             <li class="nav-item" *ngIf="!user">
                 <button class="nav-link" (click)="openLoginModal()">Đăng nhập / Đăng ký</button>

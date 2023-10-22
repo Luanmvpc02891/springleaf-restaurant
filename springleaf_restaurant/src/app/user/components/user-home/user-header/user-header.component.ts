@@ -23,6 +23,7 @@ export class UserHeaderComponent {
   ) {
     this.authService.cachedData$.subscribe((data) => {
       this.user = data;
+      console.log(this.user);
       // Cập nhật thông tin người dùng từ userCache khi có sự thay đổi
     });
   }
@@ -53,4 +54,6 @@ export class UserHeaderComponent {
       prevScrollPos = currentScrollPos;
     };
   }
+
+  openProfileModel(){}
 }
