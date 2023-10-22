@@ -45,24 +45,12 @@ export class LoginComponent {
     this.active = "register";
   }
 
-  login() {
+  async login() {
     if (this.username && this.password) {
-      this.authService.login(this.username, this.password).subscribe(
-        (response) => {
-          // Xử lý phản hồi từ service sau khi đăng nhập thành công
-          console.log('Login successful');
-          this.authService.setUserCache(response.user); // Cập nhật userCache
-          this.activeModal.close('Login Successful');
-          this.getDatasOfThisUserWorker.postMessage("start");
-        },
-        (error) => {
-          console.error('Login failed:', error);
-          // Xử lý lỗi đăng nhập ở đây nếu cần
+      if(await this.authService.login(this.username, this.password) === true){
+        this.activeModal.close('Login Successful');
         }
-      );
-    } else {
-      console.error('Please enter both username and password.');
-    }
+      }
   }
 
   loginWithGoogle() {

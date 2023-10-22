@@ -52,7 +52,7 @@
         <ul class="navbar-nav mx-auto">
             <div class="nav-item" *ngIf="user">
                 <!-- Hiển thị thông tin người dùng khi user khác null -->
-                <p>{{ user.username }}!</p>
+                <p>{{ user.lastName }}!</p>
                 <li class="nav-item">
                     <button class="nav-link" (click)="logOut()">Đăng xuất</button>
                 </li>

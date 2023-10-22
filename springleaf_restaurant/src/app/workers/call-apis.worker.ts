@@ -42,6 +42,7 @@ addEventListener('message', async ({ data }) => {
                                 fetch(`${domain}/receiptDetails`),
                                 fetch(`${domain}/reservations`),
                                 fetch(`${domain}/tableTypes`),
+                                
                         ]);
 
                         const responseData = await Promise.all(responses.map(async (response) => {

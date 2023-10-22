@@ -2,23 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { User } from '../interfaces/user';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private apiUrl = 'http://localhost:8080/api/v1/auth'; // Thay thế bằng URL của Spring Boot API
+  private apiUrl = 'v1/auth'; // Thay thế bằng URL của Spring Boot API
   private userCache: User | null = null;
   private cachedDataSubject = new BehaviorSubject<User | null>(null);
+  getDatasOfThisUserWorker: Worker;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private apiService: ApiService) {
+    
+    this.getDatasOfThisUserWorker = new Worker(new URL('../workers/user/user-call-all-apis.worker.ts', import.meta.url));
+  }
 
   // Đây là một observable để theo dõi sự thay đổi trong userCache
   cachedData$: Observable<User | null> = this.cachedDataSubject.asObservable();
 
   setUserCache(user: User | null) {
     this.userCache = user;
-    this.cachedDataSubject.next(user); // Thông báo cho bất kỳ thành phần nào đang theo dõi userCache
+    this.cachedDataSubject.next(user);
   }
 
   register(firstName: string, lastName: string,  username: string, password: string, phone: string, email: string,
@@ -40,21 +45,34 @@ export class AuthenticationService {
     return this.http.post(`${this.apiUrl}/register`, registerData);
   }
 
-  login(username: string, password: string): Observable<any> {
-    const loginData = {
-      userName: username,
-      password: password
-    };
+  login(username: string, password: string): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      const loginData = {
+        userName: username,
+        password: password
+      };
+      this.getDatasOfThisUserWorker.postMessage({
+        type: 'login',
+        loginData
+      });
   
-    return this.http.post(`${this.apiUrl}/authenticate`, loginData).pipe(
-      map((response: any) => {
-        localStorage.setItem('access_token', response.access_token);
-        localStorage.setItem('refresh_token', response.refresh_token);
-        console.log(response)
-        return response;
-      })
-    );
+      this.getDatasOfThisUserWorker.onmessage = ({ data }) => {
+        if (data.loginResponse === null) {
+          console.log("Login failed");
+          resolve(false);
+        } else {
+          localStorage.setItem('access_token', data.loginResponse.access_token);
+          localStorage.setItem('refresh_token', data.loginResponse.refresh_token);
+          localStorage.setItem('user_login_name', data.loginResponse.user.lastName);
+          this.setUserCache(data.loginResponse.user);
+          console.log("Login success");
+          resolve(true);
+        }
+      };
+    });
   }
+  
+
 
   loginWithGoogle(){
 
