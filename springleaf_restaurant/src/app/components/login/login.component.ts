@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ApiService } from 'src/app/services/api.service';
 import { User } from 'src/app/interfaces/user';
-import { UserHeaderComponent } from 'src/app/user/components/user-home/user-header/user-header.component';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,12 +25,15 @@ export class LoginComponent {
   roleId: number | null = null;
   user: User | null = null;
 
+  getDatasOfThisUserWorker: Worker;
+
   constructor(private authService: AuthenticationService,
     public activeModal: NgbActiveModal, private apiService: ApiService) {
     // Đăng ký để theo dõi sự thay đổi trong userCache từ AuthenticationService
     this.authService.cachedData$.subscribe((user) => {
       this.user = user;
     });
+    this.getDatasOfThisUserWorker = new Worker(new URL('../../workers/user/user-call-all-apis.worker.ts', import.meta.url));
   }
 
   // modal open form 
@@ -50,6 +53,7 @@ export class LoginComponent {
           console.log('Login successful');
           this.authService.setUserCache(response.user); // Cập nhật userCache
           this.activeModal.close('Login Successful');
+          this.getDatasOfThisUserWorker.postMessage("start");
         },
         (error) => {
           console.error('Login failed:', error);
