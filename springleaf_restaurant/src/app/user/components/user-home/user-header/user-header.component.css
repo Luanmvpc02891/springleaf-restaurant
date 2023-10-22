@@ -1,20 +1,13 @@
-.fixed {
-    position: fixed;
-    width: 100%;
-    transition: 0.2s linear;
-    top: 0px
-}
-
-.notfixed {
-    position: static;
-    transition: 0.2s linear;
-    top: -50px;
-}
-
 .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: block;
+    transition: top 0.3s;
     background: var(--white-color);
     padding-top: 20px;
     padding-bottom: 20px;
+    z-index: 1;
 }
 
 .navbar-brand {
