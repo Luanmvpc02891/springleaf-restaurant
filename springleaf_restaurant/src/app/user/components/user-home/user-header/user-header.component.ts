@@ -54,4 +54,6 @@ export class UserHeaderComponent {
       prevScrollPos = currentScrollPos;
     };
   }
+
+  openProfileModel(){}
 }
