@@ -12,7 +12,7 @@ export class UserProductsComponent implements OnInit {
 
   products: Product[] | null = null;
   categoryId: number | undefined; // Khởi tạo categoryId là undefined
-  visibleProductCount: number = 10; // Số sản phẩm ban đầu hiển thị
+  visibleProductCount: number = 12; // Số sản phẩm ban đầu hiển thị
   remainingProducts: number | undefined;
 
   constructor(

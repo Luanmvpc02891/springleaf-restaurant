@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { Combo } from '../interfaces/combo';
 
@@ -12,7 +12,7 @@ export class ComboService {
 
     private combosUrl = 'combos'; // URL to web api, không cần thêm base URL
     combosCache: Combo[] | null = null; // Cache for categories
-
+    private comboUrl = 'combo';
     constructor(private apiService: ApiService) { } // Inject ApiService
 
     // Sử dụng ApiService để gửi yêu cầu GET
@@ -31,7 +31,39 @@ export class ComboService {
 
         return combosObservable;
     }
+    // Thêm sản phẩm mới
+    addCombo(newCombo: Combo): Observable<Combo> {
+        return this.apiService.request<Combo>('post', this.comboUrl, newCombo);
+    }
 
+    // Cập nhật sản phẩm
+    updateCombo(updatedCombo: Combo): Observable<any> {
+        const url = `${this.comboUrl}/${updatedCombo.comboId}`;
+        return this.apiService.request('put', url, updatedCombo).pipe(
+            tap(() => {
+                // Cập nhật danh sách cache sau khi cập nhật danh mục
+                const index = this.combosCache!.findIndex(cat => cat.comboId === updatedCombo.comboId);
+                if (index !== -1) {
+                    this.combosCache![index] = updatedCombo;
+                    localStorage.setItem('combos', JSON.stringify(this.combosCache));
+                }
+            })
+        );
+    }
+    updateComboCache(updatedCombo: Combo): void {
+        // Check if categoriesCache is null
+        if (this.combosCache) {
+            const index = this.combosCache.findIndex(cat => cat.comboId === updatedCombo.comboId);
+            if (index !== -1) {
+                this.combosCache[index] = updatedCombo;
+            }
+        }
+    }
+    // Xoá sản phẩm
+    deleteCombo(id: number): Observable<any> {
+        const url = `${this.comboUrl}/${id}`;
+        return this.apiService.request('delete', url);
+    }
 
 
 }
