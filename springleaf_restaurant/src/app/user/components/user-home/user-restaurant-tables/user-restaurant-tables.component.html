@@ -8,6 +8,7 @@
                 <td>TableType</td>
                 <td>Status</td>
                 <td>RestaurantId</td>
+                <td>Đặt bàn</td>
             </tr>
             <tr *ngFor="let restaurantTable of restaurantTables">
                 <th>
@@ -17,7 +18,7 @@
                 <th>{{ restaurantTable.tableTypeId }}</th>
                 <th>{{ (getTableStatusById(restaurantTable.tableStatusId) | async)?.name }}</th>
                 <th>{{ restaurantTable.restaurantId }}</th>
-
+                <th><button (click)="bookTable()">Book</button></th>
             </tr>
         </tbody>
     </table>

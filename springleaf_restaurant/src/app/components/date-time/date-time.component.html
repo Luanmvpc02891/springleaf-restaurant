@@ -1,0 +1,22 @@
+<!-- <div class="date-time">{{ currentTime | date: 'EEEE, MMMM d, y, h:mm:ss a' }}</div> -->
+
+
+<!-- <div class="clock">
+    <div class="hour-hand" [style.transform]="hourHandTransform"></div>
+    <div class="minute-hand" [style.transform]="minuteHandTransform"></div>
+    <div class="second-hand" [style.transform]="secondHandTransform"></div>
+</div> -->
+<div class="date-time">
+    <div class="wrapper">
+        <div class="number-hours">
+            <span *ngFor="let hour of hours" [ngStyle]="{'--index': hour + 1}">
+                <p>{{ hour }}</p>
+            </span>
+        </div>
+        <div class="hands-box">
+            <div class="hand hours"><i></i></div>
+            <div class="hand minutes"><i></i></div>
+            <div class="hand seconds"><i></i></div>
+        </div>
+    </div>
+</div>

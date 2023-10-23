@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { RestaurantTable } from 'src/app/interfaces/restaurant-table';
 import { TableStatus } from 'src/app/interfaces/table-status';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { RestaurantTableService } from 'src/app/services/restaurant-table.service';
 import { TableStatusService } from 'src/app/services/table-status.service';
 
@@ -17,6 +18,7 @@ export class UserRestaurantTablesComponent {
   constructor(
     private restaurantTablesService: RestaurantTableService,
     private tableStatusesService: TableStatusService,
+    private authenticationService: AuthenticationService,
     private route: ActivatedRoute
   ) {
     window.addEventListener('storage', (event) => {
@@ -37,6 +39,15 @@ export class UserRestaurantTablesComponent {
 
   getTableStatusById(tableStatusId: number): Observable<TableStatus> {
     return this.tableStatusesService.getTableStatusById(tableStatusId);
+  }
+
+  bookTable(): void {
+    if (this.authenticationService.getUserCache() === null) {
+      console.log("Đặt bàn thất bại mời đăng nhập");
+    } else {
+      console.log("Đặt bàn thành công");
+    }
+
   }
 
 }
