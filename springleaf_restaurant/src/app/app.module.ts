@@ -44,6 +44,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { LoginComponent } from './components/login/login.component';
 import { ChatService } from './services/chat.service';
 import { WebSocketService } from './services/web-socket.service';
+import { UserComboDetailComponent } from './user/components/user-home/user-combo-detail/user-combo-detail.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { WebSocketService } from './services/web-socket.service';
     UserEventsComponent,
     UserRestaurantTablesComponent,
     UserRestaurantsComponent,
+    UserComboDetailComponent,
 
     AdminHeaderComponent,
     AdminProductsComponent,
