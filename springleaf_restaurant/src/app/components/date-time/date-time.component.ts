@@ -32,16 +32,16 @@ export class DateTimeComponent {
   get hourHandTransform() {
     const hours = this.currentTime.getHours() % 12;
     const minutes = this.currentTime.getMinutes();
-    const hourDegrees = (hours * 30) + (0.5 * minutes);
+    const hourDegrees = (hours * 30) + (minutes * 0.5);
     return `rotate(${hourDegrees}deg)`;
   }
 
   get minuteHandTransform() {
     const minutes = this.currentTime.getMinutes();
     const seconds = this.currentTime.getSeconds();
-    const minuteDegrees = (minutes * 360 / 60) + (seconds * 6 / 60);
+    const minuteDegrees = (minutes * 6) + (seconds * 0.1);
     return `rotate(${minuteDegrees}deg)`;
-}
+  }
 
   get secondHandTransform() {
     const seconds = this.currentTime.getSeconds();

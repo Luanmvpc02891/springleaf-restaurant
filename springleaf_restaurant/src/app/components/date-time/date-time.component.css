@@ -30,7 +30,6 @@
     background: black;
     border-radius: 100%;
 }
-
 .number-hours {
     position: absolute;
     width: 82%;
@@ -67,7 +66,7 @@
     /* 360deg / 12 = 30deg */
     transform: rotate(calc(var(--index) * 30deg));
     inset: -20px;
-    text-align: center;
+    text-align: center; 
 }
 
 .number-hours span p {
@@ -90,10 +89,6 @@
     border-radius: 50%;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    /* Đặt trục y xoay ở dưới cùng của kim */
-    transform-origin: center;
-    /* Đặt điểm xoay ở dưới cùng của kim */
 }
 
 .hands-box .hand i {
@@ -109,18 +104,14 @@
 
 .hands-box .hours i {
     width: 8px;
+    /* half of parent height */
     height: 160px;
-    background: #fff;
-    box-shadow: 0 0 10px #0ef;
-    transform-origin: 50% 100%;
-    /* Đặt điểm trục xoay ở giữa dưới của kim */
-    transform: translateY(10px);
-    /* Dịch kim lên một chút để tạo hiệu ứng "nổi" */
+    background: #0ef;
 }
 
 .hands-box .minutes {
     width: 450px;
-    height: 420px;
+    height: 450px;
 }
 
 /* center dot bottm */
@@ -140,14 +131,11 @@
     width: 8px;
     height: 225px;
     background: #0ef;
-    box-shadow: 0 0 10px #0ef;
-    transform-origin: 50% 100%;
-    transform: translateY(10px);
 }
 
 .hands-box .seconds {
     width: 480px;
-    height: 456px;
+    height: 470px;
 }
 
 /* center dot bottm */
@@ -167,6 +155,4 @@
     width: 4px;
     height: calc(240px + 70px);
     background: white;
-    transform-origin: 50% 100%;
-    transform: translateY(10px);
 }
