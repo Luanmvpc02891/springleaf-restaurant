@@ -55,8 +55,7 @@ public class UserRestController {
 
             if (userRequest.isPresent()) {
                 User user = userRequest.get();
-                user.setFirstName(updatedUserData.getFirstName());
-                user.setLastName(updatedUserData.getLastName());
+                user.setFullName(updatedUserData.getFullName());
                 user.setEmail(updatedUserData.getEmail());
                 user.setAddress(updatedUserData.getAddress());
                 user.setPhone(updatedUserData.getPhone());

@@ -12,8 +12,7 @@ import { User } from 'src/app/interfaces/user';
 export class LoginComponent {
 
   active: string = "login";
-  firstName: string = '';
-  lastName: string = '';
+  fullName: string = '';
   username: string = '';
   password: string = '';
   phone: string = '';
@@ -58,7 +57,7 @@ export class LoginComponent {
   }
 
   register() {
-    if (this.username && this.password && this.firstName) {
+    if (this.username && this.password && this.fullName) {
       if (this.address === null) {
         this.address = 0; // Hoặc giá trị mặc định bạn muốn
       }
@@ -71,8 +70,7 @@ export class LoginComponent {
         this.roleId = 0; // Hoặc giá trị mặc định bạn muốn
       }
       this.authService.register(
-        this.firstName,
-        this.lastName,
+        this.fullName,
         this.username,
         this.password,
         this.phone,
