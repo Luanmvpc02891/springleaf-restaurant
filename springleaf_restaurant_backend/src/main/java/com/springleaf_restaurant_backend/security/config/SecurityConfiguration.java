@@ -48,12 +48,7 @@ public class SecurityConfiguration {
         .authorizeHttpRequests()
         .requestMatchers(
           "/api/**",
-          "/api/users",
-          "/api/v1/auth/**",
-          "/login/oauth2/code/google",
-          "https://accounts.google.com//**",
-          "/google-login",
-          "http://localhost:8080/api/v1/auth//login/google"
+          "/login/oauth2/code/google"
         )
         .permitAll()
 
