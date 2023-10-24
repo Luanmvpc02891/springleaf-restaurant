@@ -141,11 +141,12 @@
     border-radius: 50%;
     display: flex;
     justify-content: center;
+    transform-origin: center;
+    transition: transform 0.5s cubic-bezier(0.4, 2.08, 0.55, 0.44);
 }
 
 .hands-box .hand i {
     display: inline-block;
-    transform-origin: bottom;
     border-radius: 50%;
     box-shadow: 0 0 10px #0ef;
 }
