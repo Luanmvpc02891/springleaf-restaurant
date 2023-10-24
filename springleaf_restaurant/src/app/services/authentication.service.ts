@@ -26,11 +26,10 @@ export class AuthenticationService {
     this.cachedDataSubject.next(user);
   }
 
-  register(firstName: string, lastName: string,  username: string, password: string, phone: string, email: string,
+  register(fullName: string,  username: string, password: string, phone: string, email: string,
     address: number, image: string, managerId:  number, restaurantBranchId: number, roleId: number ): Observable<any> {
     const registerData = {
-      firstName: firstName,
-      lastName: lastName,
+      fullName: fullName,
       username: username,
       password: password,
       phone: phone,
