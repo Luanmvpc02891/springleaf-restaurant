@@ -45,6 +45,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ChatService } from './services/chat.service';
 import { WebSocketService } from './services/web-socket.service';
 import { UserComboDetailComponent } from './user/components/user-home/user-combo-detail/user-combo-detail.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { DateTimeComponent } from './components/date-time/date-time.component';
 
 
@@ -86,7 +87,6 @@ import { DateTimeComponent } from './components/date-time/date-time.component';
 
     ChatComponent,
     LoginComponent,
-    DateTimeComponent,
 
   ],
   imports: [

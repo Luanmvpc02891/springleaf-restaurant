@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from 'src/app/components/login/login.component';
+import { ProfileComponent } from 'src/app/components/profile/profile.component';
 import { User } from 'src/app/interfaces/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -55,5 +56,7 @@ export class UserHeaderComponent {
     };
   }
 
-  openProfileModel(){}
+  openProfileModel(){
+    const modalRef = this.modalService.open(ProfileComponent);
+  }
 }
