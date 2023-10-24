@@ -87,6 +87,8 @@ import { DateTimeComponent } from './components/date-time/date-time.component';
 
     ChatComponent,
     LoginComponent,
+    DateTimeComponent,
+    ProfileComponent
 
   ],
   imports: [
