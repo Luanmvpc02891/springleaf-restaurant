@@ -54,7 +54,7 @@
                 <!-- Hiển thị thông tin người dùng khi user khác null -->
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ user.fullName }}
+                        {{ truncateString(user.fullName) }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                         <li class="dropdown-item">
