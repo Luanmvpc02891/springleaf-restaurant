@@ -1,7 +1,7 @@
 import { TableStatus } from '../interfaces/table-status';
 
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, catchError, of, tap, throwError } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -13,7 +13,7 @@ export class TableStatusService {
 
     private tableStatusesUrl = 'tableStatuses';
     private tableStatusUrl = 'tableStatus';
-    tableStatusesCache: TableStatus[] | null = null; // Cache for categories
+    tableStatusesCache!: TableStatus[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 
@@ -24,22 +24,21 @@ export class TableStatusService {
             return of(this.tableStatusesCache);
         }
 
-        const tableStatusObservable = this.apiService.request<TableStatus[]>('get', this.tableStatusesUrl);
+        const tableStatusesObservable = this.apiService.request<TableStatus[]>('get', this.tableStatusesUrl);
 
         // Cache the categories observable
-        tableStatusObservable.subscribe(data => {
+        tableStatusesObservable.subscribe(data => {
             this.tableStatusesCache = data; // Store the fetched data in the cache
         });
 
-        return tableStatusObservable;
+        return tableStatusesObservable;
     }
 
     // Lấy sản phẩm theo ID
     getTableStatusById(id: number): Observable<TableStatus> {
         // Check if categoriesCache is null or empty
         if (!this.tableStatusesCache) {
-            // Fetch the data from the API if cache is empty
-            return this.apiService.request<TableStatus>('get', this.tableStatusUrl);
+            this.getTableStatuses();
         }
 
         // Try to find the Category in the cache by its id
