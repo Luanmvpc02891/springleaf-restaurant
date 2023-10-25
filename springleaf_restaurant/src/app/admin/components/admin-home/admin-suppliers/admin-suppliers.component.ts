@@ -23,7 +23,7 @@ export class AdminSuppliersComponent {
   tableSizes: any = [5, 10, 15, 20];
 
   constructor(
-    private suppliersService: SupplierService,
+    private supplierService: SupplierService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private modalService: NgbModal
@@ -47,7 +47,7 @@ export class AdminSuppliersComponent {
   }
 
   getSuppliers(): void {
-    this.suppliersService.getSuppliers()
+    this.supplierService.getSuppliers()
       .subscribe(suppliers => this.suppliers = suppliers);
   }
 
@@ -69,7 +69,7 @@ export class AdminSuppliersComponent {
     const address = this.supplierForm.get('address')?.value;
     const email = this.supplierForm.get('email')?.value;
 
-    this.suppliersService.addSupplier({ name, phone, address, email } as Supplier)
+    this.supplierService.addSupplier({ name, phone, address, email } as Supplier)
       .subscribe(supplier => {
         this.suppliers.push(supplier);
         this.supplierForm.reset();
@@ -78,7 +78,7 @@ export class AdminSuppliersComponent {
 
   deleteSupplier(supplier: Supplier): void {
     this.suppliers = this.suppliers.filter(i => i !== supplier);
-    this.suppliersService.deleteSupplier(supplier.supplierId).subscribe();
+    this.supplierService.deleteSupplier(supplier.supplierId).subscribe();
   }
 
   openSupplierDetailModal(supplier: Supplier) {

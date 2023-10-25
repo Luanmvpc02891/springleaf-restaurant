@@ -11,7 +11,7 @@ import { Reservation } from '../interfaces/reservation';
 export class ReservationService {
 
     private reservationsUrl = 'reservations'; // URL to web api, không cần thêm base URL
-    reservationsCache: Reservation[] | null = null; // Cache for categories
+    reservationsCache!: Reservation[] ; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

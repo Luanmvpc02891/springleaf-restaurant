@@ -13,7 +13,7 @@ export class TableStatusService {
 
     private tableStatusesUrl = 'tableStatuses';
     private tableStatusUrl = 'tableStatus';
-    tableStatusesCache: TableStatus[] | null = null; // Cache for categories
+    tableStatusesCache!: TableStatus[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 
@@ -39,7 +39,7 @@ export class TableStatusService {
         // Check if categoriesCache is null or empty
         if (!this.tableStatusesCache) {
             // Fetch the data from the API if cache is empty
-            return this.apiService.request<TableStatus>('get', this.tableStatusUrl);
+           this.getTableStatuses();
         }
 
         // Try to find the Category in the cache by its id

@@ -11,7 +11,7 @@ export class ProductService {
   private productsUrl = 'products'; // URL to web api, không cần thêm base URL
   private categoryUrl = 'category';
   private productUrl = 'product';
-  productsCache: Product[] | null = null; // Cache for products
+  productsCache!: Product[]; // Cache for products
 
   constructor(private apiService: ApiService) { } // Inject ApiService
 
@@ -37,8 +37,7 @@ export class ProductService {
     // Check if productsCache is null or empty
     if (!this.productsCache) {
       // Fetch the data from the API if cache is empty
-      const url = `${this.productsUrl}/${id}`;
-      return this.apiService.request<Product>('get', url);
+     this.getProducts();
     }
 
     // Try to find the Product in the cache by its id

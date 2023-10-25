@@ -16,7 +16,7 @@ export class AdminSupplierDetailComponent {
   supplierForm: FormGroup;
 
   constructor(
-    private suppliersService: SupplierService,
+    private supplierService: SupplierService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
@@ -57,9 +57,9 @@ export class AdminSupplierDetailComponent {
         address: this.supplierForm.get('address')?.value
       };
 
-      this.suppliersService.updateSupplier(updatedSupplier).subscribe(() => {
+      this.supplierService.updateSupplier(updatedSupplier).subscribe(() => {
         // Cập nhật cache
-        this.suppliersService.updateSupplierCache(updatedSupplier);
+        this.supplierService.updateSupplierCache(updatedSupplier);
       });
     }
   }

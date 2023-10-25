@@ -23,7 +23,7 @@ export class AdminCategoriesComponent {
   categoryForm: FormGroup;
 
   constructor(
-    private categoriesService: CategoryService,
+    private categoryService: CategoryService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private modalService: NgbModal
@@ -46,7 +46,7 @@ export class AdminCategoriesComponent {
   }
 
   getCategories(): void {
-    this.categoriesService.getCategories()
+    this.categoryService.getCategories()
       .subscribe(categories => this.categories = categories);
   }
 
@@ -69,7 +69,7 @@ export class AdminCategoriesComponent {
 
     if (!name || active === null) { return; }
 
-    this.categoriesService.addCategory({ name, active, description } as Category)
+    this.categoryService.addCategory({ name, active, description } as Category)
       .subscribe(category => {
         this.categories.push(category);
         this.categoryForm.reset();
@@ -79,12 +79,12 @@ export class AdminCategoriesComponent {
 
   deleteCategory(category: Category): void {
     this.categories = this.categories.filter(c => c !== category);
-    this.categoriesService.deleteCategory(category.categoryId).subscribe();
+    this.categoryService.deleteCategory(category.categoryId).subscribe();
   }
 
   getCategory(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.categoriesService.getCategory(id)
+    this.categoryService.getCategory(id)
       .subscribe(category => this.category = category);
     this.categoryForm.get('name')?.setValue(this.category?.name);
   }

@@ -10,7 +10,7 @@ import { Supplier } from '../interfaces/supplier';
 export class SupplierService {
 
     private suppliersUrl = 'suppliers'; // URL to web api, không cần thêm base URL
-    suppliersCache: Supplier[] | null = null; // Cache for categories
+    suppliersCache!: Supplier[]; // Cache for categories
     private supplierUrl = 'supplier';
     constructor(private apiService: ApiService) { } // Inject ApiService
 
@@ -34,8 +34,7 @@ export class SupplierService {
         // Check if categoriesCache is null or empty
         if (!this.suppliersCache) {
             // Fetch the data from the API if cache is empty
-            const url = `${this.supplierUrl}/${id}`;
-            return this.apiService.request<Supplier>('get', url);
+           this.getSuppliers();
         }
 
         // Try to find the Category in the cache by its id

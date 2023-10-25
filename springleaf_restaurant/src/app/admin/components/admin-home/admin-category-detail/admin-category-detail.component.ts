@@ -18,7 +18,7 @@ export class AdminCategoryDetailComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private categoriesService: CategoryService,
+    private categoryService: CategoryService,
     public activeModal: NgbActiveModal,
   ) {
     window.addEventListener('storage', (event) => {
@@ -59,9 +59,9 @@ export class AdminCategoryDetailComponent implements OnInit {
         description: this.categoryForm.get('description')?.value
       };
 
-      this.categoriesService.updateCategory(updatedCategory).subscribe(() => {
+      this.categoryService.updateCategory(updatedCategory).subscribe(() => {
         // Cập nhật cache
-        this.categoriesService.updateCategoryCache(updatedCategory);
+        this.categoryService.updateCategoryCache(updatedCategory);
       });
     }
   }

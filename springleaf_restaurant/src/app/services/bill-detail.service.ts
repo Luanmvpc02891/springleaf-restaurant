@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class BillDetailService {
 
     private billDetailsUrl = 'billDetails'; // URL to web api, không cần thêm base URL
-    billDetailsCache: BillDetail[] | null = null; // Cache for categories
+    billDetailsCache!: BillDetail[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

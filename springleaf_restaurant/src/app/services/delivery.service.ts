@@ -12,7 +12,7 @@ import { Delivery } from '../interfaces/delivery';
 export class DeliveryService {
 
     private deliveriesUrl = 'deliveries'; // URL to web api, không cần thêm base URL
-    deliveriesCache: Delivery[] | null = null; // Cache for categories
+    deliveriesCache!: Delivery[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

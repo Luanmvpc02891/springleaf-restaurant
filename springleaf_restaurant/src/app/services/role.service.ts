@@ -11,7 +11,7 @@ import { Role } from '../interfaces/role';
 export class RoleService {
 
     private rolesUrl = 'roles'; // URL to web api, không cần thêm base URL
-    rolesCache: Role[] | null = null; // Cache for categories
+    rolesCache!: Role[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

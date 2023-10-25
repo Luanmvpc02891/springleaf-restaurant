@@ -11,7 +11,7 @@ import { Combo } from '../interfaces/combo';
 export class ComboService {
 
     private combosUrl = 'combos'; // URL to web api, không cần thêm base URL
-    combosCache: Combo[] | null = null; // Cache for categories
+    combosCache!: Combo[]; // Cache for categories
     private comboUrl = 'combo';
     constructor(private apiService: ApiService) { } // Inject ApiService
 

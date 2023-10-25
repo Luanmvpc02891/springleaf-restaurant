@@ -16,7 +16,7 @@ export class AdminIngredientDetailComponent {
   ingredientForm: FormGroup;
 
   constructor(
-    private ingredientsService: IngredientService,
+    private ingredientService: IngredientService,
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private modalService: NgbModal,) {
@@ -56,9 +56,9 @@ export class AdminIngredientDetailComponent {
         orderThreshold: this.ingredientForm.get('orderThreshold')?.value
       };
 
-      this.ingredientsService.updateIngredient(updatedIngredient).subscribe(() => {
+      this.ingredientService.updateIngredient(updatedIngredient).subscribe(() => {
         // Cập nhật cache
-        this.ingredientsService.updateIngredientCache(updatedIngredient);
+        this.ingredientService.updateIngredientCache(updatedIngredient);
       });
     }
   }

@@ -67,4 +67,9 @@ export class RestaurantTableService {
           }
         }
       }
+      
+      resetAutoIncrement(): Observable<string> {
+        return this.apiService.request<string>('post', 'reset/id', {});
+    }
+    
 }

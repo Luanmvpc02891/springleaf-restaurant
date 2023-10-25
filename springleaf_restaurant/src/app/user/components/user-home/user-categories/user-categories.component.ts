@@ -18,7 +18,7 @@ export class UserCategoriesComponent {
 
 
   constructor(
-    private categoriesService: CategoryService,
+    private categoryService: CategoryService,
     private route: ActivatedRoute,
   ) {
     window.addEventListener('storage', (event) => {
@@ -36,7 +36,7 @@ export class UserCategoriesComponent {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((categoryName: string) => this.categoriesService.searchCategoriesByName(categoryName)),
+      switchMap((categoryName: string) => this.categoryService.searchCategoriesByName(categoryName)),
     );
     this.search("");
   }
@@ -44,13 +44,13 @@ export class UserCategoriesComponent {
   search(term: string): void {
     if (term.trim() === "") {
       // Nếu term trống, gán categories$ bằng một observable chứa danh sách categories
-      this.categories$ = this.categoriesService.getCategories();
+      this.categories$ = this.categoryService.getCategories();
       //this.categories$ = of([]);
     } else {
       // Nếu term không trống, kiểm tra xem term có trong tên các categories hay không
       const searchTerm = term.toLowerCase(); // Chuyển đổi term thành chữ thường để so sánh không phân biệt hoa thường
 
-      this.categories$ = this.categoriesService.getCategories().pipe(
+      this.categories$ = this.categoryService.getCategories().pipe(
         // Sử dụng operator map để lọc các categories thỏa mãn điều kiện
         map(categories => categories.filter(category => category.name.toLowerCase().includes(searchTerm)))
       );
@@ -60,7 +60,7 @@ export class UserCategoriesComponent {
   }
 
   getCategories(): void {
-    this.categoriesService.getCategories()
+    this.categoryService.getCategories()
       .subscribe(categories => this.categories = categories);
   }
 

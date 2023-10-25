@@ -23,7 +23,7 @@ export class AdminInventoryDetailComponent implements OnInit {
   inventories: Inventory[] = [];
 
   constructor(
-    private inventoriesService: InventoryService,
+    private inventoryService: InventoryService,
     private supplierService: SupplierService,
     private ingredientService: IngredientService,
     private formBuilder: FormBuilder,
@@ -59,8 +59,8 @@ export class AdminInventoryDetailComponent implements OnInit {
     }
   }
   getInventoris(): void {
-    this.inventoriesService.getInventories()
-      .subscribe(inventory => this.inventoris = inventory);
+    this.inventoryService.getInventories()
+      .subscribe(inventories => this.inventoris = inventories);
   }
 
   getSuppliers(): void {
@@ -73,8 +73,8 @@ export class AdminInventoryDetailComponent implements OnInit {
       .subscribe(ingredient => this.ingredients = ingredient);
   }
   getInventories(): void {
-    this.inventoriesService.getInventories()
-      .subscribe(inventories => this.inventories = inventories);
+    this.inventoryService.getInventories()
+      .subscribe(inventory => this.inventories = inventory);
   }
 
   saveInventory(): void {
@@ -86,9 +86,9 @@ export class AdminInventoryDetailComponent implements OnInit {
         supplierId: this.inventoryForm.get('supplierId')?.value
       };
 
-      this.inventoriesService.updateInventory(updatedInventory).subscribe(() => {
+      this.inventoryService.updateInventory(updatedInventory).subscribe(() => {
         // Cập nhật cache
-        this.inventoriesService.updateInventoryCache(updatedInventory);
+        this.inventoryService.updateInventoryCache(updatedInventory);
         this.getInventories();
         this.getSuppliers();
         this.getIngredients();

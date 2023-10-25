@@ -10,13 +10,13 @@ declare var $: any;
 })
 export class UserProductsComponent implements OnInit {
 
-  products: Product[] | null = null;
+  products!: Product[];
   categoryId: number | undefined; // Khởi tạo categoryId là undefined
   visibleProductCount: number = 12; // Số sản phẩm ban đầu hiển thị
   remainingProducts: number | undefined;
 
   constructor(
-    private productsService: ProductService,
+    private productService: ProductService,
     private route: ActivatedRoute) {
       window.addEventListener('storage', (event) => {
         if (event.key && event.oldValue !== null) {
@@ -45,13 +45,8 @@ export class UserProductsComponent implements OnInit {
     return this.products ? this.products.slice(0, this.visibleProductCount) : [];
   }
 
-  // getProducts(): void {
-  //   this.productsService.getProducts()
-  //     .subscribe(products => this.products = products);
-  // }
-
   getProducts(): void {
-    this.productsService.getProducts()
+    this.productService.getProducts()
       .subscribe(products => {
         this.products = products;
         this.remainingProducts = this.products.length - this.visibleProductCount;
@@ -60,7 +55,7 @@ export class UserProductsComponent implements OnInit {
 
   getProductsByCategoryId(): void {
     if (this.categoryId !== undefined) {
-      this.productsService.getProductsByCategoryId(this.categoryId)
+      this.productService.getProductsByCategoryId(this.categoryId)
         .subscribe(products => {
           this.products = products;
         });

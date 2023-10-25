@@ -23,7 +23,7 @@ export class AdminIngredientsComponent {
   tableSizes: any = [5, 10, 15, 20];
 
   constructor(
-    private ingredientsService: IngredientService,
+    private ingredientService: IngredientService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
@@ -57,15 +57,15 @@ export class AdminIngredientsComponent {
   }
 
   getIngredients(): void {
-    this.ingredientsService.getIngredients()
-      .subscribe(ingredient => this.ingredients = ingredient);
+    this.ingredientService.getIngredients()
+      .subscribe(ingredients => this.ingredients = ingredients);
   }
   addIngredient(): void {
 
     const name = this.ingredientForm.get('name')?.value?.trim() ?? '';
     const description = this.ingredientForm.get('description')?.value;
     const orderThreshold = this.ingredientForm.get('orderThreshold')?.value;
-    this.ingredientsService.addIngredient({ name, orderThreshold, description } as Ingredient)
+    this.ingredientService.addIngredient({ name, orderThreshold, description } as Ingredient)
       .subscribe(ingredient => {
         this.ingredients.push(ingredient);
         this.ingredientForm.reset();
@@ -74,7 +74,7 @@ export class AdminIngredientsComponent {
 
   deleteIngredient(ingredient: Ingredient): void {
     this.ingredients = this.ingredients.filter(i => i !== ingredient);
-    this.ingredientsService.deleteIngredient(ingredient.ingredientId).subscribe();
+    this.ingredientService.deleteIngredient(ingredient.ingredientId).subscribe();
   }
 
   openIngredientDetailModal(ingredient: Ingredient) {

@@ -33,10 +33,10 @@ export class AdminRestaurantTablesComponent {
   tableSizes: any = [5, 10, 15, 20];
 
   constructor(
-    private restaurantTableService: RestaurantTableService,
-    private tableTypeService: TableTypeService,
-    private tableStatusService: TableStatusService,
-    private restaurantService: RestaurantService,
+    private restaurantTablesService: RestaurantTableService,
+    private tableTypesService: TableTypeService,
+    private tableStatusesService: TableStatusService,
+    private restaurantsService: RestaurantService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private zone: NgZone
@@ -72,33 +72,34 @@ export class AdminRestaurantTablesComponent {
     this.getRestaurantTables();
   }
 
+
   getRestaurantTables(): void {
-    this.restaurantTableService.getRestaurantTables()
+    this.restaurantTablesService.getRestaurantTables()
       .subscribe(restaurantTables => this.restaurantTables = restaurantTables);
   }
   getTableStatuses(): void {
-    this.tableStatusService.getTableStatuses()
+    this.tableStatusesService.getTableStatuses()
       .subscribe(tableStatus => this.tableStatuses = tableStatus);
   }
   getTableTypes(): void {
-    this.tableTypeService.getTableTypes()
+    this.tableTypesService.getTableTypes()
       .subscribe(tableTypes => this.tableTypes = tableTypes);
   }
   getRestaurants(): void {
-    this.restaurantService.getRestaurants()
+    this.restaurantsService.getRestaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
   }
   //Lấy name theo id
   getTableTypeById(tableType: number): Observable<TableType> {
-    return this.tableTypeService.getTableTypeById(tableType);
+    return this.tableTypesService.getTableTypeById(tableType);
   }
 
   getRestaurantById(restaurantId: number): Observable<Restaurant> {
-    return this.restaurantService.getRestaurantTableById(restaurantId);
+    return this.restaurantsService.getRestaurantById(restaurantId);
   }
 
   getTableStatusById(tableStatus: number): Observable<TableStatus> {
-    return this.tableStatusService.getTableStatusById(tableStatus);
+    return this.tableStatusesService.getTableStatusById(tableStatus);
   }
   addRestaurantTable(): void {
     const tableId = 0;
@@ -107,7 +108,7 @@ export class AdminRestaurantTablesComponent {
     const tableStatusId = this.restaurantTableForm.get('tableStatusId')?.value;
     const restaurantId = this.restaurantTableForm.get('restaurantId')?.value;
 
-    this.restaurantTableService.addRestaurantTable({ tableId, tableName, tableTypeId, tableStatusId, restaurantId } as RestaurantTable)
+    this.restaurantTablesService.addRestaurantTable({ tableId, tableName, tableTypeId, tableStatusId, restaurantId } as RestaurantTable)
       .subscribe(restaurantTable => {
         this.restaurantTables.push(restaurantTable);
         this.restaurantTableForm.reset();
@@ -115,7 +116,7 @@ export class AdminRestaurantTablesComponent {
   }
   deleteTable(restaurantTable: RestaurantTable): void {
     this.restaurantTables = this.restaurantTables.filter(i => i !== restaurantTable);
-    this.restaurantTableService.deleteTable(restaurantTable.tableId).subscribe();
+    this.restaurantTablesService.deleteTable(restaurantTable.tableId).subscribe();
   }
 
   openRestaurantTableDetailModal(restaurantTable: RestaurantTable) {

@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class FavoriteService {
 
     private favoritesUrl = 'favorites'; // URL to web api, không cần thêm base URL
-    favoritesCache: Favorite[] | null = null; // Cache for categories
+    favoritesCache!: Favorite[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

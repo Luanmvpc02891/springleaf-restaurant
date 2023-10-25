@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class CartService {
 
     private cartsUrl = 'carts'; // URL to web api, không cần thêm base URL
-    cartsCache: Cart[] | null = null; // Cache for categories
+    cartsCache!: Cart[]; // Cache for categories
     getDatasOfThisUserWorker: Worker;
 
     // Province

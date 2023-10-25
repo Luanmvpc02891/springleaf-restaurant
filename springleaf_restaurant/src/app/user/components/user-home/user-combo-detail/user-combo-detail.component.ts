@@ -16,7 +16,7 @@ export class UserComboDetailComponent {
   comboForm: FormGroup;
 
   constructor(
-    private combosService: ComboService,
+    private comboService: ComboService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
@@ -53,9 +53,9 @@ export class UserComboDetailComponent {
         totalAmount: this.comboForm.get('totalAmount')?.value,
       };
 
-      this.combosService.updateCombo(updatedCombo).subscribe(() => {
+      this.comboService.updateCombo(updatedCombo).subscribe(() => {
         // Cập nhật cache
-        this.combosService.updateComboCache(updatedCombo);
+        this.comboService.updateComboCache(updatedCombo);
       });
     }
   }

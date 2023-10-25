@@ -24,7 +24,7 @@ export class UserCombosComponent {
   tableSizes: any = [5, 10, 15, 20];
 
   constructor(
-    private combosService: ComboService,
+    private comboService: ComboService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private modalService: NgbModal) {
@@ -46,7 +46,7 @@ export class UserCombosComponent {
   }
 
   getCombos(): void {
-    this.combosService.getCombos()
+    this.comboService.getCombos()
       .subscribe(combos => this.combos = combos);
   }
 
@@ -67,7 +67,7 @@ export class UserCombosComponent {
     const comboUser = this.comboForm.get('comboUser')?.value;
     const totalAmount = this.comboForm.get('totalAmount')?.value;
 
-    this.combosService.addCombo({ comboName, comboUser, totalAmount } as Combo)
+    this.comboService.addCombo({ comboName, comboUser, totalAmount } as Combo)
       .subscribe(combo => {
         this.combos.push(combo);
         this.comboForm.reset();
@@ -76,7 +76,7 @@ export class UserCombosComponent {
 
   deleteCombo(combo: Combo): void {
     this.combos = this.combos.filter(i => i !== combo);
-    this.combosService.deleteCombo(combo.comboId).subscribe();
+    this.comboService.deleteCombo(combo.comboId).subscribe();
   }
 
   openComboDetailModal(combo: Combo) {

@@ -19,8 +19,8 @@ export class AdminProductDetailComponent {
   fieldNames: string[] = [];
 
   constructor(
-    private productsService: ProductService,
-    private categoriesService: CategoryService,
+    private productService: ProductService,
+    private categoryService: CategoryService,
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private modalService: NgbModal,
@@ -48,11 +48,11 @@ export class AdminProductDetailComponent {
   }
 
   getCategories(): void {
-    this.categoriesService.getCategories()
-      .subscribe(category => this.categories = category);
+    this.categoryService.getCategories()
+      .subscribe(categories => this.categories = categories);
   }
   getProducts(): void {
-    this.productsService.getProducts()
+    this.productService.getProducts()
       .subscribe(product => this.products = product);
   }
 
@@ -84,9 +84,9 @@ export class AdminProductDetailComponent {
 
       };
 
-      this.productsService.updateProduct(updatedProduct).subscribe(() => {
+      this.productService.updateProduct(updatedProduct).subscribe(() => {
         // Cập nhật cache
-        this.productsService.updateProductCache(updatedProduct);
+        this.productService.updateProductCache(updatedProduct);
       });
     }
   }

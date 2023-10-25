@@ -11,7 +11,7 @@ import { Rating } from '../interfaces/rating';
 export class RatingService {
 
     private ratingsUrl = 'restaurants'; // URL to web api, không cần thêm base URL
-    ratingsCache: Rating[] | null = null; // Cache for categories
+    ratingsCache!: Rating[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

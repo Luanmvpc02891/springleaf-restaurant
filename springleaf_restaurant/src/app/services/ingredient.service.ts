@@ -12,7 +12,7 @@ export class IngredientService {
 
     private ingredientsUrl = 'ingredients'; // URL to web api, không cần thêm base URL
     private ingredientUrl = 'ingredient';
-    ingredientsCache: Ingredient[] | null = null; // Cache for categories
+    ingredientsCache!: Ingredient[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 
@@ -39,7 +39,7 @@ export class IngredientService {
         // Check if categoriesCache is null or empty
         if (!this.ingredientsCache) {
             // Fetch the data from the API if cache is empty
-            return this.apiService.request<Ingredient>('get', this.ingredientsUrl);
+           this.getIngredients();
         }
 
         // Try to find the Category in the cache by its id

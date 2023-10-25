@@ -14,7 +14,7 @@ export class InventoryService {
 
     private inventoriesUrl = 'inventories';
     private inventoryUrl = 'inventory';
-    inventoriesCache: Inventory[] | null = null;
+    inventoriesCache!: Inventory[];
 
     constructor(private apiService: ApiService, private httpClient: HttpClient) { }
 

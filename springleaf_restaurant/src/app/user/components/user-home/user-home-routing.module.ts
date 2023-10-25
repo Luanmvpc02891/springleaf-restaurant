@@ -56,6 +56,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./user-restaurant-tables/user-restaurant-tables.module')
             .then(m => m.UserTablesModule),
+      }, {
+        path: 'user/inventoryBranches',
+        loadChildren: () =>
+          import('./user-inventory-branches/user-inventory-branches.module')
+            .then(m => m.UserInventoryBranchesModule),
       },
       {
         path: 'user/restaurant',

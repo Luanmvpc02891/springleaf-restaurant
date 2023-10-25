@@ -41,12 +41,13 @@ import { AdminRestaurantTableDetailComponent } from './admin/components/admin-ho
 import { AdminRestaurantTablesComponent } from './admin/components/admin-home/admin-restaurant-tables/admin-restaurant-tables.component';
 import { AdminSupplierDetailComponent } from './admin/components/admin-home/admin-supplier-detail/admin-supplier-detail.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { DateTimeComponent } from './components/date-time/date-time.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { ChatService } from './services/chat.service';
 import { WebSocketService } from './services/web-socket.service';
 import { UserComboDetailComponent } from './user/components/user-home/user-combo-detail/user-combo-detail.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { DateTimeComponent } from './components/date-time/date-time.component';
+import { UserInventoryBranchesComponent } from './user/components/user-home/user-inventory-branches/user-inventory-branches.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { DateTimeComponent } from './components/date-time/date-time.component';
     UserRestaurantTablesComponent,
     UserRestaurantsComponent,
     UserComboDetailComponent,
+    UserInventoryBranchesComponent,
 
     AdminHeaderComponent,
     AdminProductsComponent,

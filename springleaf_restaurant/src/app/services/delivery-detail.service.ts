@@ -1,7 +1,7 @@
-import { DeliveryDetail } from '../interfaces/delivery-detail';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import { DeliveryDetail } from '../interfaces/delivery-detail';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class DeliveryDetailService {
 
     private deliveryDetailsUrl = 'deliveryDetails'; // URL to web api, không cần thêm base URL
-    deliveryDetailsCache: DeliveryDetail[] | null = null; // Cache for categories
+    deliveryDetailsCache!: DeliveryDetail[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

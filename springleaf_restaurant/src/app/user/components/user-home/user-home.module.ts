@@ -9,6 +9,7 @@ import { UserHomeRoutingModule } from './user-home-routing.module';
     UserHomeRoutingModule
   ],
   declarations: [
+
   ]
 })
 export class UserHomeModule { }

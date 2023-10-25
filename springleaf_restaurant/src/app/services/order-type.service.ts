@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class OrderTypeService {
 
     private orderTypesUrl = 'ingredients'; // URL to web api, không cần thêm base URL
-    orderTypesCache: OrderType[] | null = null; // Cache for categories
+    orderTypesCache!: OrderType[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

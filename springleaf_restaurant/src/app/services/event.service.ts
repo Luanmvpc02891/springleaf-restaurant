@@ -11,7 +11,7 @@ import { Event } from '../interfaces/event';
 export class EventService {
 
     private eventsUrl = 'events'; // URL to web api, không cần thêm base URL
-    eventsCache: Event[] | null = null; // Cache for categories
+    eventsCache!: Event[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

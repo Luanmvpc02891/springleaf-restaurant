@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class OrderThresholdService {
 
     private orderThresholdsUrl = 'ingredients'; // URL to web api, không cần thêm base URL
-    orderThresholdsCache: OrderThreshold[] | null = null; // Cache for categories
+    orderThresholdsCache!: OrderThreshold[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

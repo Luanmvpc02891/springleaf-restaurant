@@ -30,10 +30,10 @@ export class AdminInventoriesComponent {
   tableSizes: any = [5, 10, 15, 20];
 
   constructor(
-    private inventoriesService: InventoryService,
+    private inventoryService: InventoryService,
     private route: ActivatedRoute,
-    private ingredientsService: IngredientService,
-    private suppliersService: SupplierService,
+    private ingredientService: IngredientService,
+    private supplierService: SupplierService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal
   ) {
@@ -67,26 +67,26 @@ export class AdminInventoriesComponent {
   }
 
   getIngredients(): void {
-    this.ingredientsService.getIngredients()
-      .subscribe(ingredient => this.ingredients = ingredient);
+    this.ingredientService.getIngredients()
+      .subscribe(ingredients => this.ingredients = ingredients);
   }
 
   getIngredientById(ingredientId: number): Observable<Ingredient> {
-    return this.ingredientsService.getIngredient(ingredientId);
+    return this.ingredientService.getIngredient(ingredientId);
   }
 
   getSupplierById(supplierId: number): Observable<Supplier> {
-    return this.suppliersService.getSupplier(supplierId);
+    return this.supplierService.getSupplier(supplierId);
   }
 
   getInventories(): void {
-    this.inventoriesService.getInventories()
+    this.inventoryService.getInventories()
       .subscribe(inventories => this.inventories = inventories);
   }
 
   getSuppliers(): void {
-    this.suppliersService.getSuppliers()
-      .subscribe(supplier => this.suppliers = supplier);
+    this.supplierService.getSuppliers()
+      .subscribe(suppliers => this.suppliers = suppliers);
   }
 
   addInventory(): void {
@@ -107,7 +107,7 @@ export class AdminInventoriesComponent {
       supplierId: supplierId
     };
 
-    this.inventoriesService.addInventory(newInventory)
+    this.inventoryService.addInventory(newInventory)
       .subscribe(inventory => {
         console.log('Inventory added:', inventory);
         // Lấy tên của thành phần và nhà cung cấp dựa vào ID 
@@ -121,7 +121,7 @@ export class AdminInventoriesComponent {
   }
   deleteInventory(inventory: Inventory): void {
     this.inventories = this.inventories.filter(i => i !== inventory);
-    this.inventoriesService.deleteInventory(inventory.inventoryId).subscribe();
+    this.inventoryService.deleteInventory(inventory.inventoryId).subscribe();
   }
   openInventoryDetailModal(inventory: Inventory) {
     //this.getCategory();

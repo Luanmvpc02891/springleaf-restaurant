@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class DeliveryOrderStatusService {
 
     private deliveryOrderStatusesUrl = 'deliveryOrderStatuses'; // URL to web api, không cần thêm base URL
-    deliveryOrderStatusesCache: DeliveryOrderStatus[] | null = null; // Cache for categories
+    deliveryOrderStatusesCache!: DeliveryOrderStatus[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

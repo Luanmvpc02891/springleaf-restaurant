@@ -10,7 +10,7 @@ import { DeliveryOrderDetail } from '../interfaces/delivery-order-detail';
 export class DeliveryOrderDetailService {
 
     private deliveryOrderDetailsUrl = 'deliveryOrderDetails'; // URL to web api, không cần thêm base URL
-    deliveryOrderDetailsCache: DeliveryOrderDetail[] | null = null; // Cache for categories
+    deliveryOrderDetailsCache!: DeliveryOrderDetail[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

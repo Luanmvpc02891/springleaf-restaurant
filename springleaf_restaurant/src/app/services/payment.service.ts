@@ -10,7 +10,7 @@ import { Payment } from '../interfaces/payment';
 export class PaymentService {
 
     private paymentsUrl = 'restaurants'; // URL to web api, không cần thêm base URL
-    paymentsCache: Payment[] | null = null; // Cache for categories
+    paymentsCache!: Payment[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

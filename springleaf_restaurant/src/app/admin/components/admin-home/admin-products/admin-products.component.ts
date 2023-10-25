@@ -26,7 +26,7 @@ export class AdminProductsComponent {
   tableSizes: any = [5, 10, 15, 20];
 
   constructor(
-    private productsService: ProductService,
+    private productService: ProductService,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private formBuilder: FormBuilder,
@@ -65,11 +65,11 @@ export class AdminProductsComponent {
 
   getCategories(): void {
     this.categoryService.getCategories()
-      .subscribe(category => this.categories = category);
+      .subscribe(categories => this.categories = categories);
   }
   getProducts(): void {
-    this.productsService.getProducts()
-      .subscribe(product => this.products = product);
+    this.productService.getProducts()
+      .subscribe(products => this.products = products);
   }
   getCategoryById(categoryId: number): Observable<Category> {
     return this.categoryService.getCategory(categoryId);
@@ -95,7 +95,7 @@ export class AdminProductsComponent {
       categoryId: categoryId,
     };
 
-    this.productsService.addProduct(newProduct)
+    this.productService.addProduct(newProduct)
       .subscribe(product => {
         console.log('Inventory added:', product);
         // Lấy tên của thành phần và nhà cung cấp dựa vào ID 
@@ -109,7 +109,7 @@ export class AdminProductsComponent {
 
   deleteProduct(product: Product): void {
     this.products = this.products.filter(c => c !== product);
-    this.productsService.deleteProduct(product.menuItemId).subscribe();
+    this.productService.deleteProduct(product.menuItemId).subscribe();
   }
   openProductDetailModal(product: Product) {
     //this.getCategory();

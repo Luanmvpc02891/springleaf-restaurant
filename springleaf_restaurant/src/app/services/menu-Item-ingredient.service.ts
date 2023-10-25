@@ -12,7 +12,7 @@ import { MenuItemIngredient } from '../interfaces/menu-item-ingredient';
 export class MenuItemIngredientService {
 
     private menuItemIngredientsUrl = 'menuItemIngredients'; // URL to web api, không cần thêm base URL
-    menuItemIngredientsCache: MenuItemIngredient[] | null = null; // Cache for categories
+    menuItemIngredientsCache!: MenuItemIngredient[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

@@ -11,7 +11,7 @@ import { ReceiptDetail } from '../interfaces/receipt-detail';
 export class ReceiptDetailService {
 
     private receiptDetailsUrl = 'restaurants'; // URL to web api, không cần thêm base URL
-    receiptDetailsCache: ReceiptDetail[] | null = null; // Cache for categories
+    receiptDetailsCache!: ReceiptDetail[]; // Cache for categories
 
     constructor(private apiService: ApiService) { } // Inject ApiService
 

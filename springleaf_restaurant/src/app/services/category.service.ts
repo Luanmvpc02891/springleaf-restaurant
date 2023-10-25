@@ -9,7 +9,7 @@ import { Category } from '../interfaces/category';
 export class CategoryService {
 
   private categoriesUrl = 'categories'; // URL to web api, không cần thêm base URL
-  categoriesCache: Category[] | null = null; // Cache for categories
+  categoriesCache!: Category[] ; // Cache for categories
   private categoryUrl = 'category';
 
   constructor(private apiService: ApiService) { } // Inject ApiService
@@ -36,7 +36,7 @@ export class CategoryService {
     // Check if categoriesCache is null or empty
     if (!this.categoriesCache) {
       // Fetch the data from the API if cache is empty
-      return this.apiService.request<Category>('get', this.categoriesUrl);
+      this.getCategories();
     }
 
     // Try to find the Category in the cache by its id
