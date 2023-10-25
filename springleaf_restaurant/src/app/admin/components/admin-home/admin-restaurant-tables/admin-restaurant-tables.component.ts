@@ -95,7 +95,7 @@ export class AdminRestaurantTablesComponent {
   }
 
   getRestaurantById(restaurantId: number): Observable<Restaurant> {
-    return this.restaurantsService.getRestaurantById(restaurantId);
+    return this.restaurantService.getRestaurantById(restaurantId);
   }
 
   getTableStatusById(tableStatus: number): Observable<TableStatus> {

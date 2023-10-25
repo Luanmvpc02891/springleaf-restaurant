@@ -5,7 +5,10 @@ import { RestaurantTable } from 'src/app/interfaces/restaurant-table';
 import { TableStatus } from 'src/app/interfaces/table-status';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { RestaurantTableService } from 'src/app/services/restaurant-table.service';
+import { RestaurantService } from 'src/app/services/restaurant.service';
 import { TableStatusService } from 'src/app/services/table-status.service';
+import { TableTypeService } from 'src/app/services/table-type.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-user-table',
@@ -16,9 +19,12 @@ export class UserRestaurantTablesComponent {
   restaurantTables: RestaurantTable[] = [];
 
   constructor(
-    private restaurantTablesService: RestaurantTableService,
-    private tableStatusesService: TableStatusService,
+    private toastService: ToastService,
+    private restaurantTableService: RestaurantTableService,
+    private tableStatusService: TableStatusService,
     private authenticationService: AuthenticationService,
+    private tableTypeService: TableTypeService,
+    private restaurantService: RestaurantService,
     private route: ActivatedRoute
   ) {
     window.addEventListener('storage', (event) => {
@@ -33,19 +39,27 @@ export class UserRestaurantTablesComponent {
   }
 
   getRestaurantTables(): void {
-    this.restaurantTablesService.getRestaurantTables()
+    this.restaurantTableService.getRestaurantTables()
       .subscribe(restaurantTables => this.restaurantTables = restaurantTables);
   }
 
   getTableStatusById(tableStatusId: number): Observable<TableStatus> {
-    return this.tableStatusesService.getTableStatusById(tableStatusId);
+    return this.tableStatusService.getTableStatusById(tableStatusId);
+  }
+
+  getTableTypeById(tableTypeId: number){
+    return this.tableTypeService.getTableTypeById(tableTypeId);
+  }
+
+  getRestaurantById(restaurantId: number){
+    return this.restaurantService.getRestaurantById(restaurantId);
   }
 
   bookTable(): void {
     if (this.authenticationService.getUserCache() === null) {
-      console.log("Đặt bàn thất bại mời đăng nhập");
+      this.toastService.showError("Đặt bàn thất bại mời đăng nhập");
     } else {
-      console.log("Đặt bàn thành công");
+      this.toastService.showSuccess("Đặt bàn thành công");
     }
 
   }

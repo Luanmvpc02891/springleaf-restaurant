@@ -22,8 +22,7 @@ export class ProfileComponent {
     private userService: UserService
   ) {
     this.profileForm = this.formBuilder.group({
-      firstName: [null, [Validators.nullValidator]],
-      lastName: [null, [Validators.nullValidator]],
+      fullName: [null, [Validators.nullValidator]],
       username: [null, [Validators.nullValidator]],
       password: [null, [Validators.nullValidator]],
       email: [null, [Validators.nullValidator]],
@@ -47,8 +46,7 @@ export class ProfileComponent {
   setValue() {
     if (this.userData) {
       this.profileForm.patchValue({
-        lastName: this.userData.lastName,
-        firstName: this.userData.firstName,
+        fullName: this.userData.fullName,
         username: this.userData.username,
         password: this.userData.password,
         email : this.userData.email,
@@ -62,8 +60,7 @@ export class ProfileComponent {
     if (this.userData) {
       const userUpdate: User = {
         userId: this.userData.userId,
-        firstName: this.profileForm.get('firstName')?.value,
-        lastName: this.profileForm.get('lastName')?.value,
+        fullName: this.profileForm.get('fullName')?.value,
         username: this.userData.username,
         password: "123",
         email: this.profileForm.get('email')?.value,

@@ -34,16 +34,14 @@ export class RestaurantService {
     getRestaurantById(id: number): Observable<Restaurant> {
         // Check if categoriesCache is null or empty
         if (!this.restaurantsCache) {
-            // Fetch the data from the API if cache is empty
             this.getRestaurants();
         }
 
-        // Try to find the Category in the cache by its id
-        const RestaurantFromCache = this.restaurantsCache.find(Restaurant => Restaurant.restaurantId === id);
+        const restaurantFromCache = this.restaurantsCache.find(restaurant => restaurant.restaurantId === id);
 
-        if (RestaurantFromCache) {
+        if (restaurantFromCache) {
             // If found in cache, return it as an observable
-            return of(RestaurantFromCache);
+            return of(restaurantFromCache);
         } else {
             // If not found in cache, fetch it from the API
             const url = `${this.restaurantUrl}/${id}`;

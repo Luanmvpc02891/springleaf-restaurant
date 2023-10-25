@@ -8,7 +8,7 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private apiUrl = 'v1/auth'; // Thay thế bằng URL của Spring Boot API
+  private apiUrl = 'http://localhost:8080/api/v1/auth'; // Thay thế bằng URL của Spring Boot API
   private userCache: User | null = null;
   private cachedDataSubject = new BehaviorSubject<User | null>(null);
   getDatasOfThisUserWorker: Worker;
@@ -26,20 +26,13 @@ export class AuthenticationService {
     this.cachedDataSubject.next(user);
   }
 
-  register(firstName: string, lastName: string,  username: string, password: string, phone: string, email: string,
-    address: number, image: string, managerId:  number, restaurantBranchId: number, roleId: number ): Observable<any> {
+  register(fullName: string,  username: string, password: string, phone: string, email: string): Observable<any> {
     const registerData = {
-      firstName: firstName,
-      lastName: lastName,
+      fullName: fullName,
       username: username,
       password: password,
       phone: phone,
       email: email,
-      address: address,
-      image: image,
-      managerId: null,
-      restaurantBranchId: null,
-      roleId: null
     };
 
     return this.http.post(`${this.apiUrl}/register`, registerData);

@@ -10,7 +10,7 @@ import { TableType } from '../interfaces/table-type';
 export class TableTypeService {
 
   private tableTypesUrl = 'tableTypes'; // URL to web api, không cần thêm base URL
-  tableTypesCache: TableType[] | null = null; // Cache for categories
+  tableTypesCache!: TableType[]; // Cache for categories
   private tableTypeUrl = 'tableType';
   constructor(private apiService: ApiService) { } // Inject ApiService
 
@@ -30,23 +30,22 @@ export class TableTypeService {
 
     return tableTypesObservable;
   }
+  
   // Lấy tên theo ID
   getTableTypeById(id: number): Observable<TableType> {
     // Check if categoriesCache is null or empty
     if (!this.tableTypesCache) {
-      // Fetch the data from the API if cache is empty
-      const url = `${this.tableTypeUrl}/${id}`;
-      return this.apiService.request<TableType>('get', url);
+      this.getTableTypes();
     }
 
-    // Try to find the Category in the cache by its id
+    // Tìm tableType trong tableTypesCache theo id
     const TableTypeFromCache = this.tableTypesCache.find(TableType => TableType.tableTypeId === id);
 
     if (TableTypeFromCache) {
-      // If found in cache, return it as an observable
+      // Nếu tìm thấy trong tableTypesCache thì return về 1 ObserVable<TableType>
       return of(TableTypeFromCache);
     } else {
-      // If not found in cache, fetch it from the API
+      // Nếu kiếm không thấy trong tableTypesCache thì trả về dữ liệu lấy từ api
       const url = `${this.tableTypeUrl}/${id}`;
       return this.apiService.request<TableType>('get', url);
     }

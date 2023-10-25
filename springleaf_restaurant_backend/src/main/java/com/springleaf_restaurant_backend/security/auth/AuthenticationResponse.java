@@ -19,4 +19,16 @@ public class AuthenticationResponse {
   @JsonProperty("refresh_token")
   private String refreshToken;
   private User user;
+  private String error;
+
+  public AuthenticationResponse(String error) {
+    this.error = error;
+}
+
+  public AuthenticationResponse(String accessToken, String refreshToken, User user) {
+      this.accessToken = accessToken;
+      this.refreshToken = refreshToken;
+      this.user = user;
+  }
+  
 }

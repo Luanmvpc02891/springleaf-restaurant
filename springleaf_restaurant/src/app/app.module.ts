@@ -48,6 +48,9 @@ import { ChatService } from './services/chat.service';
 import { WebSocketService } from './services/web-socket.service';
 import { UserComboDetailComponent } from './user/components/user-home/user-combo-detail/user-combo-detail.component';
 import { UserInventoryBranchesComponent } from './user/components/user-home/user-inventory-branches/user-inventory-branches.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { DateTimeComponent } from './components/date-time/date-time.component';
+import { NgToastModule } from 'ng-angular-popup';
 
 
 @NgModule({
@@ -102,6 +105,7 @@ import { UserInventoryBranchesComponent } from './user/components/user-home/user
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    NgToastModule,
   ],
   providers: [
     WebSocketService,
