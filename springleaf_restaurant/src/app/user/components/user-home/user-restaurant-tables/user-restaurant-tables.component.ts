@@ -8,6 +8,7 @@ import { RestaurantTableService } from 'src/app/services/restaurant-table.servic
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { TableStatusService } from 'src/app/services/table-status.service';
 import { TableTypeService } from 'src/app/services/table-type.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-user-table',
@@ -18,6 +19,7 @@ export class UserRestaurantTablesComponent {
   restaurantTables: RestaurantTable[] = [];
 
   constructor(
+    private toastService: ToastService,
     private restaurantTableService: RestaurantTableService,
     private tableStatusService: TableStatusService,
     private authenticationService: AuthenticationService,
@@ -55,9 +57,9 @@ export class UserRestaurantTablesComponent {
 
   bookTable(): void {
     if (this.authenticationService.getUserCache() === null) {
-      console.log("Đặt bàn thất bại mời đăng nhập");
+      this.toastService.showError("Đặt bàn thất bại mời đăng nhập");
     } else {
-      console.log("Đặt bàn thành công");
+      this.toastService.showSuccess("Đặt bàn thành công");
     }
 
   }
