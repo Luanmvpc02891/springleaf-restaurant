@@ -38,7 +38,8 @@ export class TableStatusService {
     getTableStatusById(id: number): Observable<TableStatus> {
         // Check if categoriesCache is null or empty
         if (!this.tableStatusesCache) {
-            this.getTableStatuses();
+            // Fetch the data from the API if cache is empty
+           this.getTableStatuses();
         }
 
         // Try to find the Category in the cache by its id

@@ -34,6 +34,7 @@ export class RestaurantService {
     getRestaurantById(id: number): Observable<Restaurant> {
         // Check if categoriesCache is null or empty
         if (!this.restaurantsCache) {
+            // Fetch the data from the API if cache is empty
             this.getRestaurants();
         }
 
