@@ -36,7 +36,7 @@ export class AdminRestaurantTablesComponent {
     private restaurantTablesService: RestaurantTableService,
     private tableTypesService: TableTypeService,
     private tableStatusesService: TableStatusService,
-    private restaurantsService: RestaurantService,
+    private restaurantService: RestaurantService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private zone: NgZone
@@ -86,7 +86,7 @@ export class AdminRestaurantTablesComponent {
       .subscribe(tableTypes => this.tableTypes = tableTypes);
   }
   getRestaurants(): void {
-    this.restaurantsService.getRestaurants()
+    this.restaurantService.getRestaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
   }
   //Lấy name theo id
@@ -95,7 +95,8 @@ export class AdminRestaurantTablesComponent {
   }
 
   getRestaurantById(restaurantId: number): Observable<Restaurant> {
-    return this.restaurantsService.getRestaurantById(restaurantId);
+    return this.restaurantService.getRestaurantById(restaurantId);
+
   }
 
   getTableStatusById(tableStatus: number): Observable<TableStatus> {

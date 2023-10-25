@@ -1,12 +1,5 @@
 <!-- <div class="date-time">{{ currentTime | date: 'EEEE, MMMM d, y, h:mm:ss a' }}</div> -->
 
-
-<!-- <div class="clock">
-    <div class="hour-hand" [style.transform]="hourHandTransform"></div>
-    <div class="minute-hand" [style.transform]="minuteHandTransform"></div>
-    <div class="second-hand" [style.transform]="secondHandTransform"></div>
-</div> -->
-
 <div class="date-time">
     <div class="wrapper">
         <div class="bar-seconds">
@@ -21,10 +14,10 @@
                 <p>{{ hour }}</p>
             </span>
         </div>
-        <div class="hands-box">
-            <div class="hand hours" [style.transform]="hourHandTransform"><i></i></div>
+        <div class="hands-box">     
             <div class="hand minutes" [style.transform]="minuteHandTransform"><i></i></div>
-            <div class="hand seconds" [style.transform]="secondHandTransform"><i></i></div>
+            <div class="hand hours" [style.transform]="hourHandTransform"><i></i></div>
+            <div class="hand seconds" [style.transform]="secondHandTransform"><i></i></div>        
         </div>
     </div>
 </div>

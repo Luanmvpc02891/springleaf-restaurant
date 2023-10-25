@@ -1,7 +1,7 @@
 import { TableStatus } from '../interfaces/table-status';
 
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, catchError, of, tap, throwError } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -24,14 +24,14 @@ export class TableStatusService {
             return of(this.tableStatusesCache);
         }
 
-        const tableStatusObservable = this.apiService.request<TableStatus[]>('get', this.tableStatusesUrl);
+        const tableStatusesObservable = this.apiService.request<TableStatus[]>('get', this.tableStatusesUrl);
 
         // Cache the categories observable
-        tableStatusObservable.subscribe(data => {
+        tableStatusesObservable.subscribe(data => {
             this.tableStatusesCache = data; // Store the fetched data in the cache
         });
 
-        return tableStatusObservable;
+        return tableStatusesObservable;
     }
 
     // Lấy sản phẩm theo ID

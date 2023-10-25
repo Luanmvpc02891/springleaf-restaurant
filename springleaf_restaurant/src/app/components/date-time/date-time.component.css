@@ -1,74 +1,25 @@
-/* .clock {
-    width: 170px;
-    height: 170px;
-    border: 2px solid black;
-    border-radius: 50%;
-    position: fixed;
-    top: 15%;
-    right: 3%;
-    background: url(https://i.imgur.com/wfNgPJ9.png) no-repeat center;
-    background-size: contain;
-}
-
-.hour-hand,
-.minute-hand,
-.second-hand {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform-origin: bottom center;
-    transform: translateX(-50%);
-}
-
-.hour-hand {
-    width: 6px;
-    height: 50px;
-    background-color: black;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-}
-
-.minute-hand {
-    width: 4px;
-    height: 70px;
-    background-color: black;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-}
-
-.second-hand {
-    width: 2px;
-    height: 80px;
-    background-color: red;
-    border-radius: 1px;
-} */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-} */
-
 .date-time {
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 50vh;
     overflow: hidden;
+    /* background: black; */
 }
 
 .wrapper {
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 60vw;
+    /* Sử dụng 80% của viewport width */
+    height: 60vw;
+    /* Sử dụng cùng giá trị với width để giữ cho nó trở thành hình tròn */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -82,10 +33,11 @@
     background: black;
     border-radius: 100%;
 }
+
 .number-hours {
     position: absolute;
-    width: 82%;
-    height: 82%;
+    width: 80%;
+    height: 80%;
     background: black;
     border-radius: 50%;
 }
@@ -93,38 +45,38 @@
 .bar-seconds span {
     position: absolute;
     transform: rotate(calc(var(--index) * 6deg));
-    inset: 4px;
+    inset: 0.6%;
     text-align: center;
     border-radius: 50%;
 }
 
 .bar-seconds span p {
     display: inline-block;
-    width: 2px;
-    height: 12px;
+    width: 0.6%;
+    height: 4.5%;
     background: #0ef;
     border-radius: 2px;
     box-shadow: 0 0 10px #0ef;
 }
 
 .bar-seconds span:nth-child(5n) p {
-    width: 6px;
-    height: 16px;
-    transform: translateY(1px);
+    width: 1.2%;
+    height: 8%;
+    transform: translateY(1%);
 }
 
 .number-hours span {
     position: absolute;
     /* 360deg / 12 = 30deg */
     transform: rotate(calc(var(--index) * 30deg));
-    inset: -20px;
-    text-align: center; 
+    inset: -2.5%;
+    text-align: center;
 }
 
 .number-hours span p {
-    font-size: 52px;
+    font-size: 6.5vw;
     color: #0ef;
-    text-shadow: 0 0 10px #0ef;
+    text-shadow: 0px 0px 10px #0ef;
     transform: rotate(calc(var(--index) * -30deg));
 }
 
@@ -141,61 +93,55 @@
     border-radius: 50%;
     display: flex;
     justify-content: center;
-    transform-origin: center;
-    transition: transform 0.5s cubic-bezier(0.4, 2.08, 0.55, 0.44);
 }
 
 .hands-box .hand i {
     display: inline-block;
     border-radius: 50%;
-    box-shadow: 0 0 10px #0ef;
+    /* box-shadow: 0 0 10px #0ef; */
 }
 
 .hands-box .hours {
-    width: 320px;
-    height: 320px;
-    /* border: 2px solid red; */
-    /* transform: rotate(30deg); */
-}
-
-.hands-box .hours i {
-    width: 8px;
-    /* half of parent height */
-    height: 160px;
-    background: #0ef;
-}
-
-.hands-box .minutes {
-    width: 450px;
-    height: 435px;
-    /* border: 2px solid yellow; */
-    /* transform: rotate(210deg); */
+    width: 55vw;
+    height: 34vw;
 }
 
 /* center dot bottm */
-.hands-box .minutes::before {
+.hands-box .hours::before {
     content: "";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 25px;
-    height: 25px;
+    width: 6%;
+    height: 6.8%;
     background: #0ef;
     border-radius: 50%;
-    box-shadow: 0px 0 5px #0ef;
+    box-shadow: 0px 0px 10px white;
+}
+
+.hands-box .hours i {
+    width: 2%;
+    /* half of parent height */
+    height: 50%;
+    background: red;
+    box-shadow: 0px 0px 10px red;
+}
+
+.hands-box .minutes {
+    width: 60vw;
+    height: 47vw;
 }
 
 .hands-box .minutes i {
-    width: 8px;
-    height: 225px;
+    width: 2%;
+    height: 50%;
     background: #0ef;
+    box-shadow: 0px 0px 10px #0ef;
 }
 
 .hands-box .seconds {
-    width: 480px;
-    height: 480px;
-    /* border: 2px solid white; */
-    /* transform: rotate(150deg); */
+    width: 75vw;
+    height: 57vw;
 }
 
 /* center dot bottm */
@@ -204,15 +150,16 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 25px;
-    height: 25px;
+    width: 6.0%;
+    height: 7.0%;
     background: #fff;
     border-radius: 50%;
     box-shadow: 0 0 2px rgba(0, 0, 0, .5);
 }
 
 .hands-box .seconds i {
-    width: 4px;
-    height: calc(240px + 70px);
+    width: 1.4%;
+    height: calc(40% + 25%);
     background: white;
+    box-shadow: 0px 0px 10px white;
 }

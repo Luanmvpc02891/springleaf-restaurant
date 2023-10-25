@@ -59,4 +59,17 @@ export class UserHeaderComponent {
   openProfileModel(){
     const modalRef = this.modalService.open(ProfileComponent);
   }
+
+  truncateString(inputString: string): string {
+    // Tìm vị trí của khoảng trắng đầu tiên từ bên phải
+    const firstSpaceIndex = inputString.lastIndexOf(' ');
+    
+    if (firstSpaceIndex !== -1) {
+      // Cắt chuỗi từ bên phải đến khoảng trắng đầu tiên
+      return inputString.slice(firstSpaceIndex + 1);
+    } else {
+      // Trường hợp không có khoảng trắng
+      return inputString;
+    }
+  }
 }

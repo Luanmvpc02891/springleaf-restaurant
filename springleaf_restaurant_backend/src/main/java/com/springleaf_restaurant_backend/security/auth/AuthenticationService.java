@@ -17,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +32,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -50,22 +53,38 @@ public class AuthenticationService {
   @Autowired
   RoleRepository roleRepository;
 
-  public AuthenticationResponse register(RegisterRequest request) {
-    Role role = roleRepository.findByRoleId(request.getRoleId());
-    var user = User.builder()
-        .username(request.getUsername())
-        .password(passwordEncoder.encode(request.getPassword()))
-        .roleId(1)
-        .build();
-    var savedUser = userRepository.save(user);
-    var jwtToken = jwtService.generateToken(user);
-    var refreshToken = jwtService.generateRefreshToken(user);
-    saveUserToken(savedUser, jwtToken);
-    return AuthenticationResponse.builder()
-        .accessToken(jwtToken)
+  public AuthenticationResponse register(RegisterRequest request) throws Exception {
+    User existingUserByEmail = userRepository.findByEmail(request.getEmail());
+    Optional<User> existingUserByUsername = userRepository.findByUsername(request.getUsername());
+
+    if (existingUserByEmail != null) {
+      return AuthenticationResponse.builder()
+          .error("User with this email already exists")
+          .build();
+  } else if (existingUserByUsername.isPresent()) {
+      return AuthenticationResponse.builder()
+            .error("User with this username already exists")
+            .build();
+  } else {
+        var user = User.builder()
+            .username(request.getUsername())
+            .password(passwordEncoder.encode(request.getPassword()))
+            .roleId(2)
+            .fullName(request.getFullName())
+            .email(request.getEmail())
+            .build();
+        var savedUser = userRepository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+        var refreshToken = jwtService.generateRefreshToken(user);
+        saveUserToken(savedUser, jwtToken);
+        return AuthenticationResponse.builder()
+            .accessToken(jwtToken)
             .refreshToken(refreshToken)
-        .build();
+            .build();
+    }
   }
+
+
 
   public AuthenticationResponse authenticate(AuthenticationRequest request) {
     authenticationManager.authenticate(
@@ -78,6 +97,11 @@ public class AuthenticationService {
         .orElseThrow();
     var jwtToken = jwtService.generateToken(user);
     var refreshToken = jwtService.generateRefreshToken(user);
+    if(user != null){
+      Integer roleId = user.getRoleId();
+      String roleName = roleRepository.findRoleSaByRoleId(roleId);
+      user.setRoleName(roleName);
+    }
     revokeAllUserTokens(user);
     saveUserToken(user, jwtToken);
     return AuthenticationResponse.builder()
