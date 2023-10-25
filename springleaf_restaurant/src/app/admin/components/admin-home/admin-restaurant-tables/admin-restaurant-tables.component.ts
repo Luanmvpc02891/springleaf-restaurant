@@ -18,6 +18,7 @@ import { AdminRestaurantTableDetailComponent } from '../admin-restaurant-table-d
   styleUrls: ['./admin-restaurant-tables.component.css']
 })
 export class AdminRestaurantTablesComponent {
+
   restaurantTables: RestaurantTable[] = [];
   tableTypes: TableType[] = [];
   tableStatuses: TableStatus[] = [];
@@ -36,7 +37,7 @@ export class AdminRestaurantTablesComponent {
     private restaurantTablesService: RestaurantTableService,
     private tableTypesService: TableTypeService,
     private tableStatusesService: TableStatusService,
-    private restaurantsService: RestaurantService,
+    private restaurantService: RestaurantService,
     private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private zone: NgZone
@@ -54,6 +55,7 @@ export class AdminRestaurantTablesComponent {
       restaurantId: ['', [Validators.required]],
     });
   }
+
   ngOnInit(): void {
     this.getRestaurantTables();
     this.getTableStatuses();
@@ -72,23 +74,26 @@ export class AdminRestaurantTablesComponent {
     this.getRestaurantTables();
   }
 
-
   getRestaurantTables(): void {
     this.restaurantTablesService.getRestaurantTables()
       .subscribe(restaurantTables => this.restaurantTables = restaurantTables);
   }
+
   getTableStatuses(): void {
     this.tableStatusesService.getTableStatuses()
       .subscribe(tableStatus => this.tableStatuses = tableStatus);
   }
+
   getTableTypes(): void {
     this.tableTypesService.getTableTypes()
       .subscribe(tableTypes => this.tableTypes = tableTypes);
   }
+
   getRestaurants(): void {
-    this.restaurantsService.getRestaurants()
+    this.restaurantService.getRestaurants()
       .subscribe(restaurants => this.restaurants = restaurants);
   }
+
   //Lấy name theo id
   getTableTypeById(tableType: number): Observable<TableType> {
     return this.tableTypesService.getTableTypeById(tableType);
@@ -101,6 +106,7 @@ export class AdminRestaurantTablesComponent {
   getTableStatusById(tableStatus: number): Observable<TableStatus> {
     return this.tableStatusesService.getTableStatusById(tableStatus);
   }
+
   addRestaurantTable(): void {
     const tableId = 0;
     const tableName = this.restaurantTableForm.get('tableName')?.value?.trim() ?? '';
@@ -114,6 +120,7 @@ export class AdminRestaurantTablesComponent {
         this.restaurantTableForm.reset();
       });
   }
+
   deleteTable(restaurantTable: RestaurantTable): void {
     this.restaurantTables = this.restaurantTables.filter(i => i !== restaurantTable);
     this.restaurantTablesService.deleteTable(restaurantTable.tableId).subscribe();

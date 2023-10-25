@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 
@@ -20,6 +21,8 @@ import { UserProductDetailComponent } from './user/components/user-home/user-pro
 import { UserProductsComponent } from './user/components/user-home/user-products/user-products.component';
 import { UserRestaurantTablesComponent } from './user/components/user-home/user-restaurant-tables/user-restaurant-tables.component';
 import { UserRestaurantsComponent } from './user/components/user-home/user-restaurants/user-restaurants.component';
+import { UserComboDetailComponent } from './user/components/user-home/user-combo-detail/user-combo-detail.component';
+import { UserInventoryBranchesComponent } from './user/components/user-home/user-inventory-branches/user-inventory-branches.component';
 
 import { AdminFooterComponent } from './admin/components/admin-home/admin-footer/admin-footer.component';
 import { AdminHeaderComponent } from './admin/components/admin-home/admin-header/admin-header.component';
@@ -30,8 +33,6 @@ import { AdminProductDetailComponent } from './admin/components/admin-home/admin
 import { AdminProductsComponent } from './admin/components/admin-home/admin-products/admin-products.component';
 import { AdminSuppliersComponent } from './admin/components/admin-home/admin-suppliers/admin-suppliers.component';
 import { AdminUsersComponent } from './admin/components/admin-home/admin-users/admin-users.component';
-
-import { CommonModule } from '@angular/common';
 import { AdminCategoriesComponent } from './admin/components/admin-home/admin-categories/admin-categories.component';
 import { AdminCategoryDetailComponent } from './admin/components/admin-home/admin-category-detail/admin-category-detail.component';
 import { AdminIngredientDetailComponent } from './admin/components/admin-home/admin-ingredient-detail/admin-ingredient-detail.component';
@@ -40,17 +41,15 @@ import { AdminInventoryDetailComponent } from './admin/components/admin-home/adm
 import { AdminRestaurantTableDetailComponent } from './admin/components/admin-home/admin-restaurant-table-detail/admin-restaurant-table-detail.component';
 import { AdminRestaurantTablesComponent } from './admin/components/admin-home/admin-restaurant-tables/admin-restaurant-tables.component';
 import { AdminSupplierDetailComponent } from './admin/components/admin-home/admin-supplier-detail/admin-supplier-detail.component';
+
 import { ChatComponent } from './components/chat/chat.component';
-import { DateTimeComponent } from './components/date-time/date-time.component';
 import { LoginComponent } from './components/login/login.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { ChatService } from './services/chat.service';
 import { WebSocketService } from './services/web-socket.service';
-import { UserComboDetailComponent } from './user/components/user-home/user-combo-detail/user-combo-detail.component';
-import { UserInventoryBranchesComponent } from './user/components/user-home/user-inventory-branches/user-inventory-branches.component';
+
 import { ProfileComponent } from './components/profile/profile.component';
 import { DateTimeComponent } from './components/date-time/date-time.component';
 import { NgToastModule } from 'ng-angular-popup';
+import { ChatService } from './services/chat.service';
 
 
 @NgModule({
