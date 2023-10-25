@@ -47,6 +47,7 @@ import { WebSocketService } from './services/web-socket.service';
 import { UserComboDetailComponent } from './user/components/user-home/user-combo-detail/user-combo-detail.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DateTimeComponent } from './components/date-time/date-time.component';
+import { NgToastModule } from 'ng-angular-popup';
 
 
 @NgModule({
@@ -100,6 +101,7 @@ import { DateTimeComponent } from './components/date-time/date-time.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    NgToastModule,
   ],
   providers: [
     WebSocketService,
