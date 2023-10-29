@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import { DateTimeService } from 'src/app/services/date-time.service';
 
 @Component({
   selector: 'app-date-time',
@@ -8,25 +9,21 @@ import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
 })
 export class DateTimeComponent {
 
-  dateTimeWorker: Worker;
-  currentTime: Date = new Date();
+  private currentTime: Date = new Date();
+
   hours: number[] = Array.from({ length: 12 }, (_, index) => index + 1);
   seconds: number[] = Array.from({ length: 60 }, (_, index) => index + 1);
-  //hourDegrees: number = 0;
-  //minuteDegrees: number = 0;
-  //secondDegrees: number = 0;
 
-  constructor(private el: ElementRef) {
-    this.dateTimeWorker = new Worker(new URL('../../workers/date-time.worker', import.meta.url));
+  constructor(private dateTimeService: DateTimeService) {
+
   }
 
   ngOnInit() {
 
-    this.dateTimeWorker.postMessage('start');
+    this.dateTimeService.getCurrentTime().subscribe((time: Date) => {
+      this.currentTime = time;
+    });
 
-    this.dateTimeWorker.onmessage = (event) => {
-      this.currentTime = event.data;
-    };
   }
 
   get hourHandTransform() {
@@ -47,10 +44,6 @@ export class DateTimeComponent {
     const seconds = this.currentTime.getSeconds();
     const secondDegrees = seconds * 6;
     return `rotate(${secondDegrees}deg)`;
-  }
-
-  ngOnDestroy() {
-    this.dateTimeWorker.terminate(); // Khi component bị hủy, dừng Web Worker
   }
 
 }
