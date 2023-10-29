@@ -5,3 +5,10 @@
   height: 100vh;
   
 }
+
+.clock {
+  position: fixed;
+  top: 3.5%;
+  right: 33%;
+  z-index: 1;
+}
