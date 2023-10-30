@@ -43,11 +43,11 @@ public class AuthenticationService {
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
 
-  @Value("${spring.security.oauth2.client.registration.google.client-id}")
-  private String clientId;
+  // @Value("${spring.security.oauth2.client.registration.google.client-id}")
+  // private String clientId;
 
-  @Value("${spring.security.oauth2.client.registration.google.client-secret}")
-  private String clientSecret;
+  // @Value("${spring.security.oauth2.client.registration.google.client-secret}")
+  // private String clientSecret;
   
 
   @Autowired
@@ -111,28 +111,28 @@ public class AuthenticationService {
       .build();
   }
 
-  public OAuth2AuthenticationToken createOAuth2AuthenticationToken() {
-    // Tạo một đối tượng Map để chứa các giá trị
-    Map<String, Object> attributes = new HashMap<>();
-    attributes.put("client_id", this.clientId);
-    attributes.put("client_secret", this.clientSecret);
+  // public OAuth2AuthenticationToken createOAuth2AuthenticationToken() {
+  //   // Tạo một đối tượng Map để chứa các giá trị
+  //   Map<String, Object> attributes = new HashMap<>();
+  //   attributes.put("client_id", this.clientId);
+  //   attributes.put("client_secret", this.clientSecret);
 
-    // Tạo một đối tượng OAuth2User
-    OAuth2User oauth2User = new DefaultOAuth2User(
-        Collections.emptyList(), // Danh sách các authorities, có thể rỗng
-        attributes, // Các thuộc tính bạn muốn gắn vào
-        "client_id" // Chỉ định tên thuộc tính trong đối tượng OAuth2User
-    );
+  //   // Tạo một đối tượng OAuth2User
+  //   OAuth2User oauth2User = new DefaultOAuth2User(
+  //       Collections.emptyList(), // Danh sách các authorities, có thể rỗng
+  //       attributes, // Các thuộc tính bạn muốn gắn vào
+  //       "client_id" // Chỉ định tên thuộc tính trong đối tượng OAuth2User
+  //   );
 
     // Tạo OAuth2AuthenticationToken bằng cách sử dụng OAuth2User và danh sách authorities
-    OAuth2AuthenticationToken oauth2AuthenticationToken = new OAuth2AuthenticationToken(
-        oauth2User,
-        Collections.emptyList(), // Danh sách các authorities, có thể rỗng hoặc bạn có thể đặt quyền tùy ý
-        "client_id" // Chỉ định tên thuộc tính principal
-    );
+//     OAuth2AuthenticationToken oauth2AuthenticationToken = new OAuth2AuthenticationToken(
+//         oauth2User,
+//         Collections.emptyList(), // Danh sách các authorities, có thể rỗng hoặc bạn có thể đặt quyền tùy ý
+//         "client_id" // Chỉ định tên thuộc tính principal
+//     );
 
-    return oauth2AuthenticationToken;
-}
+//     return oauth2AuthenticationToken;
+// }
 
 
   // public AuthenticationResponse authenticateGoogleLogin(OAuth2AuthenticationToken auth2AuthenticationToken) {
