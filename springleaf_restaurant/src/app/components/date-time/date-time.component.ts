@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import { DateTimeService } from 'src/app/services/date-time.service';
 
 @Component({
   selector: 'app-date-time',
@@ -8,49 +9,18 @@ import { Component, ElementRef, ViewEncapsulation } from '@angular/core';
 })
 export class DateTimeComponent {
 
-  dateTimeWorker: Worker;
-  currentTime: Date = new Date();
-  hours: number[] = Array.from({ length: 12 }, (_, index) => index + 1);
-  seconds: number[] = Array.from({ length: 60 }, (_, index) => index + 1);
-  //hourDegrees: number = 0;
-  //minuteDegrees: number = 0;
-  //secondDegrees: number = 0;
+  currentDateTime: Date = new Date();
 
-  constructor(private el: ElementRef) {
-    this.dateTimeWorker = new Worker(new URL('../../workers/date-time.worker', import.meta.url));
+  constructor(private dateTimeService: DateTimeService) {
+
   }
 
   ngOnInit() {
 
-    this.dateTimeWorker.postMessage('start');
+    this.dateTimeService.getCurrentTime().subscribe((dateTime: Date) => {
+      this.currentDateTime = dateTime;
+    });
 
-    this.dateTimeWorker.onmessage = (event) => {
-      this.currentTime = event.data;
-    };
-  }
-
-  get hourHandTransform() {
-    const hours = this.currentTime.getHours() % 12;
-    const minutes = this.currentTime.getMinutes();
-    const hourDegrees = (hours * 30) + (minutes * 0.5);
-    return `rotate(${hourDegrees}deg)`;
-  }
-
-  get minuteHandTransform() {
-    const minutes = this.currentTime.getMinutes();
-    const seconds = this.currentTime.getSeconds();
-    const minuteDegrees = (minutes * 6) + (seconds * 0.1);
-    return `rotate(${minuteDegrees}deg)`;
-  }
-
-  get secondHandTransform() {
-    const seconds = this.currentTime.getSeconds();
-    const secondDegrees = seconds * 6;
-    return `rotate(${secondDegrees}deg)`;
-  }
-
-  ngOnDestroy() {
-    this.dateTimeWorker.terminate(); // Khi component bị hủy, dừng Web Worker
   }
 
 }
