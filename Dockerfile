@@ -1,6 +1,6 @@
 FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app/springleaf_restaurant_backend
-COPY ./springleaf_restaurant_backend . # Sao chép mã nguồn của backend vào hình ảnh
+COPY ./springleaf_restaurant_backend 
 RUN mvn clean package -DskipTests
 
 
