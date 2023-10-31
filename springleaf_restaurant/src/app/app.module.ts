@@ -50,6 +50,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DateTimeComponent } from './components/date-time/date-time.component';
 import { NgToastModule } from 'ng-angular-popup';
 import { ChatService } from './services/chat.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { UserBannerComponent } from './user/components/user-home/user-banner/user-banner.component';
 
 
 @NgModule({
@@ -70,6 +72,7 @@ import { ChatService } from './services/chat.service';
     UserRestaurantsComponent,
     UserComboDetailComponent,
     UserInventoryBranchesComponent,
+    UserBannerComponent,
 
     AdminHeaderComponent,
     AdminProductsComponent,
@@ -105,6 +108,7 @@ import { ChatService } from './services/chat.service';
     ReactiveFormsModule,
     NgxPaginationModule,
     NgToastModule,
+    FlexLayoutModule,
   ],
   providers: [
     WebSocketService,

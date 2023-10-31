@@ -67,13 +67,16 @@ export class AdminProductsComponent {
     this.categoryService.getCategories()
       .subscribe(categories => this.categories = categories);
   }
+
   getProducts(): void {
     this.productService.getProducts()
       .subscribe(products => this.products = products);
   }
+
   getCategoryById(categoryId: number): Observable<Category> {
     return this.categoryService.getCategory(categoryId);
   }
+
   addProduct(): void {
     // Lấy giá trị từ các trường select
     const name = this.productForm.get('name')?.value;
