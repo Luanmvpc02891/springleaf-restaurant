@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/interfaces/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdminCategoriesComponent } from '../admin-categories/admin-categories.component';
 
 @Component({
   selector: 'app-admin-category-detail',

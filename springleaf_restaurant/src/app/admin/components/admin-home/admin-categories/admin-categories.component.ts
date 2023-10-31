@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Category } from 'src/app/interfaces/category';
 import { CategoryService } from 'src/app/services/category.service';
-import { AdminCategoryDetailComponent } from '../admin-category-detail/admin-category-detail.component';
+import { AdminCategoryDetailComponent } from './admin-category-detail/admin-category-detail.component';
 
 @Component({
   selector: 'app-admin-categories',
