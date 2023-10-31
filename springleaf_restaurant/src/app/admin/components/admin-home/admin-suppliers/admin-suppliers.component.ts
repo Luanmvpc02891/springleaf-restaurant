@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Supplier } from 'src/app/interfaces/supplier';
 import { SupplierService } from 'src/app/services/supplier.service';
-import { AdminSupplierDetailComponent } from '../admin-supplier-detail/admin-supplier-detail.component';
+import { AdminSupplierDetailComponent } from './admin-supplier-detail/admin-supplier-detail.component';
 
 @Component({
   selector: 'app-admin-supplier',

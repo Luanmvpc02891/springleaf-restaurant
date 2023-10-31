@@ -9,7 +9,7 @@ import { Supplier } from 'src/app/interfaces/supplier';
 import { IngredientService } from 'src/app/services/ingredient.service';
 import { InventoryService } from 'src/app/services/inventory.service';
 import { SupplierService } from 'src/app/services/supplier.service';
-import { AdminInventoryDetailComponent } from '../admin-inventory-detail/admin-inventory-detail.component';
+import { AdminInventoryDetailComponent } from './admin-inventory-detail/admin-inventory-detail.component';
 
 @Component({
   selector: 'app-admin-inventories',
