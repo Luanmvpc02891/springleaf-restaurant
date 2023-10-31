@@ -70,7 +70,7 @@ const routes: Routes = [
   },
   {
     path: 'admin/product/detail/:id',
-    loadChildren: () => import('./admin-product-detail/admin-product-detail.module')
+    loadChildren: () => import('./admin-products/admin-product-detail/admin-product-detail.module')
       .then(m => m.AdminProductDetailModule)
   },
   // {

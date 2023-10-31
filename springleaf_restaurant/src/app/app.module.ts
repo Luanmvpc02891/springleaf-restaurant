@@ -17,11 +17,11 @@ import { UserFooterComponent } from './user/components/user-home/user-footer/use
 import { UserHeaderComponent } from './user/components/user-home/user-header/user-header.component';
 import { UserHomeComponent } from './user/components/user-home/user-home.component';
 import { UserIndexComponent } from './user/components/user-home/user-index/user-index.component';
-import { UserProductDetailComponent } from './user/components/user-home/user-product-detail/user-product-detail.component';
+import { UserProductDetailComponent } from './user/components/user-home/user-products/user-product-detail/user-product-detail.component';
 import { UserProductsComponent } from './user/components/user-home/user-products/user-products.component';
 import { UserRestaurantTablesComponent } from './user/components/user-home/user-restaurant-tables/user-restaurant-tables.component';
 import { UserRestaurantsComponent } from './user/components/user-home/user-restaurants/user-restaurants.component';
-import { UserComboDetailComponent } from './user/components/user-home/user-combo-detail/user-combo-detail.component';
+import { UserComboDetailComponent } from './user/components/user-home/user-combos/user-combo-detail/user-combo-detail.component';
 import { UserInventoryBranchesComponent } from './user/components/user-home/user-inventory-branches/user-inventory-branches.component';
 
 import { AdminFooterComponent } from './admin/components/admin-home/admin-footer/admin-footer.component';
@@ -29,18 +29,18 @@ import { AdminHeaderComponent } from './admin/components/admin-home/admin-header
 import { AdminHomeComponent } from './admin/components/admin-home/admin-home.component';
 import { AdminIndexComponent } from './admin/components/admin-home/admin-index/admin-index.component';
 import { AdminIngredientsComponent } from './admin/components/admin-home/admin-ingredients/admin-ingredients.component';
-import { AdminProductDetailComponent } from './admin/components/admin-home/admin-product-detail/admin-product-detail.component';
+import { AdminProductDetailComponent } from './admin/components/admin-home/admin-products/admin-product-detail/admin-product-detail.component';
 import { AdminProductsComponent } from './admin/components/admin-home/admin-products/admin-products.component';
 import { AdminSuppliersComponent } from './admin/components/admin-home/admin-suppliers/admin-suppliers.component';
 import { AdminUsersComponent } from './admin/components/admin-home/admin-users/admin-users.component';
 import { AdminCategoriesComponent } from './admin/components/admin-home/admin-categories/admin-categories.component';
-import { AdminCategoryDetailComponent } from './admin/components/admin-home/admin-category-detail/admin-category-detail.component';
-import { AdminIngredientDetailComponent } from './admin/components/admin-home/admin-ingredient-detail/admin-ingredient-detail.component';
+import { AdminCategoryDetailComponent } from './admin/components/admin-home/admin-categories/admin-category-detail/admin-category-detail.component';
+import { AdminIngredientDetailComponent } from './admin/components/admin-home/admin-ingredients/admin-ingredient-detail/admin-ingredient-detail.component';
 import { AdminInventoriesComponent } from './admin/components/admin-home/admin-inventories/admin-inventories.component';
-import { AdminInventoryDetailComponent } from './admin/components/admin-home/admin-inventory-detail/admin-inventory-detail.component';
-import { AdminRestaurantTableDetailComponent } from './admin/components/admin-home/admin-restaurant-table-detail/admin-restaurant-table-detail.component';
+import { AdminInventoryDetailComponent } from './admin/components/admin-home/admin-inventories/admin-inventory-detail/admin-inventory-detail.component';
+import { AdminRestaurantTableDetailComponent } from './admin/components/admin-home/admin-restaurant-tables/admin-restaurant-table-detail/admin-restaurant-table-detail.component';
 import { AdminRestaurantTablesComponent } from './admin/components/admin-home/admin-restaurant-tables/admin-restaurant-tables.component';
-import { AdminSupplierDetailComponent } from './admin/components/admin-home/admin-supplier-detail/admin-supplier-detail.component';
+import { AdminSupplierDetailComponent } from './admin/components/admin-home/admin-suppliers/admin-supplier-detail/admin-supplier-detail.component';
 
 import { ChatComponent } from './components/chat/chat.component';
 import { LoginComponent } from './components/login/login.component';

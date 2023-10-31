@@ -10,7 +10,7 @@ import { RestaurantTableService } from 'src/app/services/restaurant-table.servic
 import { RestaurantService } from 'src/app/services/restaurant.service';
 import { TableStatusService } from 'src/app/services/table-status.service';
 import { TableTypeService } from 'src/app/services/table-type.service';
-import { AdminRestaurantTableDetailComponent } from '../admin-restaurant-table-detail/admin-restaurant-table-detail.component';
+import { AdminRestaurantTableDetailComponent } from './admin-restaurant-table-detail/admin-restaurant-table-detail.component';
 
 @Component({
   selector: 'app-admin-restaurant-tables',

@@ -7,7 +7,7 @@ import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
-import { AdminProductDetailComponent } from './../admin-product-detail/admin-product-detail.component';
+import { AdminProductDetailComponent } from './admin-product-detail/admin-product-detail.component';
 
 @Component({
   selector: 'app-admin-products',
