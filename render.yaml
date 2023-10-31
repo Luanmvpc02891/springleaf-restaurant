@@ -1,0 +1,9 @@
+services:
+  - name: springleaf_restaurant_backend
+    buildCommand: docker build -t my-backend ./springleaf_restaurant_backend
+    env:
+      - key: BACKEND_ENV_VARIABLE
+        from: secret:backend-env-variable
+
+  - name: springleaf_restaurant
+    buildCommand: docker build -t my-frontend ./frontend
