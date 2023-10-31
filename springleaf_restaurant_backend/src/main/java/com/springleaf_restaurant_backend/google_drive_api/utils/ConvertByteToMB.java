@@ -9,15 +9,15 @@ public class ConvertByteToMB {
         double gb = mb / n;
         double tb = gb / n;
         if(size < n) {
-            s = size + " Bytes";
+            s = size + "";
         } else if(size >= n && size < (n * n)) {
-            s =  String.format("%.1f", kb) + " KB";
+            s =  String.format("%.1f", kb) + "";
         } else if(size >= (n * n) && size < (n * n * n)) {
-            s = String.format("%.1f", mb) + " MB";
+            s = String.format("%.1f", mb) + "";
         } else if(size >= (n * n * n) && size < (n * n * n * n)) {
-            s = String.format("%.2f", gb) + " GB";
+            s = String.format("%.2f", gb) + "";
         } else if(size >= (n * n * n * n)) {
-            s = String.format("%.2f", tb) + " TB";
+            s = String.format("%.2f", tb) + "";
         }
         return s;
     }

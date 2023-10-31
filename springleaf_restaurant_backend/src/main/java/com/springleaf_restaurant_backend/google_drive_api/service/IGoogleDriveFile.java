@@ -12,6 +12,6 @@ import java.util.List;
 public interface IGoogleDriveFile {
     List<GoogleDriveFileDTO> getAllFile() throws IOException, GeneralSecurityException;
     void deleteFile(String id) throws Exception;
-    void uploadFile(MultipartFile file, String filePath, boolean isPublic);
+    void uploadFile(MultipartFile file, String filePath, boolean isPublic) throws Exception;
     void downloadFile(String id, OutputStream outputStream) throws IOException, GeneralSecurityException;
 }

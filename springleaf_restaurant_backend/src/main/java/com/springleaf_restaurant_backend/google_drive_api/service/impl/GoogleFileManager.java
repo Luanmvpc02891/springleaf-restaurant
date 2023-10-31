@@ -8,7 +8,10 @@ import com.google.api.services.drive.model.Permission;
 import com.springleaf_restaurant_backend.google_drive_api.config.GoogleDriveConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
@@ -63,7 +66,7 @@ public class GoogleFileManager {
     }
 
     // Set permission drive file
-    private Permission setPermission(String type, String role){
+    public Permission setPermission(String type, String role){
         Permission permission = new Permission();
         permission.setType(type);
         permission.setRole(role);
@@ -72,7 +75,7 @@ public class GoogleFileManager {
 
 
     // Upload file
-    public String uploadFile(MultipartFile file, String folderName, String type, String role) {
+    public boolean uploadFile(MultipartFile file, String folderName, String type, String role) {
         try {
             String folderId = getFolderId(folderName);
             if (null != file) {
@@ -92,13 +95,13 @@ public class GoogleFileManager {
                     // Call Set Permission drive
                     googleDriveConfig.getInstance().permissions().create(uploadFile.getId(), setPermission(type, role)).execute();
                 }
-
-                return uploadFile.getId();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return null;
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     // get id folder google drive

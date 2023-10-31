@@ -82,7 +82,7 @@ public class GoogleDriveFileService implements IGoogleDriveFile {
     }
 
     @Override
-    public void uploadFile(MultipartFile file, String filePath, boolean isPublic) {
+    public void uploadFile(MultipartFile file, String filePath, boolean isPublic) throws Exception{
         String type = "";
         String role = "";
         if (isPublic) {
