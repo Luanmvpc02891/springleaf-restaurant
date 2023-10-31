@@ -7,7 +7,6 @@ import com.springleaf_restaurant_backend.security.repositories.TokenRepository;
 import com.springleaf_restaurant_backend.security.repositories.UserRepository;
 import com.springleaf_restaurant_backend.security.token.Token;
 import com.springleaf_restaurant_backend.security.token.TokenType;
-import com.springleaf_restaurant_backend.user.entities.Role;
 import com.springleaf_restaurant_backend.user.entities.User;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,8 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,13 +39,6 @@ public class AuthenticationService {
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
-
-  // @Value("${spring.security.oauth2.client.registration.google.client-id}")
-  // private String clientId;
-
-  // @Value("${spring.security.oauth2.client.registration.google.client-secret}")
-  // private String clientSecret;
-  
 
   @Autowired
   RoleRepository roleRepository;
@@ -110,72 +100,6 @@ public class AuthenticationService {
         .user(user)
       .build();
   }
-
-  // public OAuth2AuthenticationToken createOAuth2AuthenticationToken() {
-  //   // Tạo một đối tượng Map để chứa các giá trị
-  //   Map<String, Object> attributes = new HashMap<>();
-  //   attributes.put("client_id", this.clientId);
-  //   attributes.put("client_secret", this.clientSecret);
-
-  //   // Tạo một đối tượng OAuth2User
-  //   OAuth2User oauth2User = new DefaultOAuth2User(
-  //       Collections.emptyList(), // Danh sách các authorities, có thể rỗng
-  //       attributes, // Các thuộc tính bạn muốn gắn vào
-  //       "client_id" // Chỉ định tên thuộc tính trong đối tượng OAuth2User
-  //   );
-
-    // Tạo OAuth2AuthenticationToken bằng cách sử dụng OAuth2User và danh sách authorities
-//     OAuth2AuthenticationToken oauth2AuthenticationToken = new OAuth2AuthenticationToken(
-//         oauth2User,
-//         Collections.emptyList(), // Danh sách các authorities, có thể rỗng hoặc bạn có thể đặt quyền tùy ý
-//         "client_id" // Chỉ định tên thuộc tính principal
-//     );
-
-//     return oauth2AuthenticationToken;
-// }
-
-
-  // public AuthenticationResponse authenticateGoogleLogin(OAuth2AuthenticationToken auth2AuthenticationToken) {
-  //   Map<String, Object> getToken = getMethodName(auth2AuthenticationToken);
-  //   String email = (String) getToken.get("email");
-  //   User userGoogle = userRepository.findByEmail(email);
-  //   if(userGoogle!= null){
-  //     authenticationManager.authenticate(
-  //       new UsernamePasswordAuthenticationToken(
-  //           userGoogle.getUsername(),
-  //           userGoogle.getPassword()
-  //       )
-  //   );
-  //   var user = userRepository.findByUsername(userGoogle.getUsername())
-  //       .orElseThrow();
-  //   var jwtToken = jwtService.generateToken(userGoogle);
-  //   var refreshToken = jwtService.generateRefreshToken(userGoogle);
-  //   revokeAllUserTokens(userGoogle);
-  //   saveUserToken(userGoogle, jwtToken);
-  //   return AuthenticationResponse.builder()
-  //       .accessToken(jwtToken)
-  //       .refreshToken(refreshToken)
-  //       .user(userGoogle)
-  //     .build();
-  //   }else {
-  //     Role role = roleRepository.findByRoleId(1);
-  //     var user = User.builder()
-  //         .username(userGoogle.getUsername())
-  //         .password(passwordEncoder.encode(userGoogle.getPassword()))
-  //         .roleId(1)
-  //         .build();
-  //     var savedUser = userRepository.save(user);
-  //     var jwtToken = jwtService.generateToken(user);
-  //     var refreshToken = jwtService.generateRefreshToken(user);
-  //     saveUserToken(savedUser, jwtToken);
-  //     return AuthenticationResponse.builder()
-  //         .accessToken(jwtToken)
-  //             .refreshToken(refreshToken)
-  //         .build();
-  //     }
-  // }
-
-
 
   private void saveUserToken(User user, String jwtToken) {
     var token = Token.builder()
