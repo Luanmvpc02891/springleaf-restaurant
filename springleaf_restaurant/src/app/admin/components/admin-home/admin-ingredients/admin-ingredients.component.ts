@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ingredient } from 'src/app/interfaces/ingredient';
 import { IngredientService } from 'src/app/services/ingredient.service';
-import { AdminIngredientDetailComponent } from '../admin-ingredient-detail/admin-ingredient-detail.component';
+import { AdminIngredientDetailComponent } from './admin-ingredient-detail/admin-ingredient-detail.component';
 
 @Component({
   selector: 'app-admin-ingredient',

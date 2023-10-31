@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Combo } from 'src/app/interfaces/combo';
 import { ComboService } from 'src/app/services/combo.service';
-import { UserComboDetailComponent } from '../user-combo-detail/user-combo-detail.component';
+import { UserComboDetailComponent } from './user-combo-detail/user-combo-detail.component';
 
 @Component({
   selector: 'app-user-combo',
