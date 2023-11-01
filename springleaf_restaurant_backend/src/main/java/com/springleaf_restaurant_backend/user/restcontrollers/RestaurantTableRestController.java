@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springleaf_restaurant_backend.user.entities.RestaurantTable;
-import com.springleaf_restaurant_backend.user.repositories.RestauranTableRepository;
+import com.springleaf_restaurant_backend.user.repositories.RestaurantTableRepository;
 
 import jakarta.persistence.EntityManager;
 
@@ -24,7 +24,7 @@ import jakarta.persistence.EntityManager;
 @RequestMapping("/api")
 public class RestaurantTableRestController {
     @Autowired
-    private RestauranTableRepository restauranTableRepository;
+    private RestaurantTableRepository restauranTableRepository;
 
      @Autowired
     private EntityManager entityManager;

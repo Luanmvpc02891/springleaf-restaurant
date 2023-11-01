@@ -1,12 +1,13 @@
 package com.springleaf_restaurant_backend.user.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.springleaf_restaurant_backend.user.entities.MergeTable;
 
-import com.springleaf_restaurant_backend.user.repositories.MergeTableRepository;
+import java.util.List;
 
-@Service
-public class MergeTableService {
-    @Autowired
-    MergeTableRepository mergeTableRepository;
+public interface MergeTableService {
+    List<MergeTable> getAllMergeTables();
+    MergeTable getMergeTableById(Long id);
+    void saveMergeTable(MergeTable mergeTable);
+    void updateMergeTable(MergeTable mergeTable);
+    void deleteMergeTable(Long id);
 }
