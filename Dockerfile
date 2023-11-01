@@ -6,8 +6,12 @@ COPY . .
 RUN npm install
 RUN npm run build-prod
 
+# Đặt biến môi trường APP_TYPE=frontend
+ENV APP_TYPE=frontend
+
 #stage2
 FROM nginx:alpine
+EXPOSE 4200
 COPY --from=node app/dist/lazy-load-demo /usr/share/nginx/html
 
 #Deploy backend-end
@@ -16,6 +20,9 @@ FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
 COPY ./springleaf_restaurant_backend ./springleaf_restaurant_backend
 RUN mvn -f springleaf_restaurant_backend/pom.xml clean package -DskipTests
+
+# Đặt biến môi trường APP_TYPE=frontend
+ENV APP_TYPE=backend
 
 #stage2
 FROM openjdk:17.0.1-jdk-slim
