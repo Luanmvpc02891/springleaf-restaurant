@@ -1,10 +1,10 @@
-package com.springleaf_restaurant_backend.user.repositories;
+// package com.springleaf_restaurant_backend.user.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.springleaf_restaurant_backend.user.entities.Category;
-import java.util.List;
+// import com.springleaf_restaurant_backend.user.entities.Category;
+// import java.util.List;
 
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+// public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-}
+// }
