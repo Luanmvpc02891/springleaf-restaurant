@@ -47,7 +47,8 @@ public class SecurityConfiguration {
         .requestMatchers(
           "/api/**",
           "https://accounts.google.com/**",
-          "https://drive.google.com/**"
+          "https://drive.google.com/**",
+          "/login/oauth2/code/google/**"
         )
         .permitAll()
 
