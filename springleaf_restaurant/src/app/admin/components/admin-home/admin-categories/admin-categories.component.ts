@@ -62,7 +62,6 @@ export class AdminCategoriesComponent {
   }
 
   addCategory(): void {
-
     const name = this.categoryForm.get('name')?.value?.trim() ?? '';
     const active = this.categoryForm.get('active')?.value;
     const description = this.categoryForm.get('description')?.value;
@@ -70,8 +69,8 @@ export class AdminCategoriesComponent {
     if (!name || active === null) { return; }
 
     this.categoryService.addCategory({ name, active, description } as Category)
-      .subscribe(category => {
-        this.categories.push(category);
+      .subscribe(() => {
+        this.getCategories();
         this.categoryForm.reset();
         this.categoryForm.get('active')?.setValue(true);
       });
@@ -90,7 +89,6 @@ export class AdminCategoriesComponent {
   }
 
   openCategoryDetailModal(category: Category) {
-    //this.getCategory();
     const modalRef = this.modalService.open(AdminCategoryDetailComponent, { size: 'lg' });
     modalRef.componentInstance.category = category;
   }
