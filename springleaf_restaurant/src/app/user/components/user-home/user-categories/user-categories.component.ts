@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject, Subscription, distinctUntilChanged, map, switchMap } from 'rxjs';
 import { Category } from 'src/app/interfaces/category';
@@ -15,7 +15,7 @@ export class UserCategoriesComponent {
   categories$!: Observable<Category[]>;
   searchTerms = new Subject<string>();
   showMore: boolean = false;
-
+  isMobile: boolean = false;
 
   constructor(
     private categoryService: CategoryService,
@@ -26,6 +26,17 @@ export class UserCategoriesComponent {
         localStorage.setItem(event.key, event.oldValue);
       }
     });
+  }
+
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth < 768; // Số 768 là ngưỡng tùy chỉnh cho kích thước điện thoại
   }
 
   ngOnInit(): void {
@@ -39,6 +50,7 @@ export class UserCategoriesComponent {
       switchMap((categoryName: string) => this.categoryService.searchCategoriesByName(categoryName)),
     );
     this.search("");
+    
   }
 
   search(term: string): void {

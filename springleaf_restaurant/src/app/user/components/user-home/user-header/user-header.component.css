@@ -14,6 +14,7 @@
     color: var(--dark-color);
     font-size: var(--h5-font-size);
     font-weight: var(--font-weight-bold);
+    font-family: 'Playfair Display', serif;
     margin-right: 0;
 }
 
@@ -23,8 +24,9 @@
 }
 
 .navbar-expand-lg .nav-link {
-    color: var(--p-color);
+    color: var(--dark-color);
     font-weight: var(--font-weight-normal);
+    font-family: 'Playfair Display', serif;
     font-size: var(--menu-font-size);
     padding-top: 15px;
     padding-bottom: 15px;
@@ -110,4 +112,79 @@
 
 .navbar-toggler .navbar-toggler-icon:after {
     top: 8px;
+}
+
+
+/* Dropdown Button */
+/* Hiển thị dropdown-menu khi hover hoặc active (click) */
+.dropdown:hover .dropdown-menu,
+.dropdown:active .dropdown-menu {
+    display: block;
+}
+
+/* Định dạng dropdown-menu */
+.dropdown-menu {
+    background-color: #d9d3d3;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Định dạng các mục trong dropdown-menu */
+.dropdown-menu a {
+    color: #fff;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* Định dạng mục khi hover hoặc active (click) */
+.dropdown-menu a:hover,
+.dropdown:active .dropdown-menu a {
+    background-color: #555;
+    color: #fff;
+}
+
+
+/* search */
+.input-container {
+    width: 220px;
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% + 5px);
+    transform: translateY(calc(-50% - 5px));
+}
+
+.input {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    transition: .2s linear;
+    border: 2.5px solid black;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.input:focus {
+    outline: none;
+    border: 0.5px solid black;
+    box-shadow: -5px -5px 0px black;
+}
+
+.input-container:hover>.icon {
+    animation: anim 1s linear infinite;
+}
+
+@keyframes anim {
+
+    0%,
+    100% {
+        transform: translateY(calc(-50% - 5px)) scale(1);
+    }
+
+    50% {
+        transform: translateY(calc(-50% - 5px)) scale(1.1);
+    }
 }
