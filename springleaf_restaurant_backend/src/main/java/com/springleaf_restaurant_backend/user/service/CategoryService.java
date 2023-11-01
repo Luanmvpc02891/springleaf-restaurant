@@ -1,12 +1,12 @@
-// package com.springleaf_restaurant_backend.user.service;
+package com.springleaf_restaurant_backend.user.service;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-// import com.springleaf_restaurant_backend.user.repositories.CategoryRepository;
+import com.springleaf_restaurant_backend.user.repositories.CategoryRepository;
 
-// @Service
-// public class CategoryService {
-//     @Autowired
-//     CategoryRepository categoryRepository;
-// }
+@Service
+public class CategoryService {
+    @Autowired
+    CategoryRepository categoryRepository;
+}
