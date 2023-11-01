@@ -1,35 +1,38 @@
-package com.springleaf_restaurant_backend.user.entities;
+// package com.springleaf_restaurant_backend.user.entities;
 
-import lombok.*;
-import jakarta.persistence.*;
+// import lombok.*;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "Menu_Items")
-public class MenuItem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "menu_item_id")
-    private Long menuItemId;
+// import java.math.BigDecimal;
 
-    @Column(name = "name")
-    private String name;
+// import jakarta.persistence.*;
 
-    @Column(name = "description", columnDefinition = "nvarchar(max)")
-    private String description;
+// @Data
+// @AllArgsConstructor
+// @NoArgsConstructor
+// @Entity
+// @Table(name = "Menu_Items")
+// public class MenuItem {
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     @Column(name = "menu_item_id")
+//     private Long menuItemId;
 
-    @Column(name = "price", precision = 10, scale = 2)
-    private Double price;
+//     @Column(name = "name")
+//     private String name;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+//     @Column(name = "description", columnDefinition = "text")
+//     private String description;
 
-    @Column(name = "category_id")
-    private Long categoryId;
+//     @Column(name = "price")
+//     private Double price;
 
-    @Column(name = "status")
-    private Boolean status;
+//     @Column(name = "image_url")
+//     private String imageUrl;
 
-}
+//     @Column(name = "category_id")
+//     private Long categoryId;
+
+//     @Column(name = "status")
+//     private Boolean status;
+
+// }
