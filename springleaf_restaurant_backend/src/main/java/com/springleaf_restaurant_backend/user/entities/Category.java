@@ -17,7 +17,7 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description", columnDefinition = "nvarchar(max)")
+    @Column(name = "description", columnDefinition = "text")
     private String description;
 
     @Column(name = "active")

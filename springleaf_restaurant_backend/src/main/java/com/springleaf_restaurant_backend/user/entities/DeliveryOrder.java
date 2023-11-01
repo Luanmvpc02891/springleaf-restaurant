@@ -22,7 +22,7 @@ public class DeliveryOrder {
     @Column(name = "order_date")
     private Date orderDate;
 
-    @Column(name = "delivery_address", columnDefinition = "nvarchar(max)")
+    @Column(name = "delivery_address", columnDefinition = "text")
     private String deliveryAddress;
 
     @Column(name = "total_amount")

@@ -9,7 +9,7 @@ import { Category } from '../interfaces/category';
 export class CategoryService {
 
   private categoriesUrl = 'categories'; // URL to web api, không cần thêm base URL
-  categoriesCache!: Category[] ; // Cache for categories
+  categoriesCache!: Category[]; // Cache for categories
   private categoryUrl = 'category';
 
   constructor(private apiService: ApiService) { } // Inject ApiService
@@ -54,7 +54,15 @@ export class CategoryService {
 
   // Thêm sản phẩm mới
   addCategory(newCategory: Category): Observable<Category> {
-    return this.apiService.request<Category>('post', this.categoryUrl, newCategory);
+    return this.apiService.request<Category>('post', this.categoryUrl, newCategory).pipe(
+      tap((addedCategory: Category) => {
+        // Assuming categoriesCache is an array where you store your categories
+        this.categoriesCache.push(addedCategory); // Add the new category to the cache
+
+        // Store the updated categoriesCache in local storage
+        localStorage.setItem("categories", JSON.stringify(this.categoriesCache));
+      })
+    );
   }
 
   // Cập nhật sản phẩm
@@ -75,7 +83,16 @@ export class CategoryService {
   // Xoá sản phẩm
   deleteCategory(id: number): Observable<any> {
     const url = `${this.categoryUrl}/${id}`;
-    return this.apiService.request('delete', url);
+    return this.apiService.request('delete', url).pipe(
+      tap(() => {
+        // Xóa sản phẩm khỏi danh sách cache sau khi xóa sản phẩm
+        const index = this.categoriesCache.findIndex(cat => cat.categoryId === id);
+        if (index !== -1) {
+          this.categoriesCache.splice(index, 1);
+          localStorage.setItem('categories', JSON.stringify(this.categoriesCache));
+        }
+      })
+    );
   }
 
   searchCategoriesByName(term: string): Observable<Category[]> {
